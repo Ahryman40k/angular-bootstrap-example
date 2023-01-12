@@ -1,0 +1,58 @@
+// Sidebar
+.sidebar {
+  border-top: 1px solid $neutral-stroke;
+  margin-bottom: 4rem;
+
+  p {
+    margin-bottom: $paragraph-margin-bottom;
+  }
+
+  .sidebar-title {
+    @include font-size($h3-font-size);  // 24/32
+    line-height: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    border-top: none;
+  }
+
+  // Schedule data
+  // Cheat for lg breakpoint to allow one line schedule...
+  @include media-breakpoint-only(lg) {
+    .schedule-data {
+      margin-left: -2px;
+    }
+  }
+
+}
+
+.list-social-medias {
+  .icon {
+    @include icon-color($action);
+  }
+}
+
+// The base unit for a sidebar component, stacked
+.sb-block {
+  @include clearfix;
+  margin-bottom: 4rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  // Handle multplie lists in a single sidebar block
+  .list + .list {
+    margin-top: 2rem;
+  }
+
+  .elided-text {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+}
+

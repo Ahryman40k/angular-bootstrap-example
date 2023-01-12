@@ -1,0 +1,60 @@
+footer {
+  // Pre footer
+  // Use-case: Vitrine d'arrondissement
+  &.pre-footer {
+    background-color: $white;
+    color: $body-color;
+    padding-top: 2rem;
+    padding-bottom: 0;
+    
+    .font-size-sm {
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .list-heading {
+      @include font-size($font-size-base);
+      line-height: $line-height-md;
+      color: $headings-color;
+      font-weight: $font-weight-bold;
+      margin-bottom: 1rem;
+    }
+    p + .list-social-medias {
+      margin-top: 0;
+    }
+    .list-unstyled {
+      li {
+        line-height: $line-height-sm;
+        padding-bottom: .5rem;
+      }
+    }
+    // Social media list
+    // TODO: This shouldn't have to be custom
+    .list-social-medias {
+      display: flex;
+      li {
+        list-style: none;
+        display: inline-flex;
+        a {
+          border: 0;
+          .icon {
+            @include icon-color($action);
+          }
+          &:hover,
+          &:focus {
+            background-color: transparent;
+            .icon {
+              @include icon-color($action-darker);
+            }
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
+  }
+}

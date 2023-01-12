@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i");
+
+// Font-smoothing normalisation for mac os
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.regular {
+	font-weight: $font-weight-regular;
+}
+.bold {
+	font-weight: $font-weight-bold;
+}
+
+// Headings
+//
+// Headings are responsive
+// Displays are mapped to Headings
+h1, .h1,
+.display-1 {
+  @include font-size($h2-font-size);    // 32/40
+  line-height: 2.5rem;
+  margin-bottom: 2rem;
+  // 576px and up
+  @include media-breakpoint-up(md) {
+    @include font-size($h1-font-size);  // 40/56
+    line-height: 3.5rem;
+  }
+}
+h2, .h2,
+.display-2 {
+  @include font-size($h3-font-size);    // 24/32
+  line-height: 2rem;
+  margin-bottom: 1rem;
+  // 576px and up
+  @include media-breakpoint-up(md) {
+    @include font-size($h2-font-size);  // 32/40
+    line-height: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}
+h3, .h3,
+.display-3 {
+  @include font-size($h4-font-size);    // 20/28
+  line-height: $line-height-md;
+  margin-bottom: .5rem;
+  // 576px and up
+  @include media-breakpoint-up(md) {
+    @include font-size($h3-font-size);  // 24/32
+    line-height: $line-height-xl;
+    margin-bottom: 1rem;
+  }
+}
+h4, .h4,
+.display-4 {
+  @include font-size($h5-font-size);    // 16/24
+  line-height: $line-height-md;
+  margin-bottom: .5rem;
+  // 576px and up
+  @include media-breakpoint-up(md) {
+    @include font-size($h4-font-size);  // 20/28
+    line-height: $line-height-lg;
+  }
+}
+h5, .h5 {
+  @include font-size($h6-font-size);    // 14/20
+  line-height: $line-height-sm;
+  margin-bottom: .5rem;
+  // 576px and up
+  @include media-breakpoint-up(md) {
+    @include font-size($h5-font-size);  // 16/24
+    line-height: $line-height-md;
+  }
+}
+h6, .h6 {
+  @include font-size($font-size-xs);    // 12/16
+  line-height: $line-height-xs;
+  margin-bottom: .5rem;
+  // 576px and up
+  @include media-breakpoint-up(md) {
+    @include font-size($h6-font-size);  // 14/20
+    line-height: $line-height-sm;
+  }
+}
+
+// DEPRECATED
+//
+.list-group-heading {
+  @include font-size($font-size-sm);
+  line-height: $line-height-sm;
+  color: $headings-color;
+  margin-bottom: 0;
+}
+
+// Lead
+//
+.lead {
+  @include font-size($lead-font-size);  // 20px
+  line-height: $lead-line-height;       // 32px
+  color: $neutral-primary;
+  font-weight: $lead-font-weight;
+  margin-bottom: 4rem;
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+b, strong {
+  font-weight: $font-weight-bold;
+}
+
+ol, ul {
+  padding-left: 2rem;
+}
+
+ol, ul, dl {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+mark,
+.mark {
+  color: $mark-color;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+address {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+// Links - generic
+// @see text.scss utility for links generic rules
+// We need to set this straight, too much going on here.
+a {
+
+  &:focus {
+    outline: 0;
+    box-shadow: $input-btn-focus-box-shadow;
+    z-index: 1;
+  }
+
+  // Utility classes to remove border-bottom
+  // Need important to override any local styles that may be applied later
+  &.img-link,
+  &.no-border,
+  &.no-underline {
+    border: none !important;
+    text-decoration: none !important;
+  }
+
+  &.no-style {
+    border: none !important;
+    color: inherit !important;
+  }
+
+  &.link-sm {
+    @include font-size($font-size-sm);
+    line-height: $line-height-sm;
+  }
+
+  &.link-xs {
+    @include font-size($font-size-xs);
+    line-height: $line-height-xs;
+  }
+
+}
+
+// External link icon
+// Apply to .region-content and sb-block
+// Everything not on montreal.ca or of /villemontreal/ AKA cloudinary directory
+.sb-block,
+.region-content,
+.lead {
+  a[href*="//"]:not([href*="montreal.ca"]):not([href*="ville.montreal.qc.ca"]):not([href$=".pdf"]):not(.link-has-icon):not(.btn) {
+    @extend .is-external-link;
+  }
+
+  // Generic file extension handling
+  a[href$=".pdf"] {
+    margin-right: 3.02em;
+    &:after {
+      content: "(PDF)";
+      background-color: transparent;
+      margin-right: -3.02em;
+      padding-left: .5rem;
+      overflow: hidden;
+    }
+
+    &.btn {
+      margin-right: 0;
+      &:after {
+        margin-right: 0;
+      }
+    }
+  }
+  // List some exclusion
+  .media-gallery,
+  .social-media-list,
+  .cards,
+  .list-group,
+  .list-group-xl,
+  .list-icon,
+  .list-group-hub {
+    // Don't show external link icon
+    a[href*="//"]:not([href*="montreal.ca"]):not([href*="ville.montreal.qc.ca"]):not([href$=".pdf"]):not(.list-group-item-action):not(.link-has-icon):not(.btn) {
+      margin-right: 0;
+      &:after {
+        content: none;
+      }
+      &:before {
+        content: none;
+      }
+    }
+    // Don't show (PDF)
+    a[href$=".pdf"] {
+      margin-right: 0;
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
+.select-all {
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+  user-select: all;
+}
+
+// Class to add ellipsis to long line of text
+.elided-text {
+  max-width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Definition List
+dl {
+  @include font-size($font-size-base);
+  line-height: $line-height-md;
+  margin-bottom: 2rem;
+  // Smaller variant
+  &.dl-sm {
+    @include font-size($font-size-sm);
+    line-height: $line-height-sm;
+    dd {
+      line-height: $line-height-md;
+    }
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.dl-item {
+  margin-bottom: 1rem;
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+dt {
+  color: $neutral-primary;
+  margin-bottom: .5rem;
+
+  + .dd-translated {
+    margin-top: .5rem;
+  }
+}
+
+dd {
+  line-height: $line-height-md;
+  margin-bottom: .5rem;
+  &.dd-translated {
+    color: $neutral-primary;
+    font-style: italic;
+    padding-left: 1rem;
+    position: relative;
+    &:before {
+      content: "";
+      background: $neutral-stroke;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+    }
+  }
+  + dt {
+    padding-top: .5rem;
+  }
+}

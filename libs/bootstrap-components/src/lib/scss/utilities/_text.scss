@@ -1,0 +1,334 @@
+// stylelint-disable declaration-no-important
+
+//
+// Text
+//
+
+// Define the default link before the mixin
+a {
+  color: $primary;
+  border-bottom: $link-border-width solid $primary;
+  font-weight: $font-weight-bold;
+  @include hover-focus {
+    color: $primary;
+    background-color: $highlight-light;
+    border-bottom: $link-border-width solid $primary;
+  }
+  &:after {
+    background-color: $primary;
+  }
+  .icon {
+    @include icon-color($action);
+  }
+}
+
+
+.link-list-element {
+  @include font-size($font-size-base);
+  line-height: $line-height-md;
+  border: none;
+  @include hover-focus {
+    border: none;
+    background-color: transparent;
+    .link-label {
+      background-color: $highlight-light;
+      display: inline;
+      border-bottom: 1px solid $action;
+    }
+  }
+
+  // Utility class for link element with icon tag.
+  &.link-has-icon {
+    display: inline-flex;
+    border: none;
+    line-height: $line-height-md;
+    .icon {
+      @include icon-color($action);
+      padding-right: .25rem;
+    }
+    @include hover-focus {
+      border: none;
+      background-color: transparent;
+      .link-icon-label {
+        background-color: $highlight-light;
+        display: inline;
+        border-bottom: 1px solid $action;
+      }
+    }
+
+    &.icon-right {
+      .icon {
+        padding-right: 0;
+        padding-left: .25rem;
+      }
+    }
+
+    &.icon-left {
+      .icon {
+        padding-left: 0;
+        padding-right: .25rem;
+      }
+    }
+
+    &.link-sm {
+      @include font-size($font-size-sm);
+        line-height: $line-height-sm;
+      .icon {
+        @extend .icon-sm;
+      }
+    }
+
+    &.link-xs {
+      @include font-size($font-size-xs);
+        line-height: $line-height-xs;
+      .icon {
+        @extend .icon-xs;
+      }
+    }
+
+    &.dropdown-toggle {
+      &:after {
+        margin-right: 0;
+        margin-left: .25rem;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Utility class for inline link with icon tag.
+.link-has-icon:not(.link-list-element) {
+  margin-right: 1.75rem;
+  .icon {
+    display: inline;
+    @include icon-size($icon-md);
+    margin-left: .25rem;
+    margin-right: -1.75rem;
+    vertical-align: -6px;
+  }
+
+  // Override icon size and margins for link-sm
+  &.link-sm {
+    margin-right: 1.5rem;
+    .icon {
+      @include icon-size($icon-sm);
+      margin-left: .25rem;
+      margin-right: -1.5rem;
+      vertical-align: -5px;
+    }
+  }
+
+  // Override icon size and margins for link-xs
+  &.link-xs {
+    margin-right: 1.25rem;
+    .icon {
+      @include icon-size($icon-xs);
+      margin-left: .25rem;
+      margin-right: -1.25rem;
+      vertical-align: -4px;
+    }
+  }
+}
+
+// Make the color of dialog dark
+@each $label, $map in $dialog-colors {
+  $color-dark: map-get($map, dark);
+  $color-base: map-get($map, base);
+  $color-light: map-get($map, light);
+  @include vdm-text-emphasis-variant(".text-#{$label}", $color-dark, $color-light);
+  @include vdm-text-emphasis-variant(".text-#{$label}-reversed", $color-base, $color-light);
+}
+
+@each $color, $value in $grays {
+  .text-gray-#{$color} {
+    color: $value;
+  }
+}
+
+// Brand line
+.brand-border-bottom {
+  &:after {
+    content: "";
+    display: block;
+    width: 4rem;
+    height: .25rem;
+    background-color: $brand;
+  }
+}
+
+// Overrides colors
+.text-body,
+.text-secondary,
+.text-black-50,
+.text-white-50,
+.text-gray-400,
+.text-gray-300,
+.text-gray-100 {
+  color: $body-color !important;
+}
+
+.text-tertiary {
+  color: $neutral-tertiary;
+}
+
+
+.text-primary-lighter {
+  color: $primary-lighter;
+}
+.text-primary-darker {
+  color: $primary-darker;
+}
+
+.text-light {
+  color: $white !important;
+}
+
+// Preserve white space
+.text-preserve-space {
+  white-space: pre;
+}
+
+a.text-light,
+a.text-white {
+  border-bottom: $link-border-width solid $white !important;
+  @include hover-focus {
+    color: $white !important;
+    border-bottom: $link-border-width solid $white !important;
+    background-color: transparent;
+  }
+  // Handle specific cases here...
+  &:after {
+    background-color: $white;
+  }
+  .icon {
+    @include icon-color($white);
+  }
+}
+
+a.text-white {
+  @include hover-focus {
+    background-color: $overlay-light-reversed;
+  }
+}
+
+a.text-muted {
+  border-bottom: none;
+  cursor: not-allowed;
+  @include hover-focus {
+    color: $neutral-tertiary !important;
+    border-bottom: none;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+  }
+  // Handle specific cases here...
+  &:after {
+    background-color: $neutral-tertiary;
+  }
+  .icon {
+    @include icon-color($neutral-tertiary);
+  }
+}
+
+// Utility class to give external link icon for external link
+.is-external-link {
+  margin-right: 1.75rem;
+  position: relative;
+  &:after {
+    content: '';
+    -webkit-mask: url($data-icon-externallink) no-repeat 50% 50%;
+    mask: url($data-icon-externallink) no-repeat 50% 50%;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    background-color: $action;
+    display: inline-flex;
+    width: $icon-md;
+    height: $icon-md;
+    overflow: hidden;
+    margin-left: .25rem;
+    margin-right: -1.75rem;
+    vertical-align: -.375rem;
+  }
+
+  &.link-sm {
+    margin-right: 1.5rem;
+    position: relative;
+    &:after {
+      width: $icon-sm;
+      height: $icon-sm;
+      margin-right: -1.5rem;
+      vertical-align: -5px;
+    }
+  }
+
+  &.link-xs {
+    margin-right: 1.25rem;
+    &:after {
+      width: $icon-xs;
+      height: $icon-xs;
+      margin-right: -1.25rem;
+      vertical-align: -4px;
+    }
+  }
+}
+
+
+// Utility class for font-size
+
+// Paragraph
+.font-size-lg {
+  @include font-size($font-size-lg);      // 20px
+  line-height: 2rem                       // 32px
+}
+.font-size-base {
+  @include font-size($font-size-base);    // 16px
+  line-height: $line-height-lg;           // 28px
+}
+.font-size-sm {
+  @include font-size($font-size-sm);      // 14px
+  line-height: $line-height-md            // 24px
+}
+.font-size-xs {
+  @include font-size($font-size-xs);      // 12px
+  line-height: $line-height-sm            // 20px
+}
+
+// Interface
+.font-size-lg-interface {
+  @include font-size($font-size-lg);      // 20px
+  line-height: $line-height-lg            // 28px
+}
+.font-size-base-interface {
+  @include font-size($font-size-base);    // 16px
+  line-height: $line-height-md;           // 24px
+}
+.font-size-sm-interface {
+  @include font-size($font-size-sm);      // 14px
+  line-height: $line-height-sm            // 20px
+}
+.font-size-xs-interface {
+  @include font-size($font-size-xs);      // 12px
+  line-height: $line-height-xs            // 16px
+}
+
+// Remove last-child margin-bottom
+.rm-last-child-mb {
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Provide a utility class to give paragraph a smaller margin-bottom
+// We limit this insanity to .content-modules zone
+.element-mb-sm {
+  p, ol, ul {
+    margin-bottom: 1rem;
+  }
+}
+
+.element-mb-xs {
+  p, ol, ul {
+    margin-bottom: .5rem !important;
+  }
+}

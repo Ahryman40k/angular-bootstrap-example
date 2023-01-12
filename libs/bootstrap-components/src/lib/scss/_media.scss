@@ -1,0 +1,342 @@
+// Deprecated: not used
+.media-container {
+  margin-bottom: 3rem;
+}
+
+// Media gallery
+// Deprecated: not used
+.media-gallery-container {
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+.media-gallery {
+  @extend .list-unstyled;
+  @include make-row();
+  margin-bottom: 0;
+  li {
+    @include make-col-ready();
+    @include make-col(12);
+    padding-bottom: $grid-gutter-width;
+  }
+
+  @include media-breakpoint-up(md) {
+    li {
+      @include make-col(6);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    li {
+      @include make-col(3);
+    }
+  }
+}
+
+// Deprecated: not used
+.media-gallery-hidden {
+  display: none;
+}
+
+.media-gallery-button {
+  position: relative;
+  height: 100%;
+
+  // btn-media-gallery is deprecated
+  .btn-media-gallery {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+  }
+  .btn-media {
+    cursor: zoom-in;
+    &:hover {
+      ~ .btn-media-gallery {
+        color: $action;
+      }
+    }
+  }
+  .badge-gallery {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin: 1rem;
+  }
+}
+
+// TODO: is this usefull?
+.media-cover {
+  background-size: cover;
+  background-position: 50% 50%;
+  min-height: 250px;
+  height: 100%;
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    min-height: 425px;
+  }
+
+}
+
+// Deprecated
+.btn-media {
+  @include button-reset();
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+// Logos
+svg {
+  .letter {
+    //fill:yellow;
+    fill: $brand-black;
+  }
+  .rosace {
+    fill: $brand;
+  }
+  .white {
+    fill: #fff;
+  }
+  // Ahuntsic
+  .ahc-green-dark {
+    fill: #7ca43f;
+  }
+  .ahc-green-light {
+    fill: #abc379;
+  }
+  .ahc-blue {
+    fill: #0467a7;
+  }
+  //Anjou
+  .anj-red {
+    fill: #f14729;
+  }
+  .anj-blue {
+    fill: #244ba6;
+  }
+  .anj-gray-light {
+    fill: #bdbcbc;
+  }
+  .anj-yellow {
+    fill: #fbc13d;
+  }
+  .anj-green-dark {
+    fill: #004039;
+  }
+  //CDN
+  .cdn-orange {
+    fill: #D7872A;
+  }
+  .cdn-vert-light {
+    fill: #809A67;
+  }
+  .cdn-vert {
+    fill: #426A2F;
+  }
+  //Ile bizard
+  .ibi-yellow {
+    fill: #fab81f;
+  }
+  .ibi-green {
+    fill: #6ea31b;
+  }
+  .ibi-blue {
+    fill: #21518d;
+  }
+  //Mercier
+  .mhm-blue-light {
+    fill: #6F8F9D;
+  }
+  #mhm-gradient {
+      --color-stop-1: #F0A558;
+      --color-stop-2: #943036;
+  }
+  //Pierrefond
+  .pir-blue {
+    fill: #05347a;
+  }
+  .pir-yellow {
+    fill: #fdb813;
+  }
+  //Rivière-des-prairies
+  .rdp-blue {
+    fill: #3a69bc;
+  }
+  .rdp-blue-light {
+    fill: #3e89d0;
+  }
+  .rdp-yellow {
+    fill: #e39314;
+  }
+  .rdp-green {
+    fill: #4e9545;
+  }
+  //verdun
+  .ver-brown {
+    fill: #a4965f;
+  }
+  .ver-green {
+    fill: #009f96;
+  }
+  .ver-blue {
+    fill: #3067bb;
+  }
+  &.reverse {
+    .letter{
+      fill: $white;
+    }
+    .rosace {
+      fill: $brand;
+    }
+  }
+  &.black {
+    .letter,
+    .rosace,
+    path {
+      fill:  $brand-black;
+    }
+  }
+}
+
+
+// Figures
+.figure {
+  display: table;
+  .figure-img {
+    margin-bottom: 0;
+    line-height: $line-height-xs;
+  }
+  .figure-caption {
+    margin-top: .5rem;
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    font-weight: $font-weight-bold;
+  }
+}
+
+// Image container for copyright
+// TODO: Might need some adjustement
+.img-container {
+  position: relative;
+  display: table;
+}
+
+// Wrappper for badge-copyright
+.badge-copyright {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  margin: 1rem;
+  z-index: 5;
+}
+.js-trigger-copyright {
+  cursor: pointer;
+}
+
+// Image copyright
+// Should be wrapped inside relative container for proper placement
+// Deprecated: see @badges.
+.img-copyright {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  min-width: 24px;
+  min-height: 24px;
+  background-color: $black;
+  border-radius: 0.25rem;
+  color: $white;
+  cursor: pointer;
+  display: flex;
+  @include font-size($font-size-xs);
+  line-height: $line-height-xs;
+  margin-left: 1rem;
+  z-index: 5;
+  .icon-copyright {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    &:before {
+      background-color: $white;
+      width: 12px;
+      height: 12px;
+    }
+  }
+  .copyright-text {
+    margin-right: $spacer*2;
+    padding: .25rem 0;
+  }
+}
+
+// Zoom in cursor
+// Deprecated: Default for galleries
+.img-zoom-in {
+  cursor: zoom-in;
+}
+
+// Avatar
+.user-avatar,
+.media-avatar,
+.media-profile {
+  background-color: $action;
+  border-radius: $btn-border-radius;
+  color: $white;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  @include font-size($font-size-sm);
+  line-height: $line-height-md;
+
+  img {
+    border-radius: 50%;
+    vertical-align: top;
+  }
+
+
+  .user-first-letter {
+    display: block;
+  }
+}
+
+// Media profile color variations
+.media-profile {
+  &-color-1 {
+    background-color: #0380A9;
+  }
+  &-color-2 {
+    background-color: #BD4F00;
+  }
+  &-color-3 {
+    background-color: #448600;
+  }
+  &-color-4 {
+    background-color: #DC00AC;
+  }
+  &-color-5 {
+    background-color: #01866E;
+  }
+  &-color-6 {
+    background-color: #EE0000;
+  }
+  &-color-7 {
+    background-color: #980BAD;
+  }
+  &-color-8 {
+    background-color: #0057FF;
+  }
+  &-color-9 {
+    background-color: #A36B00;
+  }
+  &-color-10 {
+    background-color: #E0007C;
+  }
+}

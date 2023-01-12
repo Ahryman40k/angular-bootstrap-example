@@ -1,0 +1,13 @@
+// This stylesheet completely replace bootstrap _buttons.scss
+
+//
+// Base styles
+//
+@import '../variables';
+@import '../scss/buttons';
+
+@mixin vdm-button-theme($theme) {
+
+}
+
+

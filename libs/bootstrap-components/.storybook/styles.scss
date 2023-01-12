@@ -1,0 +1,15 @@
+
+@use "sass:map";
+
+
+@import "../styles/theming";
+
+
+
+@include vdm-framework();
+
+$primary-color: rgb(6, 112, 6);
+$default-theme: create-vdm-light-theme($primary-color);
+
+@include vdm-components-themes($default-theme);
+

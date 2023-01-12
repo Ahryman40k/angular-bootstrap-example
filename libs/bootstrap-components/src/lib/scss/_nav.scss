@@ -1,0 +1,155 @@
+//
+// Nav
+//
+nav {
+  position: relative;
+}
+.nav {
+  .nav-item {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    display: inline-block;
+  }
+  .nav-link {
+    border: none;
+    color: $neutral-secondary;
+  }
+}
+
+// Subnav
+.subnav {
+  border-bottom: 1px solid $neutral-stroke;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+  .subnav-container,
+  .subnav-links {
+    display: flex;
+    > * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .subnav-title {
+    @include font-size($font-size-base);
+    color: $headings-color;
+    font-weight: $font-weight-bold;
+  }
+  .subnav-links {
+    ul {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// Nav tabs
+.nav-tabs {
+  background-color: $white;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
+  line-height: $line-height-sm;
+  /* Make an auto-hiding scroller for the 3 people using a IE */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  /* For WebKit implementations, provide inertia scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Remove the default scrollbar for WebKit implementations */
+  &::-webkit-scrollbar {
+      display: none;
+  }
+  .nav {
+    flex-wrap: nowrap;
+    margin-left: -1rem;
+    width: calc(100% + 1rem);
+  }
+  .nav-item {
+    display: inline-block;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    &.show {
+      .nav-link {
+        @extend .active;
+      }
+    }
+    &:last-of-type {
+      .nav-link {
+        margin: 0;
+      }
+    }
+  }
+  .nav-link {
+    flex-shrink: 0;
+    color: $neutral-secondary;
+    @include font-size($font-size-sm);
+    line-height: $line-height-sm;
+    font-weight: $font-weight-bold;
+    padding: .625rem 1rem;
+    position: relative;
+    white-space: normal;
+    &:hover,
+    &.active,
+    &:focus {
+      &:not(.disabled) {
+        border: none;
+        color: $action;
+        background-color: $white;
+        &:before {
+          content: " ";
+          width: auto;
+          height: $nav-tabs-active-border-width;
+          background-color: $action;
+          position: absolute;
+          bottom: 0;
+          left: 1rem;
+          right: 1rem;
+          display: block;
+        }
+      }
+    }
+    // Disabled state lightens text
+    &.disabled {
+      color: $nav-link-disabled-color;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Nav Tabs Large variant
+.nav-tabs-lg {
+  @include nav-tabs-size(1rem, 1rem, $font-size-base, $line-height-md);
+}
+
+
+// Nav Tabs Small variant
+.nav-tabs-sm {
+  @include nav-tabs-size(.5rem, .5rem, $font-size-xs, $line-height-xs);
+  .nav {
+    margin-left: -.5rem;
+    width: calc(100% + .5rem);
+  }
+}
+
+// Nav filters
+//
+.nav-filters {
+  .nav-item {
+    margin-right: .5rem;
+  }
+  .nav-item-btn {
+    margin-left: .5rem;
+  }
+  @include media-breakpoint-up(lg) {
+    .nav-item {
+      margin-right: 1rem;
+    }
+    .nav-item-btn {
+      margin-left: 0;
+    }
+  }
+}

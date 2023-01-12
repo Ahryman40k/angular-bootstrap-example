@@ -1,0 +1,335 @@
+// Base badge class - Tags in our design system
+//
+// Requires one of the contextual, color modifier classes for `color` and
+// `background-color`.
+
+.badge {
+  background-color: $neutral-underground-2;
+  border: 1px solid transparent;
+  color: $neutral-primary;
+  display: inline-block;
+  padding: $badge-padding-y $badge-padding-x;
+  position: relative;
+  @include font-size($badge-font-size);
+  font-weight: $badge-font-weight;
+  line-height: $line-height-sm;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: baseline;
+  @include border-radius($badge-border-radius);
+  @include transition($badge-transition);
+  @extend .text-truncate;
+
+  .badge-label {
+    display: inline-block;
+    @extend .text-truncate;
+  }
+
+  @at-root a#{&} {
+    @include hover-focus {
+      text-decoration: none;
+    }
+    &:focus,
+    &.focus {
+      outline: 0;
+      box-shadow: 0 0 0 $badge-focus-width rgba($neutral-underground-2, .3);
+    }
+  }
+
+  // Empty badges collapse automatically
+  &:empty {
+    display: none;
+  }
+}
+
+// Quick fix for badges in buttons
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
+
+// Pill badges - Badges in our design system
+//
+// Make them extra rounded with a modifier to replace v3's badges.
+
+.badge-pill {
+  padding-right: $badge-pill-padding-x;
+  padding-left: $badge-pill-padding-x;
+  @include border-radius($badge-pill-border-radius);
+  min-width: 1.5rem;
+}
+
+// Colors
+//
+// Contextual variations (linked badges get darker on :hover).
+
+.badge {
+  .icon {
+    @include icon-color($neutral-primary);
+    @include icon-size($icon-xs);
+  }
+
+  &.badge-max-width {
+    max-width: 288px;
+  }
+
+  &.badge-dark {
+    background-color: $neutral-primary;
+    color: $white;
+    &[href] {
+      @include hover-focus {
+        color: $white;
+        background-color: lighten($neutral-primary, 10%);
+      }
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 $badge-focus-width rgba($neutral-primary, .3);
+      }
+    }
+    .icon {
+      @include icon-color($white);
+    }
+  }
+  &.badge-light {
+    background-color: $neutral-underground-2;
+    color: $neutral-primary;
+    &[href] {
+      @include hover-focus {
+        color: $neutral-primary;
+        background-color: darken($neutral-underground-2, 10%);
+      }
+    }
+    .icon {
+      @include icon-color($neutral-primary);
+    }
+  }
+  // Deprecated
+  &.badge-primary {
+    background-color: $primary;
+    color: $white;
+    &[href] {
+      @include hover-focus {
+        color: $white;
+        background-color: darken( $primary, 10% );
+      }
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 $badge-focus-width rgba($primary, .3);
+      }
+    }
+    .icon {
+      @include icon-color($white);
+    }
+  }
+  // Deprecated
+  &.badge-secondary {
+    color: $primary;
+    background-color: $white;
+    border: 1px solid $neutral-stroke;
+    &[href] {
+      @include hover-focus {
+        color:$primary;
+        background-color: $white;
+        border: 1px solid $primary;
+      }
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 $badge-focus-width rgba($primary, .3);
+      }
+    }
+    .icon {
+      @include icon-color($primary);
+    }
+  }
+  &.badge-icon-left,
+  &.badge-icon-right {
+    display: inline-flex;
+    align-items: center;
+    .icon {
+      align-self: center;
+      &:before {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+
+  &.badge-icon-left {
+    .badge-label {
+      order: 2;
+    }
+    .icon {
+      order: 1;
+      margin-left: -.25rem;
+      margin-right: .25rem;
+    }
+  }
+  // Deprecated
+  &.badge-icon-right {
+    .badge-label {
+      order: 1;
+    }
+    .icon {
+      order: 2;
+      &:before {
+        margin-left: .25rem;
+        margin-right: -.25rem;
+      }
+    }
+  }
+  // Deprecated
+  &[href] {
+    @include hover-focus {
+      color: $neutral-primary;
+      border: 1px solid transparent;
+      background-color: darken($neutral-underground-2, 10%);
+    }
+  }
+
+  &.badge-hidden-label {
+    &.badge-icon-left .icon {
+      margin-right: -.25rem;
+      margin-top: .125rem;
+      margin-bottom: .125rem;
+    }
+    .badge-label {
+      display: none;
+    }
+  }
+
+}
+
+@each $label, $map in $dialog-colors {
+  $color-dark: map-get($map, dark);
+  $color-light: map-get($map, light);
+  $color-base: map-get($map, base);
+
+  .badge-#{$label} {
+    background-color: $color-base;
+    &[href] {
+      @include hover-focus {
+        background-color: darken($color-base, 10%);
+      }
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 $badge-focus-width rgba($color-base, .3);
+      }
+    }
+    @if $label == warning {
+      color: $neutral-primary;
+      .icon {
+        @include icon-color($neutral-primary);
+      }
+      &[href] {
+        @include hover-focus {
+          color: $neutral-primary;
+        }
+      }
+    }
+    @else {
+      color: $white;
+      .icon {
+        @include icon-color($white);
+      }
+      &[href] {
+        @include hover-focus {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .badge-#{$label}-light {
+    color: $color-dark;
+    background-color: $color-light;
+    .icon {
+      @include icon-color($color-dark);
+    }
+    &[href] {
+      @include hover-focus {
+        color: $color-dark;
+        background-color: darken($color-light, 8%);
+      }
+      &:focus,
+      &.focus {
+        outline: 0;
+        box-shadow: 0 0 0 $badge-focus-width rgba($color-dark, .3);
+      }
+    }
+  }
+}
+
+// Position over icon or chunk of content (top, right)
+.badge-notification-top-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  .badge-notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+  }
+}
+
+// Reversed mode. Must be applied on a bg-dark element or navbar-reversed.
+.badge-notification-reversed {
+  .icon {
+    @include icon-color($white);
+  }
+  .badge-notification-dot {
+    background-color: $neutral-primary;
+    &:after {
+      background-color: $action-lighter;
+    }
+  }
+}
+
+.badge-notification-dot {
+  width: .75rem;
+  height: .75rem;
+  background-color: $white;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:after {
+    content: "";
+    border-radius: 50%;
+    width: .5rem;
+    height: .5rem;
+    background-color: $danger;
+    display: block;
+    z-index: 1;
+  }
+}
+
+// Handle badges horizontal spacing inside container
+.badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -.25rem;
+  .badge {
+    margin-right: .5rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+  }
+}
+
+.badges-container {
+  .list-inline {
+    @extend .badge-group;
+    .list-inline-item {
+      display: inline-flex;
+      margin-right: 0;
+    }
+  }
+}
+

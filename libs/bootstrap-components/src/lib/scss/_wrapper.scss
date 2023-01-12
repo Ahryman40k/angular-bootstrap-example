@@ -1,0 +1,372 @@
+// Main wrapper styles
+//
+.wrapper {
+  border: 1px solid $neutral-stroke;
+  border-radius: $border-radius;
+  padding: 1rem;
+}
+
+.wrapper-explainer {
+  padding: 2rem 1rem;
+
+  @include media-breakpoint-up(md) {
+    [class^="col-"] {
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Complexe wrapper
+// Section Header and body
+// Can contain anything in the body.
+//
+.wrapper-complex {
+  padding: 0;
+  .wrapper-header {
+    @include font-size($font-size-base);
+    line-height: $line-height-md;
+    border-bottom: 1px solid $neutral-stroke;
+    color: $headings-color;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  .wrapper-body {
+    padding: 0 1rem 2rem 1rem;
+
+    .content-module-stacked {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+// Sélecteur arrondissement
+//
+.wrapper-arrondissement {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  .wrapper-arrondissement-header {
+    @include font-size($font-size-sm);
+    border-bottom: 1px solid $neutral-stroke;
+    line-height: $line-height-sm;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+
+    // Might need classes to gain more control
+    .col {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    // Might need classes to gain more control
+    [class*="col-"] {
+      align-self: center;
+    }
+
+    .title {
+      color: $neutral-primary;
+      font-weight: $font-weight-bold;
+    }
+
+    &.wrapper-sticky-header {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 3.5rem;
+      background-color: $white;
+      @include border-top-radius($border-radius);
+      z-index: 100;
+
+      @include media-breakpoint-up(lg) {
+        top: 4.5rem;
+      }
+    }
+  }
+
+  .wrapper-arrondissement-body {
+    padding: 0 1rem 2rem 1rem;
+    .empty-state {
+      @include font-size($font-size-sm);
+      line-height: $line-height-sm;
+      text-align: center;
+      p {
+        margin-bottom: 0;
+      }
+      .icon {
+        margin: 0 auto 1rem auto;
+        width: 80px;
+        height: 80px;
+        &:before {
+          width: 80px;
+          height: 80px;
+        }
+      }
+      svg {
+        fill: $neutral-tertiary;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .content-module-stacked {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .collapsible-block {
+      .content-module-stacked {
+        &:last-child {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      .empty-state {
+        padding: 2rem;
+      }
+    }
+  }
+}
+
+// Content modules
+// Comparatif
+// Normalized classes, should use .wrapper-name instead of .content-name
+//
+.wrapper-comparatif,
+.content-comparatif {
+  > .col,
+  > [class*="col-"] {
+    margin-bottom: 1rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .wrapper-comparatif-content,
+  .content-wrapper {
+    background-color: $neutral-underground-1;
+    border-top: 2px solid $neutral-stroke;
+    height: 100%;
+    padding: 1rem;
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+  &.wrapper-comparatif-columns,
+  &.comparatif-columns {
+    @include media-breakpoint-up(md) {
+      > .col,
+      > [class*="col-"] {
+        margin-bottom: 0;
+        &:first-child {
+          padding-right: .5rem;
+        }
+        &:last-child {
+          padding-left: .5rem;
+        }
+      }
+    }
+  }
+}
+
+// Wrapper Sommaire navigation
+//
+.wrapper-navtoc {
+  .wrapper-heading {
+    color: $headings-color;
+    @include font-size($font-size-base);
+    line-height: $line-height-md;
+    font-weight: $font-weight-bold;
+    margin-bottom: .5rem;
+  }
+}
+
+
+// Wrapper Featured Call To Action
+//
+.wrapper-featured-cta {
+  border: none;
+  background-color: $neutral-underground-1;
+  padding: 2rem;
+  width: 100%;
+  .wrapper-title {
+    @include font-size($h3-font-size);  // 24/32
+    line-height: 2rem;
+    color: $headings-color;
+    margin-bottom: 1rem;
+  }
+  .wrapper-body {
+    :last-child {
+      margin-bottom: 0;
+    }
+    margin-bottom: 2rem;
+  }
+}
+
+
+// Wrapper Accordion
+//
+.wrapper-accordion {
+  .collapsible-item {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Wrapper partial bg dark
+//
+.wrapper-partial-bg-dark {
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    background-color: $neutral-primary;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    &:after {
+      height: 8rem;
+    }
+  }
+}
+
+
+// Blockquote And Emphasis
+// These are not wrappers - Move to styles or own components
+//
+.blockquote {
+  @include font-size($blockquote-font-size);
+  color: $neutral-primary;
+  line-height: 2rem;
+  font-weight: $font-weight-normal;
+  font-style: italic;
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+  position: relative;
+
+  p:last-of-type {
+    margin-bottom: 1rem;
+  }
+
+  &:before {
+    content: "";
+    background: $neutral-stroke;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+  }
+
+  .blockquote-footer {
+    color: $body-color;
+    @include font-size($font-size-sm);  // 14/20
+    line-height: $line-height-sm;
+    font-style: normal;
+    &:before {
+      display: none;
+    }
+
+    .blockquote-footer-author {
+      color: $neutral-primary;
+      font-weight: $font-weight-bold;
+    }
+  }
+  cite {
+    color: $neutral-primary;
+    font-style: normal;
+  }
+
+  &.blockquote-emphasis {
+    font-style: normal;
+    p:last-child {
+      margin-bottom: 0;
+    }
+    &.emphasis-lg {
+      @include font-size($font-size-lg);
+      line-height: 2rem;
+      padding-left: 2rem;
+    }
+    &.emphasis-md {
+      @include font-size($font-size-base);
+      line-height: $line-height-lg;
+      padding-left: 1rem;
+    }
+    &.emphasis-sm {
+      @include font-size($font-size-sm);
+      line-height: $line-height-md;
+      padding-left: 1rem;
+    }
+  }
+}
+
+
+// Lexique
+
+.lexique {
+  .lexique-heading {
+    @include font-size($font-size-base);
+    line-height: $line-height-md;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    .lexique-heading-label {
+      width: 1.5rem;
+    }
+    &:after {
+      content: "";
+      width: 100%;
+      margin-right: 1.5rem;
+      height: 1px;
+      background-color: $neutral-stroke;
+    }
+  }
+  .lexique-nav {
+    display: flex;
+    align-items: flex-start;
+    ul {
+      margin: 0;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+    }
+    a {
+      @include font-size($font-size-sm);
+      line-height: $line-height-sm;
+      border: none;
+      border-radius: 50%;
+      color: $neutral-primary;
+      font-weight: $font-weight-normal;
+      display: flex;
+      align-self: center;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      @include hover-focus {
+        color: $white;
+        background: $neutral-primary;
+        font-weight: $font-weight-bold;
+      }
+      &.active {
+        color: $white;
+        background: $neutral-primary;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}

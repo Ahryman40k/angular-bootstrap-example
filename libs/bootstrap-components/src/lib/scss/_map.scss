@@ -1,0 +1,11 @@
+.mapboxgl-popup {
+  font-family: $font-family-base;
+  .mapboxgl-popup-content {
+    padding: 1rem;
+  }
+}
+
+// Utility class to define map height
+.h-map {
+  height: 420px;
+}

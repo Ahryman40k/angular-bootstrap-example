@@ -1,0 +1,104 @@
+// Page load-more section
+// Load more buttons and optionnal all results link
+.pagination-wrapper {
+  margin-bottom: 4rem;
+}
+
+// Pagination
+.pagination {
+  @include font-size($font-size-sm);
+  line-height: $line-height-sm;
+  margin-bottom: 0;
+  .page-item {
+    display: flex;
+    &:first-child,
+    &:last-child,
+    &.active {
+      display: flex;
+    }
+    .page-link {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      font-weight: $font-weight-bold;
+
+      .icon {
+        @include icon-color($pagination-color);
+        @include icon-size($pagination-icon-size);
+      }
+      &:hover {
+        .icon {
+          @include icon-color($pagination-hover-color);
+        }
+      }
+      &:focus,
+      &:visited {
+        border-bottom: 1px solid $neutral-stroke;
+      }
+    }
+
+    &.no-link .page-link {
+      color: $body-color;
+      pointer-events: none;
+      cursor: auto;
+    }
+
+    &.disabled {
+      .page-link {
+        .icon {
+          @include icon-color($pagination-disabled-color);
+        }
+      }
+    }
+  }
+}
+
+
+// Page item
+.page-item {
+  display: flex;
+
+  &:first-child,
+  &:last-child {
+    > .page-link {
+      padding: $pagination-icon-padding;
+    }
+  }
+}
+
+//
+// Sizing
+//
+
+.pagination-lg {
+  @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-base, $line-height-md, $border-radius);
+
+  .page-item {
+    &:first-child,
+    &:last-child {
+      > .page-link {
+        padding: $pagination-icon-padding-lg;
+        .icon {
+          @include icon-size($pagination-icon-size-lg);
+        }
+      }
+    }
+  }
+}
+
+.pagination-sm {
+  @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-xs, $line-height-xs, $border-radius);
+
+  .page-item {
+    &:first-child,
+    &:last-child {
+      > .page-link {
+        padding: $pagination-icon-padding-sm;
+        .icon {
+          @include icon-size($pagination-icon-size-sm);
+        }
+      }
+    }
+  }
+}
