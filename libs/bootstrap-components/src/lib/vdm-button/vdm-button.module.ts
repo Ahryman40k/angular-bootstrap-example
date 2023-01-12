@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VdmButtonComponent } from './vdm-button.component';
+import { ButtonDirective, ColorDirective, RaisedButtonDirective, StrokeButtonDirective } from './vdm-button.directive';
 
 
 @NgModule({
-  declarations: [VdmButtonComponent],
+  declarations: [ButtonDirective, StrokeButtonDirective, RaisedButtonDirective, ColorDirective],
   imports: [CommonModule],
-  exports: [VdmButtonComponent],
+  exports: [ ButtonDirective, StrokeButtonDirective, RaisedButtonDirective, ColorDirective],
 })
 export class VdmButtonModule {}

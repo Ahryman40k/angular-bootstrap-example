@@ -5,10 +5,34 @@
 @import "../styles/theming";
 
 
+div.showcase {
+    section {
+        display: table;
+
+        .showcase-label {
+            display: table-cell;
+            font-size: 14px;
+            margin-left: 8px;
+            min-width: 120px;
+        }
+
+        .showcase-row {
+            display: table-cell; 
+            max-width: 600px;   
+        }
+        
+        button {
+            margin: 8px 8px 8px 0;
+        }
+    }
+}
+
+
+
 
 @include vdm-framework();
 
-$primary-color: rgb(6, 112, 6);
+$primary-color: rgb(235, 0, 235);
 $default-theme: create-vdm-light-theme($primary-color);
 
 @include vdm-components-themes($default-theme);
