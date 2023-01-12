@@ -1,5 +1,5 @@
 {
-  "name": "@villemontreal/bootstrap-components",
+  "name": "@ahryman40k/bootstrap-components",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^15.0.0",

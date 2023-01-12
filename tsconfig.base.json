@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@villemontreal/bootstrap-components": ["libs/bootstrap-components/src/index.ts"],
-      "@villemontreal/map-component": ["libs/map-component/src/index.ts"]
+      "@ahryman40k/bootstrap-components": ["libs/bootstrap-components/src/index.ts"],
+      "@ahryman40k/map-component": ["libs/map-component/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

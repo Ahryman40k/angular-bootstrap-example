@@ -1,4 +1,11 @@
-# Villemontreal
+# Nx + Angular + Boostrap + Storybook
+
+Sometimes, it can be surprisingly hard to achieve what your are thinking. 
+As an example, I asked myself if I was able to produce a bootstrap component library integrated with my Angular App the same way that Angular Material is working. 
+
+Here is the on-going result.
+
+
 
 <a href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 

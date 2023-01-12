@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BootstrapComponentsModule } from '@villemontreal/bootstrap-components';
+import { BootstrapComponentsModule } from '@ahryman40k/bootstrap-components';
 
 import { AppComponent } from './app.component';
 

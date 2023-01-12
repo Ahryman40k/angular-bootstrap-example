@@ -1,5 +1,5 @@
 {
-  "name": "@villemontreal/map-component",
+  "name": "@ahryman40k/map-component",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^15.0.0",

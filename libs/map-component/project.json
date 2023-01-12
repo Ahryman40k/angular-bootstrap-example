@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/map-component/src",
-  "prefix": "villemontreal",
+  "prefix": "ahryman40k",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",

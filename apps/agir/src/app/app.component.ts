@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'villemontreal-root',
+  selector: 'ahryman40k-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
