@@ -16,7 +16,9 @@
 
 
 @import '../src/lib/vdm-button/vdm-button.theme'; 
+@import '../src/lib/vdm-header-bar/vdm-header-bar.theme'; 
 
 @mixin vdm-components-themes($theme) {
-    @include vdm-button-theme($theme)
+    @include vdm-button-theme($theme);
+    @include vdm-header-bar-theme($theme);
 }
