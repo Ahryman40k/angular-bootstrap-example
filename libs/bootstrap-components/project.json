@@ -9,10 +9,7 @@
       "executor": "@nrwl/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/bootstrap-components/ng-package.json",
-        "styles": [
-          "libs/bootstrap-components/styles/_theming.scss"
-        ]
+        "project": "libs/bootstrap-components/ng-package.json"
       },
       "configurations": {
         "production": {
