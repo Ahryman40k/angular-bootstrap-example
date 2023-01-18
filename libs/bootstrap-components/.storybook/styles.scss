@@ -1,7 +1,6 @@
 
 @use "sass:map";
 
-
 @import "../styles/theming";
 
 
@@ -32,8 +31,28 @@ div.showcase {
 
 @include vdm-framework();
 
-$primary-color: rgb(235, 0, 235);
-$default-theme: create-vdm-light-theme($primary-color);
+$primary: rgb(60, 121, 109);
+$secondary: rgb(22, 206, 169);
+$danger: rgb(116, 0, 194);
+$warning: rgb(153, 0, 94);
 
-@include vdm-components-themes($default-theme);
+/*$accent-color: rgb(211, 214, 45);
+$warn-color: rgb(120, 43, 3);
+$default-theme: create-vdm-light-theme($primary-color, $accent-color, $warn-color);
+*/
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    rgb(0, 226, 49),
+  "info":       rgb(45, 152, 214),
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      rgb(248, 248, 238),
+  "dark":       rgb(61, 61, 61),
+);
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+@include vdm-components-themes($theme-colors);
 

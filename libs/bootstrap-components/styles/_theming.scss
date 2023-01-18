@@ -4,11 +4,13 @@
 
 /// @param {Map} $input usefull values that helps to build the theme with variation
 /// @returns {Map} A theme definition
-@function create-vdm-light-theme( $primary, $accent: null, $warning: rgb(255, 0, 0) ) {
+@function create-vdm-light-theme( $primary, $accent: null, $warn: rgb(255, 0, 0) ) {
     $theme: (
-        primary-color: $primary,
-        accent-color: $primary,
-        warning-color: $warning,
+        colors: (
+            primary: $primary,
+            accent: $accent,
+            warn: $warn,
+        )
     );
 
     @return $theme;
