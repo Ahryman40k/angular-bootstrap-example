@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'node_modules/bootstrap/scss/functions';
+
+.button-toggle {
+  background-color: white;
+}
+
+@each $color, $value in $app-colors {
+  .toggle-#{$color} {
+    .button-toggle.toggle-active {
+      background-color: $value !important;
+      border-color: $value !important;
+    }
+  }
+}

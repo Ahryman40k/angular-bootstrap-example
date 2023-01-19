@@ -1,0 +1,29 @@
+@import '../../../styles/core/variables';
+
+$margin-top-label: -0.062rem;
+$left: -1rem;
+$table-cell-padding: 10px;
+
+:host ::ng-deep {
+  .table-body-cell {
+    flex: 1 !important;
+    padding-left: 0;
+  }
+
+  .custom-control-label::after,
+  .custom-control-label::before {
+    left: $left;
+    top: $fifty-percent;
+    transform: translate(0, -$fifty-percent);
+  }
+
+  .custom-control-label::before {
+    margin-top: $margin-top-label;
+  }
+
+  .hidden-checkbox {
+    .custom-control-label::before {
+      visibility: hidden;
+    }
+  }
+}

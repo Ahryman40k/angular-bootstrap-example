@@ -1,0 +1,50 @@
+<div class="responsive-table">
+  <div class="responsive-table-header text-dark font-16 pb-2">
+    <span class="flex-2 ml-2">Code de l'élément</span>
+    <span class="flex-2">Libellé français</span>
+    <span class="flex-2">Libellé anglais</span>
+    <span class="flex-2"></span>
+    <div class="flex-1"></div>
+  </div>
+  <div class="font-16 scrollable taxonomy-list" *ngIf="!isLoading">
+    <div class="py-2 border-bottom" *ngFor="let nexoBook of nexoBooks; let i = index">
+      <div class="responsive-table-row">
+        <span class="flex-2 ml-2 text-dark center-vertical">{{nexoBook.code}}</span>
+        <span class="flex-2 center-vertical">{{nexoBook.label.fr}}</span>
+        <span class="flex-2 text-dark center-vertical">{{nexoBook.label.en}}</span>
+        <span class="flex-2"></span>
+        <div class="col-options d-flex flex-1 justify-content-end">
+          <button class="btn btn-icon btn-secondary" (click)="toggleCodeCollapse(nexoBook.code)" *ngIf="nexoBook.properties?.programs?.length">
+            <em
+              class="icon"
+              [class.icon-chevron-up]="!isCodeCollapsed(nexoBook.code)"
+              [class.icon-chevron-down]="isCodeCollapsed(nexoBook.code)"
+            ></em>
+          </button>
+          <app-more-options-button #moreOptions [dropdownPlacement]="['left-top','left-bottom']" dropdownContainer="body" [items]="getMenuItems(nexoBook)"></app-more-options-button>
+        </div>
+      </div>
+      <div *ngIf="isCodeCollapsed(nexoBook.code)">
+        <div class="pl-2 ml-2 border-left border-width-sm">
+          <div class="d-flex py-2">
+            <div class="d-flex flex-column">
+              <h6 class="mb-0">Liste des programmes</h6>
+            </div>
+            <div class="ml-10 pr-3">
+              <div *ngFor="let program of (nexoBook.properties.programs | appOrderBy: 'year': 'desc')">
+                <h6 class="mb-1 word-break font-weight-normal text-neutral-secondary"><strong>{{ program.year }}</strong>&nbsp;&nbsp;{{ program.programId | appTaxonomy: 'programType' }}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-tertiary btn-squared mt-2" (click)="createCorrespondance()">
+      <span class="icon icon-plus"></span>
+      <span>Ajouter un élément</span>
+    </button>
+  </div>
+  <div class="d-flex justify-content-center mt-3" *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+</div>

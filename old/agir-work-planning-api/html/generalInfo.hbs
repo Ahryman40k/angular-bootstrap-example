@@ -1,0 +1,46 @@
+<div class="page-header">
+    <h1><img src="{{publicRoot}}/images/info.png" /> General Infos</h1>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <td class="td-label">Name: </td>
+            <td>{{projectName}}</td>
+        </tr>
+        <tr>
+            <td class="td-label">Description: </td>
+            <td>{{projectDescription}}</td>
+        </tr>
+        <tr>
+            <td class="td-label">Version: </td>
+            <td>{{projectVersion}}</td>
+        </tr>
+        <tr>
+            <td class="td-label">Current environment: </td>
+            <td>{{configs.environment.type}}</td>
+        </tr>
+        <tr>
+            <td class="td-label">Domain path: </td>
+            <td>{{configs.api.domainPath}}</td>
+        </tr>
+        <tr>
+            <td class="td-label">Sources repository: </td>
+            <td><a href="{{configs.project.repositoryUrl}}">{{configs.project.repositoryUrl}}</a></td>
+        </tr>
+        {{#if configs.project.discussionUrl}}
+        <tr>
+            <td class="td-label">Discussion / Help: </td>
+            <td><a href="{{configs.project.discussionUrl}}">{{configs.project.discussionUrl}}</a></td>
+        </tr>
+        {{/if}} {{#if configs.project.maintainers}}
+        <tr>
+            <td class="td-label">Maintainers: </td>
+            <td>
+                {{#each configs.project.maintainers}}<a href="mailto:{{email}}">{{name}}</a><br />{{/each}}
+            </td>
+        </tr>
+        {{/if}}
+
+    </table>
+</div>

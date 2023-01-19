@@ -1,0 +1,163 @@
+[
+  {
+    "id": "I00002",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-two-interventions-PNI-and-PI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Réhabilitation / Regard d'égoût / Rue random 1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "rehabilitation",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2020,
+    "planificationYear": 2020,
+    "endYear": 2020,
+    "programId": "par",
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "sewerManhole",
+        "ownerId": "deeu",
+        "length": {
+          "unit": "m",
+          "value": 42
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-73.55772346258163, 45.50472463342369]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-two-interventions-PNI-and-PI-5094927"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5094927"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 42,
+      "burnedDown": 0,
+      "balance": 42
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 42,
+          "annualLength": 0.042,
+          "accountId": 0,
+          "year": 2020,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 42,
+        "totalLength": 0.042,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "comments": [],
+    "documents": []
+  },
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dep",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-two-interventions-PNI-and-PI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'égoût / Rue random 4",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2021,
+    "planificationYear": 2021,
+    "endYear": 2021,
+    "programId": null,
+    "contact": "Obiwan",
+    "assets": [
+      {
+        "typeId": "sewerSegment",
+        "ownerId": "dre",
+        "length": {
+          "unit": "m",
+          "value": 52
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.5577529668808, 45.504758470306484],
+            [-73.55765372514725, 45.504890057990686]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-two-interventions-PNI-and-PI-5630794"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5630794"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 24,
+      "burnedDown": 0,
+      "balance": 24
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 24,
+          "annualLength": 0.052,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 24,
+        "totalLength": 0.052,
+        "note": null
+      }
+    },
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    },
+    "decisionRequired": false,
+    "streetName": "Rue random 4",
+    "streetFrom": "Rue random 5",
+    "streetTo": "Rue random 6",
+    "comments": [],
+    "documents": []
+  }
+]

@@ -1,0 +1,68 @@
+@import 'node_modules/@villemontreal/boite-outils4-web/dist/css/scss/icons-utility';
+@import 'variables';
+$width-chevron: 1em;
+$height-chevron: 1em;
+$width-button-chevron: 1.5rem;
+$height-button-chevron: 1.5rem;
+$padding-right: 1.2em;
+$translate-x: 33%;
+.sort-up {
+  transform: rotate(90deg);
+}
+
+.sort-down {
+  transform: rotate(270deg);
+}
+
+
+.sorting-desc,
+.sorting-asc{
+  position:relative;
+  padding-right:$padding-right;
+  cursor: pointer;
+}
+
+.sorting-asc:after {
+  /* Up arrow */
+  position:absolute;
+  top:$fifty-percent;
+  width:$width-chevron;
+  height:$height-chevron;
+  display:inline-block;
+  -webkit-transform:translate($translate-x, -$fifty-percent);
+  transform:translate($translate-x, -$fifty-percent);
+  content: "";
+  -webkit-mask: url($data-icon-chevron-up) no-repeat 50% 50%;
+  mask: url($data-icon-chevron-up) no-repeat 50% 50%;
+  background-color: $color-shark;
+}
+
+.sorting-desc:after {
+  /* Down arrow */
+  position:absolute;
+  top:$fifty-percent;
+  width:$width-chevron;
+  height:$height-chevron;
+  display:inline-block;
+  -webkit-transform:translate($translate-x, -$fifty-percent);
+  transform:translate($translate-x, -$fifty-percent);
+  content: "";
+  -webkit-mask: url($data-icon-chevron-down) no-repeat 50% 50%;
+  mask: url($data-icon-chevron-down) no-repeat 50% 50%;
+  background-color: $color-shark;
+}
+
+button {
+  &.sorting-asc:after,
+  &.sorting-desc:after {
+    position:inherit;
+    top: inherit;
+    width: $width-button-chevron;
+    height: $height-button-chevron;
+    display: inherit;
+    -webkit-transform: inherit;
+    transform: inherit;
+    content: "";
+    background-color: $color-lighter-gray;
+  }
+}

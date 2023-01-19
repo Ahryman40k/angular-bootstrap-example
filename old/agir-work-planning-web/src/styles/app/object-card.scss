@@ -1,0 +1,7 @@
+.object-card {
+  .details {
+    label {
+      @extend .font-weight-normal;
+    }
+  }
+}

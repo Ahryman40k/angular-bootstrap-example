@@ -1,0 +1,17 @@
+@import '../../../../styles/core/variables';
+
+.bg-white {
+  background-color: $color-white;
+}
+
+.badge-secondary {
+  background-color: $color-aqua-spring;
+}
+
+:host(.is-invalid) {
+  ::ng-deep {
+    .ng-select .ng-select-container {
+      border-color: $color-decision-red;
+    }
+  }
+}

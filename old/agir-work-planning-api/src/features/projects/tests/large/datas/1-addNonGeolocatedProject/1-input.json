@@ -1,0 +1,19 @@
+{
+  "projectTypeId": "other",
+  "projectName": "This is a project name.",
+  "boroughId": "VRD",
+  "status": null,
+  "executorId": "di",
+  "startYear": 2040,
+  "endYear": 2041,
+  "streetName": "",
+  "interventionIds": [],
+  "inChargeId": null,
+  "globalBudget": {
+    "allowance": 142
+  },
+  "subCategoryIds": [
+    "priority",
+    "recurrent"
+  ]
+}

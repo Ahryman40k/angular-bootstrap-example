@@ -1,0 +1,20 @@
+$details-overview-map-dimension: 600px;
+
+.details-overview {
+  display: flex;
+  flex-wrap: wrap;
+
+  .map {
+    flex: 1;
+    height: $details-overview-map-dimension;
+    min-width: $details-overview-map-dimension;
+    position: relative;
+
+    .map-actions {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      z-index: 3;
+    }
+  }
+}

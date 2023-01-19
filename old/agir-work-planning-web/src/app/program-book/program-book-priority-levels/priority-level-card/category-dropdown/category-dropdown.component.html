@@ -1,0 +1,54 @@
+<div ngbDropdown class="mr-1 mt-1" placement="bottom-left" #dropdown="ngbDropdown">
+  <button
+    class="btn btn-sm btn-secondary"
+    [ngClass]="isSelected ? 'selected' : 'not-selected'"
+    ngbDropdownToggle
+    [disabled]="disabled">
+    <span>Catégorie de projet <span *ngIf="projectCategoryCriteria?.length">({{projectCategoryCriteria?.length}})</span></span>
+  </button>
+  <div ngbDropdownMenu>
+    <div class="d-flex my-1">
+      <h6 class="option pl-2">Catégorie</h6>
+      <h6 class="option pl-2">Sous-catégorie</h6>
+    </div>
+    <form *ngIf="form" [formGroup]="form">
+      <div formArrayName="projectCategories">
+        <div *ngFor="let projectCategory of projectCategories.controls; let i = index">
+          <div [formGroupName]="i" class="d-flex my-1">
+            <div class="option pl-2">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="category"
+                [items]="availableCategories[i]"
+              ></vdm-select>
+            </div>
+            <div class="option pl-2">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="subCategory"
+                [items]="availableSubCategories[i]"
+              ></vdm-select>
+            </div>
+            <button
+              class="btn btn-icon btn-icon-only pr-2"
+              (click)="removeProjectCategory(i)">
+              <i class="icon icon-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button
+      *ngIf="canAddNewCategory"
+      id="add-btn"
+      class="btn btn-tertiary btn-sm"
+      (click)="addProjectCategory()">
+      <i class="icon icon-plus icon-color-primary"></i>
+      Ajouter une catégorie
+    </button>
+  </div>
+</div>

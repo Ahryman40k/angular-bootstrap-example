@@ -1,0 +1,22 @@
+<h5 class="font-weight-bold">Emplacement englobé</h5>
+<div>
+  <div class="small" *ngIf="intervention">
+    <label class="d-block mb-0">
+      {{ intervention.boroughId ? (intervention.boroughId | appTaxonomy: 'borough') : '' }}
+    </label>
+    <label class="d-block mb-0">
+      {{ intervention.interventionName ? intervention.interventionName : '' }}
+    </label>
+  </div>
+</div>
+<div class="w-100 mb-4">
+  <label class="font-weight-bold d-block pt-3" for="status">Statut</label>
+  <label class="d-block small">{{
+    intervention ? (intervention.status | appTaxonomy: 'interventionStatus') : ''
+  }}</label>
+</div>
+<div>
+  <span>Besoins Initial</span>
+  <app-checkbox class="mx-3" mode="switch" [formControl]="interventionType"></app-checkbox>
+  <span>Opportunité d'intégration</span>
+</div>

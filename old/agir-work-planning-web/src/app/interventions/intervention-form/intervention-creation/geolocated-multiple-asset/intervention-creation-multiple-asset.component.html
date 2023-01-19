@@ -1,0 +1,35 @@
+<app-intervention-form-layout
+  [form]="form"
+  [isValidBoroughId]="isValidBoroughId"
+  [assets]="assetService.selectedAssets$ | async"
+  [assetTypes]="assetTypes$ | async"
+  [assetOwners]="assetOwners$ | async"
+  [assetWorkTypes]="assetWorkTypes$ | async"
+  buttonLabel="Soumettre"
+  [categories]="categories$ | async"
+  [duplicateIntervention]="duplicateIntervention$ | async"
+  [(interventionArea)]="interventionArea"
+  [interventionTypes]="interventionTypes$ | async"
+  [medalTypes]="medalTypes$ | async"
+  [programs]="programs$ | async"
+  [requestors]="requestors$ | async"
+  [executors]="executors$ | async"
+  [submitting]="submitting"
+  [years]="years"
+  (mapChange)="map = $event"
+  (cancel)="cancel()"
+  (removeInterventionArea)="removeInterventionArea()"
+  (submit)="submitAndNavigate(broadcastEventException.interventionCreate)"
+  (onAssetChange)="onAssetListChange($event)"
+  (drawnAssetChange)="assetDrawn($event)"
+>
+  <span header-title>Créer une intervention à partir d'un actif géolocalisé</span>
+  <button
+    header-button
+    class="btn btn-squared btn-secondary"
+    (click)="submitAndCreateProject()"
+    [disabled]="!canSubmitAndCreateProject"
+  >
+    Soumettre et créer un projet
+  </button>
+</app-intervention-form-layout>

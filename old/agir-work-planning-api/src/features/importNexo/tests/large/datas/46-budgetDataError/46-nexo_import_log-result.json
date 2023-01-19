@@ -1,0 +1,59 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 3,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "1-add-several-unlinked-interventions-PNI-5312362",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 1,
+          "description": "\"\""
+        },
+        {
+          "id": "1-add-several-unlinked-interventions-PNI-5312546",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 2,
+          "description": "\"\""
+        },
+        {
+          "id": "1-add-several-unlinked-interventions-PNI-5094977",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 3,
+          "description": "\"\""
+        }
+      ]
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsBudgetSE",
+      "status": "failure",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "1-add-several-unlinked-interventions-PNI",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"La répartition annuelle du budget pour le dossier \"1-add-several-unlinked-interventions-PNI\" n'a pu être ajoutée dans AGIR plusieurs interventions sont attachées à ce dossier.\""
+        }
+      ]
+    }
+  ]
+}

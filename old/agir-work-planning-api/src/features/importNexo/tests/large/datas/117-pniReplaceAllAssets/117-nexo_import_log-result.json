@@ -1,0 +1,69 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "success",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 6,
+      "errorDescription": "",
+      "projects": [
+        {
+          "id": "P00002",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "elementErrors": [],
+          "description": "\"\""
+        }
+      ],
+      "interventions": [
+        {
+          "id": "add-several-linked-interventions-PNI-1",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 1,
+          "description": "\"\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-11175033",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "lineNumber": 2,
+          "description": "\"\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5312067",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "lineNumber": 3,
+          "description": "\"\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5311759",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "lineNumber": 4,
+          "description": "\"\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-2",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 5,
+          "description": "\"\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-3",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 6,
+          "description": "\"\""
+        }
+      ]
+    }
+  ]
+}

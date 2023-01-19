@@ -1,0 +1,10 @@
+@import '../shared/scss/tables-columns.scss';
+
+:host ::ng-deep {
+  @include column-submission-tabs-style();
+}
+.dot-separtor{
+  display: inline-block;
+  vertical-align: middle;
+}
+

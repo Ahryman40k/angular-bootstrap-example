@@ -1,0 +1,9 @@
+@mixin border-warning-indicator($key) {
+  .indicator-warning-#{$key} {
+    @extend .border-#{$key};
+    @extend .border-warning;
+    @extend .border-width-md;
+  }
+}
+
+@include border-warning-indicator(left);

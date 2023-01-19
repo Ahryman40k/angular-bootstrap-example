@@ -1,0 +1,132 @@
+$header-title-container-min-width: 216px;
+$content-vertical-breaking-width: 1064px;
+$form-min-width: 296px;
+$form-label-min-width: 208px;
+$form-label-optional-margin-top: 2px;
+
+.loading {
+  height: $content-map-height-minimized;
+  width: $content-map-width-minimized;
+}
+
+app-intervention-opportunity-notice-form-layout,
+app-intervention-form-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .header {
+    @extend .border-bottom;
+    @extend .pl-4;
+    @extend .pr-2;
+    @extend .pt-2;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    .header-title-container {
+      @extend .mb-2;
+      @extend .mr-2;
+      flex: 1;
+      min-width: $header-title-container-min-width;
+    }
+
+    .header-buttons > * {
+      @extend .mb-2;
+      @extend .mr-2;
+    }
+  }
+
+  .content-scroll {
+    .content {
+      .content-form {
+        @extend .mr-4;
+        flex: 1;
+        min-width: $form-min-width;
+
+        .form-group {
+          @extend .mb-1;
+          display: flex;
+          flex-wrap: wrap;
+
+          > label {
+            @extend .mt-1;
+            min-width: $form-label-min-width;
+
+            &.form-label-optional {
+              margin-top: $form-label-optional-margin-top !important;
+            }
+
+            .form-optional {
+              display: block;
+              margin-left: 0;
+            }
+          }
+
+          > .form-group-input {
+            @extend .position-relative;
+            @extend .mb-1;
+            flex: 1;
+            min-width: $form-label-min-width;
+          }
+        }
+      }
+
+      .content-map {
+        @extend .mb-4;
+        height: fit-content;
+
+        .content-map-area {
+          position: relative;
+
+          app-map {
+            @extend .border;
+            @extend .rounded;
+            height: $content-map-height-maximized;
+            width: $content-map-width-maximized;
+          }
+
+          .app-map-minimize {
+            height: $content-map-height-minimized;
+            width: $content-map-width-minimized;
+          }
+
+          .content-map-top {
+            position: absolute;
+            top: #{map-get($spacers, 1)};
+            left: #{map-get($spacers, 1)};
+
+            .btn-minimized {
+              border-radius: $map-control-border-radius;
+              padding: $map-control-padding;
+            }
+          }
+
+          .content-map-buttons {
+            position: absolute;
+            bottom: #{map-get($spacers, 4)};
+            right: #{map-get($spacers, 4)};
+          }
+
+          .content-map-buttons-top {
+            position: absolute;
+            top: #{map-get($spacers, 2)};
+            left: #{map-get($spacers, 2)};
+          }
+        }
+
+        @media (max-width: $content-vertical-breaking-width) {
+          width: 100%;
+          app-map {
+            width: 100%;
+          }
+        }
+      }
+
+      .content-map-minimize {
+        height: 100%;
+        width: 50%;
+      }
+    }
+  }
+}

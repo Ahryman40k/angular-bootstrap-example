@@ -1,0 +1,88 @@
+<app-layout-modal modalTitle="Modifier les données de l'intervention">
+  <div body>
+    <form class="mb-2" [formGroup]="form">
+      <h6 class="col-md-6">
+        Répartition du budget
+      </h6>
+      <div class="row">
+        <div class="col-md-6 mt-1">
+          <span class="badge badge-neutral-light">
+            Solde à répartir {{ totalAllowance | vdmCurrencyK }} /
+            {{ intervention.estimate.allowance | vdmCurrencyK | vdmNa }}
+          </span>
+        </div>
+        <app-checkbox
+          class="col-md-6"
+          mode="switch"
+          [formControl]="isSameAccountIdControl"
+          label="Même numéro investi pour toute la durée"
+          labelClass="font-sm"
+        ></app-checkbox>
+      </div>
+      <form
+        *ngFor="let period of intervention.annualDistribution.annualPeriods; let i = index"
+        class="row pl-0 mb-1"
+        [formGroupName]="period.year.toString()"
+      >
+        <div class="form-group col-md-6 mb-0">
+          <label class="font-sm">Année {{ period.year }}</label>
+          <app-input-float
+            [placeholder]="placeholder"
+            [precision]="precision"
+            [inputValue]="period.annualAllowance"
+            (onKeyUp)="setAllowance($event, period.year)"
+          >
+          </app-input-float>
+        </div>
+        <ng-container *ngIf="!isSameAccountId">
+          <div class="form-group col-md-6 mb-0">
+            <label class="font-sm">Numéro investi associé</label>
+            <input
+              type="text"
+              class="form-control mr-3"
+              formControlName="accountId"
+              placeholder="#000000"
+              vdmIntegerInput
+            />
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isSameAccountId && i === 0">
+          <div class="form-group col-md-6 mb-0">
+            <label class="font-sm">Numéro investi associé</label>
+            <input
+              type="text"
+              class="form-control mr-3"
+              [formControl]="sameAccountIdControl"
+              placeholder="#000000"
+              vdmIntegerInput
+            />
+          </div>
+        </ng-container>
+      </form>
+
+      <label class="font-weight-bold form-label-optional">
+        Notes
+        <span class="form-optional">Facultatif</span>
+      </label>
+      <textarea formControlName="notes" class="form-control w-100"></textarea>
+      <app-form-errors formControlName="notes">
+        <app-form-error *appFormError="let e; key: 'maxlength'">
+          Les notes ne doivent pas dépasser 250 caractères
+        </app-form-error>
+      </app-form-errors>
+    </form>
+  </div>
+  <div buttons>
+    <button
+      type="button"
+      class="btn btn-tertiary btn-squared bg-white mr-2"
+      (click)="cancel()"
+      [disabled]="isSubmitting"
+    >
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="isSubmitting">
+      Modifier
+    </button>
+  </div>
+</app-layout-modal>

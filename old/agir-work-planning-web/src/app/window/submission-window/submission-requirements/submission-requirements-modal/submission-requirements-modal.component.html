@@ -1,0 +1,121 @@
+<app-layout-modal [modalTitle]="title">
+  <div body>
+    <form [formGroup]="form">
+      <div class="flex-1 mb-2">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="font-weight-bold flex-1 pr-3">Type d'exigence</label>
+            <vdm-select
+              appendTo="body"
+              class="flex-fill shadow-dropdown-panel"
+              bindLabel="label.fr"
+              formControlName="type"
+              [items]="submissionRequirementTypes"
+              disabled="disabled"
+            ></vdm-select>
+            <app-form-errors formControlName="type">
+              <app-form-error *appFormError="let e; key: 'required'">Le type d'exigence est requis</app-form-error>
+            </app-form-errors>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="font-weight-bold flex-1 pr-3">Sous-type</label>
+            <vdm-select
+              appendTo="body"
+              class="flex-fill shadow-dropdown-panel"
+              bindLabel="label.fr"
+              formControlName="subtype"
+              [items]="requirementSubtypeForSelect"
+              groupBy="subTypes"
+            ></vdm-select>
+            <app-form-errors formControlName="type">
+              <app-form-error *appFormError="let e; key: 'required'">Le sous-type est requis</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group mb-0">
+          <label class="font-weight-bold" for="form-control-default-one">Description</label>
+          <textarea formControlName="text" class="form-control w-100"></textarea>
+          <app-form-errors formControlName="text">
+            <app-form-error *appFormError="let e; key: 'required'">La description est requise</app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6 form-group">
+            <label class="font-weight-bold flex-1 pr-3">Élément concerné</label>
+            <vdm-select
+              appendTo="body"
+              class="flex-fill shadow-dropdown-panel"
+              bindLabel="label"
+              bindValue="id"
+              [items]="elementsConcerned"
+              formControlName="elementConcerned"
+            ></vdm-select>
+            <app-form-errors formControlName="type">
+              <app-form-error *appFormError="let e; key: 'required'">L'Élément concerné est requis</app-form-error>
+            </app-form-errors>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label class="font-weight-bold flex-1 pr-3">Mention</label>
+            <input
+              class="form-control"
+              [value]="submissionRequirementMention | appTaxonomy: TaxonomyGroup.submissionRequirementMention"
+              type="text"
+              disabled="true"
+            />
+          </div>
+        </div>
+        <div *ngIf="isSpecific">
+          <div class="mt-1 mb-1">
+            <p>
+              Associez un ou plusieurs projet(s) de la soumission à cette exigence de conception.
+            </p>
+          </div>
+          <div class="col-md-6 form-group pl-0 ">
+            <label class="font-weight-bold flex-1 pr-3">Sélection du/des projet(s)</label>
+            <div class="input-group form-control form-control pl-1">
+              <button class="btn btn-icon btn-icon-only" (click)="onSearchProjects()">
+                <span class="icon icon-search icon-focus-within" aria-hidden="true"></span>
+              </button>
+              <input
+                type="text"
+                class="form-control search-input border-0"
+                placeholder="Rechercher"
+                container="body"
+                formControlName="searchProjects"
+                (keyup.enter)="onSearchProjects()"
+                maxlength="100"
+              />
+            </div>
+          </div>
+          <ng-container>
+            <div *ngFor="let item of selectedObjects">
+              <div class="col-md-12 px-0 border-bottom">
+                <app-requirement-conflictual-item
+                  [btnLabel]="item.btnLabel"
+                  [item]="item.data"
+                  [itemType]="item.type"
+                  (selected)="selectProject(item)"
+                >
+                </app-requirement-conflictual-item>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white" (click)="cancel()">
+      Annuler
+    </button>
+    <button
+      type="submit"
+      [disabled]="!canSubmit"
+      class="btn btn-primary flex-fill justify-content-end btn-squared ml-2"
+      (click)="create()"
+    >
+      {{ buttonLabel }}
+    </button>
+  </div>
+</app-layout-modal>

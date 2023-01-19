@@ -1,0 +1,27 @@
+<app-layout-modal modalTitle="Demander une révision">
+  <div body>
+    <form [formGroup]="form">
+      <label class="font-weight-bold">Justificatifs</label>
+      <textarea type="text" rows="1" class="form-control" formControlName="justification" ngbAutofocus></textarea>
+      <app-form-errors formControlName="justification">
+        <app-form-error *appFormError="let e; key: 'required'">Le justificatif est requis</app-form-error>
+      </app-form-errors>
+    </form>
+  </div>
+  <div buttons>
+    <div class="d-flex mt-3">
+      <div class="flex-fill d-flex justify-content-end mb-3">
+        <div>
+          <button type="button" class="btn btn-tertiary btn-squared font-weight-bold bg-white" (click)="cancel()">
+            Annuler
+          </button>
+        </div>
+        <div class="pl-2">
+          <button class="btn btn-primary btn-squared add-button" (click)="requestRevision()">
+            Confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout-modal>

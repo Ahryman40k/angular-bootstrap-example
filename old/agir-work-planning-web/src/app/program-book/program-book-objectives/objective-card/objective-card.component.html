@@ -1,0 +1,42 @@
+<div class="border objective-card mb-4 mr-3 pb-1">
+  <div class="ml-2 mt-2 d-flex justify-content-between">
+    <div class="d-flex flex-column">
+      <div class="d-flex">
+        <h5>{{ objective?.name }}</h5>
+        <i class="icon icon-full-star ml-1" *ngIf="objective.pin"></i>
+      </div>
+      <small>{{ objectiveTypeDescription }}</small>
+    </div>
+    <app-more-options-button [disabled]="isAutomaticLoadingInProgress" buttonClass="p-0" [items]="getObjectiveMenuItems(objective)"></app-more-options-button>
+  </div>
+  <div class="mt-2 mx-2 mb-1">
+    <ngb-progressbar
+      class="bg-primary"
+      height="8px"
+      [value]="objective.values | vdmObjectiveProgress"
+    ></ngb-progressbar>
+  </div>
+  <div class="progress-result d-flex justify-content-between mx-2">
+    <p class="font-sm">
+      {{ objective?.values?.calculated | number }}/{{ objective?.values?.reference | number }}
+      {{ objective | vdmObjectiveProgressLabel }}
+    </p>
+    <p class="text-dark font-sm font-weight-bold">{{ objective.values | vdmObjectiveProgress }}%</p>
+  </div>
+  <table class="table-label-value table-sm" *ngIf="objective?.targetType !== ProgramBookObjectiveTargetType.bid">
+    <tbody>
+      <tr>
+        <td>Requérant</td>
+        <td>{{ (objective?.requestorId | appTaxonomy: TaxonomyGroup.requestor) || 'Tous' }}</td>
+      </tr>
+      <tr>
+        <td>Actifs</td>
+        <td>{{ objective?.assetTypeIds?.length ? (objective.assetTypeIds | appTaxonomy: TaxonomyGroup.assetType).join(', ') : 'Tous' }}</td>
+      </tr>
+      <tr>
+        <td>Travaux</td>
+        <td>{{ objective?.workTypeIds?.length ? (objective.workTypeIds | appTaxonomy: TaxonomyGroup.workType).join(', ') : 'Tous' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,38 @@
+$intervention-title-margin-bottom: -6px !important;
+
+app-project-form {
+  .form-group {
+    .form-label {
+      @extend .p-1;
+      @extend .col-md-4;
+      text-align: left;
+
+      &.form-label-optional {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+
+      .form-optional {
+        display: block;
+        margin-left: 0;
+      }
+    }
+
+    .form-label + .form-control {
+      @extend .px-1;
+    }
+
+    .form-label + .form-control,
+    .form-label + .input-group {
+      @extend .col-md-8;
+    }
+
+    .input-group .form-control {
+      width: 100%;
+    }
+  }
+
+  .intervention-title {
+    margin-bottom: $intervention-title-margin-bottom;
+  }
+}

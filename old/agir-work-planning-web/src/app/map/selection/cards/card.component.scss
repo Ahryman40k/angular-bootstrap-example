@@ -1,0 +1,13 @@
+@import '../../../../styles/core/variables';
+
+.item-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}

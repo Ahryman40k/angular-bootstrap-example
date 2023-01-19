@@ -1,0 +1,23 @@
+@import 'variables';
+
+.legend-text {
+  font-size: $legend-font-size;
+  line-height: $legend-line-height;
+  overflow-wrap: break-word;
+}
+
+.legend-sub-title {
+  font-size: $font-size-14;
+}
+
+.legend-mb {
+  margin-bottom: $legend-margin-bottom;
+}
+
+.legend-link {
+  color: $color-platinum !important;
+}
+
+.legend-link .icon::before {
+  background-color: $color-lighter-gray !important;
+}

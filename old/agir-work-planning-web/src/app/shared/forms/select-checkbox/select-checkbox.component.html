@@ -1,0 +1,16 @@
+<div
+  class="item pl-2 align-items-center border-bottom"
+  [class.border-top]="!i"
+  *ngFor="let item of items; index as i"
+  (appCaptureClick)="$event.stopPropagation(); checkbox.redirectClick()"
+>
+  <span class="item-label">{{ itemLabel(item) }}</span>
+  <app-checkbox
+    #checkbox
+    class="item-checkbox"
+    [id]="id ? id + '-' + i : undefined"
+    [value]="isSelected(item)"
+    (valueChange)="onSelected(item, $event)"
+    (onBlur)="checkboxBlur()"
+  ></app-checkbox>
+</div>

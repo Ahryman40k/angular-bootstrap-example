@@ -1,0 +1,9 @@
+<div class="map-selection-item">
+  <app-project-card *ngIf="project" class="card elevation p-2 m-0" [project]="project"></app-project-card>
+  <app-spinner-card *ngIf="!project"></app-spinner-card>
+</div>
+<app-map-selection-distance-results
+  *ngIf="project"
+  [project]="project"
+  [point]="point"
+></app-map-selection-distance-results>

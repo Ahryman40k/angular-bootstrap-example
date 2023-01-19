@@ -1,0 +1,12 @@
+$no-results-width: 168px;
+$no-results-height: 240px;
+
+.no-results {
+  width: $no-results-width;
+  height: $no-results-height;
+  border: 2px dashed #dee2e6;
+}
+
+.align-text-center {
+  text-align: center;
+}

@@ -1,0 +1,68 @@
+@import './variables';
+
+app-search-box {
+  .search-input {
+    height: auto;
+  }
+
+  &.planning-book-search {
+    .search-clear,
+    .search-input {
+      display: none;
+    }
+
+    .input-group {
+      border-color: $color-white;
+    }
+  }
+
+  &:focus-within {
+    .search-clear,
+    .search-input {
+      display: block;
+    }
+  }
+}
+
+ngb-typeahead-window[id*='ngb-typeahead'] {
+  left: $search-box-offset-left !important;
+  max-width: $search-bar-max-width;
+  width: $search-box-dropdown-width;
+  z-index: $search-box-z-index;
+
+  .auto-complete-item {
+    @extend .d-flex;
+    @extend .w-100;
+
+    .auto-complete-item-icon {
+      @extend .d-flex;
+      @extend .flex-column;
+      @extend .justify-content-center;
+
+      i {
+        @extend .icon;
+        @extend .icon-md;
+        @extend .mr-2;
+      }
+    }
+
+    .auto-complete-item-info {
+      @extend .d-flex;
+      @extend .flex-column;
+      @extend .flex-1;
+      min-width: 0;
+
+      .auto-complete-item-title {
+        @extend .font-md;
+        @extend .text-truncate;
+      }
+
+      .auto-complete-item-description {
+        @extend .text-neutral-secondary;
+        @extend .mb-0;
+        @extend .font-sm;
+        @extend .text-truncate;
+      }
+    }
+  }
+}

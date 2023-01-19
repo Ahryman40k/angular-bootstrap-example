@@ -1,0 +1,112 @@
+<div *ngIf="group" [ngClass]="{ 'pb-10': canAddToGroup(group) }">
+  <span>{{ group?.description?.fr }}</span>
+
+  <div *ngIf="!isInitializingTaxonomyTable" class="mt-4 responsive-table">
+    <table class="table table-lg">
+      <thead>
+        <tr>
+          <th *ngFor="let column of columnConfig.columns" [ngClass]="{
+              sorting: true,
+              'sorting-asc': columnOptions[column.columnName].sorted === 'asc',
+              'sorting-desc': columnOptions[column.columnName].sorted === 'desc'
+            }" (click)="sortColumn(column.columnName)">
+            {{ TaxonomyTableColumnLabels[column.columnName] }}
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of tableItems">
+        <tr>
+          <td class="align-middle" *ngIf="isColumnShown('consultation')">
+            <i class="icon icon-check-circle-full icon-color-success" *ngIf="item.consultation"></i>
+          </td>
+          <td class="align-middle">
+            {{ item.code }}
+          </td>
+          <td class="align-middle">
+            {{ item.labelfr }}
+          </td>
+          <td class="align-middle">
+            {{ item.labelen }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('url')">
+            <a [href]="item.url" class="is-external-link" target="_blank">{{ item.url }}</a>
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('category')">
+            {{ item.category }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('requirementType')">
+            {{ item.requirementType }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('submissionRequirementSubtype')">
+            {{ item.requirementSubtype }}
+          <td class="align-middle" *ngIf="isColumnShown('submissionRequirementType')">
+            {{ item.submissionRequirementType }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('rtuDataId')">
+            {{ item.rtuDataId }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('rtuDataName')">
+            {{ item.rtuDataName }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('rrva')">
+            {{ item.rrva }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('rtuDataStatus')">
+            {{ item.rtuDataStatus }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('rtuDataPhase')">
+            {{ item.rtuDataPhase }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('acronymfr')">
+            {{ item.acronymfr }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('acronymen')">
+            {{ item.acronymen }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('rtuDataValue')">
+            {{ item.rtuDataValue }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('rtuDataDefinition')">
+            {{ item.rtuDataDefinition }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('isInternal')">
+            <i class="icon icon-check-circle-full icon-color-success" *ngIf="item.internal"></i>
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('geomaticKey')">
+            {{ item.geomaticKey }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('assetKey')">
+            {{ item.assetKey }}
+          </td>
+          <td class="align-middle" *ngIf="isColumnShown('unit')">
+            {{ item.unit }}
+          </td>
+          <td class="border-0 col-options d-flex flex-1 justify-content-end align-middle"
+            [ngClass]="{ 'border-white': opened }">
+            <div class="d-flex flex-column justify-content-center" *ngIf="isDetailButtonShown()">
+              <button class="btn btn-icon btn-secondary" (click)="item.opened = !item.opened">
+                <i class="icon" [class.icon-chevron-up]="item.opened" [class.icon-chevron-down]="!item.opened"></i>
+              </button>
+            </div>
+            <app-more-options-button #moreOptions [dropdownPlacement]="['left-top', 'left-bottom']"
+              dropdownContainer="body" [items]="item.menuItems"></app-more-options-button>
+          </td>
+        </tr>
+        <tr>
+          <td *ngIf="item.opened" class="border-bottom pb-2 taxonomy-details" colspan="6">
+            <app-taxonomy-group-item-detail [taxonomy]="item.taxonomy" [group]="group">
+            </app-taxonomy-group-item-detail>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-spinner *ngIf="isInitializingTaxonomyTable" class="d-flex mx-auto mt-1"></app-spinner>
+
+  <div class="container-fluid fixed-bottom p-3 add-button-container shadow-top" *ngIf="canAddToGroup(group)">
+    <button class="btn btn-primary btn-squared" role="button" (click)="showNewModal()">
+      <span class="icon icon-plus"></span>
+      <span class="btn-label">Ajouter un élément</span>
+    </button>
+  </div>
+</div>

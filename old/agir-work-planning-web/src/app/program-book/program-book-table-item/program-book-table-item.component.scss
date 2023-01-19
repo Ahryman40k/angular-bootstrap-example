@@ -1,0 +1,38 @@
+@import '../../../styles/core/variables';
+
+$zero-left: 0;
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+#rank {
+  @extend .sticky;
+  left: $zero-left;
+  width: $program-book-table-col-rank;
+}
+
+#priority-level {
+  @extend .sticky;
+  left: $program-book-table-col-rank;
+  width: $program-book-table-col-priority-level;
+}
+
+#project-id {
+  @extend .sticky;
+  left: $program-book-table-col-rank + $program-book-table-col-priority-level;
+  width: $program-book-table-col-project-id;
+}
+.non-ordered-projects,
+.non-ordered-projects app-program-book-table-item::ng-deep {
+  #project-id {
+    @extend .sticky;
+    left: $zero-left;
+    width: $program-book-table-col-project-id;
+  }
+}
+
+.table-body-cell {
+  overflow: visible;
+}

@@ -1,0 +1,12 @@
+:host {
+  align-items: center;
+  display: flex;
+}
+
+.dropdown {
+  overflow: visible;
+}
+
+:hover > .dropdown {
+  display: block;
+}

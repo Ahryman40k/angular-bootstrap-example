@@ -1,0 +1,7 @@
+<div class="medal {{ medalId }}">
+  <span *ngIf="medalId" class="icon icon-medal-{{ medalId }} icon-xs"></span>
+  &nbsp;
+  <span class=" font-{{ medalId }} font-sm" [class.font-weight-bold]="medalId">
+    {{ isCountShown ? count : (medalId | appTaxonomy: 'medalType' | vdmNa) }}
+  </span>
+</div>

@@ -1,0 +1,47 @@
+@import '_variables';
+@import '../../../../styles/core/variables';
+@mixin column-submission-tabs-style {
+  .col-requirementCount {
+    width: $submission-project-table-col-requirement;
+  }
+  .col-id {
+    width: $submission-project-table-col-projectId;
+  }
+  .col-projectName {
+    width: $submission-project-table-col-label;
+  }
+  .col-program {
+    width: $submission-project-table-col-program;
+  }
+
+  .col-streetName {
+    width: $submission-project-table-col-streetName;
+  }
+  .col-streetFrom {
+    width: $submission-project-table-col-streetFrom;
+  }
+  .col-streetTo {
+    width: $submission-project-table-col-streetTo;
+  }
+
+
+  .col-boroughId {
+    width: $submission-project-table-col-boroughId;
+  }
+  .table-body-cell{
+    width: 100% !important;
+  }
+  .background-gray{
+    background-color:$color-gray-100;
+  }
+  .count-badge {
+    padding: 2px 7px;
+    height: 24px;
+    background: $color-gray-90;
+    border-radius: 32px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+  }
+}
+

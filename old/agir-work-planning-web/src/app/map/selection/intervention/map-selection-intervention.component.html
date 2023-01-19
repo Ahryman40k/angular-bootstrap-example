@@ -1,0 +1,13 @@
+<div class="map-selection-item">
+  <app-intervention-card
+    *ngIf="intervention"
+    class="card elevation p-2 m-0"
+    [intervention]="intervention"
+  ></app-intervention-card>
+  <app-spinner-card *ngIf="!intervention"></app-spinner-card>
+</div>
+<app-map-selection-distance-results
+  *ngIf="intervention"
+  [intervention]="intervention"
+  [point]="point"
+></app-map-selection-distance-results>

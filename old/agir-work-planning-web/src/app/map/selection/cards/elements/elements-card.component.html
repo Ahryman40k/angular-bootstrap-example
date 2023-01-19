@@ -1,0 +1,21 @@
+<div class="card elevation">
+  <div class="card-header">
+    <i *ngIf="icon" class="card-header-icon icon {{ icon }} icon-color-light icon-sm mr-2"></i>
+    <span class="h6 font-md mb-0 flex-1">
+      {{ cardTitle }}
+      <span *ngIf="isLoading">
+        <app-spinner></app-spinner>
+      </span>
+      <span *ngIf="!isLoading">({{ elements?.length || '0' }})</span>
+    </span>
+    <button *ngIf="!isLoading && elements && elements.length" class="btn btn-icon btn-icon-only p-0"
+      (click)="opened = !opened">
+      <i class="icon" [class.icon-chevron-right]="!opened" [class.icon-chevron-down]="opened"></i>
+    </button>
+  </div>
+  <ng-container *ngIf="opened && elements && elements.length">
+    <ng-container *ngFor="let element of elements">
+      <ng-container *ngTemplateOutlet="elementTemplate; context: { $implicit: element }"></ng-container>
+    </ng-container>
+  </ng-container>
+</div>

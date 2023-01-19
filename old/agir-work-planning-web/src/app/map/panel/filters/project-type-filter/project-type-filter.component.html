@@ -1,0 +1,11 @@
+<app-filter-layout>
+  <span title>Types de projets</span>
+  <app-filter-item-layout
+    [items]="projectTypes$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    [formControl]="projectTypesControl"
+  ></app-filter-item-layout>
+</app-filter-layout>

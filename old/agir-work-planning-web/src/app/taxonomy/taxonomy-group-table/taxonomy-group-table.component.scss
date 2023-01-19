@@ -1,0 +1,80 @@
+@import '../../../styles/core/variables';
+
+.responsive-table {
+  padding-bottom: $responsive-table-scroll-padding-bottom;
+}
+
+app-table-column-header {
+  background-color: $color-white;
+}
+
+.scrollable-horizontal {
+  @extend .scrollable-horizontal;
+  overflow-y: visible;
+}
+
+.scrollable-horizontal::-webkit-scrollbar {
+  height: $scroll-bar-height;
+}
+
+.table thead th {
+  border-bottom: 2px solid $color-gray-300;
+  border-top: none;
+}
+
+.table thead th.sorting {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.table thead th.sorting:after {
+  content: '';
+  -webkit-mask: none;
+  mask: none;
+  background-color: transparent;
+  display: inline-flex;
+  margin-left: 0.5rem;
+  margin-bottom: -0.5rem;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.table-lg thead th.sorting:after {
+  width: 24px;
+  height: 24px;
+}
+
+.table thead th.sorting-asc:after {
+  /* Up arrow */
+  content: '';
+  -webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' role='icon'%3E %3Cpath fill-rule='evenodd' d='M12 11.414l3.293 3.293a1 1 0 001.414-1.414l-4-4a1 1 0 00-1.414 0l-4 4a1 1 0 001.414 1.414L12 11.414z'/%3E %3C/svg%3E")
+    no-repeat 50% 50%;
+  mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' role='icon'%3E %3Cpath fill-rule='evenodd' d='M12 11.414l3.293 3.293a1 1 0 001.414-1.414l-4-4a1 1 0 00-1.414 0l-4 4a1 1 0 001.414 1.414L12 11.414z'/%3E %3C/svg%3E")
+    no-repeat 50% 50%;
+  background-color: $color-shark;
+}
+
+.table thead th.sorting-desc:after {
+  /* Down arrow */
+  content: '';
+  -webkit-mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' role='icon'%3E %3Cpath fill-rule='evenodd' d='M12 12.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L12 12.586z'/%3E %3C/svg%3E")
+    no-repeat 50% 50%;
+  mask: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' role='icon'%3E %3Cpath fill-rule='evenodd' d='M12 12.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L12 12.586z'/%3E %3C/svg%3E")
+    no-repeat 50% 50%;
+  background-color: $color-shark;
+}
+
+.table tbody th,
+.table tbody td {
+  border-top: none;
+}
+
+.add-button-container {
+  left: $details-menu-width;
+  background-color: $color-white;
+}
+
+.taxonomy-details {
+  padding-top: 0 !important;
+}

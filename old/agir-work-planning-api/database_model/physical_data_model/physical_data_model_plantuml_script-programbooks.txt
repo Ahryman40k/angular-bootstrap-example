@@ -1,0 +1,97 @@
+@startuml
+
+title Modèle Physique de données - Program books
+
+object annual_programs {
+  M | **_id** : ObjectId
+  M | **executorId** : String
+  M | **year** : Int
+  M | **budgetCap** : Int
+  M | **status** : String
+  O | **description** : String
+  O | **sharedRoles** : String[]
+}
+
+object audit {
+  O | **createdAt** : DateTime
+  O | **createdByUserName** : String
+  O | **createdByDisplayName** : String
+  O | **lastModifiedAt** : DateTime
+  O | **lastModifiedByUserName** : String
+  O | **lastModifiedByDisplayName** : String
+  O | **expiredAt** : DateTime
+  O | **expiredByUserName** : String
+  O | **expiredByDisplayName** : String
+}
+
+object program_books {
+  M | **_id** : ObjectId
+  M | **annualProgramId** : ObjectId **FK**
+  M | **projectTypes** : String[]
+  M | **name** : String
+  M | **status** : String
+  O | **boroughIds** : String[]
+  O | **removedProjectsIds** : String[]
+  O | **inCharge** : String
+  O | **sharedRoles** : String[]
+}
+
+object priorityScenarios {
+  M | **id** : ObjectId
+  M | **name** : String
+  M | **status** : String
+  O | **isOutdated** : Boolean
+}
+
+object priorityLevels {
+  M | **rank** : Int
+  M | **isSystemDefined** : Boolean
+  M | **projectCount** : Int
+}
+
+object criterias {
+  O | **projectCategory** : String[]
+  O | **workTypeId** : String[]
+  O | **requestorId** : String[]
+  O | **assetTypeId** : String[]
+}
+
+object orderedProjects {
+  M | **rank** : Int
+  M | **isManuallyOrdered** : Boolean
+  M | **projectId** : String
+  M | **levelRank** : Int
+  O | **initialRank** : Int
+  O | **note** : String
+}
+
+object objectives {
+  M | **id** : ObjectId
+  M | **type** : String
+  M | **name** : String
+  M | **reference** : Int
+  M | **calculated** : Int
+  O | **assetTypeIds** : String[]
+  O | **workTypeIds** : String[]
+  O | **pin** : Boolean
+  O | **requestorId** : String
+}
+
+
+annual_programs o-- "0..1" audit
+
+program_books o-- "0..1" audit
+program_books o-- "0..n" priorityScenarios
+program_books o-- "0..n" objectives
+program_books "0..n" --> "1" annual_programs
+
+priorityScenarios o-- "0..1" audit
+priorityScenarios o-- "0..n" priorityLevels
+priorityScenarios o-- "0..n" orderedProjects
+
+priorityLevels o-- "1" criterias
+orderedProjects o-- "0..1" audit
+
+objectives o-- "0..1" audit
+
+@enduml

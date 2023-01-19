@@ -1,0 +1,52 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 1,
+          "description": "\"\""
+        }
+      ]
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "rehabEgConception",
+      "status": "failure",
+      "numberOfItems": 2,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "A_IGNORER",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"La valeur de PlageContrat \"Fin\" à la ligne 2 est différente de celle à la ligne 1 pour un même numéro de projet.\""
+        },
+        {
+          "id": "A_IGNORER",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 2,
+          "description": "\"La valeur de PlageContrat \"Fin\" à la ligne 2 est différente de celle à la ligne 1 pour un même numéro de projet.\""
+        }
+      ]
+    }
+  ]
+}

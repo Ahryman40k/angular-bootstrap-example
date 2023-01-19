@@ -1,0 +1,67 @@
+<div *ngIf="columnOptions" class="responsive-table-row align-items-stretch borderoffset">
+  <ng-container *ngFor="let column of columns; let last = last">
+    <app-table-column-item
+      class="{{ column.className }}  px-0 d-flex"
+      [ngClass]="last ? 'flex-1 last-element' : ''"
+      [id]="column.columnName"
+      [value]="columnOptions[column.columnName]?.value"
+      [condition]="undefined"
+      [columnClass]="column.columnName"
+      [link]="columnOptions[column.columnName]?.link"
+      [taxonomyGroup]="columnOptions[column.columnName]?.taxonomyGroup"
+      [innerClass]="columnOptions[column.columnName]?.innerClass"
+      [isBadge]="columnOptions[column.columnName]?.isBadge"
+    >
+    </app-table-column-item>
+  </ng-container>
+  <div class="table-body-cell col-options d-flex flex-1 justify-content-end">
+    <div class="d-flex flex-column justify-content-center">
+      <button
+        *ngIf="submissionProject.requirementsSubmissionLine.length > 0"
+        class="btn btn-icon btn-secondary"
+        (click)="opened = !opened"
+      >
+        <i class="icon" [class.icon-chevron-up]="opened" [class.icon-chevron-down]="!opened"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div
+  *ngIf="opened && submissionProject?.requirementsSubmissionLine.length > 0"
+  class="project-detail border-bottom pb-2"
+  [ngClass]="{ 'background-gray': opened }"
+>
+  <div class="pl-2 ml-7 border-left border-width-sm">
+    <div class="d-flex py-2">
+      <div class="flex-2 d-flex flex-column">
+        <h6 class="mb-0">Exigence(s) de planification</h6>
+      </div>
+      <div class="flex-6 pr-3">
+        <div *ngFor="let requirementSubmissionLine of submissionProject.requirementsSubmissionLine">
+          <span class="ml-1 badge-gray badge badge-align-middle">{{
+            requirementSubmissionLine.requirement.typeId | appTaxonomy: TaxonomyGroup.requirementType
+          }}</span>
+          <span class="ml-1 font-weight-bold"
+            ><label>{{
+              requirementSubmissionLine.requirement.subtypeId | appTaxonomy: TaxonomyGroup.requirementSubtype
+            }}</label></span
+          >
+
+          <span class="dot-separtor icon icon-dot-interpunct"></span>
+          <label
+            ><a class="text-primary font-weight-bold" [href]="requirementSubmissionLine?.itemObject?.link">
+              {{ requirementSubmissionLine?.itemObject?.id }}
+            </a></label
+          >
+          <span class="ml-1">{{ requirementSubmissionLine?.itemObject?.streetName }}</span>
+          <span class="dot-separtor icon icon-dot-interpunct"></span>
+
+          <span class="mt-1">
+            Dernière modif. le
+            {{ requirementSubmissionLine.requirement?.audit | appAuditDateTime | date: 'mediumDate' }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<app-layout-modal modalTitle="Personnaliser la vue tableau">
+  <div body class="m-2">
+    <h5 class="mb-2">Éléments sélectionnés</h5>
+    <div class="badge-group mb-5">
+      <a *ngFor="let column of selectedColumns; let i = index"
+        class="badge badge-secondary badge-icon-right rounded-pill py-1">
+        <span class="badge-label text-primary"> {{ ProgramBookTableColumnLabels[column.columnName] }}</span>
+        <span *ngIf="i > 2" class="icon icon-x-circle-full clickable" appStopProp
+          (click)="moveColumnFromSelectedToUnselected(column.columnName)"></span>
+      </a>
+    </div>
+    <h5 class="mb-2">Éléments à ajouter</h5>
+    <div class="badge-group mb-2">
+      <a *ngFor="let column of unselectedColumns"
+        class="badge badge-secondary badge-icon-right rounded-pill py-1">
+        <span class="badge-label text-primary"> {{ ProgramBookTableColumnLabels[column.columnName] }}</span>
+        <span class="icon icon-plus-circle-full clickable" appStopProp
+          (click)="moveColumFromUnselectedToSelected(column)"></span>
+      </a>
+    </div>
+  </div>
+  <div buttons class="d-flex justify-content-between flex-1">
+    <button class="btn btn-secondary btn-squared" type="button" (click)="resetTableView()">
+      Réinitialiser
+    </button>
+    <div>
+      <button class="btn btn-secondary btn-squared mr-2" type="button" (click)="cancel()">
+        Annuler
+      </button>
+      <button class="btn btn-primary btn-squared" type="button" (click)="saveTableView()">
+        Sauvegarder
+      </button>
+    </div>
+  </div>
+</app-layout-modal>

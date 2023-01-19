@@ -1,0 +1,14 @@
+@import '../../../../styles/core/variables';
+
+.file-drop-container-v2 {
+  border: 1px dashed $color-gray-300;
+  align-items: center;
+}
+
+.border-invalid {
+  border: 2px solid $color-red-danger;
+}
+
+.file-selector-button {
+  margin: calc(0.25rem - 1px);
+}

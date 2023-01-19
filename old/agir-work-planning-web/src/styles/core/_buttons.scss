@@ -1,0 +1,70 @@
+$btn-icon-only-sm-size: 40px;
+
+$theme-colors-primary: #{map-get($theme-colors, 'primary')};
+$theme-colors-neutral-tertiary: #{map-get($theme-colors, 'neutral-tertiary')};
+
+.btn-icon-only {
+  background-color: transparent;
+  color: $theme-colors-neutral-tertiary;
+
+  .icon {
+    fill: $theme-colors-neutral-tertiary;
+    &:before {
+      background-color: $theme-colors-neutral-tertiary;
+    }
+  }
+
+  &.dropdown-toggle:after {
+    display: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:not(:disabled):not(.disabled):hover,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active {
+    background-color: none;
+    border-color: none;
+    box-shadow: none;
+    color: $theme-colors-primary;
+
+    .icon {
+      fill: $theme-colors-primary;
+      &:before {
+        background-color: $theme-colors-primary;
+      }
+    }
+  }
+}
+
+@mixin btn-icon-only($key, $size) {
+  .btn-icon-only-#{$key} {
+    border-radius: $size;
+    height: $size;
+    padding: 0;
+    width: $size;
+  }
+}
+
+@include btn-icon-only(sm, 30px);
+@include btn-icon-only(md, 40px);
+@include btn-icon-only(lg, 50px);
+
+.btn-icon {
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+  }
+}
+
+.btn-danger {
+  background-color: $color-dark-red;
+  color: white;
+}
+
+.btn-outline-danger {
+  border: 1px solid $color-dark-red;
+  color: $color-dark-red;
+  background: transparent;
+}

@@ -1,0 +1,60 @@
+@import '../../../../../styles/core/variables';
+
+$dropdown-icon-width-height: 17px;
+$option-width: 12rem;
+
+#add-btn {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.btn.dropdown-toggle::after {
+  width: $dropdown-icon-width-height;
+  height: $dropdown-icon-width-height;
+}
+
+.green {
+  background-color: $color-aqua-spring !important;
+  border-color: $color-gray-300;
+  span {
+    color: $color-turquoise-700;
+  }
+  &.dropdown-toggle::after {
+    color: $color-turquoise-700;
+  }
+}
+
+.btn.selected,
+.btn.selected:hover,
+.btn.selected:focus {
+  @extend .green;
+}
+
+.btn.not-selected {
+  background-color: $color-white;
+  border-color: $color-gray-300;
+  span {
+    color: $color-black;
+  }
+  &.dropdown-toggle::after {
+    color: $color-gray-300;
+  }
+  &:hover {
+    @extend .green;
+  }
+}
+
+.btn:disabled {
+  cursor: auto;
+  &.dropdown-toggle::after {
+    display: none;
+  }
+  &:hover {
+    background-color: $color-aqua-spring !important;
+  }
+}
+
+.option {
+  width: $option-width;
+}

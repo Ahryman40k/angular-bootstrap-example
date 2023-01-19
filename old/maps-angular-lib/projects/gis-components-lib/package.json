@@ -1,0 +1,28 @@
+{
+  "name": "@villemontreal/maps-angular-lib",
+  "version": "2.6.1",
+  "peerDependencies": {
+    "@angular/animations": "^7.0.0 || ^8.0.0 || ^9.0.0",
+    "@angular/cdk": "^7.0.0 || ^8.0.0|| ^9.0.0",
+    "@angular/common": "^7.0.0 || ^8.0.0|| ^9.0.0",
+    "@angular/compiler": "^7.0.0 || ^8.0.0|| ^9.0.0",
+    "@angular/core": "^7.0.0 || ^8.0.0|| ^9.0.0",
+    "@angular/platform-browser": "^7.0.0 || ^8.0.0|| ^9.0.0",
+    "@angular/platform-browser-dynamic": "^7.0.0 || ^8.0.0 || ^9.0.0",
+    "@turf/area": "^6.0.1",
+    "@turf/bbox": "^6.0.1",
+    "@turf/boolean-contains": "^6.0.1",
+    "@turf/boolean-crosses": "^6.0.1",
+    "@turf/centroid": "^6.0.2",
+    "@turf/intersect": "^6.1.3",
+    "@turf/length": "^6.0.2",
+    "@turf/transform-rotate": "^5.1.5",
+    "@mapbox/mapbox-gl-draw": "^1.1.2",
+    "@types/mapbox-gl": "^1.11.0",
+    "core-js": "^2.5.4",
+    "geojson": "^0.5.0",
+    "mapbox-gl": "^1.11.0",
+    "@agm/core": "1.0.0"
+  },
+  "dependencies": {}
+}

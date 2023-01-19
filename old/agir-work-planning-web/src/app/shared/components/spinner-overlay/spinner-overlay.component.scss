@@ -1,0 +1,15 @@
+@import './../../../../styles/core/variables';
+
+.spinner-overlay {
+  z-index: 10000;
+  position: absolute;
+  background-color: $color-white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .spinner {
+    text-align: center;
+  }
+}

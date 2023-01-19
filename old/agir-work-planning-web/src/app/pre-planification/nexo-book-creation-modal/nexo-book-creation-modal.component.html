@@ -1,0 +1,105 @@
+<app-layout-modal modalTitle="Ajouter un élément de correspondance avec un programme">
+  <div body *ngIf="form" [formGroup]="form">
+    <div class="border-bottom pb-2">
+      <div class="d-flex">
+        <div class="form-group flex-1 mr-2">
+          <label class="form-label" for="code">
+            Code de l'élément
+          </label>
+          <div class="form-group-input">
+            <input type="text" id="code" class="form-control" formControlName="code" />
+            <app-form-errors formControlName="code">
+              <app-form-error *appFormError="let e; key: 'required'">Le code est requis</app-form-error>
+              <app-form-error *appFormError="let e; key: 'isCodeDuplicate'">Ce code est déjà présent.</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="flex-1 ml-2"></div>
+      </div>
+      <div class="d-flex mt-2">
+        <div class="form-group flex-1 mr-2">
+          <label class="form-label" for="labelFr">
+            Libellé français
+          </label>
+          <div class="form-group-input">
+            <input type="text" id="labelFr" class="form-control" formControlName="labelFr" />
+            <app-form-errors formControlName="labelFr">
+              <app-form-error *appFormError="let e; key: 'required'">Le libellé français est requis</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group flex-1 ml-2">
+          <label class="form-label" for="labelEn">
+            Libellé anglais
+          </label>
+          <div class="form-group-input">
+            <input type="text" id="labelEn" class="form-control" formControlName="labelEn" />
+            <app-form-errors formControlName="labelEn">
+              <app-form-error *appFormError="let e; key: 'required'">Le libellé anglais est requis</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-container formArrayName="correspondances" *ngIf="!isRemovingProgram">
+      <div class="mt-2" *ngFor="let row of rowLength; let i = index">
+        <ng-container [formGroupName]="i">
+          <div class="d-flex">
+            <div class="form-group flex-1 mr-2">
+              <label class="form-label" for="year">
+                Année
+              </label>
+              <vdm-select
+                appendTo="app-nexo-book-creation-modal"
+                [items]="years$ | async"
+                formControlName="year"
+              ></vdm-select>
+              <div class="ng-pristine ng-invalid ng-touched is-invalid" *ngIf="isYearInvalid(i)">
+                <app-form-error class="invalid-feedback">L'année est requise</app-form-error>
+              </div>
+            </div>
+            <div class="form-group flex-3 ml-2 mr-4">
+              <label class="form-label" for="programId">
+                Nom du programme
+              </label>
+              <vdm-select
+                appendTo="app-nexo-book-creation-modal"
+                bindValue="code"
+                bindLabel="label.fr"
+                [items]="programTypes"
+                formControlName="programId"
+              ></vdm-select>
+              <div class="ng-pristine ng-invalid ng-touched is-invalid" *ngIf="isProgramInvalid(i)">
+                <app-form-error class="invalid-feedback">Le programme est requis</app-form-error>
+              </div>
+            </div>
+            <button class="btn btn-icon btn-icon-only pr-0" (click)="removeProgram(i)">
+              <span class="icon icon-trash"></span>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+    <div class="d-flex mt-2">
+      <button class="btn btn-icon btn-icon-only p-0 mb-1" (click)="addRow()" [disabled]="!canAddRow && rowLength.length > 0" [class.disabled]="!canAddRow && rowLength.length > 0">
+        <em class="icon icon-plus-circle-full" [class.icon-color-secondary]="!rows?.valid" [class.icon-color-primary]="rows?.valid"></em>
+      </button>
+      <span class="text-dark ml-1">
+        Ajouter une correspondance
+      </span>
+    </div>
+  </div>
+  <div leftButtons>
+    <button type="button" class="btn btn-secondary btn-squared bg-white mr-2" (click)="reset()" [disabled]="isLoading">
+      Réinitialiser
+    </button>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="closeModal()">
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="isLoading">
+      Ajouter
+    </button>
+  </div>
+</app-layout-modal>

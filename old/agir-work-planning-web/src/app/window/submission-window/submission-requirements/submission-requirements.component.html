@@ -1,0 +1,50 @@
+<div>
+  <div class="pr-3 pl-3 pt-4 d-flex  mb-1 fixed-header">
+    <h4>Exigences</h4>
+    <div class="filter mb-3 ml-1" [formGroup]="form">
+      <div ngbDropdown>
+        <button type="button" class="chip dropdown-toggle text-dark mr-1 sorting" ngbDropdownToggle>
+          Filtrer par
+        </button>
+        <div ngbDropdownMenu>
+          <div class="d-flex align-items-center" *ngFor="let item of submissionRequirementsStatus">
+            <app-checkbox
+              (change)="checkElement(item, $event)"
+              class="checkbox-sm py-0 pt-1"
+              [value]="item.selected"
+            ></app-checkbox>
+            <label class="filter-item-label flex-1 mb-0 font-sm">
+              {{ item.label }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex ml-auto">
+      <div class="form-group pl-0 mr-2" [formGroup]="form">
+        <div class="input-group-icon input-group-icon-left pr-1 pb-1">
+          <input formControlName="searchTerm" type="text" class="form-control" placeholder="Rechercher" />
+          <span class="icon icon-search" aria-hidden="true"></span>
+        </div>
+      </div>
+      <app-details-add-button
+        *ngIf="
+          submission.status === SubmissionStatus.VALID &&
+          (Permission.SUBMISSION_REQUIREMENT_WRITE | appPermission) &&
+          (restrictionItems | appRestrictions) &&
+          isValidSubmissionProgressStatus
+        "
+        (onAdd)="openModal()"
+      ></app-details-add-button>
+    </div>
+  </div>
+  <div class="tab-container-requirments pt-14 pb-6">
+    <app-submission-requirements-list
+      (openModalDelete)="openDeleteModal($event)"
+      (openModalEdit)="openEditModal($event)"
+      (openModalRequirementObsolete)="openRequirementObsoleteModal($event)"
+      [filterSearch]="form"
+      [restrictionItems]="restrictionItems"
+    ></app-submission-requirements-list>
+  </div>
+</div>

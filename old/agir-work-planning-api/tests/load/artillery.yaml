@@ -1,0 +1,56 @@
+config: 
+  target: "https://api.dev.interne.montreal.ca"
+  defaults:
+    headers: 
+      accept: application/json
+      accept-language: fr
+  environments:
+    dev:
+      target: "https://api.dev.interne.montreal.ca"
+    accept:
+      target: "https://api.accept.interne.montreal.ca"
+  http:
+    timeout: 5 # Responses have 5 (s) or the request will be aborted.
+    pool: 20
+  phases: 
+    - name: "warm up, GET current user"
+      arrivalRate: 5 # virtual users/sec (u/s)
+      duration: 60 # sec (s)
+    - name: cruising, GET 100 projects"
+      arrivalRate: 10
+      duration: 120
+    - name: ramp up, GET 1000 to 5000 projects"
+      arrivalRate: 10
+      rampTo: 50
+      duration: 240
+    - name: mainting, GET 5000 projects"
+      arrivalRate: 50
+      duration: 60
+  variables:
+    accessToken: 
+      - ${TOKEN}
+scenarios: 
+  - name: "warm up, GET current user"
+    flow: 
+      - get: 
+          headers: 
+            Authorization: "{{accessToken}}"
+          url: /api/public-works/planning/v1/me
+  - name: "cruising, GET 100 projects"
+    flow: 
+      - get: 
+          headers: 
+            Authorization: "{{accessToken}}"
+          url: /api/public-works/planning/v1/projects?fromYear=2020&fromEndYear=2020&toStartYear=2022&limit=100&fields=startYear&fields=endYear&fields=geometryPin
+  - name: "ramp up, GET 5000 projects"
+    flow: 
+      - get: 
+          headers: 
+            Authorization: "{{accessToken}}"
+          url: /api/public-works/planning/v1/projects?fromYear=2020&fromEndYear=2020&toStartYear=2022&limit=5000&fields=startYear&fields=endYear&fields=geometryPin
+  - name: "mainting, GET 5000 projects"
+    flow: 
+      - get: 
+          headers: 
+            Authorization: "{{accessToken}}"
+          url: /api/public-works/planning/v1/projects?fromYear=2020&fromEndYear=2020&toStartYear=2022&limit=5000&fields=startYear&fields=endYear&fields=geometryPin

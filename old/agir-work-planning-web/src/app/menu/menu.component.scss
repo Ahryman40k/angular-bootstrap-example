@@ -1,0 +1,48 @@
+@import '../../styles/core/variables';
+@import '../../styles/core/mixins';
+
+$menu-width: 300px;
+
+:host {
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1031;
+}
+
+.panel-backdrop {
+  @include transition(vf, cubic-bezier(0, 0, 0.2, 1), opacity);
+  background-color: $color-black;
+  opacity: 0;
+
+  &.shown {
+    opacity: 0.5;
+  }
+}
+
+.menu-panel {
+  @include transition(vf, cubic-bezier(0, 0, 0.2, 1), transform);
+  transform: translateX(-#{$map-left-panel-width});
+  width: $menu-width;
+
+  &.shown {
+    transform: translateX(0);
+  }
+}
+
+.menu {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  cursor: pointer;
+  &.active,
+  &:hover {
+    color: $primary;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="container-fluid p-4">
+  <app-map-legend-header></app-map-legend-header>
+  <div class="row">
+    <div class="col-md-9">
+      <nav class="nav-tabs">
+        <ul class="nav" role="tablist">
+          <li class="nav-item" *ngFor="let item of navTabLinks">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="[item.link]">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="tab-content pl-0 legend-text">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <div class="col-md-3 pr-1">
+      <app-map-legend-external-resource></app-map-legend-external-resource>
+      <app-map-legend-info></app-map-legend-info>
+    </div>
+  </div>
+</div>

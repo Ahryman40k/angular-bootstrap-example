@@ -1,0 +1,35 @@
+@import 'variables';
+
+.bg-warning-reversed {
+  a:hover {
+    opacity: $opacity-60;
+    background-color: transparent;
+  }
+}
+
+.menu-link-active {
+  background-color: $color-aqua-spring;
+  border-right: solid 2px $color-turquoise-700;
+  .icon::before {
+    background-color: $color-turquoise-700 !important;
+  }
+  label {
+    font-weight: bold !important;
+    color: $color-turquoise-700;
+  }
+}
+
+.menu-link-active-filter {
+  position: relative;
+  &::before {
+    content: '·';
+    color: $color-turquoise-500;
+    position: absolute;
+    font-size: 48px;
+    left: -13px;
+    z-index: 1;
+    top: 15px;
+    line-height: 0;
+    pointer-events: none;
+  }
+}

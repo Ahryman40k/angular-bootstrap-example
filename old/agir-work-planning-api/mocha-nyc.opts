@@ -1,0 +1,8 @@
+--require ts-node/register
+--require source-map-support/register
+--recursive
+./src/**/*.test.ts
+./tests/**/*.test.ts
+--sort
+--timeout 6000
+--exit

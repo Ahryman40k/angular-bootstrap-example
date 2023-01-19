@@ -1,0 +1,8 @@
+<div class="d-flex py-2">
+  <div class="flex-2 d-flex flex-column">
+    <h6 class="mb-0" [ngClass]="titleClass"><ng-content select="[title]"></ng-content></h6>
+  </div>
+  <div class="flex-6 pr-3">
+    <h6 class="mb-0 word-break font-weight-normal"><ng-content select="[description]"></ng-content></h6>
+  </div>
+</div>

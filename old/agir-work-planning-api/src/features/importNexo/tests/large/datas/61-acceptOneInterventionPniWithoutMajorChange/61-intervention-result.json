@@ -1,0 +1,109 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-PNI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Réhabilitation / Segment d'aqueduc / Rue random 1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "rehabilitation",
+    "requestorId": "dre",
+    "boroughId": "LSL",
+    "status": "accepted",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "endYear": 2040,
+    "programId": "par",
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 200
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.56006771326065, 45.49876714523858],
+            [-73.55963587760925, 45.49922586978999]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-PNI-10032867"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "10032867"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 40,
+      "burnedDown": 0,
+      "balance": 40
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 40,
+          "annualLength": 0.2,
+          "accountId": 0,
+          "year": 2040,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 40,
+        "totalLength": 0.2,
+        "note": null
+      }
+    },
+    "decisionRequired": false,
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "decisions": [
+      {
+        "audit": "A_IGNORER",
+        "typeId": "accepted",
+        "text": "Accepté (Go)",
+        "targetYear": 2040,
+        "previousPlanificationYear": 2040,
+        "id": "A_IGNORER"
+      }
+    ],
+    "comments": [
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "requestor",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "isPublic": false,
+        "text": "Ceci est un autre commentaire."
+      },
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "requestor",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "isPublic": false,
+        "text": "Ceci est un commentaire."
+      }
+    ],
+    "documents": []
+  }
+]

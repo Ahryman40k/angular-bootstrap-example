@@ -1,0 +1,165 @@
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.card {
+    border: none;
+    padding: 5px 0;
+}
+
+p {
+    font-size: 12px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 15px 0 0;
+}
+
+.card-header:hover {
+    text-decoration: none;
+}
+
+.card-header-right-part {
+    display: flex;
+    align-items: center;
+}
+
+.card-header-right-part .checkbox-container {
+    margin-right: 15px;
+}
+
+.card-header .card-header-right-part p {
+    margin-bottom: 0;
+}
+
+.card-header p {
+    margin-bottom: 0;
+}
+
+.card-header .fa-angle-right {
+    font-size: 28px;
+    color: #505050;
+    transform: rotate(90deg) !important;
+}
+
+.card-header.collapsed .fa-angle-right {
+    transform: rotate(0deg) !important;
+}
+
+.card-body {
+    padding: 0 0 0 35px;
+}
+
+.card-body ul {
+    margin: 0;
+}
+
+.card-body .nested-layer {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.card-body .nested-layer > * {
+    margin-right: 10px;
+}
+
+.card-body .nested-layer p {
+    margin-bottom: 0;
+}
+
+.checkbox-container {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 2px;
+}
+
+.super-group-header {
+    background-color: #F9F9F9;
+    padding: 10px 15px;
+}
+
+/* Create a custom checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.checkbox-container .fa-check {
+    font-size: 14px;
+    color: #fff;
+}
+
+.bold-label {
+    font-weight: bold;
+}
+
+/* CHECKBOX STATES MANAGER */
+/* labels color */
+.label-active {
+    color: #505050;
+}
+
+.label-inactive {
+    color: #A9A9A9;
+}
+
+
+/* checkbox backgrounds */
+.checkbox-container.disabled-checked { 
+    background-color: #A9A9A9;
+    border: 2px solid #A9A9A9;
+}
+
+.checkbox-container.enabled-checked { 
+    background-color: #157FFB;
+    border: 2px solid #157FFB;
+}
+
+.checkbox-container.disabled-unchecked { 
+    background-color: #fff;
+    border: 2px solid #A9A9A9;
+}
+
+.checkbox-container.enabled-unchecked { 
+    background-color: #fff;
+    border: 2px solid #157FFB
+}
+
+/* checkmark color */
+.checkbox-container.disabled-checked .fa-check,
+.checkbox-container.enabled-checked .fa-check {
+    display: inline-block;
+}
+
+.checkbox-container.disabled-unchecked .fa-check,
+.checkbox-container.enabled-unchecked .fa-check {
+    display: none;
+}

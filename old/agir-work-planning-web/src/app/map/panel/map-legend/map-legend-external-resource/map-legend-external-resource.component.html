@@ -1,0 +1,15 @@
+<h5>Ressources externes d'aide</h5>
+
+<div class="list list-md mt-2">
+
+  <div class="list-item-icon" *ngFor="let link of externalResource$ | async">
+
+    <div class="list-item-icon-action">
+      <a href="{{link.properties.url}}" target="_blank" class="link-has-icon legend-link">
+        <div><span class="icon icon-externallink"></span></div>
+        <div><span class="link-icon-label">{{link.label.fr}}</span></div>
+      </a>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.progress-bar {
+  border-width: 0.2rem;
+}
+
+.progress-circle {
+  height: 20px;
+  width: 20px;
+}
+
+.progress-circle::after {
+  border: 0.2rem solid #dee2e6;
+}

@@ -1,0 +1,20 @@
+.other-information-comment-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+app-more-options-button.other-information-comment-options {
+  // margin-top and height here are random values to make sure the button is centered. It's not worth creating a variable.
+  margin-top: -6px;
+
+  > div.dropdown {
+    height: 16px;
+    > button {
+      padding: 0;
+    }
+  }
+}
+
+.more-information app-no-result span {
+  padding-top: 0 !important;
+}

@@ -1,0 +1,18 @@
+.btnOkCancelTool {
+  background-color: white;
+  padding: 8pt;
+}
+
+.btnOkCancelTool button {
+  vertical-align: middle;
+}
+
+.done {
+  color: green;
+  background-color: green;
+}
+
+.cancel {
+  color: red;
+  background-color: red;
+}

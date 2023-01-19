@@ -1,0 +1,18 @@
+<div class="d-flex">
+  <div class="flex-grow-1 mr-1">
+    <button class="btn btn-secondary btn-icon btn-squared flex-grow-1" (click)="onDirectionChange()">
+      <i class="icon" [ngClass]="value?.direction === 'asc' ? 'icon-sort-up' : 'icon-sort-down'"></i>
+    </button>
+  </div>
+  <div class="flex-grow-1 sort-width">
+    <vdm-select
+      class="filter-select"
+      [ngSelectClass]="ngSelectClass"
+      bindLabel="label"
+      bindValue="key"
+      [ngModel]="value?.key"
+      [items]="filters"
+      (ngModelChange)="onSortKeyChange($event)"
+    ></vdm-select>
+  </div>
+</div>

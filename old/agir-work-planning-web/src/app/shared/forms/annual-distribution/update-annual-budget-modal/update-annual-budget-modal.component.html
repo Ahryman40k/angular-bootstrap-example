@@ -1,0 +1,24 @@
+<app-layout-modal modalTitle="Modifier les données du projet non-géolocalisé">
+  <div body>
+    <form class="mb-2" [formGroup]="form">
+      <label class="font-weight-bold form-label-optional">
+        Notes
+        <span class="form-optional">Facultatif</span>
+      </label>
+      <textarea formControlName="notes" class="form-control w-100"></textarea>
+    </form>
+  </div>
+  <div buttons>
+    <button
+      type="button"
+      class="btn btn-tertiary btn-squared bg-white mr-2"
+      (click)="cancel()"
+      [disabled]="isSubmitting"
+    >
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="isSubmitting">
+      Modifier
+    </button>
+  </div>
+</app-layout-modal>

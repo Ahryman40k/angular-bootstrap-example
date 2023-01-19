@@ -1,0 +1,179 @@
+[
+  {
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": [
+      "priority",
+      "urgent"
+    ],
+    "boroughId": "VM",
+    "comments": [],
+    "endYear": 2043,
+    "executorId": "dre",
+    "geometry": null,
+    "globalBudget": {
+      "allowance": 542
+    },
+    "importFlag": null,
+    "inChargeId": null,
+    "interventionIds": [],
+    "servicePriorities": [],
+    "projectName": "This is a project name.",
+    "projectTypeId": "other",
+    "startYear": 2041,
+    "status": "canceled",
+    "streetName": null,
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "rank": 0,
+          "year": 2041,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 987654
+            },
+            {
+              "type": "others",
+              "amount": 0,
+              "accountId": 987654
+            },
+            {
+              "type": "professionalServices",
+              "amount": 20,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 30,
+              "accountId": 456789
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 60,
+          "annualBudget": 60,
+          "status": "canceled",
+          "categoryId": "new",
+          "programBookId": null
+        },
+        {
+          "rank": 1,
+          "year": 2042,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 0
+            },
+            {
+              "type": "others",
+              "amount": 0
+            },
+            {
+              "type": "professionalServices",
+              "amount": 0
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 0,
+          "status": "canceled",
+          "categoryId": "completing",
+          "programBookId": null
+        },
+        {
+          "rank": 2,
+          "year": 2043,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 0
+            },
+            {
+              "type": "others",
+              "amount": 0
+            },
+            {
+              "type": "professionalServices",
+              "amount": 0
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 0,
+          "status": "canceled",
+          "categoryId": "completing",
+          "programBookId": null
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 60,
+        "additionalCostTotals": [
+          {
+            "type": "contingency",
+            "amount": 10,
+            "note": "This is a contingency note."
+          },
+          {
+            "type": "others",
+            "amount": 0,
+            "note": "This is an other note."
+          },
+          {
+            "type": "professionalServices",
+            "amount": 20,
+            "note": "This is a professional services note."
+          },
+          {
+            "type": "workExpenditures",
+            "amount": 30,
+            "note": "This is a work expenditures notes."
+          }
+        ],
+        "totalAdditionalCosts": 60,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 0
+      }
+    },
+    "decisions": [
+      {
+        "audit": "A_IGNORER",
+        "id": "A_IGNORER",
+        "endYear": null,
+        "startYear": null,
+        "text": "This is a cancel decision.",
+        "typeId": "canceled"
+      },
+      {
+        "audit": "A_IGNORER",
+        "id": "A_IGNORER",
+        "endYear": 2043,
+        "previousEndYear": 2042,
+        "previousStartYear": 2040,
+        "startYear": 2041,
+        "text": "This is a reschedule decision.",
+        "typeId": "replanned"
+      }
+    ],
+    "documents": [],
+    "medalId": null,
+    "roadNetworkTypeId": null,
+    "streetFrom": null,
+    "streetTo": null,
+    "id": "P00002",
+    "length": {
+      "value": 0,
+      "unit": "m"
+    }
+  }
+]

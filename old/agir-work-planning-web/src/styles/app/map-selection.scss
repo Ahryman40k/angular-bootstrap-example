@@ -1,0 +1,13 @@
+.map-selection-item {
+  @extend .p-2;
+  @extend .border-bottom;
+
+  .card {
+    display: block;
+  }
+}
+
+app-map-selection-distance-results {
+  @extend .p-2;
+  display: block;
+}

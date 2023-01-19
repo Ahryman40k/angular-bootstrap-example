@@ -1,0 +1,20 @@
+@import '../../../styles/core/variables';
+
+$width-card: 320px;
+$height-card: 141px;
+$line-height: 110px;
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .card {
+    width: $width-card;
+    height: $height-card;
+    border-color: $color-gray-300;
+    .submission-number,
+    .projects,
+    .status {
+      height: $line-height;
+    }
+  }
+}

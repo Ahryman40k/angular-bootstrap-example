@@ -1,0 +1,21 @@
+<app-popup-layout colorClass="borough-count">
+  <app-borough-count-card
+    [projectCount]="projectCount"
+    [interventionCount]="interventionCount"
+    [boroughName]="boroughId | appTaxonomy: 'borough'"
+  >
+    <div *ngIf="(countByMedal$ | async)?.length" medal>
+      <div class="d-flex mt-1">
+        <span class="font-sm text-dark mb-1">Médailles des projets</span>
+      </div>
+      <div class="d-flex align-content-center align-items-center flex-wrap">
+        <app-medal
+          class="mr-1"
+          *ngFor="let medal of countByMedal$ | async"
+          [medalId]="medal.id"
+          [count]="medal.count"
+        ></app-medal>
+      </div>
+    </div>
+  </app-borough-count-card>
+</app-popup-layout>

@@ -1,0 +1,45 @@
+@import '../../../../styles/core/variables';
+@import '../../../../styles/core/mixins';
+
+$bottom-panel-height: 300px;
+$border-radius: 4px;
+$year-input-width: 50px;
+$activity-section-height: 70%;
+
+:host {
+  width: 100%;
+}
+
+.map-panel {
+  background-color: $map-panel-bg-color;
+  height: $bottom-panel-height;
+  z-index: 2;
+}
+
+.close-panel {
+  background-color: $map-panel-bg-color;
+  bottom: $bottom-panel-height;
+  border-top-right-radius: $border-radius;
+}
+
+.section-select {
+  width: 300px;
+}
+
+.year-input {
+  width: $year-input-width;
+}
+
+.left-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.right-input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.activity-section {
+  height: $activity-section-height;
+}

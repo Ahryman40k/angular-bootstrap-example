@@ -1,0 +1,26 @@
+<div *ngIf="columnOptions" class="responsive-table-row align-items-stretch borderoffset">
+  <ng-container *ngFor="let column of columns; let last = last">
+    <app-table-column-item
+      class="{{ column.className }}  px-0 d-flex"
+      [ngClass]="last ? 'flex-1 last-element' : ''"
+      [id]="column.columnName"
+      [value]="columnOptions[column.columnName]?.value"
+      [condition]="undefined"
+      [columnClass]="column.columnName"
+      [link]="columnOptions[column.columnName]?.link"
+      [isBadge]="columnOptions[column.columnName]?.isBadge"
+      [innerClass]="columnOptions[column.columnName]?.innerClass"
+      [taxonomyGroup]="columnOptions[column.columnName]?.taxonomyGroup"
+    >
+    </app-table-column-item>
+  </ng-container>
+  <div class="table-body-cell col-options d-flex flex-1 justify-content-end">
+    <app-more-options-button
+      #moreOptions
+      [dropdownPlacement]="['left-top', 'left-bottom']"
+      dropdownContainer="body"
+      [disabled]="disableMenu"
+      [items]="menuItems"
+    ></app-more-options-button>
+  </div>
+</div>

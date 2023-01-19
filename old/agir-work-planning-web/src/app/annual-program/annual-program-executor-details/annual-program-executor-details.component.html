@@ -1,0 +1,77 @@
+<div class="nav-header p-3 d-flex border-bottom border-width-sm">
+  <div class=" d-flex flex-column justify-content-center">
+    <a class="text-secondary clickable d-flex font-md" [routerLink]="['/annual-programs/']">
+      Programmations annuelles
+    </a>
+  </div>
+  <div class="d-flex flex-column justify-content-center mx-1">
+    <em class="icon icon-chevron-right icon-xs"></em>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <a
+      [routerLink]="['/annual-programs/executor/' + (currentExecutor | async)?.code]"
+      class="text-secondary clickable d-flex font-md"
+      >{{ (currentExecutor | async)?.label?.fr }}</a
+    >
+  </div>
+  <div class="d-flex flex-column justify-content-center mx-1">
+    <em class="icon icon-chevron-right icon-xs"></em>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <a class="text-secondary clickable d-flex font-md"
+      >{{ (currentExecutor | async)?.label?.fr }} {{ currentAnnualProgram?.year }}</a
+    >
+  </div>
+</div>
+<div class="d-flex px-3 justify-content-between pb-name pt-2">
+  <h3>{{ (currentExecutor | async)?.label?.fr }} {{ currentAnnualProgram?.year }}</h3>
+  <div class="d-flex">
+    <app-more-options-button
+      *ngIf="'PROGRAM_BOOK:WRITE' | appPermission"
+      buttonClass="p-0 ml-auto"
+      [items]="menuItems(currentAnnualProgram) | async"
+    ></app-more-options-button>
+    <button class="btn btn-primary btn-squared bg-green btn-md ml-2" (click)="viewMap()">
+      <i class="icon icon-color-secondary icon-map"></i>
+      Voir sur la carte
+    </button>
+  </div>
+</div>
+
+<div class="d-flex px-3 year pb-2">
+  <span
+    [ngClass]="{
+      'badge-success': currentAnnualProgram?.status === 'new',
+      'badge-success-light': currentAnnualProgram?.status === 'programming',
+      'badge-gray': currentAnnualProgram?.status === 'submittedFinal'
+    }"
+    class="badge"
+    >{{ currentAnnualProgram?.status | appTaxonomy: 'annualProgramStatus' }}</span
+  >
+</div>
+<div class="pl-mb-4 px-3 nav-tabs">
+  <nav class="nav-tabs">
+    <ul class="nav" role="tablist">
+      <ng-container *ngFor="let item of navItems">
+        <li class="nav-item d-flex" *ngIf="(item.permission | appPermission) || !item.permission">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="item.url">
+            {{ item.label }}
+            <span
+              *ngIf="item.hasCount && item.name === TabsNames.submittedInterventions && interventionCount > 0"
+              class="count-badge"
+              >{{ interventionCount }}</span
+            >
+            <span
+              *ngIf="item.hasCount && item.name === TabsNames.projectsToSchedule && projectToScheduleCount > 0"
+              class="count-badge"
+              >{{ projectToScheduleCount }}</span
+            >
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>
+</div>
+<div class="px-3 tab-container scrollable">
+  <router-outlet></router-outlet>
+</div>

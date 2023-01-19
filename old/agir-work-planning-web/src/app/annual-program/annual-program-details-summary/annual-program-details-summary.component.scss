@@ -1,0 +1,8 @@
+.table-label-value td.nromal-title {
+  font-weight: normal;
+}
+.table-label-value tr > td:not(:first-child).text-bold{
+  font-weight: bold !important;
+    color: #000 !important;
+}
+

@@ -1,0 +1,13 @@
+<app-layout-modal modalTitle="Ajouter un commentaire" *ngIf="form">
+  <div body>
+    <app-comment-form-layout [form]="form" [commentCategories]="commentCategories$ | async" [canWritePrivateComment]="canWritePrivateComment"></app-comment-form-layout>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()">
+      Annuler
+    </button>
+    <button type="submit" class="btn btn-primary btn-squared add-button" (click)="submit()">
+      Ajouter
+    </button>
+  </div>
+</app-layout-modal>

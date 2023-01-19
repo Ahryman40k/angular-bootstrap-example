@@ -1,0 +1,134 @@
+[
+  {
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": [
+      "priority",
+      "urgent"
+    ],
+    "boroughId": "VM",
+    "comments": [],
+    "endYear": 2042,
+    "executorId": "dre",
+    "geometry": null,
+    "globalBudget": {
+      "allowance": 542
+    },
+    "importFlag": null,
+    "inChargeId": null,
+    "interventionIds": [],
+    "servicePriorities": [],
+    "projectName": "This is a project name.",
+    "projectTypeId": "other",
+    "startYear": 2040,
+    "status": "planned",
+    "streetName": null,
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "rank": 0,
+          "year": 2040,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 0,
+              "accountId": 654321
+            },
+            {
+              "type": "others",
+              "amount": 10,
+              "accountId": 654321
+            },
+            {
+              "type": "professionalServices",
+              "amount": 20,
+              "accountId": 123456
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 30,
+              "accountId": 123456
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 60,
+          "annualBudget": 60,
+          "status": "planned",
+          "categoryId": "new"
+        },
+        {
+          "rank": 1,
+          "year": 2041,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 987654
+            },
+            {
+              "type": "others",
+              "amount": 0,
+              "accountId": 987654
+            },
+            {
+              "type": "professionalServices",
+              "amount": 20,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 30,
+              "accountId": 456789
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 60,
+          "annualBudget": 60,
+          "status": "planned",
+          "categoryId": "completing"
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 120,
+        "additionalCostTotals": [
+          {
+            "type": "contingency",
+            "amount": 10,
+            "note": "This is a contingency note."
+          },
+          {
+            "type": "others",
+            "amount": 10,
+            "note": "This is an other note."
+          },
+          {
+            "type": "professionalServices",
+            "amount": 40,
+            "note": "This is a professional services note."
+          },
+          {
+            "type": "workExpenditures",
+            "amount": 60,
+            "note": "This is a work expenditures notes."
+          }
+        ],
+        "totalAdditionalCosts": 120,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 0
+      }
+    },
+    "decisions": [],
+    "documents": [],
+    "medalId": null,
+    "roadNetworkTypeId": null,
+    "streetFrom": null,
+    "streetTo": null,
+    "id": "P00002",
+    "length": {
+      "value": 0,
+      "unit": "m"
+    }
+  }
+]

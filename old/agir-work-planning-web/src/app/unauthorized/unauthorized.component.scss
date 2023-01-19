@@ -1,0 +1,22 @@
+@import '../../styles/core/variables';
+
+.right-col{
+  height: 100vh;
+  background: url('../../assets/images/not-access-page-image.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.title-message{
+font-family: 'Open Sans';
+font-size: $font-size-32;
+line-height: 40px;
+color: $color-shark;
+}
+.text-message{
+font-size: $font-size-14;
+color: $color-pale-sky;
+font-family: 'Open Sans';
+line-height: 24px;
+
+}

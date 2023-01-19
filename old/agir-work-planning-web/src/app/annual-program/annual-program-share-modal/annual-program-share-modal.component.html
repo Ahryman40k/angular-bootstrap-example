@@ -1,0 +1,42 @@
+<app-layout-modal [modalTitle]="title">
+  <div body>
+    <app-alert type="warning" *ngIf="programBooksStatusesAreValid; else errorMessage">
+      <span title>Attention!</span>
+      <span description
+        >La diffusion finale de la programmation annuelle est irréversible. Êtes-vous certain de vouloir
+        continuer?</span
+      >
+    </app-alert>
+    <ng-template #errorMessage>
+      <app-alert type="danger">
+        <span title>Impossible de diffuser la programmation</span>
+        <span description
+          >Certain(s) carnet(s) contenu(s) dans cette programmation sont en cours de programmation ce qui empêche sa
+          diffusion.</span
+        >
+      </app-alert>
+    </ng-template>
+  </div>
+
+  <div buttons>
+    <button
+      type="button"
+      [ngClass]="
+        programBooksStatusesAreValid
+          ? 'btn btn-tertiary btn-squared bg-white mr-2'
+          : 'btn btn-primary btn-squared add-button'
+      "
+      (click)="cancel()"
+    >
+      {{ programBooksStatusesAreValid ? 'Annuler' : 'Fermer' }}
+    </button>
+    <button
+      *ngIf="programBooksStatusesAreValid"
+      type="submit"
+      class="btn btn-primary btn-squared add-button"
+      (click)="submit()"
+    >
+      Diffuser
+    </button>
+  </div>
+</app-layout-modal>

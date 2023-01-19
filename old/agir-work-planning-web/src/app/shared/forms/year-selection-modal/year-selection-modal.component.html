@@ -1,0 +1,21 @@
+<app-layout-modal [modalTitle]="title" *ngIf="form">
+  <div body>
+    <form [formGroup]="form">
+      <div class="form-group col-md-6">
+        <label for="year">{{ formMessage }}</label>
+        <vdm-select appendTo="app-year-selection-modal" formControlName="year" [items]="years"></vdm-select>
+        <app-form-errors formControlName="year">
+          <app-form-error *appFormError="let e; key: 'required'">L'année est requise</app-form-error>
+        </app-form-errors>
+      </div>
+    </form>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()">
+      Annuler
+    </button>
+    <button type="submit" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="submitting">
+      {{ buttonLabel }}
+    </button>
+  </div>
+</app-layout-modal>

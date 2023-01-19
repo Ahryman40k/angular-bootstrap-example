@@ -1,0 +1,4 @@
+<div class="map-selection-item">
+  <app-rtu-project-card *ngIf="rtuProject" class="card elevation p-2 m-0" [rtuProject]="rtuProject"></app-rtu-project-card>
+  <app-spinner-card *ngIf="!rtuProject"></app-spinner-card>
+</div>

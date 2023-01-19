@@ -1,0 +1,40 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "failure",
+      "numberOfItems": 3,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"La géométrie fournie à la ligne 1 n'est pas une géométrie GeoJSON valide.\""
+        },
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 2,
+          "description": "\"La géométrie fournie à la ligne 2 n'est pas une géométrie GeoJSON valide.\""
+        },
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 3,
+          "description": "\"La géométrie fournie à la ligne 3 n'est pas une géométrie GeoJSON valide.\""
+        }
+      ]
+    }
+  ]
+}

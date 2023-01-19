@@ -1,0 +1,50 @@
+@import '../../../../styles/core/mixins';
+@import '../../../../styles/core/variables';
+
+$header-bar-height: 7px;
+$icon-size: 15px;
+$icon-padding-top: 3px;
+$details-text-padding-bottom: 33px;
+
+.header-bar {
+  height: $header-bar-height;
+  border-radius: 6px 6px 0 0;
+}
+
+.header-bar.intervention {
+  background-color: $color-pink;
+}
+
+.header-bar.intervention-decision-required {
+  background-color: $color-decision-red;
+}
+
+.header-bar.past-project {
+  background-color: $color-purple;
+}
+
+.header-bar.present-project {
+  background-color: $color-green;
+}
+
+.header-bar.future-project {
+  background-color: $color-sky;
+}
+
+.header-bar.asset {
+  background-color: $color-purple;
+}
+
+.icon {
+  position: absolute;
+  padding-top: $icon-padding-top;
+}
+
+.details-text {
+  cursor: pointer;
+  float: right;
+}
+
+.details {
+  padding-bottom: $details-text-padding-bottom;
+}

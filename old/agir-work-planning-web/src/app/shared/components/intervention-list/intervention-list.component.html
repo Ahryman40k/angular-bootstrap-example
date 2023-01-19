@@ -1,0 +1,75 @@
+<div class="scrollable list-height h-100" *ngIf="selectedInterventions?.length">
+  <div class="mr-1" *ngIf="isReadOnly">
+    <div
+      class="item-list-hover border-bottom d-flex py-1"
+      *ngFor="let selectedIntervention of selectedInterventions"
+      (mouseenter)="hoverIntervention(selectedIntervention)"
+      (mouseleave)="hoverIntervention()"
+      [ngClass]="{'hover': selectedIntervention.highlighted}"
+    >
+      <div class="ml-1 w-100">
+        <div class="d-flex">
+            <h5 class="mr-1">
+              <a appWindowLink href="{{interventionService.getInterventionLink(selectedIntervention.intervention)}}" appStopProp>{{ selectedIntervention.intervention.id }}</a>
+            </h5>
+              <span class="badge badge-success-light">
+                {{ selectedIntervention.intervention?.interventionTypeId | appTaxonomy: 'interventionType' | vdmNa }}
+              </span>
+        </div>
+        <span class="font-sm mr-1">
+          {{ selectedIntervention.intervention?.workTypeId | appTaxonomy: 'workType' | vdmNa }}
+          <strong>&nbsp;/&nbsp;</strong>
+          {{ selectedIntervention.intervention?.assets[0]?.typeId | appTaxonomy: 'assetType' | vdmNa }}
+          <strong>&nbsp;/&nbsp;</strong>
+          {{ selectedIntervention.intervention?.streetName | vdmNa }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mr-1" *ngIf="!isReadOnly">
+    <div
+      class="item-list-hover border-bottom d-flex py-1"
+      *ngFor="let selectedIntervention of selectedInterventions"
+      (mouseenter)="hoverIntervention(selectedIntervention)"
+      (mouseleave)="hoverIntervention()"
+      [ngClass]="{'hover': selectedIntervention.highlighted}"
+    >
+      <div class="ml-1 w-100 d-flex justify-content-between">
+        <div class="flex-grow-1">
+          <h5 class="mr-1" [class.text-warning]="selectedIntervention.intervention?.decisionRequired">{{ selectedIntervention.intervention?.interventionName }}</h5>
+
+          <span class="font-sm mr-1">
+            <a appWindowLink href="{{interventionService.getInterventionLink(selectedIntervention.intervention)}}">
+              {{ selectedIntervention.intervention.id }}
+            </a>
+            <strong>&nbsp;·&nbsp;</strong>
+            {{ selectedIntervention.intervention?.estimate?.allowance | vdmCurrencyK | vdmNa }}
+            <strong>&nbsp;·&nbsp;</strong>
+            {{ selectedIntervention.intervention?.requestorId | appTaxonomy: 'requestor' }}
+            <strong>&nbsp;·&nbsp;</strong>
+            {{ selectedIntervention.intervention?.interventionTypeId | appTaxonomy: 'interventionType' }}
+          </span>
+        </div>
+        <div class="flex-grow d-flex justify-content-center align-items-center pr-1">
+          <button
+            *ngIf="inInterventionList(selectedIntervention.intervention.id)"
+            class="btn btn-secondary btn-squared btn-icon"
+            (click)="removeIntervention(selectedIntervention.intervention)"
+            [disabled]="!canRemoveInterventionFromProject()"
+          >
+            <i class="icon icon-minus"></i>
+          </button>
+          <button
+            *ngIf="!inInterventionList(selectedIntervention.intervention.id)"
+            class="btn btn-primary btn-squared btn-icon"
+            (click)="addIntervention(selectedIntervention.intervention)"
+            [disabled]="!canAddInterventionToProject(selectedIntervention.intervention)"
+          >
+            <i class="icon icon-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

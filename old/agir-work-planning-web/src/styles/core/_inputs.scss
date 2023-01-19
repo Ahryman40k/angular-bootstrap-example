@@ -1,0 +1,34 @@
+textarea {
+  @include scrollbar(vertical);
+}
+
+.input-group > .form-control:not(:last-child) {
+  border-right: 0 !important;
+}
+
+.input-group .input-group-append button {
+  border: 1px solid $color-gray-300 !important;
+  border-left: 0 !important;
+}
+
+.input-group.form-control {
+  &:focus-within {
+    @extend .border-primary;
+
+    .icon-focus-within {
+      @extend .icon-color-primary;
+    }
+  }
+
+  input.form-control {
+    box-shadow: none;
+    height: $input-group-form-control-height;
+    margin-top: $input-group-form-control-margin-top;
+  }
+
+  padding: 0;
+}
+
+.form-control-sm {
+  height: $form-control-sm;
+}

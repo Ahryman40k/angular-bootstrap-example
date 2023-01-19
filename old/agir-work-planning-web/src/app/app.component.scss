@@ -1,0 +1,16 @@
+@import '../styles/core/mixins';
+$header-height: 69px;
+
+.main {
+  @include scrollbar(vertical);
+  height: calc(100% - #{$header-height});
+}
+
+.main-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+.main-without-header {
+  height: 100%;
+}

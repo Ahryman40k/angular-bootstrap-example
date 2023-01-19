@@ -1,0 +1,96 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+  
+      // ==========================================
+      // Debug a Gulp task.
+      // ==========================================
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug a Gulp task",
+        "preLaunchTask": "tsc",
+        "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+        "args": [
+          "test", // The task to debug
+          "--nc" // We already ran the compilation as a "preLaunchTask"!
+        ],
+        "env": {
+          "ide": "true"
+        },
+        "sourceMaps": true,
+        "timeout": 10000,
+        "internalConsoleOptions": "neverOpen",
+        "console": "integratedTerminal",
+        "outputCapture": "std",
+        "protocol": "inspector"
+      },
+  
+      // ==========================================
+      // Debug all test files
+      // ==========================================
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug all tests",
+        "preLaunchTask": "tsc",
+        "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+        "args": ["${workspaceRoot}/dist/src/**/*.test.js", "${workspaceRoot}/tests/**/*.test.js", "--no-timeouts", "--exit"],
+        "env": {
+          "ide": "true",
+          "NODE_APP_INSTANCE": "tests"
+        },
+        "sourceMaps": true,
+        "timeout": 10000,
+        "internalConsoleOptions": "neverOpen",
+        "console": "integratedTerminal",
+        "outputCapture": "std",
+        "protocol": "inspector"
+      },
+
+      // ==========================================
+      // Debug a specific test file
+      // ==========================================
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug a test file",
+        "preLaunchTask": "tsc",
+        "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+        "args": [
+          "${workspaceRoot}/dist/src/exampleComponent.test.js", // The path to the test file (the .js) in the "dist" folder!            
+          "--no-timeouts",
+          "--exit"
+        ],
+        "env": {
+          "ide": "true",
+          "NODE_APP_INSTANCE": "tests"
+        },
+        "sourceMaps": true,
+        "timeout": 10000,
+        "internalConsoleOptions": "neverOpen",
+        "console": "integratedTerminal",
+        "outputCapture": "std",
+        "protocol": "inspector"
+      },
+  
+      // ==========================================
+      // Debug the 'src/test.ts' file.
+      // ==========================================
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug the 'src/test.ts' file",
+        "preLaunchTask": "tsc",
+        "program": "${workspaceRoot}/dist/src/test.js",
+        "outFiles": [],
+        "sourceMaps": true,
+        "timeout": 20000,
+        "internalConsoleOptions": "neverOpen",
+        "console": "integratedTerminal",
+        "outputCapture": "std",
+        "protocol": "inspector"
+      }
+    ]
+  }
+  

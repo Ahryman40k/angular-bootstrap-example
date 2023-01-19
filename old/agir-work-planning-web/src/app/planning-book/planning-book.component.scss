@@ -1,0 +1,84 @@
+@import '../../../src/styles/core/variables';
+@import '../../../src/styles/core/mixins';
+
+$input-toggle-box-padding: 0 4px 0 5px;
+$sign-margin-top: -2px;
+$sign-padding-right: 1px;
+$toggle-button-box-border-radius: 4px;
+$toggle-button-box-height: 40px;
+$toggle-button-box-padding: 0 4px;
+$year-input-two-digit-width: 17px;
+$year-input-width: 9px;
+$year-select-margin: 0 7px 0;
+$year-select-padding: 3px;
+$lighterGray: #d9d9d9;
+$lightGreen: #EEFAF8;
+
+:host {
+  background: $color-white;
+}
+
+.input-toggle-box {
+  padding: $input-toggle-box-padding;
+}
+
+.year-select-sign {
+  margin-top: $sign-margin-top;
+  padding-right: $sign-padding-right;
+}
+
+.toggle-button-box {
+  border-radius: $toggle-button-box-border-radius;
+  height: $toggle-button-box-height;
+  padding: $toggle-button-box-padding;
+}
+
+.year-input {
+  font-size: $font-size-14;
+  line-height: $line-height-28;
+  width: $year-input-width;
+}
+
+.year-input:focus {
+  outline: 0;
+}
+
+.year-input.two-digits {
+  width: $year-input-two-digit-width;
+}
+
+.more {
+  cursor: pointer;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-separator {
+  background-color: $lighterGray;
+  width: 1px;
+}
+.label-center {
+  text-align: center;
+}
+
+.search-bar {
+  border: hidden;
+  width: auto;
+
+  &:focus-within {
+    width: $search-bar-max-width;
+  }
+}
+
+.year-select {
+  cursor: pointer;
+  margin: $year-select-margin;
+  padding: $year-select-padding;
+}
+
+.btn-selected {
+  background-color: $lightGreen;
+}

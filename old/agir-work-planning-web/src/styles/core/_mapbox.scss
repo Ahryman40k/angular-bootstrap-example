@@ -1,0 +1,9 @@
+@import 'variables';
+
+.mapboxgl-popup-content {
+  @extend .shadow-sm;
+  border-radius: $popup-border-radius;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: $popup-width;
+}

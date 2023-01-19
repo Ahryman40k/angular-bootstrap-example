@@ -1,0 +1,60 @@
+<app-details-layout>
+  <span title>Décisions</span>
+  <div actions>
+    <app-details-add-button
+      *ngIf="
+        (Permission.INTERVENTION_DECISION_CANCELED_CREATE | appPermission) &&
+        (interventionRestrictionItems | appRestrictions)
+      "
+      [disabled]="intervention?.status === InterventionStatus.canceled"
+      (onAdd)="openCreateModal()"
+    ></app-details-add-button>
+  </div>
+  <app-decision-required
+    [restrictionItems]="interventionRestrictionItems"
+    (onAccept)="acceptDecision()"
+    (onRefuse)="openRefuseModal()"
+    *ngIf="isDecisionRequired && (Permission.INTERVENTION_DECISION_ACCEPTED_REFUSED_CREATE | appPermission)"
+  ></app-decision-required>
+  <app-no-result
+    *ngIf="!(decisions$ | async)?.length"
+    message="Il n'y a pas de décisions dans cette intervention pour l'instant."
+  ></app-no-result>
+  <app-list-item *ngFor="let decision of decisions$ | async; let i = index">
+    <span title>{{ decision.typeId | appTaxonomy: 'interventionDecisionType' }}</span>
+    <span description>
+      <label>{{ decision.audit?.createdBy.displayName }}</label>
+      <label>Créé le {{ decision.audit?.createdAt | date: 'longDate' }}</label>
+    </span>
+    <span description-details>
+      <label *ngIf="decision.previousPlanificationYear">
+        Année de planification précédente: {{ decision.previousPlanificationYear }}
+      </label>
+      <label *ngIf="decision.targetYear">Année cible: {{ decision.targetYear }}</label>
+    </span>
+    <app-list-item-details>
+      <app-list-item-details-field *ngIf="decision.refusalReasonId">
+        <span title>Raison du refus</span>
+        <span description>{{ decision.refusalReasonId | appTaxonomy: 'interventionDecisionRefused' }}</span>
+      </app-list-item-details-field>
+      <app-list-item-details-field>
+        <span title>Justificatifs</span>
+        <span description>{{ decision.text }}</span>
+      </app-list-item-details-field>
+      <div actions>
+        <button
+          class="btn btn-secondary btn-squared font-weight-bold bg-white"
+          (click)="openRevisionModal()"
+          [disabled]="windowService.isCanceled$ | async"
+          *ngIf="
+            canMakeRevision(decision, i) &&
+            (Permission.INTERVENTION_DECISION_REVISION_REQUEST_CREATE | appPermission) &&
+            (interventionRestrictionItems | appRestrictions)
+          "
+        >
+          Demander une révision
+        </button>
+      </div>
+    </app-list-item-details>
+  </app-list-item>
+</app-details-layout>

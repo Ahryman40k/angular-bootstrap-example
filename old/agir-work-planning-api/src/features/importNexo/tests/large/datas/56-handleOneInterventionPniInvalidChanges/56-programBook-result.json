@@ -1,0 +1,96 @@
+[
+  {
+    "id": "A_IGNORER",
+    "annualProgramId": "A_IGNORER",
+    "annualProgram": null,
+    "projects": null,
+    "removedProjects": null,
+    "name": "This is the program book name.",
+    "projectTypes": ["nonIntegrated"],
+    "inCharge": "This is the guy in charge.",
+    "boroughIds": ["MTL"],
+    "sharedRoles": ["EXECUTOR", "INTERNAL-GUEST-STANDARD", "INTERNAL-GUEST-RESTRICTED"],
+    "status": "submittedFinal",
+    "objectives": [],
+    "removedProjectsIds": [],
+    "priorityScenarios": [
+      {
+        "id": "A_IGNORER",
+        "name": "scenario1",
+        "priorityLevels": [
+          {
+            "rank": 1,
+            "criteria": {
+              "projectCategory": [
+                {
+                  "category": "completing",
+                  "subCategory": null
+                }
+              ],
+              "workTypeId": [],
+              "requestorId": [],
+              "assetTypeId": [],
+              "interventionType": [],
+              "servicePriorities": []
+          },
+            "isSystemDefined": true,
+            "projectCount": 0,
+            "sortCriterias": [
+              {
+                "name": "numberOfInterventionsPerProject(1)",
+                "rank": 1,
+                "service": null
+              }, 
+              {
+                "name": "numberOfContributionsToThreshold(2)",
+                "rank": 2,
+                "service": null
+              },
+              {
+                "name": "roadNetworkType(3)",
+                "rank": 3,
+                "service": null
+              },
+              {
+                "name": "projectBudget(4)",
+                "rank": 4,
+                "service": null
+              }, 
+              {
+                "name": "projectId(5)",
+                "rank": 5,
+                "service": null
+              }
+            ]
+          }
+        ],
+        "orderedProjects": {
+          "paging": {
+            "totalCount": 1,
+            "offset": 0,
+            "limit": 100
+          },
+          "items": [
+            {
+              "isManuallyOrdered": false,
+              "projectId": "P00002",
+              "levelRank": null,
+              "initialRank": null,
+              "rank": 1,
+              "audit": "A_IGNORER",
+              "note": null,
+              "objectivesCalculation": null
+            }
+          ]
+        },
+        "isOutdated": true,
+        "status": "pending",
+        "audit": "A_IGNORER"
+      }
+    ],
+    "programTypes": ["par"],
+    "description": "This is the description content.",
+    "isAutomaticLoadingInProgress": false,
+    "audit": "A_IGNORER"
+  }
+]

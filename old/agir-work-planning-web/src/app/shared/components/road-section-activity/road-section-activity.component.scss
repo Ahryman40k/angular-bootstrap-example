@@ -1,0 +1,16 @@
+@import '../../../../styles/core/variables';
+
+.sticky-row {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: $color-gray-100;
+}
+
+.header-row {
+  z-index: 3;
+}
+
+.content-row {
+  z-index: 1;
+}

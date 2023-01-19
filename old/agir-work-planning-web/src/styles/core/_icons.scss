@@ -1,0 +1,153 @@
+$icon-size: 24px;
+$icon-xxxl-size: 80px;
+$icon-xxl-size: 68px;
+$icon-xl-size: 48px;
+$icon-lg-size: 32px;
+$icon-n-size: 28px;
+$icon-xs-size: 16px;
+$icon-xxs-size: 14px;
+
+@mixin create-icon-size($key, $size) {
+  .icon-#{$key} {
+    height: $size !important;
+    width: $size !important;
+    &:before {
+      height: $size !important;
+      width: $size !important;
+    }
+  }
+}
+
+@include create-icon-size(xxs, $icon-xxs-size);
+@include create-icon-size(xs, $icon-xs-size);
+@include create-icon-size(lg, $icon-lg-size);
+@include create-icon-size(xl, $icon-xl-size);
+@include create-icon-size(xxl, $icon-xxl-size);
+@include create-icon-size(xxxl, $icon-xxxl-size);
+@include create-icon-size(n, $icon-n-size);
+
+@mixin create-icon($key, $path, $color: '', $size: $icon-size) {
+  .icon-#{$key}::before {
+    -webkit-mask: url($path) no-repeat 50% 50%;
+    width: $size;
+    height: $size;
+    background-color: #{$color};
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+}
+
+@mixin create-default-color-icon($key, $path) {
+  .icon-#{$key} {
+    content: url($path);
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
+
+@include create-default-color-icon(aqueduct-joins, 'src/assets/icons/aqueduct-joins.svg');
+@include create-default-color-icon(aqueduct-valves, 'src/assets/icons/aqueduct-valves.svg');
+@include create-default-color-icon(aqueduct-accessory, 'src/assets/icons/aqueduct-accessory.svg');
+@include create-default-color-icon(bus-stop, 'src/assets/icons/arret_bus.svg');
+@include create-default-color-icon(bus-shelter-quebecor, 'src/assets/icons/bus-shelter.svg');
+@include create-default-color-icon(bus-shelter-private, 'src/assets/icons/bus-shelter.svg');
+@include create-default-color-icon(bus-shelter-city, 'src/assets/icons/bus-shelter-city.svg');
+@include create-default-color-icon(bus-shelter-stm, 'src/assets/icons/bus-shelter-stm.svg');
+@include create-default-color-icon(charging-station, 'src/assets/icons/borne_recharge.svg');
+@include create-default-color-icon(circle-blue, 'src/assets/icons/circle-blue.svg');
+@include create-default-color-icon(csem-structures, 'src/assets/icons/csem-structures.svg');
+@include create-default-color-icon(fire-hydrants, 'src/assets/icons/fire-hydrants.svg');
+@include create-default-color-icon(flow-direction, 'src/assets/icons/sens-circulation.svg');
+@include create-default-color-icon(gaz, 'src/assets/icons/gaz.svg');
+@include create-default-color-icon(hydro-pylon, 'src/assets/icons/pylone.svg');
+@include create-default-color-icon(hydro-substation, 'src/assets/icons/substation.svg');
+@include create-default-color-icon(light-controller, 'src/assets/icons/light-controller.svg');
+@include create-default-color-icon(light-no-controller, 'src/assets/icons/light-no-controller.svg');
+@include create-default-color-icon(light-no, 'src/assets/icons/light-no.svg');
+@include create-default-color-icon(pine-tree, 'src/assets/icons/pine_tree.svg');
+@include create-default-color-icon(pole, 'src/assets/icons/poteau.svg');
+@include create-default-color-icon(rem-station, 'src/assets/icons/station_rem.svg');
+@include create-default-color-icon(road-network-node, 'src/assets/icons/road-network-node.svg');
+@include create-default-color-icon(hospital, 'src/assets/icons/hospital.svg'); // TODO: change icon
+@include create-default-color-icon(sewer-accessory, 'src/assets/icons/sewer-accessory.svg');
+@include create-default-color-icon(sewer-drop, 'src/assets/icons/chute-egout.svg');
+@include create-default-color-icon(sewer-joins, 'src/assets/icons/sewer-joins.svg');
+@include create-default-color-icon(sewer-manhole, 'src/assets/icons/sewer-manhole.svg');
+@include create-default-color-icon(sewer-sumps, 'src/assets/icons/sewer-sumps.svg');
+@include create-default-color-icon(stream-canal, 'src/assets/icons/stream-canal.svg');
+@include create-default-color-icon(street-tree-p, 'src/assets/icons/street_tree_p.svg');
+@include create-default-color-icon(street-tree-va, 'src/assets/icons/street_tree_va.svg');
+@include create-default-color-icon(street-tree-vi, 'src/assets/icons/street_tree_vi.svg');
+@include create-default-color-icon(street-tree-vp, 'src/assets/icons/street_tree_vp.svg');
+@include create-default-color-icon(subway-station, 'src/assets/icons/station_metro.svg');
+@include create-default-color-icon(traffic-light, 'src/assets/icons/traffic-light.svg');
+@include create-default-color-icon(tree, 'src/assets/icons/tree.svg');
+@include create-default-color-icon(unified-node, 'src/assets/icons/unified-node.svg');
+@include create-default-color-icon(water-service-entrance, 'src/assets/icons/water-service-entrance.svg');
+@include create-default-color-icon(water-point, 'src/assets/icons/point-eau.svg');
+@include create-default-color-icon(comparison, 'src/assets/icons/comparison.svg');
+@include create-default-color-icon(checkbox, 'src/assets/icons/checkbox.svg');
+@include create-default-color-icon(exclamation-full, 'src/assets/icons/exclamation-full.svg');
+@include create-icon(alleys, 'src/assets/icons/asset-linear.svg', $color-gray-dim-gray-100);
+@include create-icon(aqueduct-valve-chambers, 'src/assets/icons/asset-polygon.svg', $color-blue-lightsteelblue);
+@include create-icon(aqueduct, 'src/assets/icons/asset-linear.svg', $color-blue-royalblue);
+@include create-icon(area, 'src/assets/icons/asset-linear.svg', $color-black);
+@include create-icon(barrel, 'src/assets/icons/asset-polygon.svg', $color-gray-dim-gray-100);
+@include create-icon(bike-paths, 'src/assets/icons/asset-linear.svg', $color-gray-darkgrey);
+@include create-icon(bus-line, 'src/assets/icons/asset-linear.svg', $color-blue-deepsky);
+@include create-icon(cable, 'src/assets/icons/asset-linear.svg', $color-blue-royalblue);
+@include create-icon(csem-massifs, 'src/assets/icons/asset-linear.svg', $color-blue-royalblue);
+@include create-icon(cursor-pointer, 'src/assets/icons/cursor-pointer.svg');
+@include create-icon(empty, 'src/assets/icons/empty.svg');
+@include create-icon(energy-line-aerial, 'src/assets/icons/asset-linear.svg', $color-blue-darkerblue);
+@include create-icon(energy-line-underground, 'src/assets/icons/asset-linear.svg', $color-orange-coral);
+@include create-icon(external-folder, 'src/assets/icons/external-folder.svg', '', $icon-xs-size);
+@include create-icon(non-geolocated, 'src/assets/icons/non-geolocated-pointer.svg', '', $icon-xs-size);
+@include create-icon(flag-full, 'src/assets/icons/flag-full.svg');
+@include create-icon(funnel, 'src/assets/icons/funnel.svg');
+@include create-icon(full-star, 'src/assets/icons/full-star.svg');
+@include create-icon(green-space, 'src/assets/icons/asset-polygon.svg', $color-green-darkseagreen);
+@include create-icon(highways, 'src/assets/icons/asset-linear.svg', $color-red-danger);
+@include create-icon(lead-ground, 'src/assets/icons/asset-polygon.svg', $color-gray-250);
+@include create-icon(legal-cadastre, 'src/assets/icons/asset-linear.svg', $color-blue-darkerblue);
+@include create-icon(lot-number, 'src/assets/icons/num-lot.svg', $color-black);
+@include create-icon(maximized, 'src/assets/icons/maximize.svg');
+@include create-icon(medal-bronze, 'src/assets/icons/medal.svg', $color-bronze-dark);
+@include create-icon(medal-gold, 'src/assets/icons/medal.svg', $color-gold-dark);
+@include create-icon(medal-platinum, 'src/assets/icons/medal.svg', $color-silver);
+@include create-icon(medal-silver, 'src/assets/icons/medal.svg', $color-platinum);
+@include create-icon(medal, 'src/assets/icons/medal.svg');
+@include create-icon(minimized, 'src/assets/icons/minimize.svg');
+@include create-icon(mobility-axis, 'src/assets/icons/asset-linear.svg', $color-orange-darkorange);
+@include create-icon(objective, 'src/assets/icons/objective.svg', $color-blue-teal);
+@include create-icon(potable-water, 'src/assets/icons/asset-linear.svg', $color-purple-blueviolet);
+@include create-icon(rainy-water, 'src/assets/icons/asset-linear.svg', $color-purple-blueviolet);
+@include create-icon(rectangle-folded, 'src/assets/icons/rectangle-folded.svg');
+@include create-icon(revision-road-networks, 'src/assets/icons/revision-road-networks.svg', $color-orange-darkorange);
+@include create-icon(road-line, 'src/assets/icons/asset-linear.svg', $color-red-vdm);
+@include create-icon(road-network-arterial, 'src/assets/icons/asset-linear.svg', $color-blue-navy);
+@include create-icon(roadway, 'src/assets/icons/asset-polygon.svg', $color-gray-dim-gray-100);
+@include create-icon(roadway-intersection, 'src/assets/icons/asset-polygon.svg', $color-gray-dim-gray-100);
+@include create-icon(selection-rectangle, 'src/assets/icons/rectangle.svg');
+@include create-icon(sewer-chambers, 'src/assets/icons/asset-polygon.svg', $color-darkkakhi);
+@include create-icon(sewer-segment, 'src/assets/icons/asset-linear.svg', $color-gray-darkslategray-100);
+@include create-icon(sewers, 'src/assets/icons/asset-linear.svg', $color-gray-darkslategray-100);
+@include create-icon(shopping-street, 'src/assets/icons/asset-linear.svg', $color-blue-darkblue);
+@include create-icon(sidewalk, 'src/assets/icons/asset-polygon.svg', $color-gray-250);
+@include create-icon(sort-down, 'src/assets/icons/sort-down.svg', $color-turquoise-700);
+@include create-icon(sort-up, 'src/assets/icons/sort-up.svg', $color-turquoise-700);
+@include create-icon(subway-line-1, 'src/assets/icons/asset-linear.svg', $color-green);
+@include create-icon(subway-line-2, 'src/assets/icons/asset-linear.svg', $color-orange-coral);
+@include create-icon(subway-line-4, 'src/assets/icons/asset-linear.svg', $color-sunglow);
+@include create-icon(subway-line-5, 'src/assets/icons/asset-linear.svg', $color-blue-darkerblue);
+@include create-icon(track, 'src/assets/icons/train_track.svg', $color-black);
+@include create-icon(unified-sections, 'src/assets/icons/asset-linear.svg', $color-gray-dim-gray-200);
+@include create-icon(waste-water, 'src/assets/icons/asset-linear.svg', $color-purple-blueviolet);
+@include create-icon(ditche, 'src/assets/icons/asset-linear.svg', $color-blue-aqua);
+@include create-icon(river, 'src/assets/icons/asset-linear.svg', $color-blue-darkblue);
+
+@each $color, $value in $app-colors {
+  .icon-color-#{$color}::before {
+    background-color: $value !important;
+  }
+}

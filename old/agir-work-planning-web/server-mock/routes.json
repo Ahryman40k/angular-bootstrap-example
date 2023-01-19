@@ -1,0 +1,4 @@
+{
+  "/assets/:source/:id": "/assets.:source/1",
+  "/taxonomies": "/taxonomies/1"
+}

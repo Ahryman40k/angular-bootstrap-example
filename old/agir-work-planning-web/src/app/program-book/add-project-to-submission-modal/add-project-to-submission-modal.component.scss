@@ -1,0 +1,8 @@
+@import '../../../styles/core/variables';
+
+$project-type-bg-color: #e7f6f0;
+.project-type {
+  color: $primary;
+  background-color: $project-type-bg-color;
+  display: initial;
+}

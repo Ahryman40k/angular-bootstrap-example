@@ -1,0 +1,29 @@
+<app-layout-modal [modalTitle]="modalTitle">
+  <div body>
+    <app-alert [type]="type" [iconName]="iconName">
+      <span title>{{ alertTitle }}</span>
+      <span description>
+        {{ alertMessage }}
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button
+      *ngIf="buttonLabel"
+      type="button"
+      [ngClass]="confirmLabel ? 'btn-tertiary bg-white' : 'btn-primary'"
+      class="btn btn-squared mr-2"
+      (click)="activeModal.close()"
+    >
+      {{ buttonLabel }}
+    </button>
+    <button
+      *ngIf="confirmLabel"
+      type="button"
+      [ngClass]="confirmButtonClass"
+      class="btn btn-squared mr-2"
+      (click)="confirm()">
+      {{ confirmLabel }}
+    </button>
+  </div>
+</app-layout-modal>

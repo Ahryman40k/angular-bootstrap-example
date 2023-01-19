@@ -1,0 +1,8 @@
+
+Download the latest version from Github directly :
+https://github.com/swagger-api/swagger-ui
+
+Only keep those files/folders :
+
+open-api/swagger-ui/dist
+open-api/swagger-ui/LICENSE

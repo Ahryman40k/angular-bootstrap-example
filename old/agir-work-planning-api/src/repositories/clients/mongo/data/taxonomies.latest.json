@@ -1,0 +1,3538 @@
+[
+  {
+    "group": "area",
+    "code": "m2",
+    "label": {
+      "fr": "Mètres carrés",
+      "en": "sq. meters"
+    }
+  },
+  {
+    "group": "area",
+    "code": "cm2",
+    "label": {
+      "fr": "Centimètres carrés",
+      "en": "sq. centimeters"
+    }
+  },
+  {
+    "group": "area",
+    "code": "mm2",
+    "label": {
+      "fr": "Millimètres carrés",
+      "en": "sq. millimeters"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "signals",
+    "label": {
+      "fr": "Signaux",
+      "en": "signals"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "waterManagement",
+    "label": {
+      "fr": "Réseau d'eau",
+      "en": "water management"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "planning",
+    "label": {
+      "fr": "Aménagement",
+      "en": "planning"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "borough",
+    "label": {
+      "fr": "Arrondissement",
+      "en": "borough"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "publicWorksPT",
+    "label": {
+      "fr": "DGAC (ponts-tunnels)",
+      "en": "publicWorks"
+    },
+    "NouvelleValeur": "Ajout"
+  },
+  {
+    "group": "assetOwner",
+    "code": "publicWorksRoad",
+    "label": {
+      "fr": "DGAC (Voirie)"
+    },
+    "NouvelleValeur": "Ajout"
+  },
+  {
+    "group": "assetOwner",
+    "code": "hq",
+    "label": {
+      "fr": "Hydro-Québec",
+      "en": "hq"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "energir",
+    "label": {
+      "fr": "Energir",
+      "en": "energir"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "sgpi",
+    "label": {
+      "fr": "Gestion des immeubles",
+      "en": "facility management"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "dep",
+    "label": {
+      "fr": "DEP",
+      "en": "DEP"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "dagp",
+    "label": {
+      "fr": "DSARA",
+      "en": "DSARA"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "dtac",
+    "label": {
+      "fr": "DTAC",
+      "en": "DTAC"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "deeu",
+    "label": {
+      "fr": "DEEU",
+      "en": "DEEU"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "dre",
+    "label": {
+      "fr": "DRE",
+      "en": "DRE"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "csem",
+    "label": {
+      "fr": "CSEM",
+      "en": "CSEM"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "bell",
+    "label": {
+      "fr": "Bell Canada",
+      "en": "Bell Canada"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "telecom",
+    "label": {
+      "fr": "Télécom",
+      "en": "Télécom"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "stm",
+    "label": {
+      "fr": "STM",
+      "en": "STM"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "spjcci",
+    "label": {
+      "fr": "SPJCCI",
+      "en": "SPJCCI"
+    }
+  },
+  {
+    "group": "assetOwner",
+    "code": "mtq",
+    "label": {
+      "fr": "MTQ",
+      "en": "MTQ"
+    },
+    "NouvelleValeur": "Ajout"
+  },
+  {
+    "group": "assetOwner",
+    "code": "sgp",
+    "label": {
+      "fr": "Service Grands parcs",
+      "en": "Service Grands parcs"
+    },
+    "NouvelleValeur": "Ajout"
+  },
+  {
+    "group": "assetOwner",
+    "code": "sca",
+    "label": {
+      "fr": "Service de la concertation des arrondissements",
+      "en": "Service de la concertation des arrondissements"
+    },
+    "NouvelleValeur": "Ajout"
+  },
+  {
+    "group": "assetSource",
+    "code": "geomatics",
+    "label": {
+      "fr": "Géomatique",
+      "en": "geomatics"
+    }
+  },
+  {
+    "group": "assetSource",
+    "code": "assetManager",
+    "label": {
+      "fr": "Gestionnaire d'actifs",
+      "en": "asset manager"
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "trafficLights",
+    "label": {
+      "fr": "Feux de circulation",
+      "en": "traffic Lights"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "signals"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "abandon",
+        "equipmentChange",
+        "reconstruction",
+        "construction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "trafficSigns",
+    "label": {
+      "fr": "Panneaux de signalisation",
+      "en": "traffic Signs"
+    },
+    "NouvelleValeur": "à retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "fireHydrant",
+    "label": {
+      "fr": "Borne d'incendie",
+      "en": "fire Hydrant"
+    },
+    "NouvelleValeur": "à retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dep"
+      ],
+      "sourcesLayerId": "fire-hydrants",
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ],
+      "dataKeys" : [
+        "installationDate", "inspectionDate"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "aqueductJoin",
+    "label": {
+      "fr": "Raccord d'aqueduc",
+      "en": "aqueduct Join"
+    },
+    "NouvelleValeur": "à retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "electricalConduit",
+    "label": {
+      "fr": "ElectricalConduit",
+      "en": "electricalConduit"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "signals"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "amenagement",
+    "label": {
+      "fr": "Amenagement",
+      "en": "amenagement"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "borough",
+        "dagp"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "amenagement",
+        "canope"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "saillieSidewalk",
+    "label": {
+      "fr": "SaillieSidewalk",
+      "en": "saillieSidewalk"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "borough"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "pumpingStation",
+    "label": {
+      "fr": "PumpingStation",
+      "en": "pumpingStation"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dep",
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "equipmentChange"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "aqueductValve",
+    "label": {
+      "fr": "Vanne d'aqueduc",
+      "en": "aqueduct Valve"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "aqueductSegment",
+    "label": {
+      "fr": "Segment d'aqueduc",
+      "en": "aqueduct Segment"
+    },
+    "properties": {
+      "idKey": "idGcaf",
+      "namespace": "secured",
+      "owners": [
+        "dep",
+        "dre",
+        "waterManagement"
+      ],
+      "sourcesLayerId": "aqueducs",
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "aqueductInlet",
+    "label": {
+      "fr": "Entrée d'eau d'aqueduc",
+      "en": "aqueduc tInlet"
+    },
+    "NouvelleValeur": "à retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "flowmeterChamber",
+    "label": {
+      "fr": "FlowmeterChamber",
+      "en": "flowmeterChamber"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dep",
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "equipmentChange",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "regulationChamber",
+    "label": {
+      "fr": "RegulationChamber",
+      "en": "regulationChamber"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dep",
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "equipmentChange",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "valveChamber",
+    "label": {
+      "fr": "Chambre de valve",
+      "en": "valve Chamber"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dep",
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon",
+        "equipmentChange"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "sewerManhole",
+    "label": {
+      "fr": "Regard d'égoût",
+      "en": "sewer Manhole"
+    },
+    "properties": {
+      "idKey": "idGcaf",
+      "namespace": "secured",
+      "owners": [
+        "deeu"
+      ],
+      "sourcesLayerId": "regards-egouts",
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ],
+      "dataKeys" : [
+        "installationDate", "inspectionDate"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "sewerJoin",
+    "label": {
+      "fr": "Raccord d'égoût",
+      "en": "sewerJoin"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "replacement",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "sewerSegmentSanitary",
+    "label": {
+      "fr": "SewerSegmentSanitary",
+      "en": "sewerSegmentSanitary"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "sewerSegmentPluvial",
+    "label": {
+      "fr": "SewerSegmentPluvial",
+      "en": "sewerSegmentPluvial"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "sewerSegment",
+    "label": {
+      "fr": "Segment d'égoût",
+      "en": "sewerSegment"
+    },
+    "properties": {
+      "idKey": "idGcaf",
+      "namespace": "secured",
+      "owners": [
+        "dre",
+        "deeu",
+        "waterManagement"
+      ],
+      "sourcesLayerId": "egouts",
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "sewerChamber",
+    "label": {
+      "fr": "Chambre d'égoût",
+      "en": "sewer Chamber"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dre",
+        "deeu"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "equipmentChange",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "waterInlet",
+    "label": {
+      "fr": "Prise d'eau d'égoût",
+      "en": "water Inlet"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "replacement"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "optimizationChamber",
+    "label": {
+      "fr": "Chambre d'optimisation",
+      "en": "optimization Chamber"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dep",
+        "dre"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "equipmentChange",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "streetTree",
+    "label": {
+      "fr": "Arbre sur rue",
+      "en": "street Tree"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "publicWorksRoad"
+      ],
+      "sourcesLayerId": "trees-on-street",
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "trail",
+    "label": {
+      "fr": "Sentier parc",
+      "en": "trail"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "marking",
+        "designingRoadway"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "lightingSpot",
+    "label": {
+      "fr": "Luminaire",
+      "en": "lighting Spot"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "majorBasesConduits",
+        "minorFurnitureOnly",
+        "dismantlingOfTrafficLights"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "roadSurface",
+    "label": {
+      "fr": "Surface pavée",
+      "en": "road Surface"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "sidewalk",
+    "label": {
+      "fr": "Trottoir",
+      "en": "side walk"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "publicWorksRoad"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "geometricRedevelopment",
+        "plantationCanopy"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "basin",
+    "label": {
+      "fr": "Bassin",
+      "en": "basin"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "deeu"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "abandon"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "bridgesTunnels",
+    "label": {
+      "fr": "Ponts et tunnels",
+      "en": "bridges Tunnels"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "publicWorksPT",
+        "mtq"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "demolition",
+        "repair"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "roadway",
+    "label": {
+      "fr": "Chaussée",
+      "en": "roadway"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "publicWorksRoad",
+        "mtq"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "pulvoStabilization",
+        "cutResurfacing"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "bikePath",
+    "label": {
+      "fr": "Piste cyclable",
+      "en": "bikePath"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "marking",
+        "designingRoadway",
+        "pistecyclable"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "bikeLane",
+    "label": {
+      "fr": "Bande cyclable",
+      "en": "bikeLane"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "marking",
+        "designingRoadway"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "pavedShoulder",
+    "label": {
+      "fr": "Accotement asphalté",
+      "en": "paved Shoulder"
+    },
+    "NouvelleValeur": "À retirer",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "rehabilitation",
+        "pulvoStabilization",
+        "cutResurfacing"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "bicycleAmenagement",
+    "label": {
+      "fr": "BicycleAmenagement",
+      "en": "bicycleAmenagement"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dtac"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "constructionBikepath",
+        "reconstructionBikepath",
+        "markingBikelane",
+        "markingBikedesigned"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "mpb",
+    "label": {
+      "fr": "Mpb",
+      "en": "mpb"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "stm"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "metroStation",
+    "label": {
+      "fr": "Station Métro",
+      "en": "metroStation"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "stm"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "refection"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "ventilationStation",
+    "label": {
+      "fr": "VentilationStation",
+      "en": "ventilationStation"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "stm"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "snowDepot",
+    "label": {
+      "fr": "SnowDepot",
+      "en": "snowDepot"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "sca"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "reconstruction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "park",
+    "label": {
+      "fr": "Park",
+      "en": "park"
+    },
+    "NouvelleValeur": "Ajout",
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "sgp"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "reservedBusBicycle",
+    "label": {
+      "fr": "Voie réservée bus - vélo",
+      "en": "reserved Bus Bicycle"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dtac",
+        "stm"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "marking"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "lighting",
+    "label": {
+      "fr": "Éclairage",
+      "en": "lighting"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "dagp"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "replacement",
+        "construction"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "accessWell",
+    "label": {
+      "fr": "Puits d'accès",
+      "en": "access well"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "csem",
+        "bell",
+        "energir",
+        "hq"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "dismantling"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "massive",
+    "label": {
+      "fr": "Massifs",
+      "en": "massive"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "csem",
+        "bell",
+        "signals",
+        "hq"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "construction",
+        "reconstruction",
+        "burying",
+        "dismantling",
+        "undefined"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "gas",
+    "label": {
+      "fr": "Energir",
+      "en": "Energir"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "secured",
+      "owners": [
+        "energir"
+      ],
+      "sourcesLayerId": "energir",
+      "workTypes": [
+        "insideRegulators",
+        "corrective",
+        "construction",
+        "reconstruction",
+        "abandon",
+        "undefined"
+      ]
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "undefined",
+    "label": {
+      "fr": "Non-défini",
+      "en": "undefined"
+    },
+    "properties": {
+      "idKey": "id",
+      "namespace": "montreal",
+      "owners": [
+        "borough",
+        "signals",
+        "publicWorksPT",
+        "publicWorksRoad",
+        "hq",
+        "energir",
+        "dep",
+        "dagp",
+        "dtac",
+        "deeu",
+        "dre",
+        "csem",
+        "bell",
+        "mtq",
+        "stm",
+        "sca",
+        "sgp",
+        "stm"
+      ],
+      "sourcesLayerId": null,
+      "workTypes": [
+        "undefined",
+        "construction"
+      ]
+    }
+  },
+  {
+    "group": "borough",
+    "code": "MTL",
+    "label": {
+      "fr": "Tout Montréal",
+      "en": "All of Montreal"
+    },
+    "displayOrder": 1
+  },
+  {
+    "group": "borough",
+    "code": "AC",
+    "label": {
+      "fr": "Ahuntsic-Cartierville",
+      "en": "Ahuntsic-Cartierville"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "PMR",
+    "label": {
+      "fr": "Le Plateau Mont-Royal",
+      "en": "Le Plateau Mont-Royal"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "ANJ",
+    "label": {
+      "fr": "Anjou",
+      "en": "Anjou"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "CDNNDG",
+    "label": {
+      "fr": "Côte-Des-Neiges-Notre-Dame-de-Grâce",
+      "en": "Côte-Des-Neiges-Notre-Dame-de-Grâce"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "IBZSGV",
+    "label": {
+      "fr": "L-Île-Bizard-Sainte-Geneviève",
+      "en": "L-Île-Bizard-Sainte-Geneviève"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "LSL",
+    "label": {
+      "fr": "LaSalle",
+      "en": "LaSalle"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "LCH",
+    "label": {
+      "fr": "Lachine",
+      "en": "Lachine"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "SO",
+    "label": {
+      "fr": "Le Sud-Ouest",
+      "en": "Le Sud-Ouest"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "MHM",
+    "label": {
+      "fr": "Mercier-Hochelaga-Maisonneuve",
+      "en": "Mercier-Hochelaga-Maisonneuve"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "MTN",
+    "label": {
+      "fr": "Montréal-Nord",
+      "en": "Montréal-Nord"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "OUT",
+    "label": {
+      "fr": "Outremont",
+      "en": "Outremont"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "PFDROX",
+    "label": {
+      "fr": "Pierrefonds-Roxboro",
+      "en": "Pierrefonds-Roxboro"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "RDPPAT",
+    "label": {
+      "fr": "Rivière des Prairies-Pointe-Aux-Trembles",
+      "en": "Rivière des Prairies-Pointe-Aux-Trembles"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "RPP",
+    "label": {
+      "fr": "Rosement-La-Petite-Patrie",
+      "en": "Rosement-La-Petite-Patrie"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "SLR",
+    "label": {
+      "fr": "Saint-Laurent ",
+      "en": "Saint-Laurent "
+    }
+  },
+  {
+    "group": "borough",
+    "code": "SLN",
+    "label": {
+      "fr": "Saint-Léonard",
+      "en": "Saint-Léonard"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "VRD",
+    "label": {
+      "fr": "Verdun",
+      "en": "Verdun"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "VM",
+    "label": {
+      "fr": "Ville-Marie",
+      "en": "Ville-Marie"
+    }
+  },
+  {
+    "group": "borough",
+    "code": "VSMPE",
+    "label": {
+      "fr": "Villeray-Saint-Michel-Parc-Extension",
+      "en": "Villeray-Saint-Michel-Parc-Extension"
+    }
+  },
+  {
+    "group": "commentCategory",
+    "code": "information",
+    "label": {
+      "fr": "Information",
+      "en": "information"
+    }
+  },
+  {
+    "group": "commentCategory",
+    "code": "requestor",
+    "label": {
+      "fr": "Requérant",
+      "en": "requestor"
+    }
+  },
+  {
+    "group": "commentCategory",
+    "code": "historic",
+    "label": {
+      "fr": "Historique",
+      "en": "historic"
+    }
+  },
+  {
+    "group": "commentCategory",
+    "code": "risk",
+    "label": {
+      "fr": "Risque",
+      "en": "Risk"
+    }
+  },
+  {
+    "group": "commentType",
+    "code": "intervention",
+    "label": {
+      "fr": "Intervention",
+      "en": "intervention"
+    }
+  },
+  {
+    "group": "commentType",
+    "code": "project",
+    "label": {
+      "fr": "Projet",
+      "en": "project"
+    }
+  },
+  {
+    "group": "conflictType",
+    "code": "spatial",
+    "label": {
+      "fr": "Spatial",
+      "en": "spatial"
+    }
+  },
+  {
+    "group": "conflictType",
+    "code": "temporal",
+    "label": {
+      "fr": "Temporel",
+      "en": "temporal"
+    }
+  },
+  {
+    "group": "conflictType",
+    "code": "mobility",
+    "label": {
+      "fr": "Mobilité",
+      "en": "mobility"
+    }
+  },
+  {
+    "group": "documentStatus",
+    "code": "pending",
+    "label": {
+      "fr": "En attente",
+      "en": "Pending"
+    }
+  },
+  {
+    "group": "documentStatus",
+    "code": "refused",
+    "label": {
+      "fr": "Refusé",
+      "en": "Refused"
+    }
+  },
+  {
+    "group": "documentStatus",
+    "code": "validated",
+    "label": {
+      "fr": "Validé",
+      "en": "Validated"
+    }
+  },
+  {
+    "group": "documentType",
+    "code": "other",
+    "label": {
+      "fr": "Autre",
+      "en": "Other"
+    }
+  },
+  {
+    "group": "executor",
+    "code": "di",
+    "label": {
+      "fr": "Direction des infrastructures",
+      "en": "direction des infrastructures"
+    }
+  },
+  {
+    "group": "executor",
+    "code": "dgp",
+    "label": {
+      "fr": "Grand parc",
+      "en": "Grand parc"
+    }
+  },
+  {
+    "group": "executor",
+    "code": "borough",
+    "label": {
+      "fr": "Arrondissement",
+      "en": "borough"
+    }
+  },
+  {
+    "group": "executor",
+    "code": "dep",
+    "label": {
+      "fr": "Direction de l'eau potable",
+      "en": "Direction de l'eau potable"
+    }
+  },
+  {
+    "group": "executor",
+    "code": "deeu",
+    "label": {
+      "fr": "Direction de l'épuration des eaux usées",
+      "en": "Direction de l'épuration des eaux usées"
+    }
+  },
+  {
+    "group": "executor",
+    "code": "publicWorks",
+    "label": {
+      "fr": "Voirie DGA (ponts-tunnels)",
+      "en": "publicWorks"
+    },
+    "NouvelleValeur": "Correction"
+  },
+  {
+    "group": "executor",
+    "code": "other",
+    "label": {
+      "fr": "Autre",
+      "en": "other"
+    }
+  },
+  {
+    "group": "indicatorType",
+    "code": "reference",
+    "label": {
+      "fr": "Référence",
+      "en": "reference"
+    }
+  },
+  {
+    "group": "indicatorType",
+    "code": "calculated",
+    "label": {
+      "fr": "Calculé",
+      "en": "calculated"
+    }
+  },
+  {
+    "group": "interventionCategory",
+    "code": "intervention",
+    "label": {
+      "fr": "Intervention",
+      "en": "Intervention"
+    }
+  },
+  {
+    "group": "interventionCategory",
+    "code": "opportunity",
+    "label": {
+      "fr": "Opportunité",
+      "en": "opportunity"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "planned",
+    "label": {
+      "fr": "Planifiée",
+      "en": "planned"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "accepted",
+    "label": {
+      "fr": "Acceptée",
+      "en": "accepted"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "acceptedRequirement",
+    "label": {
+      "fr": "Acceptée avec exigence",
+      "en": "acceptedRequirement"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "postponed",
+    "label": {
+      "fr": "Reportée",
+      "en": "postponed"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "replanned",
+    "label": {
+      "fr": "Replanifiée",
+      "en": "replanned"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "canceled",
+    "label": {
+      "fr": "Annulée",
+      "en": "canceled"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "refused",
+    "label": {
+      "fr": "Refusée",
+      "en": "refused"
+    }
+  },
+  {
+    "group": "interventionDecisionType",
+    "code": "revisionRequest",
+    "label": {
+      "fr": "Demande de révision",
+      "en": "revision request"
+    }
+  },
+  {
+    "group": "interventionDecisionRefused",
+    "code": "plannedIntegrated",
+    "label": {
+      "fr": "Intervention intégrée planifiée",
+      "en": "Planned integrated intervention"
+    }
+  },
+  {
+    "group": "interventionDecisionRefused",
+    "code": "recommended",
+    "label": {
+      "fr": "Intégration recommandée",
+      "en": "Recommended integration"
+    }
+  },
+  {
+    "group": "interventionDecisionRefused",
+    "code": "mobility",
+    "label": {
+      "fr": "Mobilité",
+      "en": "Mobility"
+    }
+  },
+  {
+    "group": "interventionDecisionRefused",
+    "code": "moratorium",
+    "label": {
+      "fr": "Moratoire",
+      "en": "Moratorium"
+    }
+  },
+  {
+    "group": "interventionDecisionRefused",
+    "code": "other",
+    "label": {
+      "fr": "Autre",
+      "en": "Other"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "created",
+    "label": {
+      "fr": "Crée",
+      "en": "created"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "received",
+    "label": {
+      "fr": "Reçue",
+      "en": "received"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "planned",
+    "label": {
+      "fr": "Planifiée",
+      "en": "planned"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "integrated",
+    "label": {
+      "fr": "Intégrée",
+      "en": "integrated"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "regrouped",
+    "label": {
+      "fr": "Regroupée",
+      "en": "regrouped"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "finalOrdered",
+    "label": {
+      "fr": "Envoyée finale",
+      "en": "Final ordered"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "preliminaryOrdered",
+    "label": {
+      "fr": "Envoyée préliminaire",
+      "en": "preliminary ordered"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "inDesign",
+    "label": {
+      "fr": "En conception",
+      "en": "In design"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "inRealization",
+    "label": {
+      "fr": "En réalisation",
+      "en": "In realization"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "worked",
+    "label": {
+      "fr": "Réalisée",
+      "en": "worked"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "archived",
+    "label": {
+      "fr": "Archivée",
+      "en": "archived"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "postponed",
+    "label": {
+      "fr": "Reportée",
+      "en": "postponed"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "replanned",
+    "label": {
+      "fr": "Replanifiée",
+      "en": "replanned"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "canceled",
+    "label": {
+      "fr": "Annulée",
+      "en": "canceled"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "refused",
+    "label": {
+      "fr": "Refusée",
+      "en": "refused"
+    }
+  },
+  {
+    "group": "interventionStatus",
+    "code": "waiting",
+    "label": {
+      "fr": "En attente",
+      "en": "waiting"
+    }
+  },
+  {
+    "group": "interventionType",
+    "code": "followup",
+    "label": {
+      "fr": "Suivi",
+      "en": "followup"
+    }
+  },
+  {
+    "group": "interventionType",
+    "code": "initialNeed",
+    "label": {
+      "fr": "Besoin initial",
+      "en": "Initial need"
+    }
+  },
+  {
+    "group": "interventionType",
+    "code": "opportunity",
+    "label": {
+      "fr": "Opportunité",
+      "en": "opportunity"
+    }
+  },
+  {
+    "group": "length",
+    "code": "m",
+    "label": {
+      "fr": "Mètres",
+      "en": "meters"
+    }
+  },
+  {
+    "group": "length",
+    "code": "cm",
+    "label": {
+      "fr": "Centimètres",
+      "en": "centimeters"
+    }
+  },
+  {
+    "group": "length",
+    "code": "mm",
+    "label": {
+      "fr": "Millimètres",
+      "en": "millimeters"
+    }
+  },
+  {
+    "group": "length",
+    "code": "km",
+    "label": {
+      "fr": "Kilomètres",
+      "en": "kilometers"
+    }
+  },
+  {
+    "group": "length",
+    "code": "in ",
+    "label": {
+      "fr": "Pouces",
+      "en": "inches"
+    }
+  },
+  {
+    "group": "length",
+    "code": "ft",
+    "label": {
+      "fr": "Pieds",
+      "en": "feet"
+    }
+  },
+  {
+    "group": "length",
+    "code": "miles",
+    "label": {
+      "fr": "Miles",
+      "en": "miles"
+    }
+  },
+  {
+    "group": "mobilityAxisType",
+    "code": "annual",
+    "label": {
+      "fr": "Axe de mobilité annuel",
+      "en": "annual mobility axis"
+    }
+  },
+  {
+    "group": "mobilityAxisType",
+    "code": "strategic",
+    "label": {
+      "fr": "Axe de mobilité stratégique",
+      "en": "strategic mobility axis"
+    }
+  },
+  {
+    "group": "objectiveType",
+    "code": "annual",
+    "label": {
+      "fr": "Annuelle",
+      "en": "annual"
+    }
+  },
+  {
+    "group": "organizationType",
+    "code": "technicalUtilities",
+    "label": {
+      "fr": "Réseau technique urbain",
+      "en": "technical utilities"
+    }
+  },
+  {
+    "group": "organizationType",
+    "code": "cityOfMontreal",
+    "label": {
+      "fr": "Ville de Montréal",
+      "en": "city of Montreal"
+    }
+  },
+  {
+    "group": "priorityType",
+    "code": "1",
+    "label": {
+      "fr": "Basse",
+      "en": "low"
+    },
+    "displayOrder": 1
+  },
+  {
+    "group": "priorityType",
+    "code": "2",
+    "label": {
+      "fr": "Moyenne",
+      "en": "medium"
+    },
+    "displayOrder": 2
+  },
+  {
+    "group": "priorityType",
+    "code": "3",
+    "label": {
+      "fr": "Haute",
+      "en": "high"
+    },
+    "displayOrder": 3
+  },
+  {
+    "group": "priorityType",
+    "code": "4",
+    "label": {
+      "fr": "Très haute",
+      "en": "very high"
+    },
+    "displayOrder": 4
+  },
+  {
+    "group": "programGroup",
+    "code": "pni",
+    "label": {
+      "fr": "Programme PNI",
+      "en": "Programme PNI"
+    },
+    "valueString1": "pcpr,prcpr,ssr,sae"
+  },
+  {
+    "group": "programGroup",
+    "code": "other",
+    "label": {
+      "fr": "Programme Autre",
+      "en": "Programme Autre"
+    },
+    "valueString1": "trafficLightsMgmt,busStop,chargingPoint,aqueductChamberPrgm"
+  },
+  {
+    "group": "programType",
+    "code": "pcpr",
+    "label": {
+      "fr": "Programme complémentaire de planage-revêtement",
+      "en": "complementary resurfacing program"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "prcpr",
+    "label": {
+      "fr": "Programme de réhabilitation de chaussées par planage-revêtement",
+      "en": "rehabiliation resurfacing program"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "par",
+    "label": {
+      "fr": "Réhabilitation d’aqueduc principal",
+      "en": "primary aqueduct rehabilitation"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "sae",
+    "label": {
+      "fr": "Réhabilitation d’aqueduc secondaire",
+      "en": "secondary aqueduct rehabilitation"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "psr",
+    "label": {
+      "fr": "Réhabilitation d’égout principal",
+      "en": "primary sewer rehabilitation"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "ssr",
+    "label": {
+      "fr": "Réhabilitation d’égout secondaire",
+      "en": "secondary sewer rehabilitation"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "trafficLightsMgmt",
+    "label": {
+      "fr": "Gestion des feux",
+      "en": "traffic lights management"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "bikePathMntn",
+    "label": {
+      "fr": "Entretien des pistes cyclables",
+      "en": "bike path maintenance"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "busStop",
+    "label": {
+      "fr": "Arrêt d'autobus",
+      "en": "bus stop"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "chargingPoint",
+    "label": {
+      "fr": "Borne de recharge",
+      "en": "charging point"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "aqueductChamberPrgm",
+    "label": {
+      "fr": "Chambre du service de l’eau",
+      "en": "aqueduct chamber program"
+    }
+  },
+  {
+    "group": "programType",
+    "code": "aqueductLead",
+    "label": {
+      "fr": "Remplacement des entrées de services en plomb",
+      "en": "Replacing lead service entrance"
+    },
+    "NouvelleValeur": "Nouveau"
+  },
+  {
+    "group": "projectCategory",
+    "code": "new",
+    "label": {
+      "fr": "Nouveau",
+      "en": "New"
+    }
+  },
+  {
+    "group": "projectCategory",
+    "code": "postponed",
+    "label": {
+      "fr": "Reporté",
+      "en": "Postponed"
+    }
+  },
+  {
+    "group": "projectCategory",
+    "code": "completing",
+    "label": {
+      "fr": "Parachèvement",
+      "en": "Completing"
+    }
+  },
+  {
+    "group": "projectSubCategory",
+    "code": "priority",
+    "label": {
+      "fr": "Prioritaire",
+      "en": "Priority"
+    }
+  },
+  {
+    "group": "projectSubCategory",
+    "code": "urgent",
+    "label": {
+      "fr": "Urgent",
+      "en": "urgent"
+    }
+  },
+  {
+    "group": "projectSubCategory",
+    "code": "recurrent",
+    "label": {
+      "fr": "Récurrent",
+      "en": "recurrent"
+    }
+  },
+  {
+    "group": "projectSubCategory",
+    "code": "successive",
+    "label": {
+      "fr": "Successif",
+      "en": "successive"
+    }
+  },
+  {
+    "group": "projectDecisionType",
+    "code": "postponed",
+    "label": {
+      "fr": "Reporté",
+      "en": "postponed"
+    }
+  },
+  {
+    "group": "projectDecisionType",
+    "code": "replanned",
+    "label": {
+      "fr": "Replanifié",
+      "en": "replanned"
+    }
+  },
+  {
+    "group": "projectDecisionType",
+    "code": "canceled",
+    "label": {
+      "fr": "Annulé",
+      "en": "canceled"
+    }
+  },
+  {
+    "group": "projectDecisionType",
+    "code": "removeFromProgramBook",
+    "label": {
+      "fr": "Retirer du carnet de programmation",
+      "en": "Remove from program book"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "created",
+    "label": {
+      "fr": "Créé",
+      "en": "created"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "planned",
+    "label": {
+      "fr": "Planifié",
+      "en": "planned"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "programmed",
+    "label": {
+      "fr": "Programmé",
+      "en": "programmed"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "finalOrdered",
+    "label": {
+      "fr": "Envoyé final",
+      "en": "Final ordered"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "preliminaryOrdered",
+    "label": {
+      "fr": "Envoyé préliminaire",
+      "en": "preliminary ordered"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "inDesign",
+    "label": {
+      "fr": "En conception",
+      "en": "In design"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "inRealization",
+    "label": {
+      "fr": "En réalisation",
+      "en": "In realization"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "worked",
+    "label": {
+      "fr": "Réalisé",
+      "en": "worked"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "archived",
+    "label": {
+      "fr": "Archivé",
+      "en": "archived"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "postponed",
+    "label": {
+      "fr": "Reporté",
+      "en": "postponed"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "replanned",
+    "label": {
+      "fr": "Replanifié",
+      "en": "replanned"
+    }
+  },
+  {
+    "group": "projectStatus",
+    "code": "canceled",
+    "label": {
+      "fr": "Annulé",
+      "en": "canceled"
+    }
+  },
+  {
+    "group": "projectType",
+    "code": "integrated",
+    "label": {
+      "fr": "PI - Standard",
+      "en": "PI - Standard"
+    }
+  },
+  {
+    "group": "projectType",
+    "code": "integratedgp",
+    "label": {
+      "fr": "PI - Envergure",
+      "en": "PI - Major"
+    }
+  },
+  {
+    "group": "projectType",
+    "code": "nonIntegrated",
+    "label": {
+      "fr": "Non-intégré",
+      "en": "Non-integrated"
+    }
+  },
+  {
+    "group": "projectType",
+    "code": "other",
+    "label": {
+      "fr": "Autre",
+      "en": "other"
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "signals",
+    "label": {
+      "fr": "Signaux",
+      "en": "signals"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "waterManagement",
+    "label": {
+      "fr": "Réseau d'eau",
+      "en": "water management"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "planning",
+    "label": {
+      "fr": "Aménagement",
+      "en": "planning"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "requestor",
+    "code": "borough",
+    "label": {
+      "fr": "Arrondissement",
+      "en": "borough"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "publicWorksPT",
+    "label": {
+      "fr": "DGAC (ponts-tunnels)",
+      "en": "DGAC (ponts-tunnels)"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "publicWorksRoad",
+    "label": {
+      "fr": "DGAC (Voirie et Cyclable)",
+      "en": "DGAC (Voirie et Cyclable)"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "hq",
+    "label": {
+      "fr": "Hydro-Québec",
+      "en": "hq"
+    },
+    "properties": {
+      "isInternal": false
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "energir",
+    "label": {
+      "fr": "Energir",
+      "en": "energir"
+    },
+    "properties": {
+      "isInternal": false
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "sgpi",
+    "label": {
+      "fr": "SGPI - Immobilier",
+      "en": "SGPI - Immobilier"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "dep",
+    "label": {
+      "fr": "DEP",
+      "en": "DEP"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "dagp",
+    "label": {
+      "fr": "Aménagement de Rues",
+      "en": "Aménagement de Rues"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "dtac",
+    "label": {
+      "fr": "Section Vélo",
+      "en": "Section Vélo"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "deeu",
+    "label": {
+      "fr": "DEEU",
+      "en": "DEEU"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "dre",
+    "label": {
+      "fr": "DRE",
+      "en": "DRE"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "csem",
+    "label": {
+      "fr": "CSEM",
+      "en": "CSEM"
+    },
+    "properties": {
+      "isInternal": false
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "bell",
+    "label": {
+      "fr": "Bell Canada",
+      "en": "Bell Canada"
+    },
+    "properties": {
+      "isInternal": false
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "telecom",
+    "label": {
+      "fr": "Télécom",
+      "en": "Télécom"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "requestor",
+    "code": "stm",
+    "label": {
+      "fr": "STM",
+      "en": "STM"
+    },
+    "properties": {
+      "isInternal": false
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "spjcci",
+    "label": {
+      "fr": "SPJCCI",
+      "en": "SPJCCI"
+    },
+    "properties": {
+      "isInternal": false
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "requestor",
+    "code": "mtq",
+    "label": {
+      "fr": "MTQ",
+      "en": "MTQ"
+    },
+    "properties": {
+      "isInternal": false
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "sgp",
+    "label": {
+      "fr": "Service Grands Parcs",
+      "en": "Service Grands Parcs"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "sca",
+    "label": {
+      "fr": "Service de la concertation des arrondissments",
+      "en": "Service de la concertation des arrondissments"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "gpdu",
+    "label": {
+      "fr": "GP-DU",
+      "en": "GP-DU"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "gpdm",
+    "label": {
+      "fr": "GP-DM",
+      "en": "GP-DM"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "gppart",
+    "label": {
+      "fr": "GP-SIRR-Partenaires",
+      "en": "GP-SIRR-Paxrtenaires"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "gpville",
+    "label": {
+      "fr": "GP-SIRR-Ville",
+      "en": "GP-SIRR-Ville"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "senv",
+    "label": {
+      "fr": "Service de l'environnement",
+      "en": "Service de l'environnement"
+    },
+    "properties": {
+      "isInternal": true
+    }
+  },
+  {
+    "group": "requestor",
+    "code": "ican",
+    "label": {
+      "fr": "Infrastructure Canada",
+      "en": "Infrastructure Canada"
+    },
+    "properties": {
+      "isInternal": false
+    }
+  },
+  {
+    "group": "requirementRequestor",
+    "code": "requestor",
+    "label": {
+      "fr": "Requérant",
+      "en": "Requestor"
+    }
+  },
+  {
+    "group": "requirementRequestor",
+    "code": "bic",
+    "label": {
+      "fr": "BIC",
+      "en": "BIC"
+    }
+  },
+  {
+    "group": "requirementRequestor",
+    "code": "performer",
+    "label": {
+      "fr": "Exécutant",
+      "en": "Performer"
+    }
+  },
+  {
+    "group": "requirementType",
+    "code": "work",
+    "label": {
+      "fr": "Réalisation de travaux",
+      "en": "Work"
+    }
+  },
+  {
+    "group": "requirementType",
+    "code": "programmation",
+    "label": {
+      "fr": "Programmation",
+      "en": "Programmation"
+    }
+  },
+  {
+    "group": "requirementType",
+    "code": "other",
+    "label": {
+      "fr": "Autre",
+      "en": "Other"
+    }
+  },
+  {
+    "group": "ruleType",
+    "code": "moratory",
+    "label": {
+      "fr": "Moratoire",
+      "en": "moratory"
+    }
+  },
+  {
+    "group": "ruleType",
+    "code": "exemption",
+    "label": {
+      "fr": "Dérogation",
+      "en": "exemption"
+    }
+  },
+  {
+    "group": "sectionType",
+    "code": "road",
+    "label": {
+      "fr": "Troncon de route",
+      "en": "road section"
+    }
+  },
+  {
+    "group": "sectionType",
+    "code": "unified",
+    "label": {
+      "fr": "Troncon unifié",
+      "en": "unified section"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "rehabilitation",
+    "label": {
+      "fr": "Réhabilitation",
+      "en": "Rehabilitation"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "replacement",
+    "label": {
+      "fr": "Remplacement",
+      "en": "Replacement"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "reconstruction",
+    "label": {
+      "fr": "Reconstruction",
+      "en": "reconstruction"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "construction",
+    "label": {
+      "fr": "Construction",
+      "en": "Construction"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "marking",
+    "label": {
+      "fr": "Marquage",
+      "en": "Marking"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "majorBasesConduits",
+    "label": {
+      "fr": "Majeur (Bases et conduits)",
+      "en": "Major bases conduits"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "insideRegulators",
+    "label": {
+      "fr": "Régulateurs intérieurs",
+      "en": "Inside regulators"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "minorFurnitureOnly",
+    "label": {
+      "fr": "Mineur (Mobilier seulement)",
+      "en": "Minor furniture only"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "designingRoadway",
+    "label": {
+      "fr": "Chausée désignée",
+      "en": "Designing roadway"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "corrective",
+    "label": {
+      "fr": "Correctifs",
+      "en": "Corrective"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "dismantlingOfTrafficLights",
+    "label": {
+      "fr": "Démantèlement de feux",
+      "en": "Dismantling of traffic lights"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "optimization",
+    "label": {
+      "fr": "Optimisation",
+      "en": "Optimization"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "equipmentChange",
+    "label": {
+      "fr": "Changement d'équipement",
+      "en": "Equipment change"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "repair",
+    "label": {
+      "fr": "Réparation",
+      "en": "Repair"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "demolition",
+    "label": {
+      "fr": "Démolition",
+      "en": "Demolition"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "burying",
+    "label": {
+      "fr": "Enfouissement",
+      "en": "Burying"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "minor",
+    "label": {
+      "fr": "Mineur",
+      "en": "Minor"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "abandon",
+    "label": {
+      "fr": "Abandon",
+      "en": "Abandonment"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "geometricRedevelopment",
+    "label": {
+      "fr": "Réaménagement géométrique",
+      "en": "Geometric redevelopment"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "pulvoStabilization",
+    "label": {
+      "fr": "Pulvo-stabilisation",
+      "en": "Pulvo stabilization"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "dismantling",
+    "label": {
+      "fr": "Démantélement",
+      "en": "Dismantling"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "medium",
+    "label": {
+      "fr": "Moyen",
+      "en": "medium"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "plantationCanopy",
+    "label": {
+      "fr": "Canopée (plantation)",
+      "en": "Plantation canopy"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "cutResurfacing",
+    "label": {
+      "fr": "Réfection de coupe",
+      "en": "cut resurfacing"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "major",
+    "label": {
+      "fr": "Majeur",
+      "en": "major"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "undefined",
+    "label": {
+      "fr": "Non-défini",
+      "en": "undefined"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "reservedBusBicycle",
+    "label": {
+      "fr": "ReservedBusBicycle",
+      "en": "reservedBusBicycle"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "pistecyclable",
+    "label": {
+      "fr": "Piste cyclable",
+      "en": "bikePath"
+    },
+    "NouvelleValeur": "à retirer"
+  },
+  {
+    "group": "workType",
+    "code": "amenagement",
+    "label": {
+      "fr": "Amenagement",
+      "en": "amenagement"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "canope",
+    "label": {
+      "fr": "Canope",
+      "en": "canope"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "constructionBikepath",
+    "label": {
+      "fr": "ConstructionBikepath",
+      "en": "constructionBikepath"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "reconstructionBikepath",
+    "label": {
+      "fr": "ReconstructionBikepath",
+      "en": "reconstructionBikepath"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "markingBikelane",
+    "label": {
+      "fr": "MarkingBikelane",
+      "en": "markingBikelane"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "markingBikedesigned",
+    "label": {
+      "fr": "MarkingBikedesigned",
+      "en": "markingBikedesigned"
+    }
+  },
+  {
+    "group": "workType",
+    "code": "refection",
+    "label": {
+      "fr": "Refection",
+      "en": "refection"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "new",
+    "label": {
+      "fr": "Nouvelle",
+      "en": "New"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "opened",
+    "label": {
+      "fr": "Ouverte",
+      "en": "Opened"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "programming",
+    "label": {
+      "fr": "En cours de programmation",
+      "en": "Programming"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "validated",
+    "label": {
+      "fr": "Validée",
+      "en": "Validated"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "submittedPreliminary",
+    "label": {
+      "fr": "Envoyée (préliminaire)",
+      "en": "Submitted (preliminary)"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "submittedFinal",
+    "label": {
+      "fr": "Envoyée (final)",
+      "en": "Submitted (final)"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "inDesign",
+    "label": {
+      "fr": "En conception",
+      "en": "In Design"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "inProgress",
+    "label": {
+      "fr": "En réalisation",
+      "en": "In Progress"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "done",
+    "label": {
+      "fr": "Réalisée",
+      "en": "Done"
+    }
+  },
+  {
+    "group": "annualProgramStatus",
+    "code": "archived",
+    "label": {
+      "fr": "Archivée",
+      "en": "Archived"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "new",
+    "label": {
+      "fr": "Nouveau",
+      "en": "New"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "opened",
+    "label": {
+      "fr": "Ouvert",
+      "en": "Opened"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "programming",
+    "label": {
+      "fr": "En cours de programmation",
+      "en": "Programming"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "validated",
+    "label": {
+      "fr": "Validé",
+      "en": "Validated"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "submittedPreliminary",
+    "label": {
+      "fr": "Envoyé (préliminaire)",
+      "en": "Submitted (preliminary)"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "submittedFinal",
+    "label": {
+      "fr": "Envoyé (final)",
+      "en": "Submitted (final)"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "inDesign",
+    "label": {
+      "fr": "En conception",
+      "en": "In Design"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "inProgress",
+    "label": {
+      "fr": "En réalisation",
+      "en": "In Progress"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "done",
+    "label": {
+      "fr": "Réalisé",
+      "en": "Done"
+    }
+  },
+  {
+    "group": "programBookStatus",
+    "code": "archived",
+    "label": {
+      "fr": "Archivé",
+      "en": "Archived"
+    }
+  },
+  {
+    "group": "role",
+    "code": "EXECUTOR",
+    "label": {
+      "fr": "Exécutant",
+      "en": "Executor"
+    }
+  },
+  {
+    "group": "role",
+    "code": "PILOT",
+    "label": {
+      "fr": "Pilote",
+      "en": "Pilot"
+    }
+  },
+  {
+    "group": "role",
+    "code": "EXTERNAL-GUEST",
+    "label": {
+      "fr": "Consultant externe VDM",
+      "en": "External guest"
+    }
+  },
+  {
+    "group": "role",
+    "code": "INTERNAL-GUEST-STANDARD",
+    "label": {
+      "fr": "Consultant interne VDM standard",
+      "en": "Internal guest standard"
+    }
+  },
+  {
+    "group": "role",
+    "code": "INTERNAL-GUEST-RESTRICTED",
+    "label": {
+      "fr": "Consultant interne VDM restreint",
+      "en": "Internal guest restricted"
+    }
+  },
+  {
+    "group": "role",
+    "code": "PLANNER",
+    "label": {
+      "fr": "Planificateur",
+      "en": "Planner"
+    }
+  },
+  {
+    "group": "role",
+    "code": "PLANIFICATION-ADMIN",
+    "label": {
+      "fr": "Administrateur",
+      "en": "Administrator"
+    }
+  },
+  {
+    "group": "role",
+    "code": "REQUESTOR",
+    "label": {
+      "fr": "Requérant",
+      "en": "Requestor"
+    }
+  },
+  {
+    "group": "shareableRole",
+    "code": "annualProgram",
+    "label": {
+      "fr": "Programmation annuelle",
+      "en": "Annual program"
+    },
+    "valueString1": "REQUESTOR,EXECUTOR,INTERNAL-GUEST-STANDARD,INTERNAL-GUEST-RESTRICTED"
+  },
+  {
+    "group": "shareableRole",
+    "code": "programBook",
+    "label": {
+      "fr": "Carnet de programmation",
+      "en": "Program book"
+    },
+    "valueString1": "REQUESTOR,EXECUTOR,INTERNAL-GUEST-STANDARD,INTERNAL-GUEST-RESTRICTED"
+  },
+  {
+    "group": "objectiveUnits",
+    "code": "length",
+    "label": {
+      "fr": "km",
+      "en": "km"
+    }
+  },
+  {
+    "group": "objectiveUnits",
+    "code": "budget",
+    "label": {
+      "fr": "k$",
+      "en": "k$"
+    }
+  },
+  {
+    "group": "mapAssetLogicLayer",
+    "code": "aqueducs",
+    "label": {
+      "en": "Aqueducts",
+      "fr": "Aqueducs"
+    }
+  },
+  {
+    "group": "mapAssetLogicLayer",
+    "code": "egouts",
+    "label": {
+      "en": "Sewers",
+      "fr": "Égouts"
+    }
+  },
+  {
+    "group": "mapAssetLogicLayer",
+    "code": "fireHydrants",
+    "label": {
+      "en": "Fire Hydrants",
+      "fr": "Bouches d'incendie"
+    }
+  },
+  {
+    "group": "mapAssetLogicLayer",
+    "code": "gas",
+    "displayOrder": 2300,
+    "label": {
+      "en": "Energir",
+      "fr": "Energir"
+    }
+  },
+  {
+    "group": "commentCategory",
+    "code": "constraint-description",
+    "label": {
+      "fr": "Description d'une contrainte",
+      "en": "Constraint description"
+    }
+  },
+  {
+    "group": "configuration",
+    "code": "filter-config",
+    "properties": {
+      "interventionStatuses": [
+        "created",
+        "received",
+        "planned",
+        "integrated",
+        "regrouped",
+        "finalOrdered",
+        "preliminaryOrdered",
+        "postponed",
+        "canceled",
+        "refused",
+        "waiting"
+      ],
+      "projectStatuses": [
+        "created",
+        "planned",
+        "programmed",
+        "finalOrdered",
+        "preliminaryOrdered",
+        "postponed",
+        "replanned",
+        "canceled"
+      ]
+    }
+  },
+  {
+    "group": "medalType",
+    "code": "platinum",
+    "label": {
+      "fr": "Platine",
+      "en": "Platinum"
+    },
+    "properties": {
+      "weight": 4
+    }
+  },
+  {
+    "group": "medalType",
+    "code": "gold",
+    "label": {
+      "fr": "Or",
+      "en": "Gold"
+    },
+    "properties": {
+      "weight": 3
+    }
+  },
+  {
+    "group": "medalType",
+    "code": "silver",
+    "label": {
+      "fr": "Argent",
+      "en": "Silver"
+    },
+    "properties": {
+      "weight": 2
+    }
+  },
+  {
+    "group": "medalType",
+    "code": "bronze",
+    "label": {
+      "fr": "Bronze",
+      "en": "Bronze"
+    },
+    "properties": {
+      "weight": 1
+    }
+  },
+  {
+    "group": "roadNetworkType",
+    "code": "arterial",
+    "label": {
+      "fr": "Artériel",
+      "en": "Arterial"
+    }
+  },
+  {
+    "group": "roadNetworkType",
+    "code": "local",
+    "label": {
+      "fr": "Local",
+      "en": "Local"
+    }
+  },
+  {
+    "group": "roadNetworkType",
+    "code": "arterial/local",
+    "label": {
+      "fr": "Artériel/Local",
+      "en": "Arterial/Local"
+    }
+  },
+  {
+    "group": "roadNetworkType",
+    "code": "offRoadNetwork",
+    "label": {
+      "fr": "Hors réseau routier",
+      "en": "Off road network"
+    }
+  },
+  {
+    "group": "commentCategory",
+    "code": "other",
+    "label": {
+      "fr": "Autre",
+      "en": "Other"
+    }
+  },
+  {
+    "group": "externalReferenceType",
+    "code": "infoRTUReferenceNumber",
+    "label": {
+      "fr": "Numéro de référence - Info RTU",
+      "en": "Info RTU reference number"
+    }
+  },
+  {
+    "group": "externalReferenceType",
+    "code": "requestorReferenceNumber",
+    "label": {
+      "fr": "Numéro de référence requérant",
+      "en": "Requestor reference number"
+    }
+  },
+  {
+    "group": "externalReferenceType",
+    "code": "ptiNumber",
+    "label": {
+      "fr": "Numéro de programme triennal d'immobilisations",
+      "en": "Immobilizations triennial program number"
+    }
+  },
+  {
+    "group": "riskType",
+    "code": "riskAgreement",
+    "label": {
+      "fr": "Risque entente",
+      "en": "Risk agreement"
+    }
+  },
+  {
+    "group": "riskType",
+    "code": "riskBurialComment",
+    "label": {
+      "fr": "Risque enfouissement (voir commentaire)",
+      "en": "Risk burial comment"
+    }
+  },
+  {
+    "group": "riskType",
+    "code": "riskLandAcquisition",
+    "label": {
+      "fr": "Risque acquisition de terrain",
+      "en": "Risk land acquisition"
+    }
+  },
+  {
+    "group": "riskType",
+    "code": "riskOtherComment",
+    "label": {
+      "fr": "Risque autre (voir commentaire)",
+      "en": "Risk other comment"
+    }
+  },
+  {
+    "group" : "assetDataKey",
+    "code" : "installationDate",
+    "label" : {
+        "fr" : "Date d'installation",
+        "en" : "Installation date"
+    },
+    "properties" : {
+        "geomaticKey" : "dateInstallation",
+        "assetKey" : "installationDate"
+    }
+  },
+  {
+    "group" : "assetDataKey",
+    "code" : "inspectionDate",
+    "label" : {
+        "fr" : "Date d'inspection",
+        "en" : "Inspection date"
+    },
+    "properties" : {
+        "geomaticKey" : "dateInspection",
+        "assetKey" : "inspectionDate"
+    }
+  },
+  {
+    "group": "service",
+    "code": "sum",
+    "label": {
+      "fr": "Service de l'urbanisme et de la mobilité",
+      "en": "Service de l'urbanisme et de la mobilité"
+    },
+    "properties": {
+      "requestors": [
+        "gpdm",
+        "publicWorksPT",
+        "signals",
+        "gpdu",
+        "gpville",
+        "waterManagement",
+        "publicWorksRoad",
+        "dtac",
+        "borough",
+        "sgp",
+        "sgpi",
+        "senv",
+        "dagp",
+        "gppart",
+        "sc"
+      ],
+      "acronym": {
+        "fr": "SUM",
+        "en": "SUM"
+      }
+    }
+  },
+  {
+    "group": "service",
+    "code": "se",
+    "label": {
+      "fr": "Service de l'eau",
+      "en": "Service de l'eau"
+    },
+    "properties": {
+      "requestors": ["dep", "deeu", "dre"],
+      "acronym": {
+        "fr": "SE",
+        "en": "SE"
+      }
+    }
+  },
+  {
+    "group": "assetType",
+    "code": "aqueductValveChamber",
+    "label": {
+      "en": "Aqueduct valve chamber",
+      "fr": "Chambre de vanne d'aqueduc"
+    },
+    "properties": {
+      "idKey": "noGeomatiqueChambre",
+      "namespace": "secured",
+      "owners": ["dre"],
+      "sourcesLayerId": "chambres-de-vannes-aqueducs",
+      "workTypes": ["construction", "reconstruction", "rehabilitation", "abandon", "equipmentChange"],
+      "consultationOnly": false
+    }
+  }
+]

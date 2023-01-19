@@ -1,0 +1,30 @@
+<app-filter-layout [formGroup]="form">
+  <ng-container *ngIf="group">
+  <span title>{{ group.groupTitle }}</span>
+  <div *ngFor="let subGroup of group.subGroups; let i = index" class="pb-1 mb-1 filter-container">
+    <div class="d-flex mr-2  group-title" *ngIf="!!subGroup.subGroupTitle">
+      <div class="d-flex flex-column justify-content-center">
+        <h6 class="mr-1 font-sm">{{ subGroup.subGroupTitle }}</h6>
+      </div>
+      <button class="btn btn-icon btn-icon-only p-0 mb-1" (click)="toggleIndexCollapse(i)">
+        <i
+          class="icon"
+          [class.icon-chevron-up]="!isIndexCollapsed(i)"
+          [class.icon-chevron-down]="isIndexCollapsed(i)"
+        ></i>
+      </button>
+    </div>
+    <ng-container *ngIf="!isIndexCollapsed(i)">
+      <app-filter-item-layout
+        [items]="subGroupLayerItems[subGroup.subGroupId]"
+        bindValue="value"
+        bindLabel="label"
+        bindIcon="icon"
+        [selectAll]="false"
+        iconPosition="right"
+        [formControlName]="subGroup.subGroupId"
+      ></app-filter-item-layout>
+    </ng-container>
+  </div>
+</ng-container>
+</app-filter-layout>

@@ -1,0 +1,56 @@
+<ng-container *ngIf="fileType">
+  <div class="d-flex justify-content-between mb-2">
+    <h5 class="mt-1 mr-4">{{ fileType | appTaxonomy: TaxonomyGroup.nexoFileType }}</h5>
+    <button
+      class="btn btn-secondary btn-squared ml-4"
+      type="button"
+      [disabled]="isLoading"
+      (click)="downloadImportFile()"
+    >
+      Télécharger
+    </button>
+  </div>
+  <table class="table-md-responsive mb-4" *ngIf="importResults && NexoFileType.INTERVENTIONS_SE">
+    <tbody class="table-results table-label-value">
+      <tr>
+        <td class="text-secondary" *ngIf="fileType === NexoFileType.INTERVENTIONS_SE">
+          Nombre d'interventions à importer
+        </td>
+        <td class="text-secondary" *ngIf="fileType != NexoFileType.INTERVENTIONS_SE">Nombre d'interventions</td>
+        <td>{{ importResults.interventionsToImport | vdmNa }}</td>
+      </tr>
+      <tr *ngIf="importResults.createdInterventions >= 0">
+        <td class="text-secondary">Nombre d'interventions créées</td>
+        <td>{{ importResults.createdInterventions | vdmNa }}</td>
+      </tr>
+      <tr *ngIf="importResults.updatedInterventions >= 0">
+        <td class="text-secondary">Nombre d'interventions mise à jour</td>
+        <td>{{ importResults.updatedInterventions | vdmNa }}</td>
+      </tr>
+      <tr *ngIf="importResults.canceledInterventions >= 0">
+        <td class="text-secondary">Nombre d'interventions annulées</td>
+        <td>{{ importResults.canceledInterventions | vdmNa }}</td>
+      </tr>
+      <tr *ngIf="importResults.errorInterventions >= 0">
+        <td class="text-secondary">Nombre d'interventions en erreur</td>
+        <td>{{ importResults.errorInterventions | vdmNa }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table-md-responsive mb-4" *ngIf="optionalFileImportResults">
+    <tbody class="table-results table-label-value">
+      <tr>
+        <td class="text-secondary">Nombre d'interventions</td>
+        <td>{{ optionalFileImportResults.interventionsToImport | vdmNa }}</td>
+      </tr>
+      <tr *ngIf="optionalFileImportResults.updatedInterventions >= 0">
+        <td class="text-secondary">Nombre d'interventions mise à jour</td>
+        <td>{{ optionalFileImportResults.updatedInterventions | vdmNa }}</td>
+      </tr>
+      <tr *ngIf="optionalFileImportResults.errorInterventions >= 0">
+        <td class="text-secondary">Nombre d'interventions en erreur</td>
+        <td>{{ optionalFileImportResults.errorInterventions | vdmNa }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

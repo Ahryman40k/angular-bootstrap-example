@@ -1,0 +1,20 @@
+app-map-layer-manager *.card {
+  margin: 0;
+}
+
+vdm-layer-manager {
+  .checkbox-container.disabled-checked,
+  .checkbox-container.enabled-checked {
+    i.fa.fa-check {
+      @extend .icon;
+      @extend .icon-check;
+
+      &::before {
+        height: 20px;
+        width: 20px;
+        margin-top: 2px;
+        background-color: white;
+      }
+    }
+  }
+}

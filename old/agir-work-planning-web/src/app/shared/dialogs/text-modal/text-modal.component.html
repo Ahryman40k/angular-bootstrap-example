@@ -1,0 +1,19 @@
+<app-layout-modal [modalTitle]="modalTitle">
+  <div body class="d-flex flex-column">
+    <label *ngIf="textFieldLabel" class="font-weight-bold">{{ textFieldLabel }}</label>
+    <textarea [formControl]="formControl" class="form-control w-100"></textarea>
+    <app-form-errors [formControl]="formControl">
+      <app-form-error *appFormError="let e; key: 'required'">
+        Le champ est requis.
+      </app-form-error>
+    </app-form-errors>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()">
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="save()">
+      {{ saveButtonText }}
+    </button>
+  </div>
+</app-layout-modal>

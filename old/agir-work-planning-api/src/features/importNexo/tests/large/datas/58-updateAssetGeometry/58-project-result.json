@@ -1,0 +1,100 @@
+[
+  {
+    "id": "P00001",
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": null,
+    "boroughId": "VM",
+    "executorId": "dre",
+    "externalReferenceIds": [ 
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DRE"
+      }
+    ],
+    "geometry": "A_IGNORER",
+    "globalBudget": {
+      "allowance": 361.34
+    },
+    "importFlag": "import-nexo",
+    "inChargeId": "dre",
+    "interventionIds": [ "I00002" ],
+    "servicePriorities": [],
+    "projectName": "PI - Standard / sur Rue Saint-Maurice, de Rue Dupré, à Rue Saint-Henri",
+    "projectTypeId": "integrated",
+    "startYear": 2021,
+    "endYear": 2021,
+    "status": "planned",
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [ 
+        {
+          "rank": 0,
+          "year": 2021,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 361.34,
+          "status": "planned",
+          "categoryId": "new",
+          "interventionIds": [ "I00002" ],
+          "interventionsTotalBudget": 361.34
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 361.34,
+        "additionalCostTotals": [ 
+          {
+            "type": "contingency",
+            "amount": 0
+          }, 
+          {
+            "type": "others",
+            "amount": 0
+          }, 
+          {
+            "type": "professionalServices",
+            "amount": 0
+          }, 
+          {
+            "type": "workExpenditures",
+            "amount": 0
+          }
+        ],
+        "totalAdditionalCosts": 0,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 361.34
+      }
+    },
+    "comments": [],
+    "decisions": [],
+    "documents": [],
+    "geometryPin": "A_IGNORER",
+    "length": {
+      "unit": "m",
+      "value": 20
+    },
+    "medalId": null
+  }
+]

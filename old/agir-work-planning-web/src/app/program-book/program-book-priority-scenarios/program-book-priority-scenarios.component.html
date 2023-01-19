@@ -1,0 +1,91 @@
+<div class="d-flex mt-4 mb-3">
+  <div class="d-flex col-md-2 p-0">
+    <h4 class="d-block">Ordonnancement</h4>
+  </div>
+  <div class="d-flex col-md-6 align-items-center justify-content-end">
+    <div *ngIf="lastModified.date" class="mr-2 text-sm">
+      Dernière modification par
+      <span class="font-weight-bold"> {{ lastModified.displayName }}, </span>
+      le
+      <span class="font-weight-bold">
+        {{ lastModified.date | date: 'dd LLL yyyy' }}
+      </span>
+    </div>
+    <button
+      [disabled]="isAutomaticLoadingInProgress"
+      *ngIf="
+        priorityLevelsChanged &&
+        (Permission.PROGRAM_BOOK_PRIORITY_SCENARIOS_WRITE | appPermission) &&
+        (restrictionItems | appRestrictions)
+      "
+      class="btn btn-primary btn-squared"
+      (click)="onSavePriorityLevels()"
+    >
+      <span class="icon icon-save"></span>
+      <span>Sauvegarder</span>
+    </button>
+    <button
+      [disabled]="isAutomaticLoadingInProgress"
+      *ngIf="
+        priorityScenariosOutdated &&
+        !priorityLevelsChanged &&
+        (Permission.PROGRAM_BOOK_PRIORITY_SCENARIOS_WRITE | appPermission) &&
+        (restrictionItems | appRestrictions)
+      "
+      type="button"
+      class="btn btn-primary btn-squared ml-1"
+      (click)="calculatePriorityScenario()"
+    >
+      <span class="icon icon-refresh"></span>
+      Actualiser l'ordonnancement
+    </button>
+  </div>
+</div>
+<ng-container *ngIf="!isInitializingProgramBookScenarios">
+  <div
+    cdkDropList
+    class="col-md-8"
+    *ngFor="let scenario of priorityScenarios; let i = index"
+    (cdkDropListDropped)="onDragPriorityLevelRank($event, i)"
+    [cdkDropListDisabled]="
+      !((Permission.PROGRAM_BOOK_PRIORITY_SCENARIOS_WRITE | appPermission) && (restrictionItems | appRestrictions))
+    "
+  >
+    <div
+      *ngFor="let priorityLevel of scenario.priorityLevels; let j = index"
+      cdkDragLockAxis="y"
+      cdkDrag
+      [cdkDragDisabled]="j === 0 || isAutomaticLoadingInProgress"
+    >
+      <app-priority-level-card
+        [index]="j"
+        class="box"
+        [hasWriteAccess]="
+          (Permission.PROGRAM_BOOK_PRIORITY_SCENARIOS_WRITE | appPermission) && (restrictionItems | appRestrictions)
+        "
+        [priorityLevel]="priorityLevel"
+        [taxonomies]="taxonomies"
+        [priorityLevelLength]="scenario.priorityLevels.length"
+        [disabled]="!arePriorityLevelsChanged"
+        [submitted]="submitted"
+        (priorityLevelRankChanged)="onChangePriorityLevelRank($event, i)"
+        (priorityLevelDeleted)="onDeletePriorityLevel($event, i)"
+        (priorityLevelCriteriaChanged)="onChangePriorityLevelCriteria($event, i, j)"
+        (priorityLevelSortCriteriasChanged)="onChangePriorityLevelSortCriterias($event, i, j)"
+      >
+      </app-priority-level-card>
+    </div>
+  </div>
+  <div class="col-md-12 mb-3">
+    <button
+      [disabled]="isAutomaticLoadingInProgress"
+      *ngIf="(Permission.PROGRAM_BOOK_PRIORITY_SCENARIOS_WRITE | appPermission) && (restrictionItems | appRestrictions)"
+      class="btn btn-primary btn-squared"
+      (click)="onAddPriorityLevel()"
+    >
+      <span class="icon icon-plus"></span>
+      <span>Ajouter un niveau</span>
+    </button>
+  </div>
+</ng-container>
+<app-spinner *ngIf="isInitializingProgramBookScenarios" class="d-flex mx-auto mt-1"></app-spinner>

@@ -1,0 +1,12 @@
+<input
+  type="checkbox"
+  class="custom-control-input"
+  (change)="onInputChange($event)"
+  [checked]="value"
+  (blur)="checkboxBlur()"
+  [attr.disabled]="disabled ? '' : undefined"
+/>
+<label class="custom-control-label" [ngClass]="labelClass">
+  {{ currentLabel }}
+  <ng-content></ng-content>
+</label>

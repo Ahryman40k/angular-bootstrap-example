@@ -1,0 +1,847 @@
+{
+  "admin": "urielju",
+  "domain": {
+    "code": "TERRITORY"
+  },
+  "application": {
+    "name": "AGIR - Planification",
+    "code": "AGIR-PLANNING",
+    "description": "AGIR - Planification"
+  },
+  "roles": [
+    {
+      "code": "EXECUTOR",
+      "name": "Exécutant",
+      "description": "Saisie des interventions et suivi, Consultation des interventions et projets AGIR",
+      "permissions": [
+        "ANNUAL_PROGRAM:READ",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "COMPARISON:READ",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+        "INTERVENTION:BUDGET:READ",
+        "INTERVENTION:COMMENT:READ",
+        "INTERVENTION:DECISION:READ",
+        "INTERVENTION:INITIAL_YEAR:READ",
+        "INTERVENTION:MORE_INFORMATION:READ",
+        "INTERVENTION:READ",
+        "INTERVENTION:REQUESTOR_CONTACT:READ",
+        "INTERVENTION:DOCUMENT:READ",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:READ",
+        "PROGRAM_BOOK:SUBMISSIONS:READ",
+        "PROJECT_ZONE:READ",
+        "PROJECT:ANNUAL_DISTRIBUTION:READ",
+        "PROJECT:BUDGET:READ",
+        "PROJECT:COMMENT:READ",
+        "PROJECT:COMMENT:WRITE",
+        "PROJECT:DECISION:CREATE",
+        "PROJECT:DECISION:POSTPONED:CREATE",
+        "PROJECT:DECISION:READ",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:MORE_INFORMATION:READ",
+        "PROJECT:READ",
+        "PROJECT:WITH_POSTPONED_DECISION:READ",
+        "REQUIREMENT:READ",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:WRITE",
+        "SUBMISSION:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "SUBMISSION:DOCUMENT:WRITE",
+        "SUBMISSION:STATUS:WRITE",
+        "SUBMISSION:PROGRESS_STATUS:WRITE",
+        "SUBMISSION:REQUIREMENT:WRITE",
+        "WORK_AREA:READ",
+        "OPPORTUNITY_NOTICE:READ",
+        "PROJECT:DOCUMENT:READ"
+      ]
+    },
+    {
+      "code": "PLANIFICATION_ADMIN",
+      "name": "Administrateur planification",
+      "description": "Gestion globale de la planification AGIR Attribuer/ suspendre des accès aux utilisateurs, Accès au pilotage pour configurer les droits d'utilisateurs et attribution de rôles, Configure",
+      "permissions": [
+        "ACCESS_MANAGEMENT:ACCESS",
+        "ANNUAL_PROGRAM:READ:ALL",
+        "ANNUAL_PROGRAM:READ",
+        "ANNUAL_PROGRAM:WRITE",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "COMPARISON:READ",
+        "IMPORT:WRITE",
+        "INFO_RTU_IMPORT_EXPORT:WRITE",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+        "INTERVENTION:BUDGET:READ",
+        "INTERVENTION:COMMENT:READ:PRIVATE",
+        "INTERVENTION:COMMENT:READ",
+        "INTERVENTION:COMMENT:WRITE",
+        "INTERVENTION:DECISION:CREATE",
+        "INTERVENTION:DECISION:READ",
+        "INTERVENTION:DOCUMENT:READ",
+        "INTERVENTION:DOCUMENT:WRITE",
+        "INTERVENTION:INITIAL_YEAR:READ",
+        "INTERVENTION:MORE_INFORMATION:READ",
+        "INTERVENTION:READ:ALL",
+        "INTERVENTION:READ",
+        "INTERVENTION:DELETE",
+        "INTERVENTION:REQUESTOR_CONTACT:READ",
+        "INTERVENTION:WRITE",
+        "INTERVENTION:DECISION:ACCEPTED_REFUSED:CREATE",
+        "INTERVENTION:DECISION:CANCELED:CREATE",
+        "INTERVENTION:DECISION:REVISION_REQUEST:CREATE",
+        "INTERVENTION:DECISION:RETURNED:CREATE",
+        "NEXO_IMPORT_LOG:READ",
+        "NEXO_IMPORT_LOG:WRITE",
+        "OPPORTUNITY_NOTICE:READ",
+        "OPPORTUNITY_NOTICE:WRITE",
+        "PROGRAM_BOOK:LOAD",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:OBJECTIVE:WRITE",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:WRITE",
+        "PROGRAM_BOOK:PROGRAM",
+        "PROGRAM_BOOK:READ:ALL",
+        "PROGRAM_BOOK:READ:NEW",
+        "PROGRAM_BOOK:READ",
+        "PROGRAM_BOOK:SUBMISSIONS:READ",
+        "PROGRAM_BOOK:WRITE",
+        "PROJECT_ZONE:READ",
+        "PROJECT:ANNUAL_DISTRIBUTION:READ",
+        "PROJECT:BUDGET:READ",
+        "PROJECT:COMMENT:READ:PRIVATE",
+        "PROJECT:COMMENT:READ",
+        "PROJECT:COMMENT:WRITE",
+        "PROJECT:COMMENT:WRITE:PRIVATE",
+        "PROJECT:DECISION:CANCELED:CREATE",
+        "PROJECT:DECISION:REPLANNED:CREATE",
+        "PROJECT:DECISION:POSTPONED:CREATE",
+        "PROJECT:DECISION:REMOVE_FROM_PROGRAM_BOOK:CREATE",
+        "PROJECT:DECISION:CREATE",
+        "PROJECT:DECISION:READ",
+        "PROJECT:DOCUMENT:READ",
+        "PROJECT:DOCUMENT:WRITE",
+        "PROJECT:DRM:WRITE",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:MORE_INFORMATION:READ",
+        "PROJECT:READ:ALL",
+        "PROJECT:READ",
+        "PROJECT:WRITE",
+        "REQUIREMENT:READ",
+        "REQUIREMENT:WRITE",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_EXPORT_LOG:READ",
+        "RTU_IMPORT_LOG:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "SUBMISSION:DOCUMENT:WRITE",
+        "SUBMISSION:WRITE",
+        "SUBMISSION:READ",
+        "SUBMISSION:STATUS:WRITE",
+        "SUBMISSION:PROGRESS_STATUS:WRITE",
+        "SUBMISSION:REQUIREMENT:WRITE",
+        "TAXONOMY:WRITE",
+        "WORK_AREA:READ"
+      ]
+    },
+    {
+      "code": "PILOT",
+      "name": "Pilote AGIR",
+      "description": "Création de la programmation, carnet et objectifs, Approbation des carnets et  programmation annuelle, Publication de la programmation annuelle",
+      "permissions": [
+        "ACCESS_MANAGEMENT:ACCESS",
+        "ANNUAL_PROGRAM:READ:ALL",
+        "ANNUAL_PROGRAM:READ",
+        "ANNUAL_PROGRAM:WRITE",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "COMPARISON:READ",
+        "IMPORT:WRITE",
+        "INFO_RTU_IMPORT_EXPORT:WRITE",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+        "INTERVENTION:BUDGET:READ",
+        "INTERVENTION:COMMENT:READ:PRIVATE",
+        "INTERVENTION:COMMENT:READ",
+        "INTERVENTION:COMMENT:WRITE",
+        "INTERVENTION:DECISION:CREATE",
+        "INTERVENTION:DECISION:READ",
+        "INTERVENTION:DOCUMENT:READ",
+        "INTERVENTION:DOCUMENT:WRITE",
+        "INTERVENTION:INITIAL_YEAR:READ",
+        "INTERVENTION:MORE_INFORMATION:READ",
+        "INTERVENTION:READ:ALL",
+        "INTERVENTION:READ",
+        "INTERVENTION:REQUESTOR_CONTACT:READ",
+        "INTERVENTION:WRITE",
+        "INTERVENTION:DECISION:ACCEPTED_REFUSED:CREATE",
+        "INTERVENTION:DECISION:CANCELED:CREATE",
+        "INTERVENTION:DECISION:REVISION_REQUEST:CREATE",
+        "INTERVENTION:DECISION:RETURNED:CREATE",
+        "NEXO_IMPORT_LOG:READ",
+        "NEXO_IMPORT_LOG:WRITE",
+        "OPPORTUNITY_NOTICE:READ",
+        "OPPORTUNITY_NOTICE:WRITE",
+        "PROGRAM_BOOK:LOAD",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:OBJECTIVE:WRITE",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:WRITE",
+        "PROGRAM_BOOK:PROGRAM",
+        "PROGRAM_BOOK:READ:ALL",
+        "PROGRAM_BOOK:READ:NEW",
+        "PROGRAM_BOOK:READ",
+        "PROGRAM_BOOK:SUBMISSIONS:READ",
+        "PROGRAM_BOOK:WRITE",
+        "PROJECT_ZONE:READ",
+        "PROJECT:ANNUAL_DISTRIBUTION:READ",
+        "PROJECT:BUDGET:READ",
+        "PROJECT:COMMENT:READ:PRIVATE",
+        "PROJECT:COMMENT:READ",
+        "PROJECT:COMMENT:WRITE",
+        "PROJECT:COMMENT:WRITE:PRIVATE",
+        "PROJECT:DECISION:CANCELED:CREATE",
+        "PROJECT:DECISION:REPLANNED:CREATE",
+        "PROJECT:DECISION:POSTPONED:CREATE",
+        "PROJECT:DECISION:REMOVE_FROM_PROGRAM_BOOK:CREATE",
+        "PROJECT:DECISION:CREATE",
+        "PROJECT:DECISION:READ",
+        "PROJECT:DOCUMENT:READ",
+        "PROJECT:DOCUMENT:WRITE",
+        "PROJECT:DRM:WRITE",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:MORE_INFORMATION:READ",
+        "PROJECT:READ:ALL",
+        "PROJECT:READ",
+        "PROJECT:WRITE",
+        "REQUIREMENT:READ",
+        "REQUIREMENT:WRITE",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_EXPORT_LOG:READ",
+        "RTU_IMPORT_LOG:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "TAXONOMY:WRITE",
+        "WORK_AREA:READ"
+      ]
+    },
+    {
+      "code": "PLANNER",
+      "name": "Planificateur",
+      "description": "Saisie et consultation des interventions, projets, Intégration des interventions, Intégration des projets dans les carnets",
+      "permissions": [
+        "ANNUAL_PROGRAM:READ:ALL",
+        "ANNUAL_PROGRAM:READ",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "COMPARISON:READ",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+        "INTERVENTION:BUDGET:READ",
+        "INTERVENTION:COMMENT:READ:PRIVATE",
+        "INTERVENTION:COMMENT:READ",
+        "INTERVENTION:COMMENT:WRITE",
+        "INTERVENTION:DECISION:CREATE",
+        "INTERVENTION:DECISION:READ",
+        "INTERVENTION:DOCUMENT:READ",
+        "INTERVENTION:DOCUMENT:WRITE",
+        "INTERVENTION:INITIAL_YEAR:READ",
+        "INTERVENTION:MORE_INFORMATION:READ",
+        "INTERVENTION:READ:ALL",
+        "INTERVENTION:READ",
+        "INTERVENTION:REQUESTOR_CONTACT:READ",
+        "INTERVENTION:WRITE",
+        "INTERVENTION:DECISION:ACCEPTED_REFUSED:CREATE",
+        "INTERVENTION:DECISION:CANCELED:CREATE",
+        "INTERVENTION:DECISION:REVISION_REQUEST:CREATE",
+        "INTERVENTION:DECISION:RETURNED:CREATE",
+        "OPPORTUNITY_NOTICE:READ",
+        "OPPORTUNITY_NOTICE:WRITE",
+        "PROGRAM_BOOK:LOAD",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:WRITE",
+        "PROGRAM_BOOK:PROGRAM",
+        "PROGRAM_BOOK:READ:ALL",
+        "PROGRAM_BOOK:READ",
+        "PROGRAM_BOOK:SUBMISSIONS:READ",
+        "PROJECT_ZONE:READ",
+        "PROJECT:ANNUAL_DISTRIBUTION:READ",
+        "PROJECT:BUDGET:READ",
+        "PROJECT:COMMENT:READ:PRIVATE",
+        "PROJECT:COMMENT:READ",
+        "PROJECT:COMMENT:WRITE",
+        "PROJECT:COMMENT:WRITE:PRIVATE",
+        "PROJECT:DECISION:CANCELED:CREATE",
+        "PROJECT:DECISION:REPLANNED:CREATE",
+        "PROJECT:DECISION:POSTPONED:CREATE",
+        "PROJECT:DECISION:REMOVE_FROM_PROGRAM_BOOK:CREATE",
+        "PROJECT:DECISION:CREATE",
+        "PROJECT:DECISION:READ",
+        "PROJECT:DOCUMENT:READ",
+        "PROJECT:DOCUMENT:WRITE",
+        "PROJECT:DRM:WRITE",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:MORE_INFORMATION:READ",
+        "PROJECT:READ:ALL",
+        "PROJECT:READ",
+        "PROJECT:WRITE",
+        "REQUIREMENT:READ",
+        "REQUIREMENT:WRITE",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "SUBMISSION:DOCUMENT:WRITE",
+        "SUBMISSION:READ",
+        "SUBMISSION:PROGRESS_STATUS:WRITE",
+        "SUBMISSION:STATUS:WRITE",
+        "WORK_AREA:READ"
+      ]
+    },
+    {
+      "code": "PLANNER_SE",
+      "name": "Planificateur Service de l'eau",
+      "description": "Planificateur Service de l'eau",
+      "permissions": [
+        "ANNUAL_PROGRAM:READ:ALL",
+        "ANNUAL_PROGRAM:READ",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+        "INTERVENTION:BUDGET:READ",
+        "INTERVENTION:COMMENT:READ:PRIVATE",
+        "INTERVENTION:COMMENT:READ",
+        "INTERVENTION:COMMENT:WRITE",
+        "INTERVENTION:DECISION:CREATE",
+        "INTERVENTION:DECISION:READ",
+        "INTERVENTION:DOCUMENT:READ",
+        "INTERVENTION:DOCUMENT:WRITE",
+        "INTERVENTION:INITIAL_YEAR:READ",
+        "INTERVENTION:MORE_INFORMATION:READ",
+        "INTERVENTION:READ",
+        "INTERVENTION:READ:ALL",
+        "INTERVENTION:REQUESTOR_CONTACT:READ",
+        "INTERVENTION:WRITE",
+        "INTERVENTION:DELETE",
+        "INTERVENTION:DECISION:CANCELED:CREATE",
+        "INTERVENTION:DECISION:REVISION_REQUEST:CREATE",
+        "NEXO_IMPORT_LOG:READ",
+        "NEXO_IMPORT_LOG:WRITE",
+        "OPPORTUNITY_NOTICE:READ",
+        "PROGRAM_BOOK:READ:ALL",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:READ",
+        "PROJECT_ZONE:READ",
+        "PROJECT:ANNUAL_DISTRIBUTION:READ",
+        "PROJECT:READ:ALL",
+        "PROJECT:BUDGET:READ",
+        "PROJECT:COMMENT:READ",
+        "PROJECT:DECISION:READ",
+        "PROJECT:DOCUMENT:READ",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:MORE_INFORMATION:READ",
+        "PROJECT:READ",
+        "REQUIREMENT:READ",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "TAXONOMY:WRITE",
+        "WORK_AREA:READ"
+      ]
+    },
+    {
+      "code": "REQUESTOR",
+      "name": "Requérant",
+      "description": "Saisie des interventions et suivi, Consultation des interventions et projets AGIR",
+      "permissions": [
+        "ANNUAL_PROGRAM:READ:ALL",
+        "ANNUAL_PROGRAM:READ",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "COMPARISON:READ",
+        "INTERVENTION:COMMENT:WRITE",
+        "INTERVENTION:DOCUMENT:WRITE",
+        "INTERVENTION:DOCUMENT:READ",
+        "INTERVENTION:WRITE",
+        "INTERVENTION:COMMENT:READ:PRIVATE",
+        "INTERVENTION:READ:ALL",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+        "INTERVENTION:BUDGET:READ",
+        "INTERVENTION:COMMENT:READ",
+        "INTERVENTION:DECISION:READ",
+        "INTERVENTION:INITIAL_YEAR:READ",
+        "INTERVENTION:MORE_INFORMATION:READ",
+        "INTERVENTION:READ",
+        "INTERVENTION:DELETE",
+        "INTERVENTION:REQUESTOR_CONTACT:READ",
+        "INTERVENTION:DECISION:CREATE",
+        "INTERVENTION:DECISION:CANCELED:CREATE",
+        "INTERVENTION:DECISION:REVISION_REQUEST:CREATE",
+        "PROGRAM_BOOK:READ:ALL",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:READ",
+        "PROJECT:READ:ALL",
+        "PROJECT:DOCUMENT:READ",
+        "PROJECT_ZONE:READ",
+        "PROJECT:ANNUAL_DISTRIBUTION:READ",
+        "PROJECT:BUDGET:READ",
+        "PROJECT:COMMENT:READ",
+        "PROJECT:DECISION:READ",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:MORE_INFORMATION:READ",
+        "PROJECT:READ",
+        "REQUIREMENT:READ",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "WORK_AREA:READ",
+        "OPPORTUNITY_NOTICE:READ"
+      ]
+    },
+    {
+      "code": "INTERNAL-GUEST-STANDARD",
+      "name": "Consultant interne standard",
+      "description": "Uniquement la consultation : programmation et carnets, Interventions et projets AGIR",
+      "permissions": [
+        "ANNUAL_PROGRAM:READ",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "COMPARISON:READ",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+        "INTERVENTION:BUDGET:READ",
+        "INTERVENTION:INITIAL_YEAR:READ",
+        "INTERVENTION:READ",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:READ",
+        "PROJECT_ZONE:READ",
+        "PROJECT:ANNUAL_DISTRIBUTION:READ",
+        "PROJECT:BUDGET:READ",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:READ",
+        "REQUIREMENT:READ",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "WORK_AREA:READ"
+      ]
+    },
+    {
+      "code": "INTERNAL-GUEST-RESTRICTED",
+      "name": "Uniquement la consultation",
+      "description": "",
+      "permissions": [
+        "ANNUAL_PROGRAM:READ",
+        "ASSET:READ",
+        "ASSET:SEARCH",
+        "COMPARISON:READ",
+        "INTERVENTION_ZONE:READ",
+        "INTERVENTION:READ",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:READ",
+        "PROJECT_ZONE:READ",
+        "PROJECT:INTERVENTIONS:READ",
+        "PROJECT:READ",
+        "REQUIREMENT:READ",
+        "ROAD_SECTION_ACTIVITY:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "WORK_AREA:READ"
+      ]
+    },
+    {
+      "code": "EXTERNAL-GUEST",
+      "name": "Consultant externe VDM",
+      "description": "Consultation seulement de la programmation, carnets et projets",
+      "permissions": [
+        "ANNUAL_PROGRAM:READ",
+        "INTERVENTION:READ",
+        "PROGRAM_BOOK:OBJECTIVE:READ",
+        "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+        "PROGRAM_BOOK:READ",
+        "PROJECT_ZONE:READ",
+        "PROJECT:READ",
+        "REQUIREMENT:READ",
+        "RTU_PROJECT:READ",
+        "SUBMISSION:READ",
+        "SUBMISSION:DOCUMENT:READ",
+        "WORK_AREA:READ"
+      ]
+    },
+    {
+      "code": "PARTNER_PROJECT_CONSULTATION",
+      "name": "Consultation Projets partenaires (RTU)",
+      "description": "Consultation des projets RTU",
+      "permissions": ["PARTNER_PROJECT:READ"]
+    },
+    {
+      "code": "EXTENDED_REQUESTOR",
+      "name": "Requérant étendu",
+      "description": "Accès à la gestion des avis d'opportunité",
+      "permissions": ["PROJECT:WRITE", "OPPORTUNITY_NOTICE:WRITE"]
+    },
+    {
+      "code": "EXTRACTOR",
+      "name": "Extraction de données",
+      "description": "Accès à l'extraction des interventions et des projets",
+      "permissions": ["INTERVENTION:EXTRACT", "PROJECT:EXTRACT"]
+    }
+  ],
+  "permissions": [
+    {
+      "code": "ACCESS_MANAGEMENT:ACCESS",
+      "description": "Droit d'accès au module de gestion des accès (GDA)"
+    },
+    {
+      "code": "ANNUAL_PROGRAM:READ",
+      "description": "Consulter une programmation annuelle"
+    },
+    {
+      "code": "ANNUAL_PROGRAM:READ:ALL",
+      "description": "Consulter toutes les programmations annuelles"
+    },
+    {
+      "code": "ANNUAL_PROGRAM:WRITE",
+      "description": "Créer / Éditer / Supprimer une programmation annuelle"
+    },
+    {
+      "code": "ASSET:READ",
+      "description": "Consulter les informations des actifs  (Propriétaire, âge, ID...) - Consulter des actifs sur la carte"
+    },
+    {
+      "code": "ASSET:SEARCH",
+      "description": "Rechercher des actifs sur la carte"
+    },
+    {
+      "code": "IMPORT:WRITE",
+      "description": "Importer les projets depuis info RTU - Importer les interventions / projets Onglet BIC "
+    },
+    {
+      "code": "INTERVENTION:DECISION:ACCEPTED_REFUSED:CREATE",
+      "description": "Permet d'accepter ou de refuser une intervention"
+    },
+    {
+      "code": "INTERVENTION:DECISION:CANCELED:CREATE",
+      "description": "Permet d'annuler une intervention"
+    },
+    {
+      "code": "INTERVENTION:DECISION:REVISION_REQUEST:CREATE",
+      "description": "Permet d'effectuer une demande de révision pour une intervention"
+    },
+    {
+      "code": "INTERVENTION:DECISION:RETURNED:CREATE",
+      "description": "Permet de renvoyer une intervention sans programme au Requérant"
+    },
+    {
+      "code": "INTERVENTION:ANNUAL_DISTRIBUTION:READ",
+      "description": "Consulter la distribution annuelle de l'intervention"
+    },
+    {
+      "code": "INTERVENTION:BUDGET:READ",
+      "description": "Consulter la fiche intervention (informations générales)"
+    },
+    {
+      "code": "INTERVENTION:COMMENT:READ",
+      "description": "Consulter un commentaire intervention"
+    },
+    {
+      "code": "INTERVENTION:COMMENT:READ:PRIVATE",
+      "description": "Consulter un commentaire privé d'une intervention"
+    },
+    {
+      "code": "INTERVENTION:COMMENT:WRITE",
+      "description": "Ajouter / Éditer / Supprimer un commentaire intervention"
+    },
+    {
+      "code": "INTERVENTION:DECISION:READ",
+      "description": "Consulter les décisions"
+    },
+    {
+      "code": "INTERVENTION:DECISION:CREATE",
+      "description": "Ajouter une décision"
+    },
+    {
+      "code": "INTERVENTION:DOCUMENT:READ",
+      "description": "Consulter les documents intervention"
+    },
+    {
+      "code": "INTERVENTION:DOCUMENT:WRITE",
+      "description": "Gérer les documents intervention"
+    },
+    {
+      "code": "INTERVENTION:INITIAL_YEAR:READ",
+      "description": "Consulter la fiche intervention (informations générales)"
+    },
+    {
+      "code": "INTERVENTION:MORE_INFORMATION:READ",
+      "description": "Consulter plus d'information d'intervention"
+    },
+    {
+      "code": "INTERVENTION:READ",
+      "description": "Consulter la fiche intervention (informations générales)"
+    },
+    {
+      "code": "INTERVENTION:DELETE",
+      "description": "Supprimer une intervention"
+    },
+    {
+      "code": "INTERVENTION:READ:ALL",
+      "description": "Consulter toutes les interventions"
+    },
+    {
+      "code": "INTERVENTION:REQUESTOR_CONTACT:READ",
+      "description": "Consulter la fiche intervention (informations générales)"
+    },
+    {
+      "code": "INTERVENTION_ZONE:READ",
+      "description": "Consulter la zone d'une intervention"
+    },
+    {
+      "code": "INTERVENTION:WRITE",
+      "description": "Saisir / Éditer / Modifier une intervention"
+    },
+    {
+      "code": "INTERVENTION:EXTRACT",
+      "description": "Extraire des interventions"
+    },
+    {
+      "code": "OPPORTUNITY_NOTICE:READ",
+      "description": "Consulter les avis d'opportunité"
+    },
+    {
+      "code": "OPPORTUNITY_NOTICE:WRITE",
+      "description": "Saisir / Éditer / Modifier les avis d'opportunité"
+    },
+    {
+      "code": "PARTNER_PROJECT:READ",
+      "description": "Consultation Projets partenaires (RTU)"
+    },
+    {
+      "code": "PROGRAM_BOOK:LOAD",
+      "description": "Charger un carnet "
+    },
+    {
+      "code": "PROGRAM_BOOK:PRIORITY_SCENARIOS:READ",
+      "description": "Consulter l'ordonnancement'"
+    },
+    {
+      "code": "PROGRAM_BOOK:PRIORITY_SCENARIOS:WRITE",
+      "description": "Saisir / Éditer / Modifier l'ordonnancement'"
+    },
+    {
+      "code": "PROGRAM_BOOK:OBJECTIVE:READ",
+      "description": "Consulter les objectifs de la programmation "
+    },
+    {
+      "code": "PROGRAM_BOOK:OBJECTIVE:WRITE",
+      "description": "Créer / Éditer les objectifs de la programmation"
+    },
+    {
+      "code": "PROGRAM_BOOK:PROGRAM",
+      "description": "Ajouter / Retirer un projet au carnet"
+    },
+    {
+      "code": "PROGRAM_BOOK:READ",
+      "description": "Consulter un carnet de programmation"
+    },
+    {
+      "code": "PROGRAM_BOOK:READ:ALL",
+      "description": "Consulter tous les carnets de programmation"
+    },
+    {
+      "code": "PROGRAM_BOOK:READ:NEW",
+      "description": "Consulter les nouveaux carnets de programmation"
+    },
+    {
+      "code": "PROGRAM_BOOK:WRITE",
+      "description": "Créer / Éditer un carnet de programmation"
+    },
+    {
+      "code": "PROJECT:ANNUAL_DISTRIBUTION:READ",
+      "description": "Consulter la distribution annuelle du projet"
+    },
+    {
+      "code": "PROJECT:BUDGET:READ",
+      "description": "Consulter le budget projet"
+    },
+    {
+      "code": "PROJECT:COMMENT:READ",
+      "description": "Consulter un commentaire projet"
+    },
+    {
+      "code": "PROJECT:COMMENT:READ:PRIVATE",
+      "description": "Consulter un commentaire privé d'un projet"
+    },
+    {
+      "code": "PROJECT:COMMENT:WRITE",
+      "description": "Ajouter / Éditer / Supprimer un commentaire projet"
+    },
+    {
+      "code": "PROJECT:COMMENT:WRITE:PRIVATE",
+      "description": "Ajouter / Éditer / Supprimer un commentaire privé d'un projet"
+    },
+    {
+      "code": "PROJECT:DRM:WRITE",
+      "description": "Gérer les demandes de réalisations de mandats"
+    },
+    {
+      "code": "PROJECT:DECISION:CANCELED:CREATE",
+      "description": "Permet d'annuler un projet"
+    },
+    {
+      "code": "PROJECT:DECISION:REPLANNED:CREATE",
+      "description": "Permet de replanifier un projet"
+    },
+    {
+      "code": "PROJECT:DECISION:POSTPONED:CREATE",
+      "description": "Permet de reporter un projet"
+    },
+    {
+      "code": "PROJECT:WITH_POSTPONED_DECISION:READ",
+      "description": "Permet de lire un projet reporté"
+    },
+    {
+      "code": "PROJECT:DECISION:REMOVE_FROM_PROGRAM_BOOK:CREATE",
+      "description": "Permet de retirer un projet d'un carnet de programmation"
+    },
+    {
+      "code": "PROJECT:DECISION:READ",
+      "description": "Consulter une décisions projet"
+    },
+    {
+      "code": "PROJECT:DECISION:CREATE",
+      "description": "Ajouter une décision projet"
+    },
+    {
+      "code": "PROJECT:DOCUMENT:READ",
+      "description": "Consulter les documents projet"
+    },
+    {
+      "code": "PROJECT:DOCUMENT:WRITE",
+      "description": "Gérer les documents projet"
+    },
+    {
+      "code": "PROJECT:INTERVENTIONS:READ",
+      "description": "Consulter les interventions du projet"
+    },
+    {
+      "code": "PROJECT:MORE_INFORMATION:READ",
+      "description": "Consulter l'information supplémentaire d'un projet "
+    },
+    {
+      "code": "PROJECT:READ",
+      "description": "Consulter la fiche projet"
+    },
+    {
+      "code": "PROJECT:READ:ALL",
+      "description": "Consulter tous les projets"
+    },
+    {
+      "code": "PROJECT:WRITE",
+      "description": "Créer / Éditer un projet - Modifier la zone d'un projet - Ajouter une intervention au projet - Retirer une intervention au projet"
+    },
+    {
+      "code": "PROJECT_ZONE:READ",
+      "description": "Consulter la zone d'un projet"
+    },
+    {
+      "code": "PROJECT:EXTRACT",
+      "description": "Extraire des projets"
+    },
+    {
+      "code": "TAXONOMY:WRITE",
+      "description": "Créer, modifier ou supprimer les taxonomies"
+    },
+    {
+      "code": "WORK_AREA:READ",
+      "description": "Consulter la zone d'un projet"
+    },
+    {
+      "code": "COMPARISON:READ",
+      "description": "Comparer les interventions et les projets AGIR sur la carte"
+    },
+    {
+      "code": "RTU_PROJECT:READ",
+      "description": "Consulter les projets villes-liées et les projets arrondissements"
+    },
+    {
+      "code": "INFO_RTU_IMPORT_EXPORT:WRITE",
+      "description": "Consulter la zone d'un projet"
+    },
+    {
+      "code": "NEXO_IMPORT_LOG:READ",
+      "description": "Consulter l'importation NEXO"
+    },
+    {
+      "code": "NEXO_IMPORT_LOG:WRITE",
+      "description": "Effectuer une importation NEXO"
+    },
+    {
+      "code": "ROAD_SECTION_ACTIVITY:READ",
+      "description": "Consulter l'activité des tronçons"
+    },
+    {
+      "code": "RTU_IMPORT_LOG:READ",
+      "description": "Consulter les rapports d'importation info-rtu"
+    },
+    {
+      "code": "RTU_EXPORT_LOG:READ",
+      "description": "Consulter les rapports d'exportation info-rtu"
+    },
+    {
+      "code": "REQUIREMENT:WRITE",
+      "description": "Créer, modifier ou supprimer les exigences"
+    },
+    {
+      "code": "REQUIREMENT:READ",
+      "description": "Consulter les exigences"
+    },
+    {
+      "code": "SUBMISSION:DOCUMENT:READ",
+      "description": "Consulter les documents"
+    },
+    {
+      "code": "SUBMISSION:DOCUMENT:WRITE",
+      "description": "Créer, modifier ou supprimer des documents"
+    },
+    {
+      "code": "SUBMISSION:WRITE",
+      "description": "Créer une soumission"
+    },
+    {
+      "code": "SUBMISSION:READ",
+      "description": "Lire une soumission"
+    },
+    {
+      "code": "SUBMISSION:STATUS:WRITE",
+      "description": "Mettre à jour le statut d'une soumission"
+    },
+    {
+      "code": "SUBMISSION:PROGRESS_STATUS:WRITE",
+      "description": "Mettre à jour le statut de progression d'une soumission"
+    },
+    {
+      "code": "PROGRAM_BOOK:SUBMISSIONS:READ",
+      "description": "Consulter les soumissions créées"
+    },
+    {
+      "code": "SUBMISSION:REQUIREMENT:WRITE",
+      "description": "Créer, modifier ou supprimer les exigences d'une soumission"
+    }
+  ],
+  "assignments": []
+}

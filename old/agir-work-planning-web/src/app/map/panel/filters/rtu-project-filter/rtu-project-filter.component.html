@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form" *ngIf="form && partners$">
+  <span title>Projet partenaires</span>
+  <app-filter-item-layout
+    [items]="partners$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="partnerId"
+  ></app-filter-item-layout>
+</app-filter-layout>

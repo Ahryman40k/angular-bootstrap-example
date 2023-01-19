@@ -1,0 +1,105 @@
+<app-layout-modal [modalTitle]="modalTitle">
+  <div body>
+    <form *ngIf="form" [formGroup]="form">
+      <div class="d-flex flex-column col-sm-12" [ngClass]="{ 'mb-3': assetGroupByType }">
+        <div *ngIf="assetGroupByType" class="border-bottom pb-2">
+          <label class="form-label mr-2 mb-3">
+            Actifs concernés
+          </label>
+          <div class="d-flex pointer" (click)="toggleDescription()">
+            <i *ngIf="assetGroupByType.icon" class="icon {{ assetGroupByType.icon }} icon-xs mr-1"></i>
+            <small *ngIf="assetGroupByType.key" class="font-weight-bold text-dark mr-1">{{
+              assetGroupByType.key | appTaxonomy: TaxonomyGroup.assetType
+            }}</small>
+            <i
+              class="icon"
+              [class.icon-chevron-up]="showDescription"
+              [class.icon-chevron-down]="!showDescription"
+              role="icon"
+            ></i>
+          </div>
+          <div *ngIf="showDescription">
+            <ul>
+              <li *ngFor="let asset of assetGroupByType.items">
+                <small
+                  ><span class="font-weight-bold text-dark">{{ asset.id }}</span></small
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row px-2">
+        <div class="d-flex flex-column col-sm-6 mb-3">
+          <label class="font-weight-bold">Requérant</label>
+          <vdm-select
+            class="flex-fill"
+            bindLabel="label.fr"
+            bindValue="code"
+            formControlName="requestor"
+            appendTo="app-opportunity-notice-modal"
+            [items]="assetOwnerTaxo$ | async"
+          ></vdm-select>
+          <app-form-errors formControlName="requestor">
+            <app-form-error *appFormError="let e; key: 'required'">Le requérant est requis</app-form-error>
+          </app-form-errors>
+          <span *ngIf="!(assetOwnerTaxo$ | async).length" class="invalid-feedback"
+            >Les restrictions de l'utilisateur ne permettent pas de sélectionner un requérant valide pour cette
+            opportunité d'intégration</span
+          >
+        </div>
+        <div *ngIf="!assetGroupByType" class="d-flex flex-column col-sm-6 mb-4"></div>
+        <div class="d-flex flex-column col-sm-6 mb-3">
+          <label class="form-label" for="followUpMethod">
+            Mode d'émission de l'avis
+          </label>
+          <vdm-select
+            class="flex-fill"
+            bindLabel="label.fr"
+            bindValue="code"
+            formControlName="followUpMethod"
+            appendTo="app-opportunity-notice-modal"
+            [items]="followUpMethods$ | async"
+          >
+          </vdm-select>
+        </div>
+        <div class="d-flex flex-column col-sm-6">
+          <label class="form-label" for="object">
+            Objet de l'avis
+          </label>
+          <input class="form-control" type="text" formControlName="object" />
+          <app-form-errors formControlName="object">
+            <app-form-error *appFormError="let e; key: 'required'">L'objet de l'avis est requis</app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="d-flex flex-column col-sm-6">
+          <label class="font-weight-bold">Nombre de rappel</label>
+          <input class="form-control" type="number" formControlName="maxIterations" />
+          <small class="text-nowrap x-small">Un rappel est effectué à un intervalle de 3 semaines.</small>
+          <app-form-errors formControlName="maxIterations">
+            <app-form-error *appFormError="let e; key: 'required'">Le nombre de rappel est requis</app-form-error>
+            <app-form-error *appFormError="let e; key: 'pattern'"
+              >Les caractères non numériques sont invalides</app-form-error
+            >
+            <app-form-error *appFormError="let e; key: 'min'"
+              >Le nombre de rappel doit être minimum de {{ minimumMaxIterations }}</app-form-error
+            >
+          </app-form-errors>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()">
+      Annuler
+    </button>
+    <button
+      type="button"
+      [disabled]="!(assetOwnerTaxo$ | async).length"
+      class="btn btn-primary btn-squared"
+      (click)="submit()"
+    >
+      {{ opportunityNotice ? 'Modifier' : 'Créer' }}
+    </button>
+  </div>
+</app-layout-modal>

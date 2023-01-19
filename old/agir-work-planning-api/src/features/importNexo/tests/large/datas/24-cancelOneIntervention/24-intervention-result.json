@@ -1,0 +1,113 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-interventions-with-same-project"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Construction / Segment d'aqueduc / Rue Saint-Maurice",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2022,
+    "planificationYear": 2022,
+    "endYear": 2022,
+    "programId": null,
+    "contact": "Obiwan",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 10
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.57942521572113, 45.503309105605155],
+            [-73.57869029045105, 45.50295192828779]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-interventions-with-same-project-5283990"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5283990"
+          }
+        ]
+      },
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 20
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.57947483658789, 45.5033523427056],
+            [-73.5791663825512, 45.50353938977931]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-interventions-with-same-project-5283991"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5283991"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 650,
+      "burnedDown": 0,
+      "balance": 650
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 650,
+          "annualLength": 0.03,
+          "accountId": 0,
+          "year": 2022,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 650,
+        "totalLength": 0.03,
+        "note": null
+      }
+    },
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    },
+    "decisionRequired": false,
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "comments": [],
+    "documents": []
+  }
+]

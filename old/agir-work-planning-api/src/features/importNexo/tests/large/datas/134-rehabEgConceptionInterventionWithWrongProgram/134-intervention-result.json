@@ -1,0 +1,83 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "16-IBG-PTI-003 ÉG"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'aqueduc / Rue Saint-Maurice - 2",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2000,
+    "planificationYear": 2000,
+    "endYear": 2000,
+    "programId": "pcpr",
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 240
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55997383594513, 45.503647482026025],
+            [-73.56007575988768, 45.50354784918001],
+            [-73.560129404068, 45.50348581354534]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "1-egout-intervention-id"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5312546"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 361.34,
+      "burnedDown": 0,
+      "balance": 361.34
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 361.34,
+          "annualLength": 0.24,
+          "accountId": 0,
+          "year": 2000,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 361.34,
+        "totalLength": 0.24,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue Saint-Maurice - 2",
+    "streetFrom": "Rue Dupré - 2",
+    "streetTo": "Rue Saint-Henri - 2",
+    "comments": [],
+    "documents": []
+  }
+]

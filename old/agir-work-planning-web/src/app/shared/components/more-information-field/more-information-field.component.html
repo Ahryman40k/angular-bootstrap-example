@@ -1,0 +1,25 @@
+<tr
+  class="d-flex align-items-center justify-content-between hover-visible pl-1"
+  [class.is-editing]="isEditing"
+  [class.has-save-action]="canEdit && saveAction"
+>
+  <td>{{ fieldTitle }}</td>
+  <td *ngIf="!isEditing" class="flex-grow-1 d-flex justify-content-between align-items-center">
+    <ng-content select="[more-information-field-value]"></ng-content>
+    <button
+      *ngIf="saveAction && !isEditing && canEdit"
+      class="btn btn-icon btn-icon-only hover-visible-item"
+      (click)="toggleEdition()"
+    >
+      <i class="icon icon-edit"></i>
+    </button>
+  </td>
+
+  <td *ngIf="saveAction && isEditing" class="d-flex align-items-center flex-grow-1">
+    <ng-content select="[more-information-field-control]"></ng-content>
+    <button class="btn btn-icon btn-icon-only" (click)="toggleEdition()" [disabled]="isSaving">
+      <i class="icon icon-x"></i>
+    </button>
+    <button class="btn btn-primary btn-sm btn-squared" (click)="save()" [disabled]="isSaving">Sauvegarder</button>
+  </td>
+</tr>

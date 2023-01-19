@@ -1,0 +1,29 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Libellés</span>
+  <app-filter-item-layout
+    [items]="projectCategories$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    [collapsible]="true"
+    formControlName="projectCategories"
+  >
+    <span title>
+      Catégorie de projet
+    </span>
+  </app-filter-item-layout>
+  <app-filter-item-layout
+    [items]="projectSubCategories$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    [collapsible]="true"
+    formControlName="projectSubCategories"
+  >
+    <span title>
+      Et
+    </span>
+  </app-filter-item-layout>
+</app-filter-layout>

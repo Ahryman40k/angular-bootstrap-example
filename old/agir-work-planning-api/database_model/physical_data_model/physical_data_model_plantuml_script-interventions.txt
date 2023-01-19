@@ -1,0 +1,149 @@
+@startuml
+
+title Modèle Physique de données - Interventions
+
+object audit {
+  O | **createdAt** : DateTime
+  O | **createdByUserName** : String
+  O | **createdByDisplayName** : String
+  O | **lastModifiedAt** : DateTime
+  O | **lastModifiedByUserName** : String
+  O | **lastModifiedByDisplayName** : String
+  O | **expiredAt** : DateTime
+  O | **expiredByUserName** : String
+  O | **expiredByDisplayName** : String
+}
+
+object interventions {
+  M | **_id** : String
+  M | **interventionTypeId** : String
+  M | **workTypeId** : String
+  M | **isInitial** : Boolean
+  M | **requestorId** : String
+  M | **boroughId** : String
+  M | **interventionYear** : Int
+  M | **planificationYear** : Int
+  M | **roadSections** : Object
+  M | **interventionName** : String
+  M | **projet_id** : String
+  M | **projet_typeId** : String
+  O | **status** : String
+  O | **programId** : String
+  O | **contact** : String
+  O | **medalId** : String
+  O | **referenceId** : String
+  O | **streetName** : String
+  O | **streetFrom** : String
+  O | **streetTo** : String
+  O | **roadNetworkTypeId** : String
+  O | **referencedInterventions** : String[]
+  O | **decisionRequired** : Boolean
+}
+
+object estimates {
+  O | **allowance** : Int
+  O | **burnedDown** : Int
+  O | **balance** : Int
+}
+
+object assets {
+  M | **typeId** : String
+  M | **ownerId** : String
+  M | **geometry** : Object
+  O | **id** : String
+  O | **lengthValue** : Int
+  O | **lengthUnit** : String
+  O | **roadSection** : Object
+  O | **suggestedStreetName** : String
+}
+
+object interventionAreas {
+  M | **geometry** : Object
+  M | **geometryPin** : Object
+  O | **id** : String
+  O | **isEdited** : Boolean
+}
+
+object externalReferenceIds {
+  M | **type** : String
+  M | **value** : String
+}
+
+object distributionSummary {
+  O | **totalAllowance** : Int
+  O | **totalLength** : Int
+  O | **note** : String
+}
+
+object annualPeriods {
+  O | **rank** : Int
+  O | **year** : Int
+  O | **annualAllowance** : Int
+  O | **annualLength** : Int
+  O | **accountId** : Int
+}
+
+object comments {
+  M | **_id** : ObjectId
+  M | **categoryId** : String
+  M | **text** : String
+  O | **isPublic** : Boolean
+  O | **isProjectVisible** : Boolean
+}
+
+object documents {
+  M | **_id** : ObjectId
+  M | **fileName** : String
+  M | **documentName** : String
+  M | **isProjectVisible** : String
+  M | **objectId** : String
+  M | **validationStatus** : String
+  O | **notes** : String
+  O | **type** : String
+}
+
+object attachments {
+  M | **id** : String
+  M | **typeId** : String
+  M | **isValidId** : String
+  O | **name** : String
+  O | **referenceUri** : String
+}
+
+object decisions {
+  M | **_id** : ObjectId
+  M | **typeId** : String
+  M | **text** : String
+  O | **previousPlanificationYear** : Int
+  O | **targetYear** : Int
+  O | **refusalReasonId** : String
+}
+
+object requirements {
+  M | **_id** : ObjectId
+  M | **categoryId** : String
+  M | **typeId** : String
+  M | **text** : String
+  O | **referenceIds** : String[]
+}
+
+interventions o-- "0..2" audit
+interventions o- "1" estimates
+interventions o- "0..1" assets
+interventions o- "0..1" interventionAreas
+interventions o- "0..n" externalReferenceIds
+interventions o- "0..1" distributionSummary
+interventions o- "0..n" annualPeriods
+interventions o-- "0..n" comments
+interventions o-- "0..n" documents
+interventions o-- "0..n" attachments
+interventions o-- "0..n" decisions
+interventions o-- "0..n" requirements
+
+comments o-- "0..1" audit
+documents o-- "0..1" audit
+attachments o-- "0..1" audit
+decisions o-- "0..1" audit
+requirements o-- "0..1" audit
+
+@enduml

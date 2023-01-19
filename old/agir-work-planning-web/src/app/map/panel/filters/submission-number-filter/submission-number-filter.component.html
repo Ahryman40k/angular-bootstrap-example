@@ -1,0 +1,19 @@
+<app-filter-layout [formGroup]="form" *ngIf="form && submissionNumbers$">
+  <span title>Soumissions</span>
+  <div class="input-group-icon input-group-icon-left pr-1 pb-1">
+    <input formControlName="search" type="text" class="form-control" placeholder="Rechercher">
+    <span class="icon icon-search" aria-hidden="true"></span>
+  </div>
+  <app-submission-number-filter-item-layout *ngIf="!isLoading"
+    [items]="submissionNumbers$ | async | vdmFilter : filterFn : this.form.controls.search.value"
+    bindValue="submissionNumber"
+    bindLabel="submissionNumber"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="submissionNumber"
+  >
+  </app-submission-number-filter-item-layout>
+  <div *ngIf="isLoading" class="d-flex justify-content-center mt-2">
+    <app-spinner></app-spinner>
+  </div>
+</app-filter-layout>

@@ -1,0 +1,14 @@
+{
+  "annualPeriods": [
+    {
+      "annualAllowance": 42,
+      "annualLength": 0,
+      "accountId": 123456,
+      "year": 2040,
+      "rank": 0
+    }
+  ],
+  "distributionSummary": {
+    "note": "This is a note"
+  }
+}

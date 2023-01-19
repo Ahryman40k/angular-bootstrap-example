@@ -1,0 +1,91 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "17-PMR-PTI-035"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Réhabilitation / Segment d'aqueduc / Rue Saint-Maurice",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "rehabilitation",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2021,
+    "planificationYear": 2021,
+    "endYear": 2021,
+    "programId": "par",
+    "contact": "Sofiane Djad",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 236.7
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.56006771326065, 45.49876714523858],
+            [-73.55963587760925, 45.49922586978999]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-PNI-10032867"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "10032867"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 361.34,
+      "burnedDown": 0,
+      "balance": 361.34
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 324.2,
+          "annualLength": 0.237,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 324.2,
+        "totalLength": 0.237,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "comments": [],
+    "documents": [],
+    "designData": {
+      "upstreamAssetType": "aqueductSegment",
+      "upstreamAssetId": "5042296d",
+      "downstreamAssetType": "aqueductSegment",
+      "downstreamAssetId": "5042423d",
+      "comment": "Un commentaire",
+      "contractRange": "Début",
+      "audit": "A_IGNORER"
+    }
+  }
+]

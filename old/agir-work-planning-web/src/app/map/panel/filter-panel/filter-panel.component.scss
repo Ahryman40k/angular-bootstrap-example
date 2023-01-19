@@ -1,0 +1,15 @@
+@import '../../../../styles/core/variables';
+
+.filter-container:not(:last-child) {
+  border-bottom: solid 1px $color-gray-300;
+}
+
+.filter-title:hover {
+  .filter-label {
+    font-weight: bold !important;
+  }
+}
+
+app-left-panel-sub-panel {
+  left: $map-left-panel-width;
+}

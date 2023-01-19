@@ -1,0 +1,15 @@
+<div>
+  <app-list-item-details>
+    <app-list-item-details-field>
+      <span title>Exigence(s) de planification</span>
+      <div description>
+        <div *ngFor="let item of data.augmented" class="description-item">
+          <span class="badge-gray badge badge-align-middle title">{{ item.typeId | appTaxonomy:
+            'requirementType' }} </span>
+          <span class="title"> {{ item.subtypeId | appTaxonomy: 'requirementSubtype' }} </span>
+          <span> - {{item.text}} </span>
+        </div>
+      </div>
+    </app-list-item-details-field>
+  </app-list-item-details>
+</div>

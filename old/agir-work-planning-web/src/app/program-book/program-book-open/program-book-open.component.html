@@ -1,0 +1,22 @@
+<app-layout-modal modalTitle="Publication du carnet">
+  <div body>
+    <app-alert type="warning">
+      <span title>Attention!</span>
+      <span description>Voulez-vous vraiment publier ce carnet?</span>
+    </app-alert>
+    <app-alert class="mt-2" *ngIf="isPriorityScenarioUnsaved" type="warning">
+      <span title>Attention!</span>
+      <span description>
+        Cette modification entrainera la perte des données non-sauvegardées de l'ordonnancement. Êtes-vous certain de vouloir continuer?
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="reject()">
+      Annuler
+    </button>
+    <button type="submit" class="btn btn-primary btn-squared add-button" (click)="submit()" [disabled]="submitting">
+      Confirmer
+    </button>
+  </div>
+</app-layout-modal>

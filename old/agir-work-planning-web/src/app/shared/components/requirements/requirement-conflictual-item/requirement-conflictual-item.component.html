@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between" >
+
+    <div class="d-flex align-content-center pt-1 pb-1 requirement-conflictual-item" >
+        <h4 class="mb-0 text-primary  font-weight-bold mr-2">
+          <a class="font-md" appWindowLink [href]="itemLinkUrl">{{ itemId }}</a>
+        </h4>
+        <div class="mr-1">
+          <span class="badge badge-dark badge-align-middle ">{{ itemYear }}</span>
+        </div>
+        <div class="mr-1">
+          <span class="badge badge-success badge-align-middle">
+            {{ itemStatus | appTaxonomy: taxonomyGroupStatus }}
+          </span>
+        </div>
+        <div class="mr-1">
+          <span class="badge badge-success-light badge-align-middle">
+            {{ itemTypeId | appTaxonomy: taxonomyGroupType }}
+          </span>
+        </div>
+        <div>
+         <span class="text-secondary font-md font-weight-normal ">{{ itemName }}</span>
+        </div>
+    </div>
+
+  <button
+    *ngIf="btnLabel"
+    class="btn btn-sm d-flex align-self-center"
+    [ngClass]="btnLabel === BtnLabel.selected ? 'btn-primary btn-squared' : 'btn-secondary'"
+    (click)="toggleBtnLabel()"
+  >
+    {{ btnLabel }}
+  </button>
+</div>

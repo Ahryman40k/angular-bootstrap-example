@@ -1,0 +1,41 @@
+<app-map-distance-filter class="mb-2" street="3e avenue"></app-map-distance-filter>
+<ng-container *ngIf="resultsShown">
+  <app-elements-card *ngIf="projectsShown" class="card-project mb-2" cardTitle="Projets" icon="icon-folder"
+    [elements]="projects$ | async">
+    <ng-template let-project>
+      <app-project-card class="element-card-item element-list-item" [project]="project" [appMapHighlightHover]="project"
+        [navigationEnabled]="true"></app-project-card>
+    </ng-template>
+  </app-elements-card>
+  <app-elements-card *ngIf="interventionsShown" class="card-intervention mb-2" cardTitle="Interventions"
+    icon="icon-flag" [elements]="interventions$ | async">
+    <ng-template let-intervention>
+      <app-intervention-card class="element-card-item element-list-item" [intervention]="intervention"
+        [appMapHighlightHover]="intervention" [navigationEnabled]="true"></app-intervention-card>
+    </ng-template>
+  </app-elements-card>
+  <!-- TODO: hidden feature - it returns a timeout error from 'core-utils-geo-nodejs-lib.' / follow JIRA ticket APOC-5170 -->
+  <!-- <app-elements-card
+    *ngIf="'ASSET:READ' | appPermission"
+    class="card-asset mb-2"
+    cardTitle="Actifs"
+    icon="icon-package icon-sm"
+    [elements]="assets$ | async"
+  >
+    <ng-template let-asset>
+      <app-asset-card
+        class="element-card-item element-list-item"
+        [asset]="asset"
+        [appMapHighlightHover]="asset"
+        [navigationEnabled]="true"
+      ></app-asset-card>
+    </ng-template>
+  </app-elements-card> -->
+  <app-elements-card *ngIf="rtuProjectsShown" class="card-project mb-2" cardTitle="Projets externes"
+    icon="icon-external-folder icon-padding" [elements]="rtuProjects$ | async">
+    <ng-template let-rtuProject>
+      <app-rtu-project-card class="element-card-item element-list-item" [rtuProject]="rtuProject"
+        [appMapHighlightHover]="rtuProject" [navigationEnabled]="true"></app-rtu-project-card>
+    </ng-template>
+  </app-elements-card>
+</ng-container>

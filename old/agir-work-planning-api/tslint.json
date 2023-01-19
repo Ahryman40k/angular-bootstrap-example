@@ -1,0 +1,11 @@
+{
+  "extends": "@villemontreal/lint-config-villemontreal/rules/tslint-node",
+  "rules": {
+    "await-promise": true,
+    "no-async-without-await": true,
+    "no-floating-promises": true,
+    "prefer-readonly": true,
+    "return-undefined": true,
+    "typedef": true
+  }
+}

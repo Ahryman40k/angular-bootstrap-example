@@ -1,0 +1,27 @@
+@import '../../../../../styles/core/variables';
+
+$collapse-button-width: 30px;
+$collapse-button-height: 30px;
+
+:host {
+  display: block;
+}
+
+.btn-collapse {
+  width: $collapse-button-width;
+  height: $collapse-button-height;
+  text-align: center;
+}
+
+$padding: 0.25rem;
+
+.icon-padding {
+  padding-left: $padding !important;
+  padding-right: $padding !important;
+}
+
+.icon-flag:before ,.icon-folder:before , .icon-home:before{
+  width: $pins-xs-size;
+  height: $pins-xs-size;
+}
+

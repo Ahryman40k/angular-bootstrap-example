@@ -1,0 +1,94 @@
+<app-details-layout>
+  <span title>Répartition annuelle</span>
+  <vdm-gantt>
+    <vdm-gantt-row>
+      <vdm-gantt-cell class="flex-3 font-weight-bold pb-0">Années du projet</vdm-gantt-cell>
+      <vdm-gantt-cell
+        *ngFor="let annualPeriod of project?.annualDistribution?.annualPeriods"
+        class="gantt-year-cell text-dark font-weight-bold pb-0"
+      >
+        {{ annualPeriod.year | vdmNa }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-2 text-dark font-weight-bold pb-0">Total</vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-3 text-dark font-weight-bold pb-0">Notes</vdm-gantt-cell>
+    </vdm-gantt-row>
+    <vdm-gantt-row #interventionGanttRow [isDetailCollapsible]="false" *ngIf="interventionListItem && project">
+      <vdm-gantt-cell class="flex-3">
+        <h5>
+          <a appWindowLink href="{{ interventionService.getInterventionLink(interventionListItem) }}">
+            {{ interventionListItem.id | vdmNa }}
+          </a>
+        </h5>
+      </vdm-gantt-cell>
+      <vdm-gantt-bar
+        [span]="projectYears.length"
+        [startIndex]="interventionListItem.ganttIndex.startIndex"
+        [endIndex]="interventionListItem.ganttIndex.endIndex"
+      ></vdm-gantt-bar>
+      <vdm-gantt-cell class="flex-2 font-weight-bold"></vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-3 position-relative">
+        <span class="intervention-notes" [class.intervention-notes-expanded]="interventionGanttRow.isDetailsCollapsed">
+          {{ interventionListItem.annualDistribution?.distributionSummary.note }}
+        </span>
+      </vdm-gantt-cell>
+      <vdm-gantt-row-detail>
+        <vdm-gantt-row>
+          <vdm-gantt-cell class="flex-3 text-dark pt-0">
+            <div class="d-flex">
+              <div class="mr-2">
+                Requérant
+                <br />
+                <span class="font-weight-bold">
+                  {{ interventionListItem.requestorId | appTaxonomy: 'requestor' | vdmNa }}
+                </span>
+              </div>
+              <div>
+                <span class="pb-1">
+                  Budget/Année
+                </span>
+                <br />
+                <span class="pb-1">
+                  Numéro investi
+                </span>
+                <br />
+                <span>
+                  Longueur
+                </span>
+              </div>
+            </div>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell
+            *ngFor="let annualPeriod of project?.annualDistribution?.annualPeriods"
+            class="gantt-year-cell pt-0"
+          >
+            <span *ngIf="interventionListItem.annualPeriodsDictionary[annualPeriod.year]" class="font-weight-bold">
+              {{
+                interventionListItem.annualPeriodsDictionary[annualPeriod.year].annualAllowance
+                  | vdmNa: 0
+                  | vdmCurrencyK
+              }}
+              <br />
+              {{ interventionListItem.annualPeriodsDictionary[annualPeriod.year].accountId | vdmNa }}
+              <br />
+              {{ interventionListItem.annualPeriodsDictionary[annualPeriod.year].annualLength | vdmNa: 0 }} km
+            </span>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell class="flex-2 pt-0">
+            <span class="font-weight-bold">
+              <span class="font-weight-normal">
+                Total alloué
+              </span>
+              <br />
+              {{ intervention.annualDistribution?.distributionSummary.totalAllowance | vdmNa: 0 | vdmCurrencyK }} /
+              {{ intervention.estimate.allowance | vdmNa: 0 | vdmCurrencyK }}
+              <br />
+              {{ intervention.annualDistribution?.distributionSummary.totalLength | vdmNa: 0 }} km /
+              {{ intervention.assets[0].length?.value | vdmNa: 0 | appMetersToKilometers }} km
+            </span>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell class="flex-3 pt-0"></vdm-gantt-cell>
+        </vdm-gantt-row>
+      </vdm-gantt-row-detail>
+    </vdm-gantt-row>
+  </vdm-gantt>
+</app-details-layout>

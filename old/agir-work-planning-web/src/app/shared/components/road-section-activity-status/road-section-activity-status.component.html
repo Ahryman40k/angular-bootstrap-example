@@ -1,0 +1,35 @@
+<div class="container p-0 h-100">
+  <div class="w-100 status-bar {{ labelProject.project | appProjectTypeBadge}}"
+  [class.left-border-rounded]="isStart"
+  [class.right-border-rounded]="isEnd"
+  *ngIf="labelProjectType === LabelProjectType.integrated || labelProjectType === LabelProjectType.nonIntegrated">
+    <p class="ml-1 font-sm" *ngIf="showLabel">
+      <ng-container>
+        {{project.status | appTaxonomy: TaxonomyGroup.projectStatus}}
+      </ng-container>
+    </p>
+  </div>
+  <ng-container *ngIf="labelProjectType === LabelProjectType.rtuProject">
+    <div class="w-100 status-bar {{ labelProject.project | appProjectTypeBadge }}"
+    [class.left-border-rounded]="isStart"
+    [class.right-border-rounded]="isEnd"
+    [class.z-index-1]="showLabel"
+    [ngClass]="marginClass"
+    [ngbTooltip]="isToolTip ? rtuProjectStatusLabel : null"
+     >
+      <p class="ml-1 font-sm" *ngIf="showLabel && !isToolTip">
+        <ng-container>
+          {{rtuProject.status | appTaxonomy: TaxonomyGroup.rtuProjectStatus}}
+        </ng-container>
+      </p>
+    </div>
+  </ng-container>
+<div class="w-100 status-bar badge-pink" [class.left-border-rounded]="isInterventionCurrentYear" *ngIf="intervention"
+  [class.right-border-rounded]="isInterventionCurrentYear">
+  <p class="ml-1 font-sm">
+    <ng-container>
+      {{ intervention.status | appTaxonomy: TaxonomyGroup.interventionStatus }}
+    </ng-container>
+  </p>
+</div>
+</div>

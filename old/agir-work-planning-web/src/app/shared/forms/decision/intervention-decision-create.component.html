@@ -1,0 +1,97 @@
+<app-layout-modal modalTitle="Ajouter une décision">
+  <div body>
+    <form [formGroup]="form">
+      <div class="form-group mb-4 col-md-6 p-0">
+        <div class="mb-1">
+          <div>
+            <label class="font-weight-bold">Type de décision</label>
+          </div>
+          <div>
+            <vdm-select
+              bindLabel="label.fr"
+              formControlName="decisionType"
+              [items]="decisionTypes$ | async"
+            ></vdm-select>
+          </div>
+          <app-form-errors formControlName="decisionType">
+            <app-form-error *appFormError="let e; key: 'required'">Une décision doit être prise</app-form-error>
+          </app-form-errors>
+        </div>
+        <div *ngIf="showRefuseTypes">
+          <label class="font-weight-bold">Raison du refus</label>
+          <vdm-select
+            class="flex-fill"
+            bindLabel="label.fr"
+            bindValue="code"
+            formControlName="refuseType"
+            [items]="refuseTypes$ | async"
+            autofocus="true"
+          ></vdm-select>
+          <app-form-errors formControlName="refuseType">
+            <app-form-error *appFormError="let e; key: 'required'">La raison du refus est requise</app-form-error>
+          </app-form-errors>
+        </div>
+        <div>
+          <div>
+            <label class="font-weight-bold">Date de la décision</label>
+          </div>
+          <div class="input-group">
+            <input
+              class="form-control"
+              placeholder="YYYY-mm-dd"
+              ngbDatepicker
+              #datePicker="ngbDatepicker"
+              formControlName="date"
+              (click)="datePicker.toggle()"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-secondary form-control pr-0"
+                (click)="datePicker.toggle()"
+                [disabled]="form.controls.date.disabled"
+              >
+                <span class="icon icon-calendar icon-color-neutral-tertiary" role="icon"></span>
+              </button>
+            </div>
+          </div>
+          <app-form-errors formControlName="date">
+            <app-form-error *appFormError="let e; key: 'required'">La date est requise</app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="d-flex flex-column">
+        <div>
+          <label class="font-weight-bold">Justificatifs</label>
+        </div>
+        <div>
+          <textarea formControlName="justification" class="form-control w-100"></textarea>
+        </div>
+        <app-form-errors formControlName="justification">
+          <app-form-error *appFormError="let e; key: 'required'">Le justificatif est requis</app-form-error>
+        </app-form-errors>
+      </div>
+    </form>
+    <app-alert *ngIf="showAlert" class="mt-2" type="danger">
+      <span title>Attention!</span>
+      <span description>
+        Vous allez annuler l'intervention, cette action est irréversible.
+        <span *ngIf="project">
+          <br />
+          L'annulation de l'intervention la retirera de son projet.
+        </span>
+        <span *ngIf="project?.interventionIds.length === 1">
+          <br />
+          Puisque l'intervention est la seule dans son projet, le projet sera annulé.
+        </span>
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()" [disabled]="submitting">
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="submitting">
+      Ajouter
+    </button>
+  </div>
+</app-layout-modal>

@@ -1,0 +1,7 @@
+<div class="d-flex">
+  <ng-content></ng-content>
+  <div class="gantt-row-options">
+    <ng-content select="vdm-gantt-row-options"></ng-content>
+  </div>
+</div>
+<ng-content select="vdm-gantt-row-detail" *ngIf="isDetailsCollapsed || !isDetailCollapsible"></ng-content>

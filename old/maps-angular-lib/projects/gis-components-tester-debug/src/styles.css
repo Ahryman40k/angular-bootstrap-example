@@ -1,0 +1,118 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+app-root {
+  display: flex;
+  white-space: nowrap;
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+
+vdm-lm-group-default {
+  display: block;
+  margin: 0 0 10px 0;
+}
+
+/* Resets default styles of HTML list */
+vdm-lm-group-default ul {
+  padding: 0;
+  margin: 0;
+}
+
+/* First level of Layer Group Title */
+vdm-lm-group-default .layer-title {
+  padding: 5px 27px;
+  position: relative;
+  background: #637381;
+  color: white;
+  margin: 0 0 10px 0;
+  vertical-align: middle;
+}
+
+/* Second level of Layer Group Title */
+vdm-lm-group-default vdm-lm-group-default .layer-title {
+  background: #eee;
+  margin: 0 20px 5px 20px;
+  color: rgb(77, 87, 100);
+  white-space: normal;
+}
+
+/* Final level of Layer Title (Logic layer) */
+vdm-lm-group-default vdm-lm-group-default .layer-title.nested {
+  background: transparent;
+  margin: 0 0 0 40px;
+}
+
+/* Layer title label */
+vdm-lm-group-default .layer-title-label {
+  display: block;
+}
+
+/* Caret for toggling a Layer group */
+vdm-lm-group-default .caret {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+}
+
+vdm-lm-group-default .caret::before {
+  color: inherit !important;
+  line-height: 0;
+  margin-right: 0;
+  content: '\276f' !important;
+}
+
+/* Hides the real checkbox, we setup a fake one */
+.checkbox input {
+  display: none;
+}
+
+.checkbox input:not(:disabled) ~ * {
+  cursor: pointer;
+}
+
+/* Fake checkbox */
+.checkbox input + .checkbox-widget {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  border: 1px solid;
+  margin: 0 5px 0 0 !important;
+  position: absolute;
+  left: 7px;
+  top: 0.7em;
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+/* Fake checkbox icon */
+.checkbox input + .checkbox-widget::before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+  content: '';
+  line-height: 0;
+}
+
+.checkbox input:checked + .checkbox-widget::before {
+  content: '\2714';
+}
+
+/* Dims the fake checkbox and label when the real checkbox is disabled */
+.checkbox input:disabled ~ * {
+  opacity: 0.5;
+}
+
+/*** Outils ***/
+.lnglatTool {
+  border: 1px solid black;
+  width: 200px;
+}

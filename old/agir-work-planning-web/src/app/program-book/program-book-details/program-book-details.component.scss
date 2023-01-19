@@ -1,0 +1,35 @@
+$row-title-width: 240px;
+$program-book-select-height: 32px;
+$program-book-select-width: 192px;
+
+$breadcrumb-height: 77px;
+$pb-name-height: 58px;
+$year-height: 45px;
+$nav-tabs-height: 40px;
+:host {
+  height: 100%;
+}
+.breadcrumb {
+  height: $breadcrumb-height;
+}
+.pb-name {
+  height: $pb-name-height;
+}
+.years {
+  height: $year-height;
+}
+.nav-tabs {
+  height: $nav-tabs-height;
+}
+
+.tab-container {
+  height: calc(100% - #{$breadcrumb-height} - #{$pb-name-height} - #{$year-height} - #{$nav-tabs-height});
+}
+.row-title {
+  width: $row-title-width;
+}
+
+.program-book-select {
+  height: $program-book-select-height;
+  width: $program-book-select-width;
+}

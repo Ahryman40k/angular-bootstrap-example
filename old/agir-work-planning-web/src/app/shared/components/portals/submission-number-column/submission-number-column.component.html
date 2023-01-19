@@ -1,0 +1,7 @@
+<div class="d-flex">
+  <app-submission-link [object]="data?.project"></app-submission-link>
+  <div class="d-flex align-items-center clickable ml-1" *ngIf="data?.isSubmissionInvalid" [ngbTooltip]="'Soumission non valide'">
+    <i class="icon icon-warning icon-color-danger"
+    aria-hidden="true"></i>
+  </div>
+</div>

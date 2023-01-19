@@ -1,0 +1,71 @@
+<app-layout-modal [modalTitle]="modalTitle">
+  <div body class="mr-5">
+    <div *ngIf="isSubmitting" class="d-flex w-100 justify-content-center pr-2">
+      <app-spinner ></app-spinner>
+    </div>
+    <form *ngIf="form && !isSubmitting" [formGroup]="form">
+      <div formArrayName="servicePriorities">
+        <div *ngFor="let servicePriority of servicePriorities.controls; let i = index">
+          <div [formGroupName]="i" class="row">
+            <div class="col-5 mb-4">
+              <h5 class="mb-1">Service</h5>
+              <vdm-select
+                appendTo="app-add-project-priority-service-modal"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="service"
+                [items]="services"
+              ></vdm-select>
+            </div>
+            <div class="col-5">
+              <h5 class="mb-1">Priorité</h5>
+              <vdm-select
+              appendTo="app-add-project-priority-service-modal"
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="priorityId"
+              [items]="priorities$ | async"
+            ></vdm-select>
+            </div>
+            <div *ngIf="i > 0" class="col-2 pt-4 pr-4">
+              <button class="btn btn-secondary btn-squared" (click)="removeServicePriorityFromForm(i)">
+                Supprimer
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="areServicesInvalid" class="text-danger font-weight-bold font-sm">
+          La priorité d'un service peut être défini seulement qu'une fois
+        </div>
+        <div *ngIf="canAddNewService" class="d-flex align-items-center">
+          <button 
+            class="btn bg-white btn-sm add-service-priority pl-1">
+            <i 
+              class="icon  icon-plus-circle-full icon-md"
+              [class.icon-color-primary]="canAddNewService"
+              [class.icon-color-neutral-secondary]="!canAddNewService"
+            ></i>
+            <div 
+              class="font-md font-weight-normal text-dark" 
+              (click)="addServicePriorityToForm()">
+              Ajouter un niveau
+            </div> 
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div buttons class="d-flex flex-1" [ngClass]="servicePrioritiesLength > 0 ? 'justify-content-between' : 'justify-content-end'">
+    <button *ngIf="servicePrioritiesLength > 0" class="btn btn-secondary btn-squared mr-2" type="button" (click)="restartServicePriorities()" [disabled]="isSubmitting">
+      Réinitialiser les priorités
+    </button>
+    <div>
+      <button class="btn btn-secondary btn-squared mr-2" type="button" (click)="cancel()" [disabled]="isSubmitting">
+        Annuler
+      </button>
+      <button class="btn btn-primary btn-squared" type="button" (click)="addServicePrioritiesToProject()" [disabled]="form.invalid || isSubmitting">
+        {{confirmationButtonLabel}}
+      </button>
+    </div>
+  </div>
+</app-layout-modal>

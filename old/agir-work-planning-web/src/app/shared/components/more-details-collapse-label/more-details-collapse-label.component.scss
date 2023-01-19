@@ -1,0 +1,9 @@
+@import '../../../../styles/core/variables';
+
+#title {
+  cursor: pointer;
+}
+
+.icon:before {
+  background: $color-turquoise-700;
+}

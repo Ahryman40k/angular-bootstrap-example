@@ -1,0 +1,151 @@
+<div class="py-0 border-bottom shadow-sm" *ngIf="rtuProject">
+  <div class="d-flex justify-content-between align-items-center py-2">
+    <div class="d-flex">
+      <h4 class="px-4 pb-0">
+        {{ rtuProject.id }}
+      </h4>
+      <div class="d-flex flex-column pl-4">
+        <div class="d-flex">
+          <div class="mr-1">
+            <span class="badge badge-dark">{{ [rtuProjectStartYear, rtuProjectEndYear] | vdmJoin: ' - ' | vdmNa }}</span>
+          </div>
+          <div class="mr-1">
+            <span class="badge badge-info">
+              {{ rtuProject.partnerId | appTaxonomy: TaxonomyGroup.infoRtuPartner | vdmNa }}
+            </span>
+          </div>
+          <div class="mr-1">
+            <span class="badge badge-info-light">
+              {{ rtuProject.partnerId | appTaxonomy: TaxonomyGroup.infoRtuPartner: 'category' | appPartnerCategory | vdmNa }}
+            </span>
+          </div>
+          <div class="mr-1">
+            <span class="badge badge-success">
+              {{ rtuProject.status | appTaxonomy: TaxonomyGroup.rtuProjectStatus | vdmNa }}
+            </span>
+          </div>
+          <div class="mr-1">
+            <span class="badge badge-success-light">
+              {{ rtuProject.type | vdmNa }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex col-xs-12 pr-3">
+      <button type="button" (click)="close()" class="btn btn-secondary btn-squared font-weight-bold px-2">
+        Fermer
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="details-overview p-4" *ngIf="rtuProject">
+  <div class="mb-4 mr-4 flex-1">
+    <h3>Vue d'ensemble du projet partenaire</h3>
+    <p class="mt-1">{{ rtuProject.name | vdmNa }}</p>
+    <div class="div-table">
+      <p>Description</p>
+      <p class="flex-5">{{ rtuProject.description | vdmNa }}</p>
+    </div>
+    <div class="border-bottom my-4"></div>
+    <div>
+      <h4 class="my-2">Emplacement englobé</h4>
+      <div class="div-table">
+        <p>Zone</p>
+        <p>{{ rtuProject.areaId | appTaxonomy: TaxonomyGroup.borough | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Description</p>
+        <p>{{ rtuProject.localization | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Voie</p>
+        <p>{{ rtuProject.streetName | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p></p>
+        <p><b class="mr-2">De</b> {{ rtuProject.streetFron | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p></p>
+        <p><b class="mr-2">À</b> {{ rtuProject.streetTo | vdmNa }}</p>
+      </div>
+      <div class="border-bottom my-4"></div>
+    </div>
+    <div>
+      <h4 class="my-2">Détails du projet</h4>
+      <div class="div-table">
+        <p>Partenaire</p>
+        <p>{{ rtuProject.partnerId | appTaxonomy: TaxonomyGroup.infoRtuPartner | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Numéro de référence</p>
+        <p>{{ rtuProject.noReference }}</p>
+      </div>
+      <div class="div-table">
+        <p>Statut</p>
+        <p>{{ rtuProject.status | appTaxonomy: TaxonomyGroup.rtuProjectStatus | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Type</p>
+        <p>{{ rtuProject.type }}</p>
+      </div>
+      <div class="div-table">
+        <p>Phase</p>
+        <p>{{ rtuProject.phase | appTaxonomy: TaxonomyGroup.rtuProjectPhase | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Période du projet</p>
+        <p>{{ rtuProject.dateStart | date: 'dd/MM/yyyy' | vdmNa }} - {{ rtuProject.dateEnd | date: 'dd/MM/yyyy' | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Justification de l'annulation</p>
+        <p>{{ rtuProject.cancellationReason | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Conflit</p>
+        <p>{{ rtuProject.conflict | vdmNa }}</p>
+      </div>
+      <div class="border-bottom my-4"></div>
+    </div>
+    <div>
+      <h4 class="my-2">Contact</h4>
+      <div class="div-table">
+        <p>Nom</p>
+        <p>{{ rtuProject.contact.prefix }} {{ rtuProject.contact.name | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Email</p>
+        <p>{{ rtuProject.contact.email | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Téléphone</p>
+        <p>{{ rtuProject.contact.phone | vdmNa }} <span *ngIf="rtuProject.contact.phoneExtensionNumber">; {{ rtuProject.contact.phoneExtensionNumber }}</span></p>
+      </div>
+      <div class="div-table">
+        <p>Titre</p>
+        <p>{{ rtuProject.contact.title | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Téléphone cellulaire</p>
+        <p>{{ rtuProject.contact.cell | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Fax</p>
+        <p>{{ rtuProject.contact.fax | vdmNa }}</p>
+      </div>
+      <div class="div-table">
+        <p>Paget</p>
+        <p>{{ rtuProject.contact.paget | vdmNa }}</p>
+      </div>
+      <div class="border-bottom my-4"></div>
+    </div>
+  </div>
+
+  <div class="map border rounded" [class.invisible]="!mapShown">
+    <app-map #map [withPanelMenu]="false" [withPanel]="false" [withRightPanel]="false"
+      [withNonGeolocatedProjectsPanel]="false" [withPlanningBook]="false" [withInterventions]="false"
+      [withProjects]="false" [withRtuProjects]="false" [initZoom]="25" [popupsEnabled]="false" class="d-inline-block w-100 h-100"></app-map>
+  </div>
+</div>

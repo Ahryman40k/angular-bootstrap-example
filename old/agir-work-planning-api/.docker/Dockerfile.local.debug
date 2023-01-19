@@ -1,0 +1,32 @@
+#==========================================
+# Dockerfile to develop locally.
+# Have a look at the README.md for more
+# information.
+#==========================================
+FROM vdmtl/core-oracle-nodejs-img:3.0.3
+
+LABEL maintainer="Ville De Montreal"
+ARG ENV=unknown
+ARG GIT_COMMIT=unknown
+
+# GIT label of the packaged code
+LABEL GIT_COMMIT=${GIT_COMMIT}
+
+# Work dir
+WORKDIR /mtl/app
+
+RUN npm install -g gulp-cli@1.2.2
+
+# Ports to expose:
+# - HTTP server
+# - Debugging port (if required)
+EXPOSE 12345 5858
+
+# Script called when a Docker container is started
+CMD mkdir -p ./node_modules/@types && \
+    globalNpmDirPath="$(npm root -g)" && \
+    cp -r ${globalNpmDirPath}/oracledb ./node_modules/oracledb && \
+    cp -r ${globalNpmDirPath}/@types/oracledb ./node_modules/@types/oracledb && \
+    npm install && \
+    gulp debug && \
+    /bin/bash

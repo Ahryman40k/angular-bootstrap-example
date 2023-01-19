@@ -1,0 +1,4 @@
+<app-popup-layout colorClass="address">
+  <app-address-card *ngIf="address" [address]="address"></app-address-card>
+  <app-spinner *ngIf="!address" class="d-flex mx-auto"></app-spinner>
+</app-popup-layout>

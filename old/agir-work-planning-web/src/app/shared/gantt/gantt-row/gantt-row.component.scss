@@ -1,0 +1,11 @@
+$gantt-row-options-width: 40px;
+
+:host {
+  display: block;
+}
+
+.gantt-row-options {
+  width: $gantt-row-options-width;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,13 @@
+<app-layout-modal [modalTitle]="title" *ngIf="intervention">
+  <div body>
+    <app-requirement-create [object]="intervention"  [requirement]="requirement"></app-requirement-create>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white" (click)="cancel()">
+      Annuler
+    </button>
+    <button type="submit" [disabled]="!canSubmit" class="btn btn-primary flex-fill justify-content-end btn-squared ml-2" (click)="create()">
+      {{ buttonLabel }}
+    </button>
+  </div>
+</app-layout-modal>

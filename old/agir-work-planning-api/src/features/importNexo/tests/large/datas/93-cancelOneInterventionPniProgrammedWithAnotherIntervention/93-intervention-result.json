@@ -1,0 +1,62 @@
+[
+  {
+    "id": "I00004",
+    "audit": "A_IGNORER",
+    "moreInformationAudit": "A_IGNORER",
+    "executorId": "deeu",
+    "interventionName": "This is the intervention name.",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "contact": "This is the contact.",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dre",
+        "length": {
+          "unit": "m",
+          "value": "A_IGNORER"
+        },
+        "geometry": "A_IGNORER"
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 42,
+      "burnedDown": 0,
+      "balance": 42
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 42,
+          "annualLength": "A_IGNORER",
+          "accountId": 0,
+          "year": 2040,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 42,
+        "totalLength": "A_IGNORER",
+        "note": null
+      }
+    },
+    "decisionRequired": false,
+    "streetName": "streetName",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "roadSections": "A_IGNORER",
+    "roadNetworkTypeId": "local",
+    "comments": [],
+    "project": {
+      "id": "P00002",
+      "typeId": "integrated"
+    },
+    "documents": []
+  }
+]

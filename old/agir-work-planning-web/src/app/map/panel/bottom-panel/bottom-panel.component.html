@@ -1,0 +1,60 @@
+<div class="d-flex close-panel position-absolute" container="body" *ngIf="shown">
+  <div class="d-flex flex-column justify-content-center mx-1">
+    <em class="icon icon-history icon-color-dark"></em>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <h6 class="font-weight-bold">Activité d'un tronçon</h6>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <button class="btn btn-icon btn-icon-only" (click)="togglePanel()" ngbTooltip="Fermer">
+      <i class="icon icon-x"></i>
+    </button>
+  </div>
+</div>
+<div class="map-panel w-100 shadow" *ngIf="shown && form" [formGroup]="form">
+  <div class="p-2">
+    <div class="d-flex">
+      <div class="d-flex border-right pr-4">
+        <div class="d-flex flex-column justify-content-center">
+          <h6 class="mr-1">Tronçon</h6>
+        </div>
+        <vdm-select
+          class="flex-fill section-select"
+          [items]="availableSections$ | async"
+          bindLabel="label"
+          formControlName="section"
+      ></vdm-select>
+      </div>
+      <div class="d-flex ml-4">
+        <div class="d-flex flex-column justify-content-center">
+          <p class="mr-2 text-sm mb-0">Période</p>
+        </div>
+        <input type="text" mask="9999" class="form-control year-input left-input pr-0" formControlName="fromYear" />
+        <input type="text" mask="9999" class="form-control year-input right-input pr-0" formControlName="toYear" />
+        <div class="d-flex flex-column justify-content-center ml-1">
+          <p class="text-danger font-md mb-0" *ngIf="form.controls.fromYear.invalid || form.controls.toYear.invalid">Les années entrées doivent être entre 2000 et 3000.</p>
+          <p class="text-danger font-md mb-0" *ngIf="!isYearIntervalValid && (form.controls.fromYear.valid && form.controls.toYear.valid)">L'année de début doit être plus petite que l'année de fin.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-6"
+    *ngIf="!(labelProjects$ | async)?.length && !(interventions$ | async).length">
+    <div class="d-flex flex-column">
+      <div class="d-flex justify-content-center mb-4">
+        <em class="icon icon-rectangle-folded icon-xl"></em>
+      </div>
+      <p>Aucune activité est disponible pour le tronçon sélectionné.</p>
+    </div>
+  </div>
+  <div *ngIf="(labelProjects$ | async)?.length || (interventions$ | async).length"
+    class="w-100 activity-section scrollable-horizontal">
+    <app-alert type="warning" class="px-2 mb-2" *ngIf="!(Permission.PARTNER_PROJECT_READ | appPermission)">
+      <span description>
+        Vous n’avez pas la permission nécessaire pour consulter les informations concernant les projets de types partenaire. L’historique présenté risque d’être incomplet.
+      </span>
+    </app-alert>
+    <app-road-section-activity [labelProjects]="labelProjects$ | async" [years]="years$ | async"
+      [interventions]="interventions$ | async"></app-road-section-activity>
+  </div>
+</div>

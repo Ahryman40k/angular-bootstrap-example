@@ -1,0 +1,25 @@
+.font-16 {
+  font-size: $font-size-16;
+  line-height: $line-height-24;
+}
+
+.font-md {
+  font-size: $font-size-14;
+  line-height: $line-height-20;
+}
+
+.font-sm {
+  font-size: $font-size-12;
+  line-height: $line-height-16;
+}
+
+@mixin create-font($name, $variable) {
+  .font-#{$name} {
+    color: $variable;
+  }
+}
+
+@include create-font('gold', $color-gold-dark);
+@include create-font('silver', $color-platinum);
+@include create-font('platinum', $color-gray-300);
+@include create-font('bronze', $color-bronze-dark);

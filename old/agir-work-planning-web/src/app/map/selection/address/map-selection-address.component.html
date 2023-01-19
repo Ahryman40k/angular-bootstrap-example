@@ -1,0 +1,5 @@
+<div class="map-selection-item">
+  <app-address-card *ngIf="address" class="card elevation p-2 m-0" [address]="address"></app-address-card>
+  <app-spinner-card *ngIf="!address"></app-spinner-card>
+</div>
+<app-map-selection-distance-results *ngIf="address" [point]="point"></app-map-selection-distance-results>

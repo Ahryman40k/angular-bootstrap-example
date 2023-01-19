@@ -1,0 +1,29 @@
+#==========================================
+# Loaded just after "default.yaml", but only
+# when tests are ran!
+#
+# It will be picked up because the "NODE_APP_INSTANCE"
+# environment variable is automatically set to "tests"
+# when tests are started...
+#
+# More info about this file and the order config files
+# are loaded : https://github.com/lorenwest/node-config/wiki/Configuration-Files
+#==========================================
+
+api:
+  scheme: http
+  # Tests are ran locally
+  host: localhost
+  port: 12345
+
+openApi:
+  exposeSwaggerEditor: false
+
+logging:
+  level: debug
+  addStackTraceToErrorMessagesInDev: true
+  logSource: true
+
+security:
+  jwt:
+    enable: false

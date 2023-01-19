@@ -1,0 +1,178 @@
+<app-layout-modal modalTitle="Filtrer les interventions">
+  <div body class="m-2">
+    <form [formGroup]="form">
+      <div>
+        <label>Année</label>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <div class="row">
+            <span class="col-md-2">De</span>
+            <input type="text" class="form-control col-md-10" mask="9999"
+              formControlName="fromPlanificationYear" />
+            <app-form-errors formControlName="fromPlanificationYear">
+              <app-form-error *appFormError="let e; key: 'minimum'">
+                Les années entrées doivent être entre 2000 et 3000.
+              </app-form-error>
+              <app-form-error *appFormError="let e; key: 'max'">
+                Les années entrées doivent être entre 2000 et 3000.
+              </app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="row">
+            <span class="col-md-2">À</span>
+            <input type="text" mask="9999" class="form-control col-md-10"
+              formControlName="toPlanificationYear" />
+            <app-form-errors formControlName="toPlanificationYear">
+              <app-form-error *appFormError="let e; key: 'minimum'">
+                L'année entrées doivent être entre 2000 et 3000.
+              </app-form-error>
+              <app-form-error *appFormError="let e; key: 'max'">
+                L'années entrées doivent être entre 2000 et 3000.
+              </app-form-error>
+            </app-form-errors>
+          </div>
+          </div>
+        <app-form-error *ngIf="form.errors?.rangePlanificationYear">
+          L'année "À" doit être supérieur ou égal à l'année "De"
+        </app-form-error>
+        </div>
+        </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Type
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-intervention-filter-view-modal" [items]="interventionTypeId$ | async"
+            formControlName="interventionTypeId" [removableItems]="true"></vdm-multi-select>
+        </div>
+        <div class="col-md-6">
+          <label class="flex-1">
+            Décision requise
+          </label>
+          <br />
+          <app-radio-input id="radioDecisionAll" [checked]="form.value.decisionRequired === null"
+            (click)="setDecisionRequired(null)">
+          </app-radio-input>Tout afficher <br />
+          <app-radio-input id="radioDecisionYes" [checked]="form.value.decisionRequired === true"
+            (click)="setDecisionRequired(true)">
+          </app-radio-input>Oui<br />
+          <app-radio-input id="radioDecisionNo" [checked]="form.value.decisionRequired === false"
+            (click)="setDecisionRequired(false)">
+          </app-radio-input>Non<br />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Statut
+            </label>
+            <vdm-multi-select bindLabel="label.fr" bindValue="code" appendTo="app-customize-intervention-filter-view-modal"
+              [items]="status$ | async" formControlName="status" [removableItems]="true"></vdm-multi-select>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label class="flex-1">
+                Arrondissement
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-intervention-filter-view-modal" [items]="boroughs$ | async"
+            formControlName="boroughId" [removableItems]="true"></vdm-multi-select>
+        </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label class="flex-1">
+              Requérant
+            </label>
+            <vdm-multi-select bindLabel="label.fr" bindValue="code" appendTo="app-customize-intervention-filter-view-modal"
+              [items]="requestorId$ | async" formControlName="requestorId" [removableItems]="true"></vdm-multi-select>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label class="flex-1">
+              Exécutant
+            </label>
+            <vdm-multi-select bindLabel="label.fr" bindValue="code" appendTo="app-customize-intervention-filter-view-modal"
+              [items]="executorId$ | async" formControlName="executorId" [removableItems]="true"></vdm-multi-select>
+          </div>
+        </div>
+
+        <div *ngIf="Permission.INTERVENTION_BUDGET_READ | appPermission">
+          <label>Budget (K$)</label>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <div class="row">
+                <span class="col-md-2">De</span>
+                <input type="text" class="form-control col-md-10" vdmIntegerInput formControlName="fromEstimate" />
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="row">
+                <span class="col-md-2">À</span>
+                <input type="text" class="form-control col-md-9" vdmIntegerInput formControlName="toEstimate" />
+              </div>
+            </div>
+            <app-form-error *ngIf="form.errors?.rangeBudget">
+              Le budget "À" doit être supérieur ou égal au budget "De"
+            </app-form-error>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label class="flex-1">
+              Programme
+            </label>
+            <vdm-multi-select bindLabel="label.fr" bindValue="code" appendTo="app-customize-intervention-filter-view-modal"
+              [items]="programId$ | async" formControlName="programId" [removableItems]="true"></vdm-multi-select>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label class="flex-1">
+              Médaille
+            </label>
+            <vdm-multi-select bindLabel="label.fr" bindValue="code" appendTo="app-customize-intervention-filter-view-modal"
+              [items]="medalId$ | async" formControlName="medalId" [removableItems]="true"></vdm-multi-select>
+          </div>
+        </div>
+
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label class="flex-1">
+        Nature des travaux
+      </label>
+      <vdm-multi-select bindLabel="label.fr" bindValue="code" appendTo="app-customize-intervention-filter-view-modal"
+        [items]="workTypeId$ | async" formControlName="workTypeId" [removableItems]="true"></vdm-multi-select>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="flex-1">
+        Type d'actif
+      </label>
+      <vdm-multi-select bindLabel="label.fr" bindValue="code" appendTo="app-customize-intervention-filter-view-modal"
+        [items]="assetTypes$ | async" formControlName="assetTypeId" [removableItems]="true"></vdm-multi-select>
+    </div>
+  </div>
+
+  </form>
+  </div>
+
+  <div buttons class="d-flex justify-content-between flex-1">
+    <button class="btn btn-secondary btn-squared" type="button" (click)="resetTableView()">
+      Réinitialiser
+    </button>
+    <div>
+      <button class="btn btn-secondary btn-squared mr-2" type="button" (click)="cancel()">
+        Annuler
+      </button>
+      <button class="btn btn-primary btn-squared" type="button" (click)="saveTableView()">
+        Sauvegarder
+      </button>
+    </div>
+  </div>
+</app-layout-modal>

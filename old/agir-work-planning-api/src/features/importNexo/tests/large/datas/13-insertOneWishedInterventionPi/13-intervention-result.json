@@ -1,0 +1,82 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DRE"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Construction / Segment d'aqueduc / Rue Saint-Maurice",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "wished",
+    "interventionYear": 2021,
+    "planificationYear": 2021,
+    "endYear": 2021,
+    "programId": null,
+    "contact": "Sofiane Djad",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 236.7
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55501711368561, 45.500722338655414],
+            [-73.55481594800949, 45.50065090009099]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-DRE-5310284"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5310284"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 361.34,
+      "burnedDown": 0,
+      "balance": 361.34
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 361.34,
+          "annualLength": 0.2367,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 361.34,
+        "totalLength": 0.2367,
+        "note": null
+      }
+    },
+    "decisionRequired": false,
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "comments": [],
+    "documents": []
+  }
+]

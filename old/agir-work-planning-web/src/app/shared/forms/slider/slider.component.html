@@ -1,0 +1,16 @@
+<div class="slider-container">
+  <span class="bar"><span #fill class="fill" [class.disabled]="disabled"></span></span>
+  <input
+    #input
+    type="range"
+    class="custom-range"
+    [min]="min"
+    [max]="max"
+    [step]="step"
+    [attr.id]="id"
+    [value]="value"
+    (input)="onInput($event)"
+    (blur)="touched()"
+    [disabled]="disabled"
+  />
+</div>

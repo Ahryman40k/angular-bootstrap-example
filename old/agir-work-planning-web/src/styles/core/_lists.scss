@@ -1,0 +1,31 @@
+@import 'variables';
+
+.list-item-link {
+  outline: none;
+
+  &:hover {
+    @extend .clickable;
+    background-color: $color-aqua-spring;
+    border-right: solid 2px $color-turquoise-700;
+  }
+
+  &.active {
+    background-color: $color-aqua-spring;
+    border-right: solid 2px $color-turquoise-700;
+  }
+}
+
+.list-item-link-gray {
+  outline: none;
+
+  &:hover {
+    @extend .clickable;
+    background-color: $color-gray-100;
+  }
+
+  &.active {
+    background-color: $color-gray-100;
+  }
+}
+
+

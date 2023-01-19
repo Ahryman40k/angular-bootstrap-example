@@ -1,0 +1,8 @@
+{
+  "id": "A_IGNORER",
+  "categoryId": "historic",
+  "text": "Hello world !",
+  "isPublic": false,
+  "isProjectVisible": true,
+  "audit": "A_IGNORER"
+}

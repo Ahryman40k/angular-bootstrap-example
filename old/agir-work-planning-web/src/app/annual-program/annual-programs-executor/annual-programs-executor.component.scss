@@ -1,0 +1,18 @@
+@import '../../../styles/core/variables';
+
+h3{
+  font-size: $font-size-32;
+  margin-bottom : 30px;
+}
+.year-col{
+font-weight: 700;
+font-size: 16px;
+color: #212529;
+}
+.list-item-link-gray{
+  position: relative;
+}
+.options-button{
+  position: absolute;
+  right: 0;
+}

@@ -1,0 +1,95 @@
+<div class="pt-0 pb-0 border-bottom shadow-sm" *ngIf="intervention">
+  <div class="d-flex justify-content-between align-items-center pt-2 pb-2">
+    <div class="d-flex">
+      <h3 class="pl-4 pr-4 pb-0">
+        {{ intervention.id }}
+      </h3>
+      <div class="d-flex flex-column pl-4">
+        <div class="d-flex">
+          <div class="mr-1">
+            <span class="badge badge-dark">{{ intervention.planificationYear }}</span>
+          </div>
+          <div class="mr-1" *ngIf="intervention?.status">
+            <span class="badge badge-success">
+              {{ intervention.status | appTaxonomy: 'interventionStatus' }}
+            </span>
+          </div>
+          <div>
+            <span class="badge badge-success-light">
+              {{ intervention.interventionTypeId | appTaxonomy: 'interventionType' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex col-xs-12 pr-3">
+      <app-more-options-button [items]="interventionMenuItems" *ngIf="canInteract"></app-more-options-button>
+      <button type="button" (click)="close()" class="btn btn-secondary btn-squared font-weight-bold px-2">
+        Fermer
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-decision-required-warning
+  *ngIf="shouldShowDecisionWarning && (Permission.INTERVENTION_DECISION_ACCEPTED_REFUSED_CREATE | appPermission)"
+></app-decision-required-warning>
+<div class="d-flex flex-1 h-0">
+  <div class="window-content-interventions py-3 pl-2 left-menu border-right scrollable">
+    <!-- <app-menu-active
+      *ngFor="let item of menu"
+      [item]="item"
+      [routerLink]="item.link"
+      routerLinkActive="active"
+    ></app-menu-active> -->
+    <span class="menu-item" routerLink="overview">
+      <span class="menu-order-number">1</span>
+      Vue d'ensemble
+    </span>
+    <span class="menu-item" (click)="planificationMenuToggle()">
+      <span class="menu-order-number">2</span>
+      Planification
+      <i
+        class="icon float-right mr-1"
+        *ngIf="planificationMenu"
+        [class.icon-chevron-up]="planificationMenuShow"
+        [class.icon-chevron-down]="!planificationMenuShow"
+        role="icon"
+      ></i
+    ></span>
+    <div class="pl-5" *ngIf="planificationMenuShow">
+      <p>
+        <app-menu-active
+          *ngFor="let item of planificationMenu"
+          [item]="item"
+          [routerLink]="item.link"
+          routerLinkActive="active"
+        ></app-menu-active>
+      </p>
+    </div>
+    <span class="menu-item" (click)="conceptionMenuToggle()">
+      <span class="menu-order-number">3</span>
+      Suivi de conception
+      <i
+        class="icon float-right mr-1"
+        *ngIf="conceptionMenu"
+        [class.icon-chevron-up]="conceptionMenuShow"
+        [class.icon-chevron-down]="!conceptionMenuShow"
+        role="icon"
+      ></i
+    ></span>
+    <div class="pl-5" *ngIf="conceptionMenuShow">
+      <p>
+        <app-menu-active
+          *ngFor="let item of conceptionMenu"
+          [item]="item"
+          [routerLink]="item.link"
+          routerLinkActive="active"
+        ></app-menu-active>
+      </p>
+    </div>
+  </div>
+  <div class="flex-1 scrollable">
+    <router-outlet></router-outlet>
+  </div>
+</div>

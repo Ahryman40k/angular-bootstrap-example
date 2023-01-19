@@ -1,0 +1,48 @@
+{
+  // ==========================================
+  // Have a look at https://stackoverflow.com/questions/46800810/vscode-how-to-debug-a-node-program-that-starts-its-own-debugger-using-a-launc
+  // to understand how the "docker" task has been implemented.
+  //
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  // ==========================================
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "identifier": "compile",
+      "type": "npm",
+      "script": "compile",
+      "problemMatcher": ["$tsc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "docker",
+      "identifier": "docker",
+      "type": "shell",
+      "command": "node ${workspaceRoot}/.docker/docker-local-debug.js",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "focus": true
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "__________"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Debugger listening on port 5858",
+          "endsPattern": "Server started on port"
+        }
+      }
+    }
+  ]
+}

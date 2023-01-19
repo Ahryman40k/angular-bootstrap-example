@@ -1,0 +1,10 @@
+[
+  {
+    "id": "A_IGNORER",
+    "categoryId": "information",
+    "text": "This is a comment",
+    "isPublic": true,
+    "isProjectVisible": false,
+    "audit": "A_IGNORER"
+  }
+]

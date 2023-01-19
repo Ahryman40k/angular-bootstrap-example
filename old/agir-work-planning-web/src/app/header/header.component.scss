@@ -1,0 +1,11 @@
+@import '../../styles/core/variables';
+
+#agir-dropdown-menu {
+  min-width: 0rem !important;
+}
+
+.dropdown-menu .dropdown-item .dropdown-item-description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: $color-pale-sky;
+}

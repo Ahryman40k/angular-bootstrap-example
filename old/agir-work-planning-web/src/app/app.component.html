@@ -1,0 +1,6 @@
+<app-spinner-overlay></app-spinner-overlay>
+<app-header *ngIf="isHeaderVisible"></app-header>
+<div class="main d-flex flex-grow-1 flex-column" [class.main-without-header]="!isHeaderVisible">
+  <router-outlet></router-outlet>
+</div>
+<app-notifications></app-notifications>

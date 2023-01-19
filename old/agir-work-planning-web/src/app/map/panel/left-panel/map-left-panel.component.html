@@ -1,0 +1,11 @@
+<div
+  class="map-panel h-100"
+  [class.w-100]="isFullSize"
+  [class.panel-large]="isPanelLarger"
+  (vdmOutsideClick)="closePanel()"
+  [style.width]="widthPanel"
+  [outsideClickIgnoreIf]="!shown"
+  [outsideClickIgnoreElements]="['mapLeftPanelMenu', 'saveFavoriteModal']"
+>
+  <router-outlet name="leftPanel"></router-outlet>
+</div>

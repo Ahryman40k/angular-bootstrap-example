@@ -1,0 +1,17 @@
+<app-filter-layout [formGroup]="form">
+  <div class="pr-2">
+    <label class="flex-1">
+      Décision requise
+    </label>
+    <br />
+    <app-radio-input id="radioDecisionAll" [checked]="![true, false].includes(form.value.decisionRequired)"
+      (click)="setDecisionRequired(undefined)">
+    </app-radio-input>Tout afficher <br />
+    <app-radio-input id="radioDecisionYes" [checked]="form.value.decisionRequired === true"
+      (click)="setDecisionRequired(true)">
+    </app-radio-input>Oui<br />
+    <app-radio-input id="radioDecisionNo" [checked]="form.value.decisionRequired === false"
+      (click)="setDecisionRequired(false)">
+    </app-radio-input>Non<br />
+  </div>
+</app-filter-layout>

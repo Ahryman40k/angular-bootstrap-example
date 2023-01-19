@@ -1,0 +1,32 @@
+<div>
+  <app-list-item-details *ngIf="requirementConceptions?.length">
+    <app-list-item-details-field titleClass="requirement-title">
+      <span title>Exigence(s) de conception</span>
+      <div description>
+        <div *ngFor="let item of requirementConceptions" class="description-item">
+          <span class="badge-gray badge badge-align-middle title">
+            {{ item.typeId | appTaxonomy: 'submissionRequirementType'}}
+          </span>
+          <span class="title"> {{ item.subtypeId | appTaxonomy: 'submissionRequirementSubtype' }} </span>
+          <span> - {{ item.mentionId | appTaxonomy: 'submissionRequirementMention' }} </span>
+          <span> - {{item.text}} </span>
+        </div>
+      </div>
+    </app-list-item-details-field>
+  </app-list-item-details>
+
+  <app-list-item-details *ngIf="requirementPlanifications?.length">
+    <app-list-item-details-field titleClass="requirement-title">
+      <span title>Exigence(s) de planification</span>
+      <div description>
+        <div *ngFor="let item of requirementPlanifications" class="description-item">
+          <span class="badge-gray badge badge-align-middle title">
+            {{ item.typeId | appTaxonomy:'requirementType' }}
+          </span>
+          <span class="title"> {{ item.subtypeId | appTaxonomy: 'requirementSubtype' }} </span>
+          <span> - {{item.text}} </span>
+        </div>
+      </div>
+    </app-list-item-details-field>
+  </app-list-item-details>
+</div>

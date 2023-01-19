@@ -1,0 +1,23 @@
+@import '../../../../styles/core/mixins';
+$intervention-notes-expanded-height: 98px;
+$intervention-notes-height: 48px;
+$padding-1: 0.5rem;
+
+app-details-layout {
+  @include scrollbar(horizontal);
+}
+
+.intervention-notes {
+  height: $intervention-notes-height;
+  overflow-y: hidden;
+  padding-top: $padding-1;
+  position: absolute;
+  top: 0;
+
+  @include scrollbar(vertical);
+}
+
+.intervention-notes-expanded {
+  height: $intervention-notes-expanded-height;
+  padding-bottom: $padding-1;
+}

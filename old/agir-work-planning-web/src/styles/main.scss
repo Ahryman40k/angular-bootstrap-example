@@ -1,0 +1,68 @@
+@import 'node_modules/@villemontreal/boite-outils4-web/dist/css/styles-header-footer-v4.scss';
+@import 'node_modules/@villemontreal/boite-outils4-web/dist/css/styles.scss';
+@import 'node_modules/@ng-select/ng-select/scss/default.theme.scss';
+
+@import './core/utils';
+@import './core/backgrounds';
+@import './core/badges';
+@import './core/border';
+@import './core/buttons';
+@import './core/card';
+@import './core/checkbox';
+@import './core/date-pickers';
+@import './core/div-tables';
+@import './core/dropdown';
+@import './core/fonts';
+@import './core/forms';
+@import './core/gantt';
+@import './core/highlight';
+@import './core/icons';
+@import './core/inputs';
+@import './core/indicators';
+@import './core/labels';
+@import './core/layout-narrow';
+@import './core/layer-manager';
+@import './core/legend';
+@import './core/link';
+@import './core/lists';
+@import './core/mapbox';
+@import './core/modal';
+@import './core/nav';
+@import './core/search-box';
+@import './core/selects';
+@import './core/shadows';
+@import './core/sliders';
+@import './core/sort';
+@import './core/table';
+@import './core/tabs';
+@import './core/text';
+@import './core/toggle-button';
+@import './core/toolbox-override';
+
+@import './app/contents.scss';
+@import './app/details-comments.scss';
+@import './app/details-layout.scss';
+@import './app/details-overview.scss';
+@import './app/elements-card.scss';
+@import './app/filter-layout.scss';
+@import './app/intervention-form-layout.component.scss';
+@import './app/map-selection.scss';
+@import './app/map.scss';
+@import './app/more-information.scss';
+@import './app/more-information-field.scss';
+@import './app/object-card.scss';
+@import './app/program-book-table.scss';
+@import './app/project-form.scss';
+@import './app/width.scss';
+
+html,
+body,
+app-root {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+}

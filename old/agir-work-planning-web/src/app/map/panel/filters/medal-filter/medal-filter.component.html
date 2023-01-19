@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Médailles</span>
+  <app-filter-item-layout
+    [items]="medals$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="medals"
+  ></app-filter-item-layout>
+</app-filter-layout>

@@ -1,0 +1,9 @@
+@import '../../../../styles/core/variables';
+
+$popup-header-border-height: 2px;
+
+.popup-header-border {
+  height: $popup-header-border-height;
+  border-top-left-radius: $popup-border-radius;
+  border-top-right-radius: $popup-border-radius;
+}

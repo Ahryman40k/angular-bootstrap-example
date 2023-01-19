@@ -1,0 +1,62 @@
+<div class="d-flex align-items-center mb-1">
+  <h4 class="title flex-1">
+    <a appWindowLink href="{{ interventionService.getInterventionLink(intervention) }}" appStopProp>{{
+      intervention.id
+    }}</a>
+  </h4>
+  <app-more-options-button [items]="interventionMenuItems" buttonClass="p-0"></app-more-options-button>
+</div>
+<div class="description mb-2 font-md">{{ intervention.interventionName }}</div>
+<div class="details">
+  <div *ngIf="programLabel">
+    <label class="d-flex align-items-center font-sm mb-1">
+      <i class="d-inline-block icon icon-xs icon-calendar mr-1"></i>
+      {{ programLabel }}
+    </label>
+  </div>
+  <div
+    *ngIf="
+      !intervention.decisionRequired &&
+      ('INTERVENTION:BUDGET:READ' | appPermission) &&
+      (intervention.status !== InterventionStatus.wished ||
+        (restrictionItems | appRestrictions: [RestrictionType.REQUESTOR]))
+    "
+  >
+    <label class="d-flex align-items-center font-sm mb-1">
+      <i class="d-inline-block icon icon-xs icon-money mr-1"></i>
+      {{ intervention.estimate.allowance | currency: 'CAD':'k$':'1.0-0' | vdmNa }}
+    </label>
+  </div>
+  <div
+    *ngIf="intervention.decisionRequired && (Permission.INTERVENTION_DECISION_ACCEPTED_REFUSED_CREATE | appPermission)"
+  >
+    <label class="d-flex align-items-center mb-1 font-sm text-danger font-weight-bold">
+      <i class="d-inline-block icon icon-xs icon-warning mr-1 icon-color-danger"></i>
+      Une décision est requise
+      <a
+        class="text-danger ml-2 decision-required-a"
+        appWindowLink
+        href="window/interventions/{{ intervention.id }}/decisions"
+        appStopProp
+      >
+        Voir
+      </a>
+    </label>
+  </div>
+  <div class="mb-1">
+    <label class="d-flex align-items-center font-sm">
+      <i class="d-inline-block icon icon-xs icon-user mr-1"></i>
+      {{ intervention.requestorId | appTaxonomy: 'requestor' }}
+    </label>
+  </div>
+</div>
+<div class="mt-1 d-flex align-content-center align-items-center flex-wrap">
+  <span class="badge badge-dark mr-1 mt-1">{{ intervention.planificationYear }}</span>
+  <span class="badge badge-success mr-1 mt-1">
+    {{ intervention.status | appTaxonomy: 'interventionStatus' }}
+  </span>
+  <span class="badge badge-success-light mr-1 mt-1">
+    {{ intervention.interventionTypeId | appTaxonomy: 'interventionType' }}
+  </span>
+  <app-medal *ngIf="intervention.medalId" class="mt-1" [medalId]="intervention.medalId"></app-medal>
+</div>

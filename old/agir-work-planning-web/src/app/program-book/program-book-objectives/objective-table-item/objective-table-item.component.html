@@ -1,0 +1,55 @@
+<div *ngIf="targetObjective" class="responsive-table-row align-items-stretch borderoffset bg-info" [class.blue-border-bottom]="!opened">
+  <div class="table-body-cell d-flex align-items-center flex-1">
+    <div class="col-4 d-flex align-items-center p-0">
+      <i class="icon icon-objective icon-info mr-2"></i>
+      <h6 class="text-info mr-5"> Seuil - {{targetObjective.name}}</h6>
+    </div>
+    <div class="col-4 d-flex align-items-center">
+      <div class="col-"></div>
+      <small class="col-4 text-neutral-secondary text-right pr-1">
+        {{ targetObjective?.values?.calculated | number }}/{{ targetObjective?.values?.reference | number }}
+        {{ targetObjective | vdmObjectiveProgressLabel }}
+      </small>
+      <div class="progress-bar-width">
+        <ngb-progressbar
+          [height]="progressBarHeight"
+          [value]="targetObjective.values | vdmObjectiveProgress"
+        ></ngb-progressbar>
+      </div>
+      <small class="font-weight-bold pl-1">{{ targetObjective.values | vdmObjectiveProgress }}%</small>
+    </div>
+    <div *ngIf="performanceIndicators?.length > 0" class="d-flex flex-1 justify-content-end">
+      <button class="btn btn-icon btn-icon-only" (click)="opened = !opened">
+        <i class="icon icon-color-info" [class.icon-chevron-up]="opened" [class.icon-chevron-down]="!opened"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="opened" class="responsive-table-row align-items-stretch borderoffset bg-info blue-border-bottom">
+  <div class="table-body-cell align-items-stretch d-flex bg-info pb-3 flex-1">
+    <div class="col-2 d-flex align-items-stretch">
+      <div class="ml-7 pl-2 border-left border-width-sm">
+        <h6 class="d-flex align-items-center text-nowrap objective-item-min-height">Indicateurs de performances</h6>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="d-flex align-items-center objective-item-min-height py-1" *ngFor="let performanceIndicator of performanceIndicators">
+        <div class="col-2 d-flex flex-column">
+          <h6 class="d-flex pl-8">{{performanceIndicator.name}}</h6>
+          <small *ngIf="!performanceIndicators?.length">N/D</small>
+        </div>
+        <small class="col-2 text-neutral-secondary text-right pr-1">
+          {{ performanceIndicator?.values?.calculated | number }}/{{ performanceIndicator?.values?.reference | number }}
+          {{ performanceIndicator | vdmObjectiveProgressLabel }}
+        </small>
+        <div class="progress-bar-width">
+          <ngb-progressbar
+            [height]="progressBarHeight"
+            [value]="performanceIndicator.values | vdmObjectiveProgress"
+          ></ngb-progressbar>
+        </div>
+        <small class="col-1 font-weight-bold pl-1">{{ performanceIndicator.values | vdmObjectiveProgress }}%</small>
+      </div>
+    </div>
+  </div>
+</div>

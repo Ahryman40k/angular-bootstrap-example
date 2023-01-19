@@ -1,0 +1,75 @@
+<app-map-overlay *ngIf="isMapLoading$ | async"></app-map-overlay>
+<app-planning-book *ngIf="withPlanningBook" class="navbar pt-2 pb-2 border-bottom shadow-sm"></app-planning-book>
+<div class="cover-map w-100 h-100 position-absolute" *ngIf="disabled"></div>
+<div class="loading w-100 h-100 position-absolute d-flex justify-content-center" *ngIf="isLoading">
+  <div class="d-flex flex-column justify-content-center">
+    <div class="d-flex justify-content-center">
+      <app-spinner></app-spinner>
+    </div>
+    <p>Chargement de la carte</p>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div
+    class="d-flex justify-content-center alert alert-info selection-alert mb-0 py-3 mt-2"
+    *ngIf="mapService.isSelectionActivated"
+    role="alert"
+  >
+    <span class="my-auto mr-2">
+      Vous êtes maintenant en mode sélection.
+      <br />
+      Veuillez sélectionner un élement afin de créer la contrainte.
+    </span>
+    <button type="button" class="btn btn-outline-secondary" (click)="onCancelMapSelection()">
+      Annuler la contrainte
+    </button>
+  </div>
+</div>
+
+<div class="main-display position-relative h-100" *ngIf="mapConfig">
+  <vdm-map
+    class="d-inline-block w-100 h-100"
+    [mapConfig]="mapConfig"
+    id="map"
+    #map
+    [class.with-left-panel]="withPanelMenu"
+    [class.left-panel-opened]="mapPanelService.leftPanelShown && !mapPanelService.isLeftPanelLarger"
+    [class.left-panel-large-opened]="mapPanelService.leftPanelShown && mapPanelService.isLeftPanelLarger"
+    [class.left-panel-sub-panel-opened]="mapPanelService.leftPanelSubPanelShown"
+  ></vdm-map>
+  <vdm-geometry-draw-tool [targetMap]="map"></vdm-geometry-draw-tool>
+  <vdm-simple-selection [targetMap]="map"></vdm-simple-selection>
+  <div class="d-flex h-100 position-absolute border-right left-panel" [class.w-100]="isLeftPanelFullSize">
+    <app-map-panel-menu id="mapLeftPanelMenu" #mapLeftPanelMenu *ngIf="withPanelMenu"></app-map-panel-menu>
+    <app-map-left-panel #mapLeftPanel *ngIf="withPanel" class="border-left"></app-map-left-panel>
+  </div>
+  <div class="selection-panel d-flex position-absolute h-100">
+    <app-non-geolocated-projects-panel
+      #mapNonGeolocatedProjectsPanel
+      *ngIf="withNonGeolocatedProjectsPanel"
+    ></app-non-geolocated-projects-panel>
+    <app-map-right-panel #mapRightPanel *ngIf="withRightPanel"></app-map-right-panel>
+  </div>
+  <div class="d-flex position-absolute w-100 bottom-panel">
+    <app-bottom-panel></app-bottom-panel>
+  </div>
+</div>
+<app-contextual-menu
+  *ngIf="
+    (contextualMenuEnabled && (Permission.INTERVENTION_WRITE | appPermission)) ||
+    (Permission.PROJECT_WRITE | appPermission)
+  "
+  #mapContextualMenu
+>
+  <a
+    *ngIf="Permission.INTERVENTION_WRITE | appPermission"
+    [href]="interventionCreateLink"
+    appWindowLink
+    ngbDropdownItem
+  >
+    Créer une intervention
+  </a>
+  <a *ngIf="Permission.PROJECT_WRITE | appPermission" href="window/projects/create" appWindowLink ngbDropdownItem>
+    Créer un projet
+  </a>
+</app-contextual-menu>

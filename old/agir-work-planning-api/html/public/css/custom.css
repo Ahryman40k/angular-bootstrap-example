@@ -1,0 +1,25 @@
+.td-label {
+    font-weight: bold;
+    width:20%;
+    max-width:50px;
+}
+
+h3 {
+    color: #666666;
+}
+
+#ftr-mtl-pes {
+    padding-top:200px;
+}
+
+.page-header {
+    margin:0px 0px 0px;
+}
+.page-header img {
+    vertical-align: text-bottom;
+}
+
+li.inactif a:hover {
+    text-decoration: underline !important;
+    color: #000000;
+}

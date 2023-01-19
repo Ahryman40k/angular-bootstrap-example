@@ -1,0 +1,11 @@
+<app-filter-layout>
+  <span title>Types d'interventions</span>
+  <app-filter-item-layout
+    [items]="interventionTypes$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    [formControl]="interventionTypesControl"
+  ></app-filter-item-layout>
+</app-filter-layout>

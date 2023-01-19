@@ -1,0 +1,33 @@
+<ng-select
+  [ngClass]="ngSelectClass"
+  class="pl-0"
+  [appendTo]="appendTo"
+  [placeholder]="placeholder"
+  [bindLabel]="bindLabel"
+  [bindValue]="bindValue"
+  [clearable]="false"
+  [closeOnSelect]="closeOnSelect"
+  [hideSelected]="hideSelected"
+  [items]="items"
+  [maxSelectedItems]="maxSelectedItems"
+  [multiple]="true"
+  [selectableGroup]="selectableGroup"
+  [searchable]="searchable"
+  [(ngModel)]="value"
+  [disabled]="disabled"
+>
+  <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+    <div class="ng-value mr-0" *ngFor="let item of items | slice: 0:1">
+      <span class="ng-value-label bg-white">{{ item?.label.fr }}</span>
+    </div>
+  </ng-template>
+</ng-select>
+<div class="badge-group mt-2 d-flex flex-wrap">
+  <a
+    class="badge badge-secondary badge-icon-right badge-dismiss rounded-lg ml-0 mr-1 mb-1 p-1"
+    *ngFor="let item of value"
+  >
+    <span class="badge-label text-primary mr-1">{{ getLabel(item) }}</span>
+    <span class="icon icon-x-circle-full clickable" (click)="removeItem(item)" appStopProp *ngIf="removableItems"></span>
+  </a>
+</div>

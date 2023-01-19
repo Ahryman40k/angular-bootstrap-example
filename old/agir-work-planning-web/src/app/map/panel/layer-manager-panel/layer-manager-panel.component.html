@@ -1,0 +1,38 @@
+<app-filter-layout>
+  <span title>Couches d'actifs</span>
+  <div *ngFor="let layer of layers; let i = index" class="pb-1 mb-2 filter-container">
+    <div class="d-flex justify-content-between mb-1">
+      <div class="d-flex flex-column justify-content-center">
+        <h6 class="mr-1 font-sm">{{ layer.title }}</h6>
+      </div>
+      <button class="btn btn-icon btn-icon-only p-0" (click)="toggleIndexCollapse(i)">
+        <i
+          class="icon"
+          [class.icon-chevron-up]="!isIndexCollapsed(i)"
+          [class.icon-chevron-down]="isIndexCollapsed(i)"
+        ></i>
+      </button>
+    </div>
+    <ng-container *ngIf="!isIndexCollapsed(i)">
+      <div
+        class="d-flex p-1 clickable filter-title"
+        *ngFor="let item of layer.items"
+        (keydown.space)="$event.stopPropagation()"
+        [routerLink]="item.link"
+        routerLinkActive="menu-link-active"
+        [class.menu-link-active-filter]="item.isActive$ | async"
+      >
+        <i *ngIf="item.icon" class="icon {{ item.icon }} icon-xs mr-1"></i>
+        <label
+          class="flex-1 mb-0 font-sm font-weight-normal clickable filter-label"
+          [ngbTooltip]="item.title"
+          [openDelay]="2000"
+        >
+          {{ item.title }}
+        </label>
+      </div>
+    </ng-container>
+  </div>
+</app-filter-layout>
+
+<app-left-panel-sub-panel #mapLeftPanelSubPanel class="border-left"></app-left-panel-sub-panel>

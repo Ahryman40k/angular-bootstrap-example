@@ -1,0 +1,72 @@
+@import '../../../../../styles/core/variables';
+
+.table {
+  width: 100%;
+  margin-bottom: 100px;
+	thead {
+		th {
+			height: 3rem;
+		}
+	}
+
+	tr {
+		cursor: pointer;
+		width: 100%;
+    td, th {
+      background-color: white;
+      width: 3rem;
+    }
+		td {
+			padding: 1rem;
+		}
+		th {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+		}
+	}
+.cdk-column-expandedDetail {
+  padding: 0 !important;
+  border: none !important;
+}
+}
+.paginator {
+  background: white;
+  bottom: 7px;
+  z-index: 1;
+  position: fixed;
+  width: 95%;
+  }
+ tr.sub-eldetail-row {
+   height: 0;
+   padding: 0 !important;
+ }
+
+ tr.sub-elelement-row:not(.sub-elexpanded-row):hover {
+   background: #f5f5f5;
+ }
+
+ tr.sub-elelement-row:not(.sub-elexpanded-row):active {
+   background: #efefef;
+ }
+
+ .sub-elelement-row td {
+   border-bottom-width: 0;
+ }
+
+ .sub-elelement-detail {
+   overflow: hidden;
+ }
+
+ .sub-elelement-description {
+   padding: 16px;
+   padding-left: 20px;
+ }
+
+ .background-colored {
+   background-color: #F8F9FB !important;
+ }
+ .showRequirements {
+   margin-right: 50px;
+ }

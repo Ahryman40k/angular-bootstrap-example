@@ -1,0 +1,53 @@
+[
+  {
+    "audit": "A_IGNORER",
+    "moreInformationAudit": "A_IGNORER",
+    "executorId": "di",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dre",
+        "length": {
+          "value": 0,
+          "unit": "m"
+        },
+        "externalReferenceIds": []
+      }
+    ],
+    "boroughId": "VM",
+    "estimate": {
+      "allowance": 58,
+      "burnedDown": 0,
+      "balance": 58
+    },
+    "interventionArea": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-73.53372985629022, 45.53061063848977], [-73.53372025208365, 45.53061614050905], [-73.53343708647472, 45.53060088162635], [-73.53342887582035, 45.53059375107151], [-73.53371244257373, 45.52914804158315], [-73.53372196106656, 45.52914382831928], [-73.53397781554216, 45.52916443579466], [-73.53398397927494, 45.52917119885376], [-73.53372985629022, 45.53061063848977]]]
+      },
+      "isEdited": false,
+      "geometryPin": [-73.53371403364079, 45.52988111453094]
+    },
+    "interventionName": "Construction / Segment d'aqueduc / rue Utilités publiques",
+    "interventionTypeId": "initialNeed",
+    "interventionYear": 2040,
+    "medalId": null,
+    "planificationYear": 2040,
+    "requestorId": "dre",
+    "workTypeId": "construction",
+    "contact": "Yoda",
+    "decisionRequired": false,
+    "importFlag": null,
+    "programId": null,
+    "roadSections": {
+      "type": "FeatureCollection",
+      "features": "A_IGNORER"
+    },
+    "status": "waiting",
+    "roadNetworkTypeId": "local",
+    "streetName": "streetName",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "id": "I00002"
+  }
+]

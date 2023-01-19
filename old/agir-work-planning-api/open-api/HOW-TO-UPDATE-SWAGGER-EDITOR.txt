@@ -1,0 +1,14 @@
+
+Download the latest version from Github directly :
+https://github.com/swagger-api/swagger-editor
+
+Only keep those files/folders :
+
+open-api/swagger-editor/index.html
+open-api/swagger-editor/dist
+open-api/swagger-editor/LICENSE
+
+You should also have a look at the "open-api/openApiConfigurer.ts" file : you'll see that
+a workaround is used to make Swagger-Editor save the specs file *to the server* instead
+of simply using the browser's localStorage! This is currently not supported
+out-of-the-box! https://github.com/swagger-api/swagger-editor/issues/1241

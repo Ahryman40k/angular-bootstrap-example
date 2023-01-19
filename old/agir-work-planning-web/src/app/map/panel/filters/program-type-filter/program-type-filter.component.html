@@ -1,0 +1,12 @@
+<app-filter-layout>
+  <span title>Programmes</span>
+  <app-filter-item-layout
+    [items]="programTypes$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    [formControl]="programTypesControl"
+  >
+  </app-filter-item-layout>
+</app-filter-layout>

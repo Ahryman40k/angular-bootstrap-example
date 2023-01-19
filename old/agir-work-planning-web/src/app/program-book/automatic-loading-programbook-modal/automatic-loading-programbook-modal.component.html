@@ -1,0 +1,83 @@
+<app-layout-modal [modalTitle]="modalTitle">
+  <div body>
+    <ng-container [ngSwitch]="state">
+      <ng-container *ngSwitchCase="AutomaticLoadingState.Before">
+        <app-alert [type]="AlertType.warning">
+          <div title>
+            Attention
+          </div>
+          <div description>
+            <span> Les projets correspondant aux critères suivants seront ajoutés au carnet:</span>
+            <ul>
+              <li>Année: {{programBook.annualProgram.year}}</li>
+              <li>Exécutant: {{programBook.annualProgram.executorId | appTaxonomy : TaxonomyGroup.executor}}</li>
+              <li>Projets: {{projectTypes}}</li>
+              <li *ngIf="programTypes">Programmes: {{programTypes}}</li>
+              <li>Arrondissements: {{boroughIds || 'N/A'}}</li>
+            </ul>
+            <span>Êtes-vous certain de vouloir continuer?</span>
+          </div>
+        </app-alert>
+      </ng-container>
+      <ng-container *ngSwitchCase="AutomaticLoadingState.Error">
+        <app-alert [type]="AlertType.danger" iconName="icon-info">
+          <div title>
+            Chargement impossible
+          </div>
+          <div description>
+            Une erreur est survenue lors du lancement du chargement. Veuillez relancer l’opération.
+          </div>
+        </app-alert>
+      </ng-container>
+      <ng-container *ngSwitchCase="AutomaticLoadingState.Success">
+        <app-alert [type]="AlertType.success" iconName="icon-check-circle">
+          <div title>
+            Chargement terminé
+          </div>
+          <div description>
+            <span *ngIf="addedProjectsCount === 0">
+              Aucun projet n'a été ajouté au carnet sélectionné.
+            </span>
+            <span *ngIf="addedProjectsCount === 1">
+              {{addedProjectsCount}} projet a été ajouté au carnet sélectionné.
+            </span>
+            <span *ngIf="addedProjectsCount > 1">
+              {{addedProjectsCount}} projets ont été ajoutés au carnet sélectionné.
+            </span>
+          </div>
+        </app-alert>
+      </ng-container>
+      <ng-container *ngSwitchCase="AutomaticLoadingState.InProgress">
+        <div class="d-flex align-items-center flex-column">
+          <app-spinner></app-spinner>
+          <span>
+            Transfert des projets au carnet en cours...
+          </span>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div buttons>
+    <ng-container *ngIf="state === AutomaticLoadingState.Before">
+      <button
+        type="button"
+        class="btn  btn-squared mr-2"
+        (click)="close()">
+        Annuler
+      </button>
+      <button
+        type="button"
+        class="btn-primary btn btn-squared mr-2"
+        (click)="submit()">
+        Charger
+      </button>
+    </ng-container>
+    <button *ngIf="state !== AutomaticLoadingState.Before"
+      type="button"
+      [disabled]="state === AutomaticLoadingState.InProgress"
+      class="btn-primary btn btn-squared mr-2"
+      (click)="close()">
+      Fermer
+    </button>
+  </div>
+</app-layout-modal>

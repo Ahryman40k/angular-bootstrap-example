@@ -1,0 +1,41 @@
+<app-no-result *ngIf="!requirementList.length" [message]="noResultMessage"></app-no-result>
+  <div *ngIf="requirementList.length">
+  <app-list-item *ngFor="let requirement of requirementList ; let i = index">
+
+    <span title>{{ requirement.subtypeId | appTaxonomy: TaxonomyGroup.requirementSubtype }}</span>
+    <span class="ml-1 badge-gray badge badge-align-middle" title>{{ requirement.typeId | appTaxonomy: TaxonomyGroup.requirementType }}</span>
+    <span *ngIf="requirement.items.length > 1" class="mt-1" description>
+      <label>
+        <a class="text-primary font-weight-bold" href="{{getItemLink(getItemWithOutCurrentObject(requirement.items))}}">
+          {{getItemWithOutCurrentObject(requirement.items)?.id}}
+        </a>
+      </label>
+    <span class="ml-1">
+      <label>
+         {{getLinkedItemTitle(getItemWithOutCurrentObject(requirement.items))}}
+        </label>
+     </span>
+     <span class="dot-separtor icon icon-dot-interpunct"></span>
+    </span>
+    <span class="mt-1" description>
+      <label>
+      Dernière modif. le {{ requirement?.audit | appAuditDateTime | date: 'mediumDate' }}
+      </label>
+    </span>
+ <app-list-item-action *ngIf="canWriteRequirement" (action)="openEditModal(requirement)">
+      <i class="icon icon-edit"></i>
+      Modifier
+    </app-list-item-action>
+    <app-list-item-action *ngIf="canWriteRequirement" (action)="openDeleteModal(requirement)">
+      <i class="icon icon-trash"></i>
+      Supprimer
+    </app-list-item-action>
+    <app-list-item-details>
+      <app-list-item-details-field>
+        <span title>Description</span>
+        <span description>{{ requirement.text }}</span>
+      </app-list-item-details-field>
+    </app-list-item-details>
+  </app-list-item>
+</div>
+

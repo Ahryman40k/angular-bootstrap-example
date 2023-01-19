@@ -1,0 +1,4 @@
+<app-popup-layout colorClass="asset">
+  <app-asset-card *ngIf="asset" [asset]="asset"></app-asset-card>
+  <app-spinner *ngIf="!asset" class="d-flex mx-auto"></app-spinner>
+</app-popup-layout>

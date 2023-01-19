@@ -1,0 +1,123 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "di",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'aqueduc / Rue random 1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2020,
+    "planificationYear": 2020,
+    "endYear": 2022,
+    "programId": null,
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 42
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55778515338898, 45.50266148506185],
+            [-73.5577194392681, 45.50270472265968]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-DI-5312425"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5312425"
+          }
+        ]
+      },
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 24
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55779387056828, 45.50265537539864],
+            [-73.55791054666041, 45.50257688966575]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-DI-5312412"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5312412"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 42,
+      "burnedDown": 0,
+      "balance": 42
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2020,
+          "rank": 0
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 1
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2022,
+          "rank": 2
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 0,
+        "totalLength": 0,
+        "note": null
+      }
+    },
+    "decisionRequired": false,
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "comments": [],
+    "documents": []
+  }
+]

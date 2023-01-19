@@ -1,0 +1,51 @@
+@import '../core/variables';
+
+app-details-layout {
+  app-no-result {
+    @extend .border-top;
+    @extend .pt-1;
+    display: block;
+  }
+}
+
+app-list-item [description],
+app-list-item [description-details] {
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  label {
+    color: #{map-get($theme-colors, 'neutral-secondary')};
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+
+  label:not(:first-child)::before {
+    color: #{map-get($theme-colors, 'neutral-secondary')};
+    padding-left: #{map-get($spacers, 1)};
+    content: '•';
+    padding-right: #{map-get($spacers, 1)};
+    font-weight: normal;
+  }
+}
+
+app-list-item [description-details] {
+  label {
+    font-size: $font-size-12;
+  }
+}
+
+app-list-item [description-extend] {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+app-list-item-details [actions] .btn {
+  margin-top: #{map-get($spacers, 2)};
+}
+
+app-list-item-details-field span[description] {
+  color: #{map-get($theme-colors, 'neutral-secondary')};
+  white-space: pre-wrap;
+}

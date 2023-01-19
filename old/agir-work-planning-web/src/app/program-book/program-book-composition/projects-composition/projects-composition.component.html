@@ -1,0 +1,26 @@
+<table class="table-sm-responsive w-100 ">
+  <thead class="table-label-head">
+    <tr class="border-bottom">
+      <td>Projets du carnet</td>
+      <td class="text-right">PI-St</td>
+      <td class="text-right">PI-Env</td>
+      <td class="text-right">PNI</td>
+      <td class="text-right">Autre</td>
+      <td class="text-right" *ngIf="hasPermissionProjectAnnualDistribution">Budget</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      class="border-bottom"
+      [ngClass]="{ 'text-bold-total': item.projectCategory === projectCategoryFields.TOTAL }"
+      *ngFor="let item of projectStatistics"
+    >
+      <td>{{ item.projectCategory }}</td>
+      <td class="text-right">{{ item.integratedProjectCount }}</td>
+      <td class="text-right">{{ item.projectEnvCount }}</td>
+      <td class="text-right">{{ item.nonIntegratedProjectCount }}</td>
+      <td class="text-right">{{ item.othersProjectCount }}</td>
+      <td class="text-right" *ngIf="hasPermissionProjectAnnualDistribution">{{ item.budget | number: '1.0-3' }} k$</td>
+    </tr>
+  </tbody>
+</table>

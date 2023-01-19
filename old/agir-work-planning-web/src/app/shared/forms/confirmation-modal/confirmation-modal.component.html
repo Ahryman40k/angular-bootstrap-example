@@ -1,0 +1,23 @@
+<app-layout-modal [modalTitle]="title">
+  <div body>
+    <app-alert type="warning">
+      <span title>Attention!</span>
+      <span description>
+        {{ message }}
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white" (click)="cancel()" ngbAutofocus>
+      Annuler
+    </button>
+    <button
+      type="submit"
+      [ngClass]="buttonType"
+      class="btn flex-fill justify-content-end btn-squared ml-2"
+      (click)="confirm()"
+    >
+      {{ confirmLabel }}
+    </button>
+  </div>
+</app-layout-modal>

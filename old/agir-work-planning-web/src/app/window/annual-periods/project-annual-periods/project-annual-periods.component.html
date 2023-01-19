@@ -1,0 +1,251 @@
+<app-details-layout>
+  <span title>Répartition annuelle</span>
+  <div actions *ngIf="project.interventions?.length">
+    <app-sort [filters]="filters" [formControl]="sortFormControl"></app-sort>
+  </div>
+  <vdm-gantt>
+    <vdm-gantt-row>
+      <vdm-gantt-cell class="flex-3 font-weight-bold">Années du projet</vdm-gantt-cell>
+      <vdm-gantt-cell
+        *ngFor="let annualPeriod of project.annualDistribution.annualPeriods"
+        class="gantt-year-cell text-dark font-weight-bold"
+      >
+        {{ annualPeriod.year | vdmNa }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-2 text-dark font-weight-bold">Total</vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-3 text-dark font-weight-bold">Notes</vdm-gantt-cell>
+    </vdm-gantt-row>
+    <vdm-gantt-row class="bg-highlight-light">
+      <vdm-gantt-cell class="flex-3 font-weight-bold">Budget total</vdm-gantt-cell>
+      <vdm-gantt-cell
+        *ngFor="let annualPeriod of project.annualDistribution.annualPeriods"
+        class="gantt-year-cell font-weight-bold"
+      >
+        {{ annualPeriod.annualBudget | vdmNa: 0 | vdmCurrencyK }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-2 font-weight-bold">
+        {{ project.annualDistribution.distributionSummary?.totalBudget | vdmNa: 0 | vdmCurrencyK }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-3 font-weight-bold"></vdm-gantt-cell>
+    </vdm-gantt-row>
+    <vdm-gantt-row class="bg-highlight-light">
+      <vdm-gantt-cell class="flex-3 font-weight-bold">Budget du projet</vdm-gantt-cell>
+      <vdm-gantt-cell
+        *ngFor="let annualPeriod of project.annualDistribution.annualPeriods"
+        class="gantt-year-cell font-weight-bold"
+      >
+        {{ annualPeriod.additionalCostsTotalBudget | vdmNa: 0 | vdmCurrencyK }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-2 font-weight-bold">
+        {{ project.annualDistribution.distributionSummary?.totalAdditionalCosts | vdmNa: 0 | vdmCurrencyK }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-3"></vdm-gantt-cell>
+
+      <vdm-gantt-row-detail>
+        <vdm-gantt-row
+          *ngFor="let additionalCostItem of additionalCostItems$ | async; let i = index"
+          [class.border-top]="i === 0"
+        >
+          <vdm-gantt-cell class="flex-3">
+            <div class="ml-1 d-flex flex-column">
+              <span>{{ additionalCostItem.type | appTaxonomy: 'additionalCost' }}</span>
+              <span>Numéro(s) investi</span>
+            </div>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell *ngFor="let annualCost of additionalCostItem.annualCosts" class="gantt-year-cell">
+            <div class="d-flex flex-column">
+              <span class="font-weight-bold">
+                {{ annualCost.amount | vdmNa: 0 | vdmCurrencyK }}
+              </span>
+              <span>{{ annualCost.accountId | vdmNa }}</span>
+            </div>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell class="flex-2 font-weight-bold">
+            <div class="d-flex flex-column">
+              {{ additionalCostItem.total.amount | vdmNa: 0 | vdmCurrencyK }}
+            </div>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell class="flex-3">
+            <h6 class="mb-0 word-break font-weight-normal font-sm text-secondary">
+              {{ additionalCostItem.total.note }}
+            </h6>
+          </vdm-gantt-cell>
+        </vdm-gantt-row>
+      </vdm-gantt-row-detail>
+      <vdm-gantt-row-options
+        *ngIf="canInteract && (Permission.PROJECT_WRITE | appPermission) && (projectRestrictionItems | appRestrictions)"
+      >
+        <app-list-item-action (action)="editAdditionalCosts()">
+          Modifier le budget du projet
+        </app-list-item-action>
+      </vdm-gantt-row-options>
+    </vdm-gantt-row>
+    <vdm-gantt-row class="bg-highlight-light" *ngIf="project.interventions?.length">
+      <vdm-gantt-cell class="flex-3 font-weight-bold">Budget des interventions</vdm-gantt-cell>
+      <vdm-gantt-cell
+        *ngFor="let annualPeriod of project.annualDistribution.annualPeriods"
+        class="gantt-year-cell font-weight-bold"
+      >
+        {{ annualPeriod.interventionsTotalBudget | vdmNa: 0 | vdmCurrencyK }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-2 font-weight-bold">
+        {{ project.annualDistribution.distributionSummary?.totalInterventionBudgets | vdmNa: 0 | vdmCurrencyK }}
+      </vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-3"></vdm-gantt-cell>
+
+      <vdm-gantt-row-detail>
+        <vdm-gantt-row
+          #interventionGanttRow
+          class="border-top bg-white"
+          *ngFor="let intervention of interventions$ | async"
+        >
+          <vdm-gantt-cell class="flex-3">
+            <h5>
+              <a appWindowLink href="{{ interventionService.getInterventionLink(intervention) }}">
+                {{ intervention.id | vdmNa }}
+              </a>
+            </h5>
+          </vdm-gantt-cell>
+          <vdm-gantt-bar
+            [span]="projectYears.length"
+            [startIndex]="intervention.ganttIndex.startIndex"
+            [endIndex]="intervention.ganttIndex.endIndex"
+          ></vdm-gantt-bar>
+          <vdm-gantt-cell class="flex-2 font-weight-bold">
+            <ng-container *ngIf="!interventionGanttRow.isDetailsCollapsed">
+              {{ intervention.annualDistribution?.distributionSummary.totalAllowance | vdmNa: 0 | vdmCurrencyK }} /
+              {{ intervention.estimate.allowance | vdmNa: 0 | vdmCurrencyK }}
+              <br />
+              {{ intervention.annualDistribution?.distributionSummary.totalLength | vdmNa: 0 }} km /
+              {{ intervention.assets[0].length?.value | vdmNa: 0 | appMetersToKilometers }} km
+            </ng-container>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell class="flex-3 position-relative">
+            <span
+              class="intervention-notes"
+              [class.intervention-notes-expanded]="interventionGanttRow.isDetailsCollapsed"
+            >
+              {{ intervention.annualDistribution?.distributionSummary.note }}
+            </span>
+          </vdm-gantt-cell>
+          <vdm-gantt-row-options
+            *ngIf="
+              canInteract &&
+              (Permission.PROJECT_WRITE | appPermission) &&
+              (getRestrictionsItemsForIntervention(intervention) | appRestrictions)
+            "
+          >
+            <app-list-item-action (action)="editIntervention(intervention)">
+              Modifier les données de l'intervention
+            </app-list-item-action>
+          </vdm-gantt-row-options>
+          <vdm-gantt-row-detail>
+            <vdm-gantt-row>
+              <vdm-gantt-cell class="flex-3 text-dark pt-0">
+                <div class="d-flex">
+                  <div class="mr-2">
+                    Requérant
+                    <br />
+                    <span class="font-weight-bold">
+                      {{ intervention.requestorId | appTaxonomy: 'requestor' | vdmNa }}
+                    </span>
+                  </div>
+                  <div>
+                    <span class="pb-1">
+                      Budget/Année
+                    </span>
+                    <br />
+                    <span class="pb-1">
+                      Numéro investi
+                    </span>
+                    <br />
+                    <span>
+                      Longueur
+                    </span>
+                  </div>
+                </div>
+              </vdm-gantt-cell>
+              <vdm-gantt-cell
+                *ngFor="let annualPeriod of project.annualDistribution.annualPeriods"
+                class="gantt-year-cell pt-0"
+              >
+                <span *ngIf="intervention.annualPeriodsDictionary[annualPeriod.year]" class="font-weight-bold">
+                  {{
+                    intervention.annualPeriodsDictionary[annualPeriod.year]?.annualAllowance | vdmNa: 0 | vdmCurrencyK
+                  }}
+                  <br />
+                  {{ intervention.annualPeriodsDictionary[annualPeriod.year]?.accountId | vdmNa }}
+                  <br />
+                  {{ intervention.annualPeriodsDictionary[annualPeriod.year]?.annualLength | vdmNa: 0 }} km
+                </span>
+              </vdm-gantt-cell>
+              <vdm-gantt-cell class="flex-2 pt-0">
+                <span class="font-weight-bold" *ngIf="interventionGanttRow.isDetailsCollapsed">
+                  <span class="font-weight-normal">
+                    Total alloué
+                  </span>
+                  <br />
+                  {{ intervention.annualDistribution?.distributionSummary.totalAllowance | vdmNa: 0 | vdmCurrencyK }} /
+                  {{ intervention.estimate.allowance | vdmNa: 0 | vdmCurrencyK }}
+                  <br />
+                  {{ intervention.annualDistribution?.distributionSummary.totalLength | vdmNa: 0 }} km /
+                  {{ intervention.assets[0].length?.value | vdmNa: 0 | appMetersToKilometers }} km
+                </span>
+              </vdm-gantt-cell>
+              <vdm-gantt-cell class="flex-3 pt-0"></vdm-gantt-cell>
+            </vdm-gantt-row>
+          </vdm-gantt-row-detail>
+        </vdm-gantt-row>
+      </vdm-gantt-row-detail>
+    </vdm-gantt-row>
+    <vdm-gantt-row class="bg-highlight-light" *ngIf="!project.interventions?.length" [isDetailCollapsible]="false">
+      <vdm-gantt-cell class="flex-3 font-weight-bold">Budget annuel</vdm-gantt-cell>
+      <vdm-gantt-cell
+        *ngFor="let annualPeriod of project.annualDistribution.annualPeriods"
+        class="gantt-year-cell font-weight-bold"
+      ></vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-2 font-weight-bold"></vdm-gantt-cell>
+      <vdm-gantt-cell class="flex-3"></vdm-gantt-cell>
+      <vdm-gantt-row-detail>
+        <vdm-gantt-row class="border-top bg-white">
+          <vdm-gantt-cell class="flex-3">
+            <div class="ml-1 d-flex flex-column">
+              <span>Budget/Année</span>
+              <span>Numéro(s) investi</span>
+            </div>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell *ngFor="let annualPeriod of project.annualDistribution.annualPeriods" class="gantt-year-cell">
+            <div class="d-flex flex-column">
+              <span class="font-weight-bold">{{ annualPeriod.annualAllowance | vdmNa: 0 | vdmCurrencyK }}</span>
+              <span>{{ annualPeriod.accountId | vdmNa }}</span>
+            </div>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell class="flex-2">
+            <span>Total alloué</span>
+            <div class="d-flex flex-column font-weight-bold">
+              {{
+                project.annualDistribution.distributionSummary?.totalAnnualBudget.totalAllowance
+                  | vdmNa: 0
+                  | vdmCurrencyK
+              }}
+            </div>
+          </vdm-gantt-cell>
+          <vdm-gantt-cell class="flex-3">
+            <h6 class="mb-0 word-break font-weight-normal font-sm text-secondary">
+              {{ project.annualDistribution.distributionSummary?.totalAnnualBudget.note }}
+            </h6>
+          </vdm-gantt-cell>
+          <vdm-gantt-row-options
+            *ngIf="
+              canInteract && (Permission.PROJECT_WRITE | appPermission) && (projectRestrictionItems | appRestrictions)
+            "
+          >
+            <app-list-item-action (action)="editAnnualBudget()">
+              Modifier le budget annuel
+            </app-list-item-action>
+          </vdm-gantt-row-options>
+        </vdm-gantt-row>
+      </vdm-gantt-row-detail>
+    </vdm-gantt-row>
+  </vdm-gantt>
+</app-details-layout>

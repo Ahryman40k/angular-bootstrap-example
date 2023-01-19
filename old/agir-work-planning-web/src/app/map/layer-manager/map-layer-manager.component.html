@@ -1,0 +1,7 @@
+<app-filter-layout *ngIf="map">
+  <span title>Couches d'actifs</span>
+  <vdm-layer-manager [layerManagerConfig]="configuration" [targetMap]="map"></vdm-layer-manager>
+</app-filter-layout>
+<div *ngIf="!map" class="d-flex justify-content-center p-4">
+  <app-spinner></app-spinner>
+</div>

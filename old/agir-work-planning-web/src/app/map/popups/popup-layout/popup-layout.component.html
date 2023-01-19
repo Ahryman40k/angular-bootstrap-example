@@ -1,0 +1,7 @@
+<div class="popup-header-border bg-app-{{ colorClass }}"></div>
+<div *ngIf="hasHeader" class="popup-header border-bottom p-2">
+  <ng-content select="[header]"></ng-content>
+</div>
+<div class="popup-body p-2">
+  <ng-content></ng-content>
+</div>

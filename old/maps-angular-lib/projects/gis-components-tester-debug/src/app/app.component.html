@@ -1,0 +1,59 @@
+<vdm-map id="main-map" [mapConfig]="mapConfig" #map></vdm-map>
+
+<div id="grid-conteneur">
+  <div id="menu-outils">
+    <h2>Démo Permis</h2>
+    <ul>
+      <li><button (click)="startAddOccupancyZone()">Dessiner une occupation</button></li>
+      <li><button (click)="selectionnerOccupancyZone()">Mode sélection (simple select)</button></li>
+      <li><button (click)="selectionnerOccupancyZoneMultiple()">Mode selection Multiple (multiple select)</button></li>
+      <li><button (click)="editSelected()">Éditer la sélection</button></li>
+      <li><button (click)="selectSingleParking()">Sélection de parcomètres</button></li>
+      <li><button (click)="selectParking()">Sélection multiple de parcomètres</button></li>
+      <li><button (click)="selectMultiple()">Sélection de parcomètres par géométrie</button></li>
+      <li><button (click)="selectRoadSections()">Sélection multiple de tronçons</button></li>
+      <li><button (click)="selectPavement()">Sélection muliple de surfaces</button></li>
+
+    </ul>
+    <h2>Édition</h2>
+    <ul>
+      <li><button (click)="addPolygon()">Ajouter polygone</button></li>
+      <li><button (click)="addLine()">Ajouter ligne</button></li>
+      <li><button (click)="addPoint()">Ajouter Point</button></li>
+    </ul>
+    <h2>Autres outils en amélioration</h2>
+    <ul>
+      <li><button (click)="useStreetView()">Street View</button></li>
+      <li><button (click)="useTransformTool()">Transform Tool</button></li>
+      <li><button (click)="togglePermitTheme()">Toggle Theme</button></li>
+    </ul>
+  </div>
+
+  <!-- Ce composant est nécessaire, il permet de montrer ou cacher les boutons de confirmation d'outil -->
+  <vdm-ok-cancel id="ok-cancel" [targetMap]="map"></vdm-ok-cancel>
+
+  <!-- Permet de voir la position sous le curseur -->
+  <vdm-lgnlat-viewer-tool id="longlat" [targetMap]="map"></vdm-lgnlat-viewer-tool>
+  <vdm-minimap-tool id="mini-map" [targetMap]="map" [mapConfig]="miniMapConfig"></vdm-minimap-tool>
+  <vdm-street-view id="street-view" [targetMap]="map"></vdm-street-view>
+  <vdm-layer-manager id="gestionnaire-couche" [layerManagerConfig]="layerManagerConfig" [targetMap]="map">
+  </vdm-layer-manager>
+
+  <div id="data-pad" *ngIf="selectedFeatures">
+    <pre>{{selectedFeatures | json}}</pre>
+  </div>
+</div>
+
+<!-- invisible tools -->
+<vdm-geometry-draw-tool [targetMap]="map"></vdm-geometry-draw-tool>
+<vdm-multiple-selection-tool [targetMap]="map"></vdm-multiple-selection-tool>
+<vdm-simple-selection [targetMap]="map"></vdm-simple-selection>
+<vdm-transform-tool [targetMap]="map"></vdm-transform-tool>
+
+<!-- <div *ngIf="mapLoaded">
+    La carte est chargée
+  </div>
+  <div *ngIf="!mapLoaded">
+    La carte est en cours de chargement
+  </div>
+</div> -->

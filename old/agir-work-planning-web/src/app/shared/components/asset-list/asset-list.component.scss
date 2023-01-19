@@ -1,0 +1,14 @@
+@import '../../../../styles/core/variables';
+
+$list-max-height: 320px;
+
+.item-list-hover {
+  &.hover,
+  &:hover {
+    background-color: $color-aqua-spring;
+  }
+}
+
+.list-height {
+  max-height: $list-max-height;
+}

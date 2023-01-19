@@ -1,0 +1,4 @@
+@import '../shared/scss/program-book-composition.scss';
+:host {
+  @include column-program-book-composition-style();
+}

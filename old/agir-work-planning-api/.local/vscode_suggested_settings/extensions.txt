@@ -1,0 +1,10 @@
+// ==========================================
+// VSCode suggested extensions.
+//
+// Press "CTRL-P" and enter the commands
+// following the arrows...
+// ==========================================
+
+Prettier --> ext install prettier-vscode
+TSLint --> ext install tslint
+

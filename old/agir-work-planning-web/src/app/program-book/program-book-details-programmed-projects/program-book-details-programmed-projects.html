@@ -1,0 +1,30 @@
+<h4 class="d-flex justify-content-between align-items-center">
+  Projets du carnet
+  <div>
+    <button
+      [disabled]="isAutomaticLoadingInProgress"
+      *ngIf="priorityScenariosOutdated && (Permission.PROGRAM_BOOK_PRIORITY_SCENARIOS_WRITE | appPermission) && (restrictionItems | appRestrictions)"
+      type="button"
+      class="btn btn-primary btn-squared btn-white mr-2"
+      (click)="calculatePriorityScenario()"
+    >
+      <span class="icon icon-refresh"></span>
+      Actualiser l'ordonnancement
+    </button>
+    <button
+      type="button"
+      class="btn btn-icon btn-icon-only btn-secondary btn-squared"
+      (click)="openCustomizeProgramBookTableViewModal()"
+    >
+      <span class="icon icon-color-primary icon-settings"></span>
+    </button>
+  </div>
+</h4>
+<app-program-book-table
+  [columnConfig]="columnConfig"
+  [fetchOrderedProjects]="getOrderedProjects"
+  [projectCalculationUpdated$]="projectCalculationUpdated$"
+  [annualProgram]="annualProgram"
+  [programBook]="programBook$ | async"
+  [isOrdered]="true"
+></app-program-book-table>

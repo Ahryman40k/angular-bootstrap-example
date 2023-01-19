@@ -1,0 +1,6 @@
+<h4 class="title mb-1">
+  {{ [address.houseNumber, address.street.fullStreetName.nameFr].joinStrings(' ') }}
+</h4>
+<div class="description font-md">
+  {{ [address.borough.name, address.postalCode].joinStrings(', ') }}
+</div>

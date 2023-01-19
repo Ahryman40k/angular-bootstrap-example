@@ -1,0 +1,80 @@
+#==========================================
+# This is the DEVELOPMENT environment-specific
+# config file, used when NODE_ENV = "development".
+#
+# The configurations specified here will override
+# the default ones provided by "default.yaml".
+#
+# More info about this file and the order config files
+# are loaded : https://github.com/lorenwest/node-config/wiki/Configuration-Files
+#==========================================
+
+logging:
+  level: debug
+  addStackTraceToErrorMessagesInDev: true
+  logSource: true
+
+api:
+  host: api.dev.interne.montreal.ca
+
+mongo:
+  connectionString: mongodb://dvllmg01a.ile.montreal.qc.ca:27001,dvllmg01b.ile.montreal.qc.ca:27001,dvllmg01c.ile.montreal.qc.ca:27001/agirworkplanning
+  connectionOptions: 
+    user: REMPLACE_DANS_JENKINS
+    pass: REMPLACE_DANS_JENKINS
+    replicaSet: rsdvl01
+    useUnifiedTopology: true
+    db:
+      w: 1
+
+#==========================================
+# Security
+#==========================================
+security:
+  jwt:
+    host: https://api.dev.interne.montreal.ca
+  cors:
+    whitelist: https:\/\/([a-z0-9]+[.])*montreal([.qc])*[.]ca
+
+#==========================================
+# GLUU
+#==========================================
+gluu:
+  urlToken: "https://idp.dev.montreal.ca"
+  serviceAccount:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+  openIdClient:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+
+#==========================================
+# GDA Gestion Des Acces
+#==========================================
+gda:
+  urls:
+    base: https://api.dev.interne.montreal.ca/api/it-platforms/security/access-management
+
+#==========================================
+# Storage API
+#==========================================
+storageObject:
+  mock: false
+  gateway: https://api.dev.interne.montreal.ca
+  volumeId: agirworkplanning
+
+# ==========================================
+# Initializes TLS Rejection
+# ==========================================
+tls:
+  reject: false  
+
+#==========================================
+# RTU import
+#==========================================
+rtuImport:
+  serviceAccount:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+  urls:
+    base: http://207.253.1.16:8082/services/rest/v2.0

@@ -1,0 +1,379 @@
+<app-layout-modal [modalTitle]="title" *ngIf="form">
+  <div body>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Code de l'élément</label>
+          <input type="text" class="form-control" formControlName="code" />
+          <app-form-errors formControlName="code">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le code de l'élément est requis
+            </app-form-error>
+            <app-form-error *appFormError="let e; key: 'pattern'">
+              Le code de l'élément ne peut contenir d'espaces
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6" *ngIf="group.code === TaxonomyGroup.requestor">
+          <br />
+          <app-checkbox class="checkbox" label="Requérant interne" formControlName="isInternal"></app-checkbox>
+        </div>
+        <div class="form-group col-md-6" *ngIf="group.code === TaxonomyGroup.assetType">
+          <br />
+          <app-checkbox
+            class="checkbox"
+            label="En consultation uniquement"
+            formControlName="isConsultationOnly"
+            (click)="markConsultationDirty()"
+            #consultationOnly
+          ></app-checkbox>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Libellé français</label>
+          <input type="text" class="form-control" formControlName="labelfr" />
+          <app-form-errors formControlName="labelfr">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le libellé français est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Libellé anglais</label>
+          <input type="text" class="form-control" formControlName="labelen" />
+          <app-form-errors formControlName="labelen">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le libellé anglais est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.externalResource">
+        <div class="form-group col-md-6">
+          <label>URL</label>
+          <input type="text" class="form-control" formControlName="url" />
+          <app-form-errors formControlName="url">
+            <app-form-error *appFormError="let e; key: 'required'">
+              L'url est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div
+        class="row"
+        *ngIf="
+          group.code === TaxonomyGroup.city ||
+          group.code === TaxonomyGroup.bridge ||
+          group.code === TaxonomyGroup.borough
+        "
+      >
+        <div class="form-group col-md-6">
+          <label>Nom Info-RTU</label>
+          <input type="text" class="form-control" formControlName="rtuDataName" />
+          <app-form-errors formControlName="rtuDataName">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le nom Info-RTU est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label>ID Info-RTU</label>
+          <input type="text" class="form-control" formControlName="rtuDataId" />
+          <app-form-errors formControlName="rtuDataId">
+            <app-form-error *appFormError="let e; key: 'required'">
+              L'id Info-RTU est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.city || group.code === TaxonomyGroup.borough">
+        <div class="form-group col-md-6">
+          <label>RRVA</label>
+          <input type="text" class="form-control" formControlName="rrva" />
+          <app-form-errors formControlName="rrva">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le numéro RRVA est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.projectStatus">
+        <div class="form-group col-md-6">
+          <label>Statut Info-RTU</label>
+          <vdm-select
+            appendTo="app-taxonomy-group-item-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            [items]="rtuProjectStatus"
+            formControlName="rtuDataStatus"
+            [clearable]="true"
+          ></vdm-select>
+          <app-form-errors formControlName="rtuDataStatus">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le statut Info-RTU est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Phase Info-RTU</label>
+          <vdm-select
+            appendTo="app-taxonomy-group-item-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            [items]="rtuProjectPhase"
+            formControlName="rtuDataPhase"
+            [clearable]="true"
+          ></vdm-select>
+          <app-form-errors formControlName="rtuDataPhase">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le phase Info-RTU est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.infoRtuPartner">
+        <div class="form-group col-md-6">
+          <label>Catégorie</label>
+          <vdm-select
+            appendTo="app-taxonomy-group-item-modal"
+            bindLabel="label"
+            bindValue="code"
+            [items]="infoRtuPartnerCategories"
+            formControlName="category"
+            [clearable]="true"
+          ></vdm-select>
+          <app-form-errors formControlName="category">
+            <app-form-error *appFormError="let e; key: 'required'">
+              La catégorie est requise
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.requirementSubtype">
+        <div class="form-group col-md-6">
+          <label>Type d'exigence</label>
+          <vdm-select
+            appendTo="app-taxonomy-group-item-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            [items]="requirementsType"
+            formControlName="requirementsType"
+          ></vdm-select>
+          <app-form-errors formControlName="requirementsType">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le type d'exigence est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label> Exigence de conception connexe</label>
+          <vdm-select appendTo="app-taxonomy-group-item-modal" bindLabel="label.fr" bindValue="code"
+            [items]="submissionRequirementsSubType" [clearable]="true" formControlName="submissionRequirementsSubType">
+          </vdm-select>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.submissionRequirementSubtype">
+        <div class="form-group col-md-6">
+          <label>Type d'exigence</label>
+          <vdm-select
+            appendTo="app-taxonomy-group-item-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            [items]="submissionRequirementsType"
+            formControlName="submissionRequirementsType"
+          ></vdm-select>
+          <app-form-errors formControlName="submissionRequirementsType">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le type d'exigence est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.programType">
+        <div class="form-group col-md-6">
+          <label class="form-label-optional">
+            L'acronyme français
+            <span class="form-opitonal">Facultatif</span>
+          </label>
+          <input type="text" class="form-control" formControlName="acronymfr" />
+        </div>
+        <div class="form-group col-md-6">
+          <label class="form-label-optional">
+            Acronyme anglais
+            <span class="form-opitonal">Facultatif</span>
+          </label>
+          <input type="text" class="form-control" formControlName="acronymen" />
+        </div>
+        <div class="form-group col-md-6">
+          <label>
+            Code Info-RTU
+          </label>
+          <input type="text" class="form-control" formControlName="rtuDataValue" />
+          <app-form-errors formControlName="rtuDataValue">
+            <app-form-error *appFormError="let e; key: 'required'">
+              le code Info-RTU est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label>
+            Libellé Info-RTU
+          </label>
+          <input type="text" class="form-control" formControlName="rtuDataDefinition" />
+          <app-form-errors formControlName="rtuDataDefinition">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le libellé Info-RTU est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.service">
+        <div class="form-group col-md-6">
+          <label>Acronyme français</label>
+          <input type="text" class="form-control" formControlName="acronymfr" />
+          <app-form-errors formControlName="acronymfr">
+            <app-form-error *appFormError="let e; key: 'required'">
+              L'acronyme français est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Acronyme anglais</label>
+          <input type="text" class="form-control" formControlName="acronymen" />
+          <app-form-errors formControlName="acronymen">
+            <app-form-error *appFormError="let e; key: 'required'">
+              L'acronyme anglais est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-12">
+          <label>Requérants</label>
+          <vdm-multi-select
+            bindLabel="label.fr"
+            bindValue="code"
+            appendTo="app-taxonomy-group-item-modal"
+            [items]="requestors$ | async"
+            formControlName="requestors"
+            ngSelectClass="col-md-6"
+          ></vdm-multi-select>
+          <app-form-errors formControlName="requestors">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Les requérants sont requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.assetDataKey">
+        <div class="form-group col-md-6">
+          <label>Propriété géomatique</label>
+          <input type="text" class="form-control" formControlName="geomaticKey" />
+          <app-form-errors formControlName="geomaticKey">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le nom de la propriété géomatique est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Propriété AGIR</label>
+          <input type="text" class="form-control" formControlName="assetKey" />
+          <app-form-errors formControlName="assetKey">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Le nom de la propriété AGIR est requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="form-label-optional">
+            Unité
+            <span class="form-opitonal">Facultatif</span>
+          </label>
+          <vdm-select
+            appendTo="app-taxonomy-group-item-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            [items]="selectableUnits"
+            formControlName="unit"
+            [clearable]="true"
+          ></vdm-select>
+        </div>
+      </div>
+      <div class="row" *ngIf="group.code === TaxonomyGroup.assetType">
+        <div class="form-group col-md-12">
+          <label>Propriétaires</label>
+          <vdm-multi-select
+            bindLabel="label.fr"
+            bindValue="code"
+            appendTo="app-taxonomy-group-item-modal"
+            [items]="owners$ | async"
+            formControlName="owners"
+            ngSelectClass="col-md-6"
+          ></vdm-multi-select>
+          <app-form-errors formControlName="owners">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Les propriétaires sont requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-12">
+          <label class="form-label-optional">
+            Natures des travaux
+            <span class="form-opitonal">Facultatif</span>
+          </label>
+          <vdm-multi-select
+            bindLabel="label.fr"
+            bindValue="code"
+            appendTo="app-taxonomy-group-item-modal"
+            [items]="workTypes$ | async"
+            formControlName="workTypes"
+            ngSelectClass="col-md-6"
+            class="rounded-select"
+          ></vdm-multi-select>
+        </div>
+        <div class="form-group col-md-12 pt-0">
+          <hr class="border-bottom" />
+        </div>
+        <div class="form-group col-md-6">
+          <label>Attributs d'actif</label>
+          <ng-select
+            placeholder="Nom de l'attribut"
+            appendTo="app-taxonomy-group-item-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            [items]="selectableAssetDataKeys"
+            [clearable]="false"
+            [searchable]="true"
+            [ngModel]="assetDataKeySearchModel"
+            (ngModelChange)="addDataKey($event)"
+            formControlName="assetDataKeySearch"
+          >
+            <ng-template ng-option-tmp let-item="item" let-index="index">
+              <div class="dropdown-item p-0">
+                <div class="dropdown-item-content">
+                  <div>{{ item.label.fr }}</div>
+                  <div class="dropdown-item-description">{{ item.code }}</div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-select>
+        </div>
+        <app-taxonomy-asset-data-keys-input
+          class="col-md-12"
+          *ngFor="let dataKey of form.controls.dataKeys.value"
+          [dataKey]="dataKey"
+          (update)="updateDataKey($event)"
+          (remove)="removeDataKey(dataKey)"
+        >
+        </app-taxonomy-asset-data-keys-input>
+      </div>
+    </form>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="reject()">
+      Annuler
+    </button>
+    <button type="submit" class="btn btn-primary btn-squared add-button" [disabled]="submitting" (click)="submit()">
+      {{ buttonLabel }}
+    </button>
+  </div>
+</app-layout-modal>

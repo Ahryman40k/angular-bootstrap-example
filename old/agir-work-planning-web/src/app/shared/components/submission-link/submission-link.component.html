@@ -1,0 +1,8 @@
+<a class="clickable" appWindowLink [href]="hrefSubmission" *ngIf="object.submissionNumber &&
+(Permission.SUBMISSION_READ | appPermission); else notLink">{{ linkText }}
+</a>
+<ng-template #notLink>
+  <span>
+    {{ linkText }}
+  </span>
+</ng-template>

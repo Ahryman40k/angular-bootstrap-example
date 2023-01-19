@@ -1,0 +1,91 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-PNI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Réhabilitation / Segment d'aqueduc / Rue Saint-Maurice",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "rehabilitation",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "endYear": 2040,
+    "programId": "par",
+    "contact": "Sofiane Djad",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 10
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.5595554113388, 45.499316110245445],
+            [-73.55919063091277, 45.49969963056761]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-PNI-42"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "42"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 361.34,
+      "burnedDown": 0,
+      "balance": 361.34
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 361.34,
+          "annualLength": 0.01,
+          "accountId": 0,
+          "year": 2040,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 361.34,
+        "totalLength": 0.01,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "comments": [
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "requestor",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "isPublic": false,
+        "text": "Ceci est un commentaire."
+      }
+    ],
+    "documents": []
+  }
+]

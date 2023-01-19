@@ -1,0 +1,7 @@
+<div #contextualMenuDropdown="ngbDropdown" ngbDropdown class="contextual-menu" [ngStyle]="contextualMenuStyle">
+  <!-- Create an invisible button to have the anchor. If no anchor exists, an error will be thrown. -->
+  <button ngbDropdownToggle class="d-none"></button>
+  <div ngbDropdownMenu>
+    <ng-content></ng-content>
+  </div>
+</div>

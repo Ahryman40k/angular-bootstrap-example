@@ -1,0 +1,30 @@
+<div [formGroup]="form" *ngIf="asset" class="hover-visible card-hover border-bottom w-100">
+  <div class="px-1">
+    <div class="py-1 asset-item d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row">
+        <app-checkbox *ngIf="!intervention" mode="checkbox" [formControlName]="asset.id"></app-checkbox>
+        <h6 class="align-self-center" (click)="toggleCheckbox(asset.id)">
+          <a appWindowLink href="window/assets/{{ asset?.typeId }}/{{ asset?.id }}/overview" appStopProp>{{ asset.id }} </a>
+          <span class="font-weight-normal"> {{ asset.typeId | appTaxonomy: TAXONOMY_GROUP_ASSET_TYPE }}</span>
+        </h6>
+      </div>
+      <div class="appendTo position-relative flex-1">
+        <vdm-select *ngIf="!intervention"
+          class="ml-3"
+          [class.d-block]="hasToDisplayDropDown"
+          [class.d-none]="!hasToDisplayDropDown"
+          appendTo=".appendTo"
+          bindLabel="label.fr"
+          bindValue="code"
+          [formControlName]="getWorkTypeIdControlName(asset)"
+          [items]="workTypes"
+        >
+        </vdm-select>
+      </div>
+      <div *ngIf="intervention" class="d-block ml-3 mt-half">
+        <span class="float-left badge badge-success-light mr-1 mt-half">{{intervention.status | appTaxonomy : TAXONOMY_GROUP_INTERVENTION_STATUS }}</span>
+        <span class="float-left font-size-xs-interface text-primary mt-1">Intervention {{ intervention.id }}</span>
+      </div>
+    </div>
+  </div>
+</div>

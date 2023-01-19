@@ -1,0 +1,32 @@
+<app-layout-modal [modalTitle]="MODAL_TEXT.SHARE_MODAL_TITLE">
+  <div body>
+    <form class="form-group" [formGroup]="form" *ngIf="form">
+      <label class="flex-1">Disponible à quels utilisateurs</label>
+      <vdm-multi-select
+        ngSelectClass="col-md-6"
+        bindLabel="label.fr"
+        bindValue="code"
+        formControlName="roles"
+        [items]="roles$ | async"
+        placeholder="Sélectionner un groupe"
+        appendTo="app-program-book-share-modal"
+      ></vdm-multi-select>
+    </form>
+  </div>
+  <div buttons>
+    <app-alert class="mb-2" *ngIf="isPriorityScenarioUnsaved" type="warning">
+      <span title>{{MODAL_TEXT.WARNING_TITLE}}</span>
+      <span description>
+        {{MODAL_TEXT.WARNING_TEXT}}
+      </span>
+    </app-alert>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()" [disabled]="submitting">
+        {{MODAL_TEXT.CANCEL_BTN}}
+      </button>
+      <button type="submit" class="btn btn-primary btn-squared add-button" (click)="submit()" [disabled]="submitting">
+        {{MODAL_TEXT.SHARE_BTN}}
+      </button>
+   </div>
+  </div>
+</app-layout-modal>

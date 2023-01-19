@@ -1,0 +1,9 @@
+<div id="layer-manager">
+  <ng-template [ngIf]="!isCustomTemplateProvided && isMapLoaded">
+    <vdm-lm-group-default
+      *ngFor="let group of layerManagerConfig.layerGroups"
+      [layerGroup]="group"
+      (toggle)="handleToggleEvent($event)"
+    ></vdm-lm-group-default>
+  </ng-template>
+</div>

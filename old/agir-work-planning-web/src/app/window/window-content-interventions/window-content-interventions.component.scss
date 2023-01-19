@@ -1,0 +1,33 @@
+@import '../../../styles/core/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.left-menu {
+  width: $details-menu-width;
+}
+
+h3 {
+  width: $details-menu-width;
+}
+
+.menu-item {
+  cursor: pointer;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.menu-order-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  text-align: center;
+  box-shadow: -3px 3px 11px 2px rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: -3px 3px 11px 2px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: -3px 3px 11px 2px rgba(0, 0, 0, 0.06);
+  display: inline-block;
+  margin-right: 8px;
+}

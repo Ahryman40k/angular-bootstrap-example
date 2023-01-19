@@ -1,0 +1,187 @@
+[
+  {
+    "id": "P00001",
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": null,
+    "boroughId": "VM",
+    "executorId": "dre",
+    "externalReferenceIds": [ 
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-several-linked-interventions-DRE"
+      }
+    ],
+    "geometry": "A_IGNORER",
+    "globalBudget": {
+      "allowance": 30
+    },
+    "importFlag": "import-nexo",
+    "inChargeId": "dre",
+    "interventionIds": [ "I00001", "I00003" ],
+    "servicePriorities": [],
+    "projectName": "PI - Standard / sur Rue Random 4, de Rue Random 5, à Rue Random 6",
+    "projectTypeId": "integrated",
+    "startYear": 2021,
+    "endYear": 2024,
+    "status": "planned",
+    "streetName": "Rue Random 4",
+    "streetFrom": "Rue Random 5",
+    "streetTo": "Rue Random 6",
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [ 
+        {
+          "rank": 0,
+          "year": 2021,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 20,
+          "status": "planned",
+          "categoryId": "new",
+          "interventionIds": [ "I00003" ],
+          "interventionsTotalBudget": 20
+        }, 
+        {
+          "rank": 1,
+          "year": 2022,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 0,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [ "I00003" ],
+          "interventionsTotalBudget": 0
+        }, 
+        {
+          "rank": 2,
+          "year": 2023,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 0,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [ "I00001", "I00003" ],
+          "interventionsTotalBudget": 0
+        }, 
+        {
+          "rank": 3,
+          "year": 2024,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 0,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [ "I00001", "I00003" ],
+          "interventionsTotalBudget": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 20,
+        "additionalCostTotals": [ 
+          {
+            "type": "contingency",
+            "amount": 0
+          }, 
+          {
+            "type": "others",
+            "amount": 0
+          }, 
+          {
+            "type": "professionalServices",
+            "amount": 0
+          }, 
+          {
+            "type": "workExpenditures",
+            "amount": 0
+          }
+        ],
+        "totalAdditionalCosts": 0,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 20
+      }
+    },
+    "comments": [],
+    "decisions": [],
+    "documents": [],
+    "geometryPin": "A_IGNORER",
+    "length": {
+      "unit": "m",
+      "value": 184
+    },
+    "medalId": null
+  }
+]

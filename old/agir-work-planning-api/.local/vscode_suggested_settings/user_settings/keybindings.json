@@ -1,0 +1,29 @@
+// ==========================================
+// To add those custom key bindings :
+// [F1] + "Keyboard"
+//
+// [CTRL]-[W]
+// Prevents VSCode to be closed when "CTRL-W" is pressed and
+// no file is open.
+//
+// [CTRL]-[B]
+// Gives focus to the terminal window.
+//
+// [CTRL]-[B] (in the terminal window)
+// Clear the terminal.
+// ==========================================
+[
+  {
+    "key": "ctrl+w",
+    "when": "!editorIsOpen"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus"
+  }
+]

@@ -1,0 +1,35 @@
+@import '../../../../styles/core/variables';
+@import '../../../../styles/core/mixins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+$breadcrumb-height: 77px;
+$bk-info-height: 178px;
+$nav-tabs-height: 44px;
+:host {
+  height: 100%;
+}
+.breadcrumb {
+  height: $breadcrumb-height;
+}
+.block-info {
+  height: $bk-info-height;
+}
+
+.nav-tabs {
+  height: $nav-tabs-height;
+}
+
+.left-menu {
+  width: $details-menu-width;
+}
+.nav-header a{
+  text-transform: uppercase;
+}
+.tab-container {
+  height: calc(100% - #{$breadcrumb-height} - #{$bk-info-height} - #{$nav-tabs-height});
+}

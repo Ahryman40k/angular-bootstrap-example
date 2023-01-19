@@ -1,0 +1,7 @@
+--recursive
+--require reflect-metadata
+--reporter mocha-testrail-reporter
+--reporter-options projectId=46,suiteId=305,domain=villemontreal.testrail.net,username=jenkins@ville.montreal.qc.ca,password=gY0HjPBrapPm8P3SPTPo-0HCmplIRHEj2850h5UN2
+--sort
+--no-exit
+--timeout 10000

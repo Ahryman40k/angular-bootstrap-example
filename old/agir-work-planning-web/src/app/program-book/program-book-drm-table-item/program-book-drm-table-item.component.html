@@ -1,0 +1,36 @@
+<div *ngIf="columnOptions" class="responsive-table-row align-items-stretch {{ background }}">
+  <ng-container *ngFor="let column of columnConfig.columns; let first = first">
+    <app-checkbox
+      *ngIf="first"
+      #checkbox
+      class="px-3 ml-0 d-flex flex-grow-0 align-self-stretch border-bottom"
+      [ngClass]="{ 'hidden-checkbox': isCheckboxHidden, 'border-white': borderColor }"
+      [disabled]="project.submissionNumber || isCheckboxHidden || !(restrictionItems | appRestrictions)"
+      (change)="setValue($event)"
+    ></app-checkbox>
+    <app-table-column-item
+      *ngIf="column.condition"
+      class="{{ column.className }} {{ background }} px-0 d-flex"
+      [annualProgramYear]="columnOptions[column.columnName]?.annualProgramYear"
+      [columnClass]="column.columnName"
+      [condition]="column.condition"
+      [innerClass]="columnOptions[column.columnName]?.innerClass"
+      [options]="columnOptions[column.columnName]"
+      [isBadge]="columnOptions[column.columnName]?.isBadge"
+      [link]="columnOptions[column.columnName]?.link"
+      [permission]="Permission.PROJECT_DRM_WRITE"
+      [taxonomyGroup]="columnOptions[column.columnName]?.taxonomyGroup"
+      [value]="columnOptions[column.columnName]?.value"
+    >
+    </app-table-column-item>
+  </ng-container>
+  <div class="table-body-cell col-options d-flex flex-1 justify-content-end">
+    <app-more-options-button
+      #moreOptions
+      [dropdownPlacement]="['left-top', 'left-bottom']"
+      dropdownContainer="body"
+      [disabled]="disableMenu"
+      [items]="menuItems$ | async"
+    ></app-more-options-button>
+  </div>
+</div>

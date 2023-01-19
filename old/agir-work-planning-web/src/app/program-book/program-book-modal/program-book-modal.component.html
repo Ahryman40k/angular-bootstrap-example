@@ -1,0 +1,107 @@
+<app-layout-modal [modalTitle]="title" *ngIf="form">
+  <div body>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="name">Nom du carnet</label>
+          <input type="text" class="form-control mr-3" formControlName="name" ngbAutofocus />
+          <app-form-errors formControlName="name">
+            <app-form-error *appFormError="let e; key: 'required'">Le nom du carnet est requis</app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label>
+            Responsable
+            <span class="form-optional">Facultatif</span>
+          </label>
+          <input type="text" class="form-control" formControlName="inCharge" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="pr-3">Type(s) de projets</label>
+          <vdm-multi-select
+            bindLabel="label.fr"
+            bindValue="code"
+            appendTo="app-program-book-modal"
+            [items]="projectTypes$ | async"
+            formControlName="projectTypes"
+            [removableItems]="!isProgramBookContainProjects"
+          ></vdm-multi-select>
+          <app-form-errors formControlName="projectTypes">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Les types de projets acceptés sont requis
+            </app-form-error>
+            <app-form-error *appFormError="let e; key: 'projectTypesInvalid'">
+              Le type non-intégré doit être le seul type si sélectionné
+            </app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Arrondissement(s)
+            <span class="form-optional" *ngIf="!hasRestrictionsOnBoroughs">Facultatif</span>
+          </label>
+          <vdm-multi-select
+            bindLabel="label.fr"
+            bindValue="code"
+            appendTo="app-program-book-modal"
+            [items]="boroughs$ | async"
+            formControlName="boroughIds"
+            [removableItems]="!isProgramBookContainProjects"
+          ></vdm-multi-select>
+          <app-form-errors formControlName="boroughIds">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Au moins un arrondissement doit être sélectionné
+            </app-form-error>
+            <app-form-error *appFormError="let e; key: 'invalidBoroughs'">
+              Il n'est pas possible de sélectionner 'Tout Montréal' et un second arrondissement
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6" *ngIf="showPrograms">
+          <label class="pr-3">Programme(s)</label>
+          <vdm-multi-select
+            bindLabel="label.fr"
+            bindValue="code"
+            appendTo="app-program-book-modal"
+            [items]="programTypes$ | async"
+            formControlName="programTypes"
+            [removableItems]="!isProgramBookContainProjects"
+          ></vdm-multi-select>
+          <app-form-errors formControlName="programTypes">
+            <app-form-error *appFormError="let e; key: 'required'">
+              Les programmes sont requis
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          Description
+          <span class="form-optional">Facultatif</span>
+        </label>
+        <textarea rows="3" class="form-control w-100" formControlName="description"></textarea>
+      </div>
+    </form>
+  </div>
+  <div buttons>
+    <app-alert class="mb-2" *ngIf="isPriorityScenarioUnsaved" type="warning">
+      <span title>Attention!</span>
+      <span description>
+        Cette modification entraînera la perte des données non-sauvegardées de l'ordonnancement. Êtes-vous certain de
+        vouloir continuer?
+      </span>
+    </app-alert>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()">
+        Annuler
+      </button>
+      <button type="submit" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="submitting">
+        {{ buttonLabel }}
+      </button>
+    </div>
+  </div>
+</app-layout-modal>

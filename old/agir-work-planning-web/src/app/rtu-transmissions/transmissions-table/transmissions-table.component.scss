@@ -1,0 +1,44 @@
+@import '../../../styles/core/variables';
+
+.responsive-table {
+  padding-bottom: $responsive-table-scroll-padding-bottom;
+}
+
+app-table-column-header {
+  background-color: $color-white;
+}
+
+.scrollable-horizontal {
+  @extend .scrollable-horizontal;
+  overflow-y: visible;
+}
+
+.scrollable-horizontal::-webkit-scrollbar {
+  height: $scroll-bar-height;
+}
+
+.table thead th {
+  border-bottom: 2px solid $color-gray-300;
+  border-top: none;
+}
+
+.table-lg thead th.sorting:after {
+  width: 24px;
+  height: 24px;
+}
+
+.table tbody td {
+  min-height: $transmission-table-height;
+}
+
+.status-column {
+  width: $transmission-table-col-status;
+}
+
+.date-column {
+  width: $transmission-table-col-date;
+}
+
+.errorDetail-column {
+  width: $transmission-table-col-errorDetail;
+}

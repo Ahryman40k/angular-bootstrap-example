@@ -1,0 +1,69 @@
+{{!-- Page based on https://servicesenlignedev.ville.montreal.qc.ca/sel/evalweb/index . I simply downloaded the page and
+its associated files as is, and then modified them. --}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>API - {{projectName}}</title>
+    <link rel="shortcut icon" href="{{publicRoot}}/images/rosette-mtl.gif" type="image/gif">
+
+    <link href="{{publicRoot}}/css/styles-pes-gen_v0.css" rel="stylesheet" media="all">
+    <link href="{{publicRoot}}/css/evalweb-local_v0.css" rel="stylesheet" media="all">
+    <link href="{{publicRoot}}/css/custom.css" rel="stylesheet" media="all">
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy" cz-shortcut-listen="true">
+    <div id="wrapper">
+        <div id="page-content-wrapper">
+
+            <div id="hdr-ssl" class="zone_nonimprimable">
+                <a href="/" class="hdr-rosace"></a>
+                <span id="hdr-service-title">
+                    API Informations
+                </span>
+                <div class="hdr-links"></div>
+            </div>
+            <div id="play-zone">
+                <div class="container-fluid">
+
+                    <div class="row container-row">
+
+                        <nav class="col-sm-12 col-md-4 col-lg-3">
+                            <h2 class="fw_normal gray-darker">{{projectName}}</h2>
+                            <p class="h4 gray-dark fw_normal">{{projectDescription}}</p>
+                            <ul class="etapes">
+                                <li class="{{#if isGeneralInfoPage}}actif{{else}}inactif{{/if}}"><a href="/"><span>1</span>General Infos</a></li>
+                                <li class="{{#if isReadmePage}}actif{{else}}inactif{{/if}}"><a href="/readme"><span>2</span>Readme</a></li>
+                                <li class="{{#if isOpenAPIPage}}actif{{else}}inactif{{/if}}"><a href="/open-api"><span>3</span>Open API</a></li>
+                                <li class="{{#if isHealthPage}}actif{{else}}inactif{{/if}}"><a href="/health"><span>4</span>Health</a></li>
+                                <li class="{{#if isMetricsPage}}actif{{else}}inactif{{/if}}"><a href="/metrics"><span>5</span>Metrics</a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="col-sm-12 col-md-8 col-lg-offset-1 col-lg-7">
+                            <div id="main-content-col">
+                                {{{body}}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="zone_nonimprimable" id="ftr-mtl-pes">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 copyright">
+                            <a href="#"> © Tous droits réservés, Ville de Montréal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

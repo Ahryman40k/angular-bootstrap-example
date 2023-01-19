@@ -1,0 +1,52 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 2,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "1-add-several-unlinked-interventions-PNI-5312546",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 1,
+          "description": "\"\""
+        },
+        {
+          "id": "1-add-several-unlinked-interventions-PNI-5094977",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 2,
+          "description": "\"\""
+        }
+      ]
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "rehabEgConception",
+      "status": "failure",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "16-IBG-PTI-003 ÉG",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"Il existe plusieurs interventions associées au numéro de projet: \"16-IBG-PTI-003 ÉG\".\""
+        }
+      ]
+    }
+  ]
+}

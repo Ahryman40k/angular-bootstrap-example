@@ -1,0 +1,28 @@
+[
+  {
+    "id": "A_IGNORER",
+    "items": [
+      {
+        "id": "I00001",
+        "type": "intervention"
+      }
+    ],
+    "typeId": "other",
+    "subtypeId": "otherRequirements",
+    "text": "This is the requirement content.",
+    "audit": "A_IGNORER"
+  },
+  {
+    "id": "A_IGNORER",
+    "items": [
+      {
+        "id": "P00001",
+        "type": "project"
+      }
+    ],
+    "typeId": "other",
+    "subtypeId": "otherRequirements",
+    "text": "This is the requirement content.",
+    "audit": "A_IGNORER"
+  }
+]

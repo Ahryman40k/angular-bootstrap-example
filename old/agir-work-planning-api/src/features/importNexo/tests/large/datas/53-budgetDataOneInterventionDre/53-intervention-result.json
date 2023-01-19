@@ -1,0 +1,100 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DRE"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Construction / Segment d'aqueduc / Rue Saint-Maurice",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2022,
+    "planificationYear": 2022,
+    "endYear": 2024,
+    "programId": null,
+    "contact": "Sofiane Djad",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 236.7
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55501711368561, 45.500722338655414],
+            [-73.55481594800949, 45.50065090009099]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-DRE-5310284"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5310284"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 420,
+      "burnedDown": 0,
+      "balance": 420
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 150,
+          "annualLength": 0.085,
+          "accountId": 0,
+          "year": 2022,
+          "rank": 0
+        },
+        {
+          "annualAllowance": 150,
+          "annualLength": 0.085,
+          "accountId": 0,
+          "year": 2023,
+          "rank": 1
+        },
+        {
+          "annualAllowance": 120,
+          "annualLength": 0.068,
+          "accountId": 0,
+          "year": 2024,
+          "rank": 2
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 420,
+        "totalLength": 0.238,
+        "note": null
+      }
+    },
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    },
+    "decisionRequired": false,
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "comments": [],
+    "documents": []
+  }
+]

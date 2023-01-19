@@ -1,0 +1,81 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-with-only-mandatories-data"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Construction / Segment d'aqueduc",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "wished",
+    "interventionYear": 2021,
+    "planificationYear": 2021,
+    "endYear": 2021,
+    "programId": null,
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [ 
+              -73.57942521572113, 
+              45.503309105605155
+            ],
+            [ 
+              -73.57869029045105, 
+              45.50295192828779
+            ]
+          ]
+        },
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-DRE-5309257"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5309257"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 0,
+      "burnedDown": 0,
+      "balance": 0
+    },
+    "annualDistribution" : {
+      "annualPeriods" : [
+        {
+          "annualAllowance" : 0,
+          "annualLength" : 0,
+          "accountId" : 0,
+          "year" : 2021,
+          "rank" : 0
+         }
+      ],
+      "distributionSummary" : {
+        "totalAllowance" : 0,
+        "totalLength" : 0,
+        "note" : null
+      }
+    },
+    "decisionRequired": false,
+    "comments": [],
+    "documents": []
+  }
+]

@@ -1,0 +1,16 @@
+@each $color, $value in $app-colors {
+  .bg-app-#{$color} {
+    background-color: $value !important;
+  }
+}
+
+@mixin create-bg($name, $variable) {
+  .#{$name} {
+    background-color: $variable;
+  }
+}
+
+@include create-bg('gold', $color-gold);
+@include create-bg('silver', $color-silver);
+@include create-bg('platinum', $color-platinum);
+@include create-bg('bronze', $color-bronze);

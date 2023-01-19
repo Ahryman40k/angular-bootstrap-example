@@ -1,0 +1,21 @@
+@import '../../../styles/core/mixins';
+
+$content-height: 300px;
+$notification-max-width: 500px;
+$notification-min-width: 300px;
+$icon-max-height: 28px;
+
+.notification {
+  max-width: $notification-max-width;
+  min-width: $notification-min-width;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+}
+
+.scrollable {
+  max-height: $content-height;
+}
+
+.icon-fixed {
+  max-height: $icon-max-height;
+}

@@ -1,0 +1,4 @@
+@import '../shared/scss/tables-columns.scss';
+:host ::ng-deep {
+  @include column-project-to-schedule-style();
+}

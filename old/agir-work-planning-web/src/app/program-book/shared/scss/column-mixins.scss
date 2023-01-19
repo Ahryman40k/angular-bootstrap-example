@@ -1,0 +1,50 @@
+$width-submission-number: 5vw;
+$min-width-submission-number: 100px;
+$width-project-id: 5vw;
+$min-width-project-id: 70px;
+$width-label: 15vw;
+$width-program: 10vw;
+$width-borough: 10vw;
+$table-cell-pt: 14px;
+$table-cell-pb: 13px;
+$actions-width: 2rem;
+$checkbox-width: 2rem;
+
+@mixin actions-style {
+  .actions {
+    width: $actions-width;
+  }
+}
+
+@mixin checkbox-style {
+  .checkbox {
+    width: $checkbox-width;
+  }
+}
+@mixin column-style {
+  .table-header-cell {
+    text-align: left;
+  }
+  .table-body-cell {
+    padding-top: $table-cell-pt;
+    padding-bottom: $table-cell-pb;
+  }
+  .col-submission-number {
+    width: $width-submission-number;
+    min-width: $min-width-submission-number;
+  }
+  .col-project-id {
+    width: $width-project-id;
+    min-width: $min-width-project-id;
+  }
+  &.col-label {
+    width: $width-label;
+  }
+  .col-program {
+    width: $width-program;
+  }
+  .col-borough {
+    width: $width-borough;
+    flex: 1;
+  }
+}

@@ -1,0 +1,245 @@
+<div *ngIf="!opportunityNotices.length" class="page-content p-4 container">
+  <div class="mainTitle">
+    <h2>Avis d'opportunité d'Intégration</h2>
+  </div>
+  <div class="d-flex flex-column align-items-center">
+    <i class="icon icon-empty icon-xxxl mb-4"></i>
+    <span class="mb-4" *ngIf="canCreateOpportunityNotice"
+      >La gestion des avis d’opportunité d’intégration n’est pas activée pour l’instant.</span
+    >
+    <span class="mb-4" *ngIf="!canCreateOpportunityNotice"
+      >Les avis d'opportunité d'intégration ne peuvent pas être créés pour un projet non intégré ou en
+      parachèvement</span
+    >
+    <button
+      *ngIf="(Permission.OPPORTUNITY_NOTICE_WRITE | appPermission) && (projectRestrictionItems | appRestrictions)"
+      class="btn btn-primary btn-squared"
+      (click)="changeToOpportunityNoticeCreatePage()"
+      [disabled]="!canCreateOpportunityNotice"
+    >
+      <span>Gérer les avis d’opportunités</span>
+    </button>
+  </div>
+</div>
+<app-details-layout *ngIf="opportunityNotices.length">
+  <span title>Avis d'opportunités d'intégration</span>
+  <ng-container actions>
+    <div class="d-flex align-items-start mr-1">
+      <app-sort [filters]="filters" [formControl]="sortFormControl" ngSelectClass="round"></app-sort>
+      <button
+        *ngIf="
+          canCreateOpportunityNotice &&
+          (Permission.OPPORTUNITY_NOTICE_WRITE | appPermission) &&
+          (projectRestrictionItems | appRestrictions)
+        "
+        class="btn btn-primary btn-squared ml-1"
+        (click)="changeToOpportunityNoticeCreatePage()"
+      >
+        <span class="icon icon-filters mr-1"></span>
+        Gérer
+      </button>
+    </div>
+  </ng-container>
+
+  <div *ngIf="isLoadingOpportunityNotices" class="d-flex justify-content-center p-4">
+    <app-spinner></app-spinner>
+  </div>
+  <div *ngIf="!isLoadingOpportunityNotices">
+    <app-list-item *ngFor="let opportunityNotice of opportunityNotices">
+      <span title>
+        <div class="d-flex align-items-center mb-1">
+          <span *ngIf="opportunityNotice.assets.length"
+            >Groupe d'actifs - {{ opportunityNotice.assets[0].typeId | appTaxonomy: TaxonomyGroup.assetType }}</span
+          >
+          <span *ngIf="!opportunityNotice.assets.length">Avis pour un actif non géolocalisé</span>
+          <span
+            class="badge ml-1 mr-2"
+            [ngClass]="{
+              'badge-light': opportunityNotice.status === OpportunityNoticeStatus.inProgress,
+              'badge-info-light': opportunityNotice.status === OpportunityNoticeStatus.new,
+              'badge-danger-light': opportunityNotice.status === OpportunityNoticeStatus.closed
+            }"
+          >
+            {{ opportunityNotice.status | appTaxonomy: TaxonomyGroup.opportunityNoticeStatus }}
+          </span>
+        </div>
+      </span>
+      <span description class="mb-1">
+        <label>{{ opportunityNotice.requestorId | appTaxonomy: TaxonomyGroup.requestor }}</label>
+        <label>Créé le {{ opportunityNotice.audit?.createdAt | date: 'dd LLL yyyy' }}</label>
+        <label>par {{ opportunityNotice.audit?.createdBy.displayName }}</label>
+      </span>
+      <span description-details *ngIf="opportunityNotice.status === OpportunityNoticeStatus.closed">
+        <small>
+          Fermé le
+          <span class="font-weight-bold">{{
+            opportunityNotice.response.audit | appAuditDateTime | date: 'dd LLL yyyy'
+          }}</span>
+          par <span class="font-weight-bold">{{ opportunityNotice.response.audit | appAuditBy }}</span>
+        </small>
+      </span>
+      <app-list-item-details>
+        <app-list-item-details-field *ngIf="opportunityNotice.assets.length" titleClass="">
+          <span class="font-weight-bold" title>Actifs concernés</span>
+          <span description>
+            <app-more-details-collapse-label>
+              <span title>Afficher les actifs ({{ opportunityNotice.assets.length }})</span>
+              <span not-collapsed-title-above>Masquer les actifs ({{ opportunityNotice.assets.length }})</span>
+              <span details class="flex-1">
+                <ul>
+                  <li class="font-weight-bold" *ngFor="let asset of opportunityNotice.assets">{{ asset.id }}</li>
+                </ul>
+              </span>
+            </app-more-details-collapse-label>
+          </span>
+        </app-list-item-details-field>
+        <app-list-item-details-field titleClass="">
+          <span title>Détails de l'avis</span>
+          <span description class="d-flex flex-column align-items-start">
+            <div>
+              <label class="font-weight-bold">{{ opportunityNotice.object }}</label>
+              <label
+                >Mode d'émission:
+                {{
+                  opportunityNotice.followUpMethod | appTaxonomy: TaxonomyGroup.opportunityNoticeFollowUpMethod
+                }}</label
+              >
+              <label>Responsable: {{ opportunityNotice.audit.createdBy.displayName }}</label>
+            </div>
+            <div>
+              <label>Nombre de rappel: {{ opportunityNotice.maxIterations }}</label>
+              <label>Nombre de rappel effectués: N/D</label>
+            </div>
+          </span>
+        </app-list-item-details-field>
+        <app-list-item-details-field>
+          <span title>Notes</span>
+          <span description>
+            <div *ngIf="!opportunityNotice.notes.length">N/D</div>
+            <div *ngIf="opportunityNotice.notes.length" class="flex-grow-1">
+              <div
+                class="w-100 py-1"
+                [ngClass]="{ 'card-hover hover-visible': opportunityNotice.status !== OpportunityNoticeStatus.closed }"
+              >
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <label class="font-weight-bold">{{ opportunityNotice.notes[0].audit | appAuditBy }}</label>
+                    <label
+                      >Le {{ opportunityNotice.notes[0].audit | appAuditDateTime | date: 'dd LLL yyyy' }} à
+                      {{ opportunityNotice.notes[0].audit | appAuditDateTime | date: 'HH:mm' }}
+                    </label>
+                  </div>
+                  <button
+                    class="btn btn-icon btn-icon-only hover-visible-item p-0"
+                    (click)="openOpportunityNoticeNoteModal(opportunityNotice, opportunityNotice.notes[0])"
+                    *ngIf="
+                      canCreateOpportunityNotice &&
+                      (Permission.OPPORTUNITY_NOTICE_WRITE | appPermission) &&
+                      (projectRestrictionItems | appRestrictions)
+                    "
+                  >
+                    <i class="icon icon-edit icon-color-primary"></i>
+                  </button>
+                </div>
+                <span>{{ opportunityNotice.notes[0].text }}</span>
+              </div>
+              <app-more-details-collapse-label
+                *ngIf="opportunityNotice.notes.length - 1 > 0"
+                titleToBottomWhenClicked="true"
+              >
+                <span title>Afficher toutes les notes ({{ opportunityNotice.notes.length - 1 }})</span>
+                <span not-collapsed-title-below
+                  >Masquer toutes les notes ({{ opportunityNotice.notes.length - 1 }})</span
+                >
+                <span details class="flex-grow-1">
+                  <div
+                    *ngFor="let note of opportunityNotice.notes | slice: 1"
+                    class="w-100 py-1"
+                    [ngClass]="{
+                      'card-hover hover-visible': opportunityNotice.status !== OpportunityNoticeStatus.closed
+                    }"
+                  >
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <label class="font-weight-bold">{{ note.audit | appAuditBy }}</label>
+                        <label
+                          >Le {{ note.audit | appAuditDateTime | date: 'dd LLL yyyy' }} à
+                          {{ note.audit | appAuditDateTime | date: 'HH:mm' }}</label
+                        >
+                      </div>
+                      <button
+                        class="btn btn-icon btn-icon-only hover-visible-item p-0"
+                        (click)="openOpportunityNoticeNoteModal(opportunityNotice, note)"
+                      >
+                        <i class="icon icon-edit icon-color-primary"></i>
+                      </button>
+                    </div>
+                    <span>{{ note.text }}</span>
+                  </div>
+                </span>
+              </app-more-details-collapse-label>
+            </div>
+          </span>
+        </app-list-item-details-field>
+        <app-list-item-details-field *ngIf="opportunityNotice?.response?.requestorDecisionNote">
+          <span title>Réponse du requérant</span>
+          <span description class="d-flex flex-column align-items-start">
+            <div>
+              <label class="font-weight-bold">{{
+                OpportunityNoticeResponse[opportunityNotice.response.requestorDecision]
+              }}</label>
+              <label
+                >Date de réponse: {{ opportunityNotice.response.requestorDecisionDate | date: 'dd LLL yyyy' }}</label
+              >
+            </div>
+            <div class="mb-2">Contact requérant: {{ opportunityNotice.contactInfo }}</div>
+            <div>{{ opportunityNotice.response.requestorDecisionNote }}</div>
+          </span>
+        </app-list-item-details-field>
+        <app-list-item-details-field
+          *ngIf="opportunityNotice.response?.requestorDecision === OpportunityNoticeResponseRequestorDecision.yes"
+        >
+          <span title>Décision du planificateur</span>
+          <span description class="d-flex flex-column align-items-start">
+            <div class="mb-2">
+              <label class="font-weight-bold">{{
+                opportunityNotice.response.planningDecision | appTaxonomy: TaxonomyGroup.opportunityPlaningDecision
+              }}</label>
+              <label
+                >Date de décision:
+                {{
+                  opportunityNotice.response.audit.lastModifiedAt || opportunityNotice.response.audit.createdAt
+                    | date: 'dd LLL yyyy'
+                }}</label
+              >
+            </div>
+            <div>{{ opportunityNotice.response.planningDecisionNote }}</div>
+          </span>
+        </app-list-item-details-field>
+      </app-list-item-details>
+      <app-list-item-action
+        *ngIf="canChangeOpportunity(opportunityNotice)"
+        (action)="updateOpportunityNotice(opportunityNotice)"
+      >
+        Modifier l'avis d'opportunité
+      </app-list-item-action>
+      <app-list-item-action
+        *ngIf="canChangeOpportunity(opportunityNotice)"
+        (action)="goToRequestorDecision(opportunityNotice)"
+      >
+        Gérer la réponse du requérant
+      </app-list-item-action>
+      <app-list-item-action
+        *ngIf="canChangeOpportunity(opportunityNotice)"
+        (action)="openOpportunityNoticeNoteModal(opportunityNotice)"
+      >
+        Ajouter une note à l'avis
+      </app-list-item-action>
+    </app-list-item>
+  </div>
+
+  <app-no-result
+    *ngIf="!isLoadingOpportunityNotices && !opportunityNotices?.length"
+    message="Il n'y a pas d'avis d'opportunité d'intégration dans ce projet pour l'instant."
+  ></app-no-result>
+</app-details-layout>

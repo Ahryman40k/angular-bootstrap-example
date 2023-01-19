@@ -1,0 +1,33 @@
+$gantt-bar-border-radius: 10px;
+$gantt-year-cell-width: 76px;
+
+vdm-gantt-row:not(:last-child) {
+  @extend .border-bottom;
+}
+
+vdm-gantt-row vdm-gantt-cell {
+  @extend .pl-1;
+  @extend .py-1;
+}
+
+vdm-gantt-row vdm-gantt-cell:not(:first-child) {
+  @extend .border-left;
+}
+
+vdm-gantt-row vdm-gantt-bar:first-child {
+  .gantt-bar {
+    border-bottom-left-radius: $gantt-bar-border-radius;
+    border-top-left-radius: $gantt-bar-border-radius;
+  }
+}
+
+vdm-gantt-row vdm-gantt-bar:last-child {
+  .gantt-bar {
+    border-bottom-right-radius: $gantt-bar-border-radius;
+    border-top-right-radius: $gantt-bar-border-radius;
+  }
+}
+
+.gantt-year-cell {
+  width: $gantt-year-cell-width;
+}

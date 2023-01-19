@@ -1,0 +1,204 @@
+<div class="pt-0 pb-0 border-bottom shadow-sm header">
+  <div class="d-flex justify-content-between align-items-center pt-2 pb-2">
+    <div class="d-flex">
+      <h3 class="px-4 pb-0">
+        Gérer la réponse du requérant
+      </h3>
+    </div>
+    <div class="d-flex col-xs-12 pr-3">
+      <button type="button" (click)="cancel()" class="btn btn-tertiary btn-squared font-weight-bold px-2">
+        Annuler
+      </button>
+      <button *ngIf="currentDecision" type="button" (click)="updateOpportunityNotice()" [disabled]="!canSubmit()"
+        class="btn btn-primary btn-squared font-weight-bold px-2 ml-2">
+        {{updateButtonLabel}}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoadingOpportunityNotice" class="d-flex justify-content-center p-4">
+  <app-spinner></app-spinner>
+</div>
+<div class="d-flex flex-row px-2 pt-2 content scrollable" *ngIf="!isLoadingOpportunityNotice">
+  <div class="d-flex flex-column col-4">
+    <div class="my-2">
+      <h4 class="mb-4">
+        Informations de la réponse
+      </h4>
+      <form [formGroup]="form">
+        <div>
+          <label class="font-weight-bold">Réponse du requérant</label>
+        </div>
+        <div class="col-9 p-0">
+          <vdm-select bindLabel="label.fr" formControlName="requestorDecision"
+            placeholder="Sélectionner la réponse"
+            bindLabel="label.fr"
+            bindValue="code"
+            [items]="requestorDecisions">
+          </vdm-select>
+          <app-form-errors formControlName="requestorDecision">
+            <app-form-error *appFormError="let e; key: 'required'">La réponse est requise</app-form-error>
+          </app-form-errors>
+        </div>
+
+        <!--Requestor infos-->
+        <div *ngIf="currentDecision">
+          <div class="mt-2">
+            <div>
+              <label class="font-weight-bold">Date de la réponse du requérant</label>
+            </div>
+            <div class="d-flex align-items-center col-9 p-0">
+              <input
+                class="form-control"
+                ngbDatepicker
+                #datePicker="ngbDatepicker"
+                placeholder="YYYY-mm-dd"
+                [maxDate]="maxDate"
+                formControlName="requestorDecisionDate"
+                (click)="datePicker.toggle()" />
+                <span class="icon icon-calendar icon-color-neutral-tertiary" role="icon"></span>
+            </div>
+          </div>
+          <div class="mt-2">
+            <div>
+              <label class="font-weight-bold">Nom du contact requérant</label>
+            </div>
+            <div class="col-9 p-0">
+              <input type="text" class="form-control" formControlName="contactInfo" />
+              <app-form-errors formControlName="contactInfo">
+                <app-form-error *appFormError="let e; key: 'required'">Le nom du contact requérant est requis</app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+
+          <div class="mt-2">
+            <div>
+              <label class="font-weight-bold">Notes de la réponse</label>
+            </div>
+            <div>
+              <textarea formControlName="requestorDecisionNote" class="form-control w-100"></textarea>
+              <app-form-errors formControlName="requestorDecisionNote">
+                <app-form-error *appFormError="let e; key: 'required'">La note est réquise</app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="currentDecision === OpportunityNoticeResponseRequestorDecision.yes">
+          <div class="mt-4 pt-3 border-top">
+            <div>
+              <label class="font-weight-bold">Décision du planificateur</label>
+            </div>
+            <div class="col-9 p-0">
+              <vdm-select bindLabel="label.fr" formControlName="planningDecision"
+                class="flex-fill"
+                bindLabel="label.fr"
+                bindValue="code"
+                [items]="planningDecisionsTaxonomy$ | async"
+                >
+              </vdm-select>
+              <app-form-errors formControlName="planningDecision">
+                <app-form-error *appFormError="let e; key: 'required'">La décision est réquise</app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+
+          <div class="mt-2">
+            <div>
+              <label class="font-weight-bold">Notes de la décision</label>
+            </div>
+            <div>
+              <textarea formControlName="planningDecisionNote" class="form-control w-100"></textarea>
+              <app-form-errors formControlName="planningDecisionNote">
+                <app-form-error *appFormError="let e; key: 'required'">La note est réquise</app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="d-flex flex-column col-8" *ngIf="hasToDisplayAssetsToIntegrate">
+    <div class="d-flex flex-row pt-2 header-assets">
+      <div class="d-flex flex-row w-100">
+        <div class="w-60">
+        <h4 class=mb-2>
+          Choix des actifs à intégrer au projet
+        </h4>
+          <p class="font-size-xs-interface">Sélectionner les actifs qui sont retenus par le requérant pour l’intégration au projet,
+            ainsi que la nature des travaux qui seront effectués sur chacun des actifs.</p>
+        </div>
+        <div class="w-40 text-right">
+          <button type="button" class="btn btn-primary btn-squared btn-sm" (click)="createInterventions()" [disabled]="!canCreateIntervention()">Créer les interventions</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex flex-row assets-form" [ngClass]="{'worktype-for-all-assets-checked': isWorkTypeForAllAssetsChecked}">
+      <div class="d-flex flex-column col-6 pl-0 h-100">
+        <form [formGroup]="formAssets" class="w-100 h-100">
+          <div class="w-100 d-flex flex-row justify-content-between check-all">
+            <div class="d-flex flex-column">
+            <app-checkbox
+              (click)="activateWorktypeForAllAssets(!isWorkTypeForAllAssetsChecked)"
+              labelClass="custom-control-label font-sm w-75"
+              label="Même nature de travaux pour tous les actifs."
+              class="mr-3"
+              mode="switch">
+            </app-checkbox>
+            <div class="workTypeForAllAssets position-relative">
+              <vdm-select
+                class="flex-1 mr-3 pb-2 position-relative"
+                [class.d-block]="isWorkTypeForAllAssetsChecked"
+                [class.d-none]="!isWorkTypeForAllAssetsChecked"
+                appendTo=".workTypeForAllAssets"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="workTypeForAllAssets"
+                [items]="workTypes"
+              >
+              </vdm-select>
+            </div>
+          </div>
+            <div>
+              <button type="button" class="btn btn-secondary btn-squared btn-sm" (click)="selectAllAssets()">Tout sélectionner</button>
+            </div>
+          </div>
+          <div class="assets-list scrollable">
+            <div *ngFor="let asset of plainOpportunityNotice.assets" class="d-flex flex-row align-items-center">
+              <app-opportunity-notice-asset-item
+              [asset]="asset"
+              [isWorkTypeForAllAssetsChecked]="isWorkTypeForAllAssetsChecked"
+              [intervention]="getPersistedIntervention(asset)"
+              [form]="formAssets"
+              [workTypes]="workTypes" class="w-100"
+              [workType]="getWorkTypePersistedValue(asset)"
+              (mouseenter)="onAssetListHover(asset)"
+              (mouseleave)="clearHighlight()">
+            </app-opportunity-notice-asset-item>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- asset on map -->
+      <div class="map d-flex flex-column col-6 pr-0">
+        <app-map
+          #map
+          [withPanelMenu]="false"
+          [withPanel]="false"
+          [withRightPanel]="false"
+          [withNonGeolocatedProjectsPanel]="false"
+          [withPlanningBook]="false"
+          [withInterventions]="false"
+          [withProjects]="false"
+          [initZoom]="25"
+          [popupsEnabled]="false"
+          [disabledPopups]="[ObjectType.project]"
+          [isLoading]="isMapLoading"
+          class="d-inline-block"
+        ></app-map>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<form [formGroup]="form" *ngIf="dataKey" class="card bg-light mb-2 p-1 px-2 d-flex flex-row align-items-baseline">
+  <div class="flex-fill align-self-center pt-1">
+    <label class="col-form-label-sm">{{ dataKey.code | appTaxonomy: TaxonomyGroup.assetDataKey }}</label>
+  </div>
+  <div class="ml-2 pt-1 align-self-center text-right main-attribute-input">
+    <app-checkbox
+      class="checkbox-sm"
+      label="Attribut principal"
+      labelClass="font-sm"
+      formControlName="isMainAttribute"
+    ></app-checkbox>
+  </div>
+  <div class="ml-2 pt-1 align-self-center text-right display-order-label">
+    <label class="col-form-label-sm">Ordre d'affichage</label>
+  </div>
+  <div class="ml-2 align-self-center display-order-input">
+    <input type="number" class="form-control form-control-sm" formControlName="displayOrder" />
+    <app-form-errors formControlName="displayOrder">
+      <app-form-error *appFormError="let e; key: 'required'">
+        L'ordre d'affichage est requis
+      </app-form-error>
+    </app-form-errors>
+  </div>
+  <div class="flex-shrink-1 ml-1 align-self-center trash-button">
+    <button class="btn btn-icon btn-icon-only btn-sm" type="button" (click)="emitRemove()">
+      <span class="icon icon-trash" aria-hidden="true"></span>
+    </button>
+  </div>
+</form>

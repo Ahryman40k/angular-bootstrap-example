@@ -1,0 +1,13 @@
+$label-min-width: 160px;
+
+.englobe h6 {
+  min-width: 115px;
+}
+
+.map {
+  height: 600px;
+}
+
+.min-w-180 {
+  min-width: $label-min-width;
+}

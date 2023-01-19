@@ -1,0 +1,2943 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: Roadwork intervention planning API
+  contact:
+    name: Julien Riel
+    email: julien.riel@ville.montreal.qc.ac
+  license:
+    name: Copyright (C) Ville de Montreal
+  description: >
+    ## About
+
+    The purpose of this software is to allow roadwork planners and executors of
+    the Ville de Montreal to coordinate interventions and projects seamlessly
+    and in accordance with annual priorities, budgets and constraints.
+
+    ## Authentication
+
+    This API is secured with Bearer Authentication over TLS (HTTPS). |
+    https://swagger.io/docs/specification/authentication/bearer-authentication
+
+    ## Users
+
+    The identity server of Ville de Montreal is the center component employed
+    for  user management.
+
+    ## Permissions
+
+    This software uses the permission api developped by the Ville de Montreal.
+tags:
+  - name: Intervention
+    description: Resources for managing roadwork interventions
+  - name: Intervention enrichment
+    description: Resources for enriching or manage intervention enrichment
+  - name: Opportunity
+    description: Resources for managing potential interventions
+  - name: Project
+    description: Resources for managing roadwork projects
+  - name: Project enrichment
+    description: Resources for enriching or manage project enrichment
+  - name: Project integration
+    description: Resources for integrating projects and interventions
+  - name: Project phase
+    description: Resources for managing project phases
+  - name: Submission integration
+    description: Resources for integrating submissions and project phases
+  - name: Rule
+    description: Resources for managing moratory and exemptions
+  - name: Plan
+    description: Resources for viewing roadwork intervention and project plannings
+  - name: Priority
+    description: Resources for managing priorities
+  - name: Program
+    description: Resources for managing programs
+  - name: Objective
+    description: Resources for managing objectives
+  - name: Indicator
+    description: Resources for managing indicators
+  - name: Taxonomy
+    description: Resources for managing taxonomies
+servers:
+  - url: 'https://api.dev.interne.montreal.qc.ca/api/public-works/planning/v1'
+  - url: 'https://api.accept.interne.montreal.qc.ca/api/public-works/planning/v1'
+  - url: 'https://api.interne.montreal.qc.ca/api/public-works/planning/v1'
+security:
+  - BearerAuth: []
+  - OpenID: []
+paths:
+  '/v1/interventions':
+    post:
+      tags:
+        - Intervention
+      summary: Creates roadwork interventions
+      description: >
+        Allows to create a roadwork intervention - validates the body content
+        and returns the created intervention
+      operationId: createIntervention
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      requestBody:
+        description: the intervention content to be created
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlainIntervention'
+      responses:
+        '201':
+          $ref: '#/components/schemas/PlainIntervention'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+    get:
+      tags:
+        - Intervention
+      summary: Lists all active roadwork interventions
+      description: >-
+        Allows to view/export a list of the active roadwork interventions based
+        on query  params
+      operationId: viewAllInterventions
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/Accept-Language'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/OrderBy'
+        - $ref: '#/components/parameters/Q'
+        - $ref: '#/components/parameters/Type'
+        - $ref: '#/components/parameters/Status'
+        - $ref: '#/components/parameters/FromYear'
+        - $ref: '#/components/parameters/ToYear'
+        - $ref: '#/components/parameters/Bbox'
+        - $ref: '#/components/parameters/Expand'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/PlainPaginatedInterventions'
+                  - $ref: '#/components/schemas/EnrichedPaginatedInterventions'
+                $ref: '#/components/schemas/PlainPaginatedInterventions'
+            application/sql:
+              schema:
+                $ref: ''
+            text/csv:
+              schema:
+                $ref: ''
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id':
+    get:
+      tags:
+        - Intervention
+      summary: Returns one specific active roadwork intervention
+      description: >
+        Allows to view/export one specific active roadwork intervention based on
+        query  params
+      operationId: viewOneIntervention
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/Accept-Language'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrichedIntervention'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+    put:
+      tags:
+        - Intervention
+      summary: Modifies a specific intervention
+      description: Allows to modify a roadwork intervention
+      operationId: modifyOneIntervention
+      parameters:
+        - $ref: '#/components/parameters/ETag'
+      requestBody:
+        description: the modified intervention content
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlainIntervention'
+      responses:
+        '204':
+          description: 'Modified intervention'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrichedIntervention'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+    delete:
+      tags:
+        - Intervention
+      summary: Expires a specific intervention
+      description: Allows to deactive/expire roadwork intervention based on query params
+      operationId: expireOneIntervention
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id/history':
+    get:
+      tags:
+        - Intervention
+      summary: Recovers an historical version of an intervention
+      description: Allows to navigate in an historical version of an intervention
+      operationId: interventionHistory
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/Accept-Language'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Q'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrichedInterventionHistory'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id/comments':
+    post:
+      tags:
+        - Intervention enrichment
+      summary: Attaches a comment to an intervention
+      description: 'Allows to create a comment on an intervention '
+      operationId: commentIntervention
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      requestBody:
+        description: the intervention comment to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id/comments/:idComment':
+    delete:
+      tags:
+        - Intervention enrichment
+      summary: Deletes a specific comment on a specific intervention
+      description: >-
+        Allows to deactive/expire a comment on an intervention based on query
+        params
+      operationId: expireOneInterventionComment
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id/constraints':
+    post:
+      tags:
+        - Intervention enrichment
+      summary: >-
+        Attaches a constraint to an intervention - which can also be a technical
+        requirement
+      description: 'Allows to create a constraint on an intervention'
+      operationId: interventionConstraint
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      requestBody:
+        description: the intervention constraint to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Constraint'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id/decisions':
+    post:
+      tags:
+        - Intervention enrichment
+      summary: Attaches a decision to an intervention
+      description: 'Allows to attach a decision on an intervention '
+      operationId: interventionDecision
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      requestBody:
+        description: the intervention decision to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Decision'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id/attachments':
+    post:
+      tags:
+        - Intervention enrichment
+      summary: Attaches a required document to an intervention
+      description: 'Allows to create a constraint on an intervention '
+      operationId: interventionAttachment
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      requestBody:
+        description: the intervention attachment to be binded
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attachment'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/interventions/:id/attachments/:idDocument':
+    delete:
+      tags:
+        - Intervention enrichment
+      summary: Deletes a specific document attached on a specific intervention
+      description: Allows to deactive/expire a comment on an intervention
+      operationId: expireOneInterventionAttachment
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  # '/opportunities':
+  #   get:
+  #     tags:
+  #       - Opportunity
+  #     summary: Lists all active roadwork opportunities
+  #     description: >-
+  #       Allows to view/export a list of the active roadwork opportunities based
+  #       on query  params
+  #     operationId: viewAllOpportunities
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Limit'
+  #       - $ref: '#/components/parameters/Offset'
+  #       - $ref: '#/components/parameters/OrderBy'
+  #       - $ref: '#/components/parameters/Q'
+  #       - $ref: '#/components/parameters/Status'
+  #       - $ref: '#/components/parameters/FromYear'
+  #       - $ref: '#/components/parameters/ToYear'
+  #       - $ref: '#/components/parameters/Expand'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               oneOf:
+  #                 - $ref: '#/components/schemas/PlainPaginatedInterventions'
+  #                 - $ref: '#/components/schemas/EnrichedPaginatedInterventions'
+  #               $ref: '#/components/schemas/PlainPaginatedInterventions'
+  #           application/sql:
+  #             schema:
+  #               $ref: ''
+  #           text/csv:
+  #             schema:
+  #               $ref: ''
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/opportunities/:id':
+  #   get:
+  #     tags:
+  #       - Opportunity
+  #     summary: Returns one specific active roadwork opportunity
+  #     description: >
+  #       Allows to view/export one specific active roadwork opportunity based on
+  #       query  params
+  #     operationId: viewOneOpportunity
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/EnrichedIntervention'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects':
+  #   post:
+  #     tags:
+  #       - Project
+  #     summary: Creates a project
+  #     description: Allows to create a project for one or many interventions
+  #     operationId: createProject
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the project to be created
+  #       required: false
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/PlainProject'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   get:
+  #     tags:
+  #       - Project
+  #     summary: Lists all active projects
+  #     description: >-
+  #       Allows to view/export a list of the active projects based on query
+  #       params
+  #     operationId: viewAllProjects
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Limit'
+  #       - $ref: '#/components/parameters/Offset'
+  #       - $ref: '#/components/parameters/OrderBy'
+  #       - $ref: '#/components/parameters/Q'
+  #       - $ref: '#/components/parameters/FromYear'
+  #       - $ref: '#/components/parameters/ToYear'
+  #       - $ref: '#/components/parameters/Bbox'
+  #       - $ref: '#/components/parameters/Expand'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               oneOf:
+  #                 - $ref: '#/components/schemas/PlainPaginatedProjects'
+  #                 - $ref: '#/components/schemas/EnrichedPaginatedProjects'
+  #               $ref: '#/components/schemas/EnrichedPaginatedProjects'
+  #           application/sql:
+  #             schema:
+  #               $ref: ''
+  #           text/csv:
+  #             schema:
+  #               $ref: ''
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id':
+  #   get:
+  #     tags:
+  #       - Project
+  #     summary: Returns one specific active project
+  #     description: Allows to view/export one specific active project based on query  params
+  #     operationId: viewOneProject
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/EnrichedProject'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   put:
+  #     tags:
+  #       - Project
+  #     summary: Modify one specific active project
+  #     description: Allows to modify one specific active project by user changing status
+  #     operationId: modifyOneProject
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #       - $ref: '#/components/parameters/ETag'
+  #     requestBody:
+  #       description: the project content to be modified
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/PlainProject'
+  #     responses:
+  #       '204':
+  #         $ref: '#/components/responses/NoContent'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   delete:
+  #     tags:
+  #       - Project
+  #     summary: Expires a specific project
+  #     description: 'Allows to deactive/expire roadwork project '
+  #     operationId: expireOneProject
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/validate':
+  #   post:
+  #     tags:
+  #       - Project
+  #     summary: Validate one specific active project
+  #     description: Allows to validate one specific active project
+  #     operationId: validateOneProject
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/comments':
+  #   post:
+  #     tags:
+  #       - Project enrichment
+  #     summary: Attaches a comment to a project
+  #     description: Allows to create a comment on a project
+  #     operationId: commentProject
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the project comment to be created
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Comment'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/comments/:id':
+  #   delete:
+  #     tags:
+  #       - Project enrichment
+  #     summary: Deletes a specific comment on a specific intervention
+  #     description: >-
+  #       Allows to deactive/expire a comment on an intervention based on query
+  #       params
+  #     operationId: expireOneProjectComment
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/constraints':
+  #   post:
+  #     tags:
+  #       - Project enrichment
+  #     summary: >-
+  #       Attaches a constraint to an intervention - which can also be a technical
+  #       requirement
+  #     description: 'Allows to create a constraint on an intervention'
+  #     operationId: projectConstraint
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the intervention constraint to be created
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Constraint'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/decisions':
+  #   post:
+  #     tags:
+  #       - Project enrichment
+  #     summary: Attaches a decision to an intervention
+  #     description: 'Allows to attach a decision on an intervention '
+  #     operationId: projectDecision
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the intervention decision to be created
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Decision'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/attachments':
+  #   post:
+  #     tags:
+  #       - Project enrichment
+  #     summary: Attaches a required document to an intervention
+  #     description: 'Allows to create a constraint on an intervention '
+  #     operationId: projectAttachment
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the intervention attachment to be binded
+  #       required: false
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Attachment'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/attachments/:id':
+  #   delete:
+  #     tags:
+  #       - Project enrichment
+  #     summary: Deletes a specific document attached on a specific intervention
+  #     description: >-
+  #       Allows to deactive/expire a comment on an intervention based on query
+  #       params
+  #     operationId: expireOneProjectAttachment
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/interventions/:id':
+  #   post:
+  #     tags:
+  #       - Project integration
+  #     summary: Integrates an intervention/project to a project
+  #     description: Allows to integrate an intervention/project in a project
+  #     operationId: integrateOneIntervention
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   delete:
+  #     tags:
+  #       - Project integration
+  #     summary: Suppress an intervention/project integration to a project
+  #     description: Allows to integrate an intervention/project in a project
+  #     operationId: suppressOneInterventionIntegration
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/phases':
+  #   post:
+  #     tags:
+  #       - Project phase
+  #     summary: Creates a project phase
+  #     description: Allows to create a phase on a project
+  #     operationId: createProjectPhase
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the project phase to be added
+  #       required: false
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Phase'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/phases/:id':
+  #   put:
+  #     tags:
+  #       - Project phase
+  #     summary: Modifies a project phase
+  #     description: 'Allows to create a project phase '
+  #     operationId: modifyProjectPhase
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #       - $ref: '#/components/parameters/ETag'
+  #     requestBody:
+  #       description: the project phase to be modified
+  #       required: false
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Phase'
+  #     responses:
+  #       '204':
+  #         $ref: '#/components/responses/NoContent'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   delete:
+  #     tags:
+  #       - Project phase
+  #     summary: Deletes a project phase
+  #     description: 'Allows to delete a project phase '
+  #     operationId: deleteProjectPhase
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/phases/:id/submissions':
+  #   post:
+  #     tags:
+  #       - Submission integration
+  #     summary: Integrates a phase to a submission #needtoclarify
+  #     description: Allows to integrate a phase to a submission
+  #     operationId: integratePhasesToSubmission
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/projects/:id/phases/:id/submissions/:id':
+  #   delete:
+  #     tags:
+  #       - Submission integration
+  #     summary: Suppress a submission integration to a phase
+  #     description: Allows to delete a submission in a phase
+  #     operationId: suppressOnePhaseIntegration
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/rules':
+  #   post:
+  #     tags:
+  #       - Rule
+  #     summary: Creates a rule
+  #     description: 'Allows to create a rule on a zone, a project or an intervention'
+  #     operationId: createRule
+  #     requestBody:
+  #       description: the rule to be created
+  #       required: false
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Rule'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   get:
+  #     tags:
+  #       - Rule
+  #     summary: Gets all the rules
+  #     description: Allows to view all the rules based on query params
+  #     operationId: viewAllRules
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Limit'
+  #       - $ref: '#/components/parameters/Offset'
+  #       - $ref: '#/components/parameters/OrderBy'
+  #       - $ref: '#/components/parameters/Q'
+  #       - $ref: '#/components/parameters/Date'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Rule'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/rules/:id':
+  #   delete:
+  #     tags:
+  #       - Rule
+  #     summary: Deletes a rule
+  #     description: Allows to delete a rule
+  #     operationId: deleteRule
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/project-plans':
+  #   get:
+  #     tags:
+  #       - Plan
+  #     summary: Lists all planned roadwork interventions & project based on query params
+  #     description: >-
+  #       Allows to view/export a list of the planned roadwork interventions and
+  #       projects  based on query params
+  #     operationId: viewPlans
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Limit'
+  #       - $ref: '#/components/parameters/Offset'
+  #       - $ref: '#/components/parameters/OrderBy'
+  #       - $ref: '#/components/parameters/Year'
+  #       - $ref: '#/components/parameters/Expand'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/EnrichedPaginatedInterventions'
+  #           application/sql:
+  #             schema:
+  #               $ref: ''
+  #           text/csv:
+  #             schema:
+  #               $ref: ''
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/maps':
+  #   get:
+  #     tags:
+  #       - Plan
+  #     summary: Returns a hard copy of the plan
+  #     operationId: viewMaps
+  #     parameters:
+  #       - in: header
+  #         name: accept
+  #         description: the returned format
+  #         schema:
+  #           type: string
+  #           default: application/pdf
+  #           enum:
+  #             - application/pdf
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/pdf:
+  #             schema:
+  #               $ref: ''
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/priorities':
+  #   post:
+  #     tags:
+  #       - Priority
+  #     summary: Creates a priority
+  #     description: Allows to create a priority
+  #     operationId: createPriorty
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the priority configuration
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Priority'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   get:
+  #     tags:
+  #       - Priority
+  #     summary: Lists all active priorities
+  #     description: Allows to view all the priorities or priorities by year (annual)
+  #     operationId: viewPriorities
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Year'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/Priority'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/priorities/:id':
+  #   put:
+  #     tags:
+  #       - Priority
+  #     summary: Modifies one priority
+  #     description: Allows to modify a priority
+  #     operationId: modifyPriorties
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #       - $ref: '#/components/parameters/ETag'
+  #     requestBody:
+  #       description: the priority configuration
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Priority'
+  #     responses:
+  #       '204':
+  #         $ref: '#/components/responses/NoContent'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   delete:
+  #     tags:
+  #       - Priority
+  #     summary: Deletes a priority
+  #     description: Allows to delete a priority
+  #     operationId: deletePriority
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/programs':
+  #   post:
+  #     tags:
+  #       - Program
+  #     summary: Creates a program
+  #     description: Allows to create a program
+  #     operationId: createProgram
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the program
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Program'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/programs/:id':
+  #   get:
+  #     tags:
+  #       - Program
+  #     summary: Lists all active programs
+  #     description: Allows to view all the priorities or priorities by year (annual)
+  #     operationId: viewPrograms
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Year'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Program'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   put:
+  #     tags:
+  #       - Program
+  #     summary: Modifies one program
+  #     description: Allows to modify a program
+  #     operationId: modifyProgram
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #       - $ref: '#/components/parameters/ETag'
+  #     requestBody:
+  #       description: the program
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Program'
+  #     responses:
+  #       '204':
+  #         $ref: '#/components/responses/NoContent'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   delete:
+  #     tags:
+  #       - Program
+  #     summary: Deletes a program
+  #     description: Allows to delete a program
+  #     operationId: deleteProgram
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/objectives':
+  #   post:
+  #     tags:
+  #       - Objective
+  #     summary: Creates objectives
+  #     description: Allows to create objectives
+  #     operationId: createObjectives
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the objectives object
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Objective'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   get:
+  #     tags:
+  #       - Objective
+  #     summary: Lists all active objectives
+  #     description: Allows to view all the objectives or objectives by year (annual)
+  #     operationId: viewObjectives
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Year'
+  #       - $ref: '#/components/parameters/ReferenceId'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/Objective'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/objectives/:id':
+  #   put:
+  #     tags:
+  #       - Objective
+  #     summary: Modifies one objective
+  #     description: Allows to modify a objective
+  #     operationId: modifyObjectives
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #       - $ref: '#/components/parameters/ETag'
+  #     requestBody:
+  #       description: the objective object
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Objective'
+  #     responses:
+  #       '204':
+  #         $ref: '#/components/responses/NoContent'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   delete:
+  #     tags:
+  #       - Objective
+  #     summary: Deletes an objective
+  #     description: Allows to delete an objective
+  #     operationId: deletObjective
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/indicators':
+  #   post:
+  #     tags:
+  #       - Indicator
+  #     summary: Creates an indicator
+  #     description: Allows to create an indicator
+  #     operationId: createIndicator
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #     requestBody:
+  #       description: the indicator object
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Indicator'
+  #     responses:
+  #       '201':
+  #         $ref: '#/components/responses/Created'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   get:
+  #     tags:
+  #       - Indicator
+  #     summary: Lists all active indicator
+  #     description: >-
+  #       Allows to view all the indicators or indicator by intervention or
+  #       project
+  #     operationId: viewIndicators
+  #     parameters:
+  #       - $ref: '#/components/parameters/Accept'
+  #       - $ref: '#/components/parameters/Accept-Language'
+  #       - $ref: '#/components/parameters/Year'
+  #       - $ref: '#/components/parameters/ReferenceId'
+  #     responses:
+  #       '200':
+  #         description: Successful
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/Indicator'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '404':
+  #         $ref: '#/components/responses/NotFound'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  # '/indicators/:id':
+  #   put:
+  #     tags:
+  #       - Indicator
+  #     summary: Modifies one indicator
+  #     description: Allows to modify an indicator
+  #     operationId: modifyIndicator
+  #     parameters:
+  #       - $ref: '#/components/parameters/Content-Type'
+  #       - $ref: '#/components/parameters/ETag'
+  #     requestBody:
+  #       description: the reference data
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/Indicator'
+  #     responses:
+  #       '204':
+  #         $ref: '#/components/responses/NoContent'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  #   delete:
+  #     tags:
+  #       - Indicator
+  #     summary: Deletes an indicator
+  #     description: Allows to delete a indicator
+  #     operationId: deleteIndicator
+  #     responses:
+  #       '202':
+  #         $ref: '#/components/responses/Accepted'
+  #       '400':
+  #         $ref: '#/components/responses/InvalidRequest'
+  #       '401':
+  #         $ref: '#/components/responses/Unauthorized'
+  #       '403':
+  #         $ref: '#/components/responses/Forbidden'
+  #       '405':
+  #         $ref: '#/components/responses/InvalidInput'
+  #       '503':
+  #         $ref: '#/components/responses/UnexpectedError'
+  #     security:
+  #       - Bearer: []
+  '/v1/search':
+    post:
+      tags:
+        - Search
+      summary: Returns all interventions that falls within the requested geometry
+      description: >-
+        Allows to filter all the existing interventions that falls within the 
+        requested geometry
+      operationId: spatialFilterAllInterventions
+      requestBody:
+        description: the geometry filter
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Geometry'
+      parameters:
+        - $ref: '#/components/parameters/LogicalLayers'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListedInterventions'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/taxonomies':
+    get:
+      tags:
+        - Taxonomy
+      summary: Recovers all the taxonomies object
+      description: Allows to retrieve all the taxonomies objects
+      operationId: allTaxonomies
+      parameters:
+        - $ref: '#/components/parameters/Accept-Language'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyList'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+    post:
+      tags:
+        - Taxonomy
+      summary: Creates a taxonomy
+      description: Allows to create a taxonomy object
+      operationId: createsTaxonomy
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+      requestBody:
+        description: the taxonomy object to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Taxonomy'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/taxonomies/:id':
+    get:
+      tags:
+        - Taxonomy
+      summary: Recovers a taxonomy object by code
+      description: Allows to retrieve a taxonomy object by code
+      operationId: getTaxonomyByCode
+      parameters:
+        - $ref: '#/components/parameters/Accept-Language'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Taxonomy'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+    put:
+      tags:
+        - Taxonomy
+      summary: Replaces one taxonomy object
+      description: Allows to replace one taxonomy object
+      operationId: replaceOneTaxonomy
+      parameters:
+        - $ref: '#/components/parameters/Content-Type'
+        - $ref: '#/components/parameters/ETag'
+      requestBody:
+        description: the taxonomy object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Taxonomy'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+    delete:
+      tags:
+        - Taxonomy
+      summary: Deletes one taxonomy object
+      description: Allows to delete a taxonomy object
+      operationId: deleteTaxonomy
+      responses:
+        '202':
+          $ref: '#/components/responses/Accepted'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/taxonomies/:group':
+    get:
+      tags:
+        - Taxonomy
+      summary: Recovers all the taxonomies objects for a specific group
+      description: Allows to retrieve all the taxonomies objects for a specific group
+      operationId: allTaxonomiesByGroup
+      parameters:
+        - $ref: '#/components/parameters/Accept-Language'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaxonomyList'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+      security:
+        - Bearer: []
+  '/v1/assets/:source/:id':
+    get:
+      tags:
+        - Asset
+      summary: Gets assets of :id for a logicalLayer as source
+      description: Allows to get the asset information
+      operationId: getAsset
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/InvalidInput'
+        '503':
+          $ref: '#/components/responses/UnexpectedError'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    OpenID:
+      type: openIdConnect
+      openIdConnectUrl: 'https://auth.montreal.ca/oxauth/.well-known/openid-configuration'
+  parameters:
+    Id:
+      in: query
+      name: id
+      description: the id of the requested resource
+      schema:
+        $ref: '#/components/schemas/Uuid'
+    Accept:
+      in: header
+      name: accept
+      description: the returned format
+      schema:
+        type: string
+        default: application/json
+        enum:
+          - application/json
+          - application/sql
+          - text/csv
+          - application/pdf
+    Accept-Language:
+      name: Accept-Language
+      in: header
+      description: The language code
+      required: true
+      schema:
+        type: string
+        default: fr
+        enum:
+          - fr
+          - en
+    Bbox:
+      name: bbox
+      in: query
+      description: The request bounding box (lower bounds - SWL, upper bounds NEU)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/Point3D'
+    Content-Type:
+      name: content-type
+      in: header
+      description: the input format
+      schema:
+        type: string
+        default: application/json
+        enum:
+          - application/json
+    ETag:
+      name: if-match
+      in: header
+      description: the version
+      schema:
+        type: integer
+    Expand:
+      in: query
+      name: expand
+      description: False returns the plain object and true returns an enriched body.
+      schema:
+        type: boolean
+        default: false
+    Limit:
+      in: query
+      name: limit
+      required: false
+      description: The numbers of items to return.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    Offset:
+      in: query
+      name: offset
+      required: false
+      description: The result offset for pagination.
+      schema:
+        type: integer
+        minimum: 1
+    OrderBy:
+      in: query
+      name: orderBy
+      required: false
+      description: |
+        Sort results, for example:
+        -estimate,-priority, +duration
+      schema:
+        type: string
+    Q:
+      in: query
+      name: q
+      required: false
+      description: FullText search
+      schema:
+        type: string
+    Date:
+      in: query
+      name: date
+      required: false
+      description: Search by date
+      schema:
+        type: string
+        pattern: '([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))'
+    Year:
+      in: query
+      name: fromYear
+      required: false
+      description: Filter by year
+      schema:
+        type: integer
+        pattern: '^\d{4}$'
+    FromYear:
+      in: query
+      name: fromYear
+      required: false
+      description: Filter by year low
+      schema:
+        type: integer
+        pattern: '^\d{4}$'
+    ToYear:
+      in: query
+      name: toYear
+      required: false
+      description: Filter by year high (default is fromYear value)
+      schema:
+        type: integer
+        pattern: '^\d{4}$'
+    Type:
+      in: query
+      name: type
+      required: false
+      description: Type of feature
+      schema:
+        type: string
+        enum:
+          - intervention
+          - followup
+          - opportunity
+    LogicalLayers:
+      in: query
+      name: layers
+      schema:
+        type: array
+        items:
+          enum:
+            - horticulture
+            - eau
+            - etc.
+    Status:
+      in: query
+      name: status
+      required: false
+      description: Status
+      schema:
+        type: string
+        enum:
+          - created
+          - submitted
+          - planned
+          - integrated
+          - ordered
+          - designed
+          - worked
+          - completed
+          - archived
+          - reported
+          - replanned
+          - canceled
+          - deleted
+    ReferenceId:
+      in: query
+      name: referenceId
+      required: false
+      description: For the intervention or the project
+      schema:
+        type: string
+    Fields:
+      in: query
+      name: fields
+      required: false
+      description: Comma separated list or array of strings of fields/attributes to return
+      schema:
+        type: string
+    TermId:
+      name: termId
+      in: path
+      description: TaxonomyTerm id
+      required: true
+      schema:
+        type: string
+    TaxonomyCodeQuery:
+      name: taxonomyCode
+      in: query
+      description: 'The taxonomyCode: WorkType, Requestor, Borough, Status, etc.'
+      schema:
+        type: string
+    TaxonomyCode:
+      name: taxonomyCode
+      in: query
+      description: 'The taxonomyCode: WorkType, Requestor, Borough, Status, etc.'
+      required: true
+      schema:
+        type: string
+    TermCode:
+      name: termCode
+      in: query
+      description: 'The termCode: rehab, rtu, vdm, created, etc.'
+      schema:
+        type: string
+  responses:
+    Created:
+      description: The resource has been created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Created'
+    Accepted:
+      description: The resource was deleted
+    NoContent:
+      description: No content
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InvalidRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden access
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InvalidInput:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    UnexpectedError:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    PlainIntervention:
+      type: object
+      description: >-
+        a plain intervention feature
+        write - for taxonomyCode
+        read -
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        interventionTypeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        isInitial:
+          type: boolean
+          description: '"true" when initially created as a type:intervention by a user , "false" otherwise'
+          example: true
+          default: 1
+        workTypeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        requestorId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        boroughId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        status:
+          description: reinforced (populated && || validated) by the state machine
+          type: string
+        targetDate:
+          $ref: '#/components/schemas/Date'
+        duration:
+          description: in years
+          $ref: '#/components/schemas/Interval'
+        estimate:
+          type: integer
+          description: the initial work estimate in dollars
+          format: amount
+          example: 100000
+        programId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        contactInfoId:
+          description: list of contact as of v1, the user identity by default as of v2 ++
+          type: string
+        asset:
+          description: external resource
+          $ref: '#/components/schemas/Asset'
+        interventionArea:
+          description: union of external resources
+          $ref: '#/components/schemas/InterventionArea'
+        roadSections:
+          description: external resources
+          type: array
+          items:
+            $ref: '#/components/schemas/Uuid'
+      required:
+        - interventionTypeId
+        - isInitial
+        - workTypeId
+        - requestorId
+        - boroughId
+        - targetDate
+        - duration
+        - estimate
+        - contactInfoId
+        - roadSections
+        - asset
+        - interventionArea
+    PlainPaginatedInterventions:
+      type: object
+      description: a paginated collection of interventions
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlainIntervention'
+    EnrichedIntervention:
+      type: object
+      description: an enriched intervention feature
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        version:
+          type: integer
+        referenceId:
+          $ref: '#/components/schemas/ReferenceId'
+        interventionTypeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        isInitial:
+          type: boolean
+          example: true
+          default: 1
+        workTypeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        requestorId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        boroughId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        status:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        targetDate:
+          $ref: '#/components/schemas/Date'
+        duration:
+          $ref: '#/components/schemas/Interval'
+        estimate:
+          type: integer
+          format: amount
+          description: the initial work estimate in dollars
+          example: 100000
+        project:
+          $ref: '#/components/schemas/Project'
+        programId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        contactInfoId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        referencedInterventions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Uuid'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        contraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Constraint'
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+        asset:
+          $ref: '#/components/schemas/Asset'
+        interventionArea:
+          $ref: '#/components/schemas/InterventionArea'
+        roadSections:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoadSection'
+        audit:
+          $ref: '#/components/schemas/Audit'
+    EnrichedPaginatedInterventions:
+      type: object
+      description: a paginated collection of interventions
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrichedIntervention'
+    EnrichedInterventionHistory:
+      type: array
+      description: the list of enriched content of an historical intervention feature
+      items:
+        $ref: '#/components/schemas/EnrichedIntervention'
+    ListedInterventions:
+      type: array
+      description: a limited list of plain interventions
+      items:
+        $ref: '#/components/schemas/PlainIntervention'
+    PlainProject:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        referenceId:
+          $ref: '#/components/schemas/ReferenceId'
+        projectTypeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        boroughId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        status:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        targetDate:
+          $ref: '#/components/schemas/Date'
+        duration:
+          type: integer
+          example: 365
+        globalBudget:
+          $ref: '#/components/schemas/Budget'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+    PlainPaginatedProjects:
+      type: object
+      description: a paginated collection of plain projects
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlainProject'
+    EnrichedProject:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        projectTypeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        boroughId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        executorId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        status:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        targetDate:
+          $ref: '#/components/schemas/Date'
+        duration:
+          type: integer
+          example: 365
+        contactInfo:
+          $ref: '#/components/schemas/Taxonomy'
+        phases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Phase'
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        contraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Constraint'
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        audit:
+          $ref: '#/components/schemas/Audit'
+    EnrichedPaginatedProjects:
+      type: object
+      description: a paginated collection of enriched projects
+      properties:
+        paging:
+          $ref: '#/components/schemas/Paging'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrichedProject'
+    Project:
+      type: object
+      description: the project integration
+      properties:
+        id:
+          $ref: '#/components/schemas/ReferenceId'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+    Phase:
+      type: object
+      description: the project phase
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        startDate:
+          $ref: '#/components/schemas/Date'
+        endDate:
+          $ref: '#/components/schemas/Date'
+        budget:
+          $ref: '#/components/schemas/Budget'
+        submissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Submission'
+    Submission:
+      type: object
+      description: a submission
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        projectIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Uuid'
+        submitter:
+          type: string
+    Comment:
+      type: object
+      description: the comments on the intervention
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        categoryId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        text:
+          type: string
+          description: the body content of the comment
+          example: This is a comment
+        isPublic:
+          type: boolean
+          default: true
+        audit:
+          $ref: '#/components/schemas/Audit'
+      required:
+        - type
+        - category
+        - text
+    Attachment:
+      type: object
+      description: the attached documents
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        name:
+          type: string
+          example: Intervention plan
+        isValidId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        referenceUri:
+          $ref: '#/components/schemas/Uri'
+        toShare:
+          type: boolean
+          default: true
+        notes:
+          type: array
+          items:
+            type: string
+            example: This is a note
+        audit:
+          $ref: '#/components/schemas/Audit'
+      required:
+        - type
+        - isValid
+        - referenceUri
+    Constraint:
+      type: object
+      description: the constraints on the intervention
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        text:
+          type: string
+          example: This is a constraint description
+        referenceIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Uuid'
+        audit:
+          $ref: '#/components/schemas/Audit'
+    Decision:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        text:
+          type: string
+          description: the body content of the rational
+          example: Replanned in 2025 for a good reason
+        audit:
+          $ref: '#/components/schemas/Audit'
+      required:
+        - type
+        - text
+    Rule:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        startDate:
+          $ref: '#/components/schemas/Date'
+        endDate:
+          $ref: '#/components/schemas/Date'
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+      required:
+        - type
+        - startDate
+        - endDate
+        - geometry
+    Budget:
+      type: object
+      properties:
+        allowance:
+          type: integer
+        burnedDown:
+          type: integer
+        balance:
+          type: integer
+    Priority:
+      type: object
+      properties:
+        id:
+          type: number
+        weights:
+          type: array
+          items:
+            $ref: '#/components/schemas/PriorityWeight'
+        audit:
+          $ref: '#/components/schemas/Audit'
+    PriorityWeight:
+      type: object
+      properties:
+        id:
+          type: number
+        code:
+          type: number
+          example: 100
+        value:
+          type: number
+          example: 1
+    Objective:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        organizationId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        length:
+          type: number
+        types:
+          type: array
+          itemsId:
+            type: string
+            description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        budget:
+          type: number
+        year:
+          type: number
+        audit:
+          $ref: '#/components/schemas/Audit'
+    Indicator:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+          default: 'ref'
+        categoryId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+          default: 'budget'
+        value:
+          type: number
+        audit:
+          $ref: '#/components/schemas/Audit'
+    Asset:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ReferenceId'
+        typeId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        ownerId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        length:
+          $ref: '#/components/schemas/Length'
+        sourceId:
+          type: string
+          description: code de taxonomie appartenant au groupe GROUPE_TAXO
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+      required:
+        - id
+        - typeId
+        - ownerId
+        - sourceId
+        - geometry
+    AssetList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Asset'
+    InterventionArea:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ReferenceId'
+        isEdited:
+          type: boolean
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+      required:
+        - id
+        - geometry
+    RoadSection:
+      type: array
+      items:
+        $ref: '#/components/schemas/Uuid'
+    Taxonomy:
+      type: object
+      description: the taxonomy object
+      required:
+        - group
+        - code
+        - label
+      properties:
+        id:
+          type: string
+        group:
+          type: string
+        code:
+          type: string
+        label:
+          $ref: '#/components/schemas/LocalizedText'
+        description:
+          $ref: '#/components/schemas/LocalizedText'
+        isActive:
+          type: boolean
+        displayOrder:
+          type: number
+        valueString1:
+          type: string
+        valueString2:
+          type: string
+        valueBoolean1:
+          type: boolean
+    TaxonomyList:
+      type: 'array'
+      items:
+        $ref: '#/components/schemas/Taxonomy'
+    Audit:
+      type: object
+      description: Audit fields following vdm standard
+      properties:
+        createdAt:
+          $ref: '#/components/schemas/Date'
+        createdBy:
+          $ref: '#/components/schemas/Author'
+        lastModifiedAt:
+          $ref: '#/components/schemas/Date'
+        lastModifiedBy:
+          $ref: '#/components/schemas/Author'
+        expiredAt:
+          $ref: '#/components/schemas/Date'
+        expiredBy:
+          $ref: '#/components/schemas/Author'
+      readOnly: true
+    Uuid:
+      type: string
+      description: The id of the object
+      pattern: '^[\.@!0-9a-fA-Z]*$'
+      example: '2819c223-7f76-453a-919d-413861904646'
+      readOnly: true
+    ReferenceId:
+      type: string
+      description: The external reference id of the object
+      pattern: '^[\.@!0-9a-fA-Z]*$'
+      example: '28.12'
+    Uri:
+      type: string
+      description: the uri of a document
+      pattern: '^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?'
+      example: 'https://storage.ville.montreal.qc.ca/store/doc/id'
+    Author:
+      type: string
+      example: Blanche Larose
+    Date:
+      type: string
+      description: 'a date used a timestamp, start and end dates'
+      format: date-time
+      example: '2019-05-13T08:42:34Z'
+    Interval:
+      type: string
+      format: day-time
+      description: a number of day
+      example: '365'
+    Geometry:
+      type: object
+      description: GeoJSon geometry object
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html
+      properties:
+        type:
+          $ref: '#/components/schemas/GeometryType'
+        coordinates:
+          oneOf:
+            - $ref: '#/components/schemas/Point'
+            - $ref: '#/components/schemas/LineString'
+            - $ref: '#/components/schemas/Polygon'
+      required:
+        - type
+        - coordinates
+      discriminator:
+        propertyName: type
+    GeometryType:
+      type: string
+      description: The type of the feature's geometry
+      enum:
+        - Polygon
+        - Point
+        - LineString
+    Point:
+      $ref: '#/components/schemas/Point3D'
+    LineString:
+      type: array
+      items:
+        $ref: '#/components/schemas/Point3D'
+      minItems: 2
+    Polygon:
+      type: array
+      items:
+        type: array
+        items:
+          $ref: '#/components/schemas/Point3D'
+      minItems: 4
+    Point3D:
+      type: array
+      description: Point in 3D space
+      minItems: 2
+      maxItems: 3
+      items:
+        type: number
+    Paging:
+      type: object
+      properties:
+        offset:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    Created:
+      required:
+        - created
+      properties:
+        id:
+          $ref: '#/components/schemas/Uuid'
+    ErrorResponse:
+      required:
+        - error
+      properties:
+        error:
+          $ref: '#/components/schemas/ApiError'
+    ApiError:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiError'
+        innererror:
+          $ref: '#/components/schemas/ApiInnerError'
+    ApiInnerError:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        innererror:
+          $ref: '#/components/schemas/ApiInnerError'
+      additionalProperties:
+        type: string
+    LocalizedText:
+      type: object
+      properties:
+        fr:
+          type: string
+        en:
+          type: string
+    Length:
+      type: object
+      properties:
+        value:
+          type: number
+        unit:
+          type: string
+          enum:
+            - m
+            - ft

@@ -1,0 +1,40 @@
+<div class="d-flex flex-column">
+  <h4 class="d-block mt-4 mb-3">Détails</h4>
+  <ng-container *ngIf="!isInitializingProgramBookSummary">
+    <table class="table-sm-responsive col-6" *ngIf="programBook && annualProgram">
+      <tbody class="table-label-value">
+        <tr>
+          <td class="row-title">Responsable</td>
+          <td>{{ programBook.inCharge | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Exécutant</td>
+          <td>{{ annualProgram?.executorId | appTaxonomy: TaxonomyGroup.executor }}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Arrondissement</td>
+          <td>{{ programBook.boroughIds | vdmJoinAllBoroughs: ', ' }}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Types de projets acceptés</td>
+          <td>{{ programBook.projectTypes | appTaxonomy: TaxonomyGroup.projectType | vdmJoin: ', ' }}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Programme(s)</td>
+          <td>{{ programBook.programTypes | appTaxonomy: TaxonomyGroup.programType | vdmJoin: ', ' | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Description</td>
+          <td>{{ programBook.description | vdmNa }}</td>
+        </tr>
+        <tr *ngIf="programBook.sharedRoles?.length">
+          <td class="row-title">Partagé avec</td>
+          <td>{{ programBook.sharedRoles | appTaxonomy: TaxonomyGroup.role | vdmJoin: ', ' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <app-program-book-composition *ngIf="programBook" [programBook]="programBook"></app-program-book-composition>
+  </ng-container>
+
+  <app-spinner *ngIf="isInitializingProgramBookSummary" class="d-flex mx-auto mt-1"></app-spinner>
+</div>

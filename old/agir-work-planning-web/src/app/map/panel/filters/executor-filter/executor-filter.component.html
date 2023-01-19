@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form" *ngIf="form && executors$">
+  <span title>Exécutants</span>
+  <app-filter-item-layout
+    [items]="executors$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="executors"
+  ></app-filter-item-layout>
+</app-filter-layout>

@@ -1,0 +1,29 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": null,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": []
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsBudgetSE",
+      "status": "failure",
+      "numberOfItems": null,
+      "errorDescription": "Les colonnes PrevTravaux sont manquantes",
+      "projects": [],
+      "interventions": []
+    }
+  ]
+}

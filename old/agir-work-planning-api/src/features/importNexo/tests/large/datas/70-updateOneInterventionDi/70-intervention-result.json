@@ -1,0 +1,167 @@
+[
+  {
+    "id": "I00004",
+    "audit": "A_IGNORER",
+    "moreInformationAudit": "A_IGNORER",
+    "executorId": "di",
+    "interventionName": "This is the intervention name.",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "contact": "This is the contact.",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dre",
+        "length": {
+          "unit": "m",
+          "value": "A_IGNORER"
+        },
+        "geometry": "A_IGNORER"
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 42,
+      "burnedDown": 0,
+      "balance": 42
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 42,
+          "annualLength": "A_IGNORER",
+          "accountId": 0,
+          "year": 2040,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 42,
+        "totalLength": "A_IGNORER",
+        "note": null
+      }
+    },
+    "decisionRequired": false,
+    "streetName": "streetName",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "roadSections": "A_IGNORER",
+    "roadNetworkTypeId": "local",
+    "comments": [],
+    "project": {
+      "id": "P00002",
+      "typeId": "integrated"
+    },
+    "documents": []
+  },
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "di",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'aqueduc / Rue random 1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "endYear": 2040,
+    "programId": null,
+    "contact": "Yoda",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 42
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55778515338898, 45.50266148506185],
+            [-73.5577194392681, 45.50270472265968]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-DI-5312425"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5312425"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 420,
+      "burnedDown": 0,
+      "balance": 420
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 420,
+          "annualLength": 0.042,
+          "accountId": 123456,
+          "year": 2040,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 420,
+        "totalLength": 0.042,
+        "note": null
+      }
+    },
+    "decisionRequired": false,
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "comments": [
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "information",
+        "id": "A_IGNORER",
+        "isProjectVisible": false,
+        "isPublic": true,
+        "text": "This is the comment content."
+      }
+    ],
+    "project": {
+      "id": "P00002",
+      "typeId": "integrated"
+    },
+    "documents": [
+      {
+        "audit": "A_IGNORER",
+        "documentName": "interventionDocument",
+        "fileName": "test-pdf.pdf",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "notes": "notes",
+        "objectId": "A_IGNORER",
+        "type": "other",
+        "validationStatus": "validated"
+      }
+    ]
+  }
+]

@@ -1,0 +1,100 @@
+[
+  {
+    "id": "P00001",
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": null,
+    "boroughId": "VM",
+    "executorId": "dre",
+    "externalReferenceIds": [ 
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DI"
+      }
+    ],
+    "geometry": "A_IGNORER",
+    "globalBudget": {
+      "allowance": 42
+    },
+    "importFlag": "import-nexo",
+    "inChargeId": "dre",
+    "interventionIds": [ "I00001" ],
+    "servicePriorities": [],
+    "projectName": "PI - Standard / sur Rue random 1, de Rue random 2, à Rue random 3",
+    "projectTypeId": "integrated",
+    "startYear": 2020,
+    "endYear": 2020,
+    "status": "planned",
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [ 
+        {
+          "rank": 0,
+          "year": 2020,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 42,
+          "status": "planned",
+          "categoryId": "new",
+          "interventionIds": [ "I00001" ],
+          "interventionsTotalBudget": 42
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 42,
+        "additionalCostTotals": [ 
+          {
+            "type": "contingency",
+            "amount": 0
+          }, 
+          {
+            "type": "others",
+            "amount": 0
+          }, 
+          {
+            "type": "professionalServices",
+            "amount": 0
+          }, 
+          {
+            "type": "workExpenditures",
+            "amount": 0
+          }
+        ],
+        "totalAdditionalCosts": 0,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 42
+      }
+    },
+    "comments": [],
+    "decisions": [],
+    "documents": [],
+    "geometryPin": "A_IGNORER",
+    "length": {
+      "unit": "m",
+      "value": 42
+    },
+    "medalId": null
+  }
+]

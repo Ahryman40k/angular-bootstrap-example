@@ -1,0 +1,25 @@
+{
+  "projectTypeId": "integrated",
+  "projectName": "This is a project name.",
+  "boroughId": "VM",
+  "status": null,
+  "executorId": "di",
+  "startYear": 2040,
+  "endYear": 2040,
+  "streetName": "This is a street name.",
+  "geometry": {
+    "type":"Polygon",
+    "coordinates":[[[-73.553968, 45.504173], [-73.553998, 45.50418], [-73.554, 45.504177], [-73.554373, 45.503508], [-73.554311, 45.503498], [-73.554313, 45.503508], [-73.553938, 45.504165], [-73.553968, 45.504173]]]
+  },
+  "interventionIds": [
+    "I00002"
+  ],
+  "inChargeId": "dre",
+  "globalBudget": {
+    "allowance": 75
+  },
+  "subCategoryIds": [
+    "successive",
+    "priority"
+  ]
+}

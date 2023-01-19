@@ -1,0 +1,19 @@
+@import '../../../../styles/core/variables';
+
+@import '../../../../styles/core/fonts';
+
+$content-height: 538px;
+$asset-item-min-height: 56px;
+$mt-half-rem: 0.25rem;
+
+.asset-item {
+  min-height: $asset-item-min-height;
+}
+
+.hovered {
+  background-color: $color-gray-200;
+}
+
+.mt-half {
+  margin-top: $mt-half-rem;
+}

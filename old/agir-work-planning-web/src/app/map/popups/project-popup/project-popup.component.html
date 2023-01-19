@@ -1,0 +1,4 @@
+<app-popup-layout [colorClass]="project | appProjectColor">
+  <app-project-card *ngIf="project" [project]="project"></app-project-card>
+  <app-spinner *ngIf="!project" class="d-flex mx-auto"></app-spinner>
+</app-popup-layout>

@@ -1,0 +1,11 @@
+<div ngbDropdown [class.d-none]="!hasItems" [placement]="dropdownPlacement" [container]="dropdownContainer">
+  <button class="btn btn-icon btn-icon-only {{ buttonClass }}" ngbDropdownToggle appStopProp [disabled]="disabled">
+    <i class="icon icon-more-vertical" aria-hidden="true"></i>
+  </button>
+  <div #dropdownMenu ngbDropdownMenu>
+    <ng-container *ngFor="let item of shownItems">
+      <app-more-options-menu-item [item]="item"></app-more-options-menu-item>
+    </ng-container>
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Statuts des interventions</span>
+  <app-filter-item-layout
+    [items]="interventionStatuses$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="interventionStatuses"
+  ></app-filter-item-layout>
+</app-filter-layout>
+<app-filter-layout [formGroup]="formWaiting">
+  <span title>En attente</span>
+  <app-filter-item-layout
+    [items]="waitingStatuses$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    [multiSelect]="false"
+    bindIcon="icon"
+    formControlName="interventionStatuses"
+  ></app-filter-item-layout>
+</app-filter-layout>

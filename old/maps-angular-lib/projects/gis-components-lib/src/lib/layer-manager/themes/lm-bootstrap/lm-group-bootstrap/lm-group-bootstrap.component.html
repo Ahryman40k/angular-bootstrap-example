@@ -1,0 +1,56 @@
+<div class="card">
+  <div
+    class="card-header btn btn-link collapsed"
+    [ngClass]="{ 'card-header btn btn-link collapsed': true, 'super-group-header': isSuperGroup }"
+    [id]="'heading-' + idAttr"
+    data-toggle="collapse" 
+    [attr.data-target]="dataTarget" 
+    aria-expanded="false"
+    [attr.aria-controls]="dataAriaControl"
+  >
+    <div class="card-header-right-part">
+      <div [ngClass]="onDetermineCheckClasses(layerGroup)">
+        <input
+          type="checkbox"
+          [checked]="layerGroup.isChecked"
+          [disabled]="!layerGroup.isActive"
+          (click)="onPreventCollapsing($event)"
+          (change)="onToggle($event.target.checked, layerGroup)"
+        />
+        <i class="fa fa-check"></i>
+      </div>
+      <p [ngClass]="onDetermineGroupLabelClasses(layerGroup)">{{ layerGroup.label }}</p>
+    </div> 
+    <i class="fa fa-angle-right"></i>
+  </div>
+
+  <div [id]="idAttr" class="collapse" [attr.aria-labelledby]="'heading-' + idAttr">
+    <div class="card-body">
+      <ul>
+        <ng-container *ngIf="layerGroup.layers">
+          <li class="nested-layer" 
+              *ngFor="let layer of layerGroup.layers">
+            <div [ngClass]="onDetermineCheckClasses(layer)">
+              <input
+                type="checkbox"
+                [checked]="layer.isChecked"
+                [disabled]="!layer.isActive"
+                (change)="onToggle($event.target.checked, layer)"
+              />
+              <i class="fa fa-check"></i>
+            </div>
+            <p [ngClass]="layer.isActive ? 'label-active' : 'label-inactive'">{{ layer.label }}</p>
+          </li>
+        </ng-container>
+        <li *ngIf="layerGroup.layerGroups">
+          <vdm-lm-group-bootstrap
+            *ngFor="let group of layerGroup.layerGroups"
+            [layerGroup]="group"
+            (toggle)="onToggle($event.checked, $event.logicalCorrespondance)"
+          >
+          </vdm-lm-group-bootstrap>
+        </li>
+      </ul>
+    </div> 
+  </div>
+</div>

@@ -1,0 +1,48 @@
+@import 'variables';
+
+.invalid-feedback {
+  display: block;
+  color: $danger;
+}
+
+.custom-control-input {
+  left: 0;
+}
+
+:disabled {
+  background-color: $color-gray-100 !important;
+}
+
+.form-group > label {
+  @extend .font-weight-bold;
+}
+.form-group.row label {
+  text-align: right;
+}
+.hint {
+  @extend .form-text;
+  @extend .text-muted;
+}
+
+.form-group > label > .hint {
+  display: inline-block;
+  margin: 0;
+}
+
+.form-optional {
+  font-weight: normal;
+}
+
+.field-optional {
+  color: $color-gray-500;
+  font-style: italic;
+}
+.optgroup {
+  color: $color-black;
+}
+.ng-option-child {
+  padding-left: 10px !important;
+}
+.padding-search-icon .input-group {
+  padding-left: 10px !important;
+}

@@ -1,0 +1,17 @@
+@import '../../../../../styles/core/variables';
+$refresh-button-width: 30px;
+$refresh-button-height: 30px;
+
+.refresh-button {
+  border-radius: $map-control-border-radius;
+  background-color: $color-white;
+  width: $refresh-button-width;
+  height: $refresh-button-height;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-gray-100;
+  }
+}
+.disabled {
+  pointer-events: none;
+}

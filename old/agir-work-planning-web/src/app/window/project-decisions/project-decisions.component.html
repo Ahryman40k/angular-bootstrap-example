@@ -1,0 +1,35 @@
+<app-details-layout>
+  <span title>Décisions</span>
+  <div actions>
+    <app-details-add-button
+      *ngIf="(Permission.PROJECT_DECISION_WRITE | appPermission) && (projectRestrictionItems | appRestrictions)"
+      (onAdd)="openCreationModal()"
+      [disabled]="!canInteract"
+    ></app-details-add-button>
+  </div>
+  <app-no-result
+    *ngIf="!(decisions$ | async)?.length"
+    message="Il n'y a pas de décisions dans ce projet pour l'instant."
+  ></app-no-result>
+  <app-list-item *ngFor="let decision of decisions$ | async">
+    <span title>{{ decision.typeId | appTaxonomy: 'projectDecisionType' }}</span>
+    <span description>
+      <label>{{ decision.audit?.createdBy.displayName }}</label>
+      <label>Créé le {{ decision.audit?.createdAt | date: 'longDate' }}</label>
+    </span>
+    <span description-details>
+      <label *ngIf="decision.previousStartYear && decision.previousEndYear">
+        Période précédente: {{ decision.previousStartYear }} à {{ decision.previousEndYear }}
+      </label>
+      <label *ngIf="decision.startYear && decision.endYear">
+        Nouvelle période: {{ decision.startYear }} à {{ decision.endYear }}
+      </label>
+    </span>
+    <app-list-item-details>
+      <app-list-item-details-field>
+        <span title>Justificatifs</span>
+        <span description>{{ decision.text }}</span>
+      </app-list-item-details-field>
+    </app-list-item-details>
+  </app-list-item>
+</app-details-layout>

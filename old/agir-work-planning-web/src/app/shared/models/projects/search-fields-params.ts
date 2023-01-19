@@ -1,0 +1,20 @@
+export const PROJECT_SEARCH_FIELDS_PARAMS = [
+  'startYear',
+  'endYear',
+  'projectName',
+  'projectTypeId',
+  'interventionIds',
+  'annualDistribution.annualPeriods.categoryId',
+  'annualDistribution.annualPeriods.status',
+  'annualDistribution.annualPeriods.year',
+  'annualDistribution.annualPeriods.programBookId',
+  'annualDistribution.annualPeriods.programBook._id',
+  'annualDistribution.annualPeriods.programBook.annualProgramId',
+  'annualDistribution.annualPeriods.programBook.name',
+  'status',
+  'submissionNumber',
+  'drmNumber',
+  'globalBudget',
+  'executorId',
+  'boroughId'
+];

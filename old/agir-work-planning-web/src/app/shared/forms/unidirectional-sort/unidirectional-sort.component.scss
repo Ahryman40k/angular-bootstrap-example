@@ -1,0 +1,9 @@
+@import '../../../../styles/core/variables';
+
+.sort-down {
+  transform: rotate(180deg);
+}
+
+.sort-width {
+  min-width: $sort-width;
+}

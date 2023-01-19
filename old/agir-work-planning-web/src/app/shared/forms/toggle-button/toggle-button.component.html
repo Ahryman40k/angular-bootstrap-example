@@ -1,0 +1,9 @@
+<button
+  type="button"
+  (click)="onToggle()"
+  [class.toggle-active]="value"
+  class="btn btn-icon btn-squared button-toggle border"
+>
+  <span class="flex-grow-1 {{ icon }} p-0 justify-content-center"></span>
+  {{ label }}
+</button>

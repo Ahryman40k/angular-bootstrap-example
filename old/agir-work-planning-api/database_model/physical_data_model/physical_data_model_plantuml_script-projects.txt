@@ -1,0 +1,151 @@
+@startuml
+
+title Modèle Physique de données - Projects
+
+object audit {
+  O | **createdAt** : DateTime
+  O | **createdByUserName** : String
+  O | **createdByDisplayName** : String
+  O | **lastModifiedAt** : DateTime
+  O | **lastModifiedByUserName** : String
+  O | **lastModifiedByDisplayName** : String
+  O | **expiredAt** : DateTime
+  O | **expiredByUserName** : String
+  O | **expiredByDisplayName** : String
+}
+
+object projects {
+  M | **_id** : String
+  M | **boroughId** : String
+  M | **executorId** : String
+  M | **startYear** : Int
+  M | **endYear** : Int
+  O | **interventionIds** : String[]
+  O | **interventions** : ObjectId[] **FK**
+  O | **programBookId** : ObjectId **FK**
+  O | **subCategoryIds** : String[]
+  O | **projectName** : String
+  O | **referenceId** : String
+  O | **projectTypeId** : String
+  O | **status** : String
+  O | **streetName** : String
+  O | **streetFrom** : String
+  O | **streetTo** : String
+  O | **geometry** : Object
+  O | **geometryPin** : Object
+  O | **importFlag** : String
+  O | **roadNetworkTypeId** : String
+  O | **inChargeId** : String
+  O | **medalId** : String
+  O | **riskId** : String
+  O | **lengthValue** : Int
+  O | **lengthUnit** : String
+}
+
+object globalBudget {
+  O | **allowance** : Int
+  O | **burnedDown** : Int
+  O | **balance** : Int
+}
+
+object externalReferenceIds {
+  M | **type** : String
+  M | **value** : String
+}
+
+object distributionSummary {
+  O | **totalBudget** : Int
+  O | **totalAdditionalCosts** : Int
+  O | **totalInterventionBudgets** : Int
+}
+
+object additionalCost {
+  O | **type** : String
+  O | **amount** : Int
+  O | **accountId** : Int
+  O | **note** : String
+}
+
+object totalAnnualBudget {
+  O | **_id** : String
+  O | **totalAllowance** : Int
+  O | **totalLength** : Int
+  O | **note** : String
+}
+
+object annualPeriods {
+  O | **rank** : Int
+  O | **year** : Int
+  O | **annualBudget** : Int
+  O | **annualAllowance** : Int
+  O | **accountId** : Int
+  O | **categoryId** : String
+  O | **interventionIds** : String[]
+  O | **programBookId** : ObjectId **FK**
+  O | **bidNumber** : String
+  O | **additionalCostsTotalBudget** : Int
+  O | **interventionsTotalBudget** : Int
+  O | **status** : String
+}
+
+object requirements {
+  M | **_id** : ObjectId
+  M | **categoryId** : String
+  M | **typeId** : String
+  M | **text** : String
+  O | **requestorId** : String
+  O | **referenceIds** : String[]
+}
+
+object decisions {
+  M | **_id** : ObjectId
+  M | **typeId** : String
+  M | **text** : String
+  O | **previousStartYear** : Int
+  O | **previousEndYear** : Int
+  O | **startYear** : Int
+  O | **endYear** : Int
+  O | **refusalReasonId** : String
+}
+
+object comments {
+  M | **_id** : ObjectId
+  M | **categoryId** : String
+  M | **text** : String
+  O | **isPublic** : Boolean
+  O | **isProjectVisible** : Boolean
+}
+
+object documents {
+  M | **_id** : ObjectId
+  M | **fileName** : String
+  M | **documentName** : String
+  M | **isProjectVisible** : String
+  M | **objectId** : String
+  O | **notes** : String
+}
+
+
+
+projects o-- "1..2" audit
+
+projects o-- "0..1" globalBudget
+projects o-- "0..n" externalReferenceIds
+projects o-- "0..1" distributionSummary
+projects o-- "0..n" annualPeriods
+projects o-- "0..n" requirements
+projects o-- "0..n" decisions
+projects o-- "0..n" comments
+projects o-- "0..n" documents
+
+distributionSummary o-- "0..n" additionalCost
+distributionSummary o-- "0..1" totalAnnualBudget
+
+annualPeriods o-- "0..n" additionalCost
+
+requirements o-- "0..1" audit
+decisions o-- "0..1" audit
+comments o-- "0..1" audit
+documents o-- "0..1" audit
+
+@enduml

@@ -1,0 +1,159 @@
+{
+  "assets": [
+    {
+      "id": "5311806",
+      "typeId": "aqueductSegment",
+      "ownerId": "dre",
+      "length": {
+        "value": 46.851990636307875,
+        "unit": "m"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-73.554318, 45.503531], [-73.554245, 45.503655], [-73.554094, 45.503922]]
+      },
+      "properties": {
+        "rehabilitationYear": null,
+        "installationYear": 1895,
+        "noChambreSurPlanCle": "",
+        "noGeobaseSection": 1380152,
+        "idGcaf": 371952,
+        "territory": "VILLE-MARIE",
+        "assetStatus": "EXISTANT",
+        "proposalStatus": null,
+        "assetPositionStatus": "REELLE",
+        "owner": "VILLE DE MONTREAL",
+        "tankName": "MCTAVISH",
+        "noRegulationSector": "",
+        "noAsset": 841810,
+        "sectionHierarchy": "A",
+        "address": "118 rue de la Capitale ",
+        "jurisdiction": "LOCALE",
+        "operationalState": "FONCTIONNEL",
+        "operationalManager": "VILLE-MARIE",
+        "diameter": 6,
+        "aqueductSegmentType": "RESEAU",
+        "aqueductRehabilitationType": "NON APPLICABLE",
+        "aqueductSegmentMaterial": "FONTE GRISE",
+        "rehabilidationDate": "",
+        "abandonmentDate": "",
+        "networkClassification": "SECONDAIRE",
+        "length": 46.84,
+        "serviceStatus": "EN SERVICE",
+        "installationDate": "1895-01-01T00:00:00"
+      }
+    },
+    {
+      "id": "123456",
+      "typeId": "aqueductSegment",
+      "ownerId": "dre",
+      "length": {
+        "value": 27.192991737634078,
+        "unit": "m"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -73.5539723932743,
+            45.504181360687454
+          ],
+          [
+            -73.55409309267996,
+            45.50394449965264
+          ]
+        ]
+      },
+      "properties": {
+        "rehabilitationYear": null,
+        "installationYear": 1895,
+        "noChambreSurPlanCle": "",
+        "noGeobaseSection": 1380152,
+        "idGcaf": 371952,
+        "territory": "VILLE-MARIE",
+        "assetStatus": "EXISTANT",
+        "proposalStatus": null,
+        "assetPositionStatus": "REELLE",
+        "owner": "VILLE DE MONTREAL",
+        "tankName": "MCTAVISH",
+        "noRegulationSector": "",
+        "noAsset": 841810,
+        "sectionHierarchy": "A",
+        "address": "118 rue de la Capitale ",
+        "jurisdiction": "LOCALE",
+        "operationalState": "FONCTIONNEL",
+        "operationalManager": "VILLE-MARIE",
+        "diameter": 6,
+        "aqueductSegmentType": "RESEAU",
+        "aqueductRehabilitationType": "NON APPLICABLE",
+        "aqueductSegmentMaterial": "FONTE GRISE",
+        "rehabilidationDate": "",
+        "abandonmentDate": "",
+        "networkClassification": "SECONDAIRE",
+        "length": 46.84,
+        "serviceStatus": "EN SERVICE",
+        "installationDate": "1895-01-01T00:00:00"
+      }
+    }
+  ],
+  "boroughId": "VM",
+  "estimate": 150,
+  "interventionArea": {
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [[[-73.553968, 45.504173], [-73.553998, 45.50418], [-73.554, 45.504177], [-73.554013, 45.504152], [-73.554373, 45.503508], [-73.554344, 45.503503], [-73.554341, 45.503503], [-73.554311, 45.503498], [-73.554312, 45.503499], [-73.554313, 45.5035], [-73.554313, 45.503501], [-73.554313, 45.503502], [-73.554313, 45.503504], [-73.554313, 45.503505], [-73.554313, 45.503506], [-73.554313, 45.503507], [-73.554313, 45.503508], [-73.554312, 45.503509], [-73.554311, 45.50351], [-73.554311, 45.503511], [-73.553938, 45.504165], [-73.553968, 45.504173], [-73.553968, 45.504173]]]
+    },
+    "isEdited": false
+  },
+  "interventionName": "Reconstruction / Segment d'aqueduc / nouvelle rue",
+  "interventionTypeId": "initialNeed",
+  "interventionYear": 2040,
+  "medalId": null,
+  "planificationYear": 2040,
+  "requestorId": "dre",
+  "executorId": "dre",
+  "workTypeId": "reconstruction",
+  "audit": null,
+  "contact": "Obiwan",
+  "decisionRequired": true,
+  "id": "I00002",
+  "importFlag": null,
+  "programId": "sae",
+  "roadSections": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "road-sections.17142",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [[-73.553948, 45.504204], [-73.553967, 45.504165], [-73.554343, 45.503495], [-73.554368, 45.503438]]
+        },
+        "properties": {
+          "id": 1380152,
+          "name": "rue de la Capitale ",
+          "shortName": "Capitale",
+          "fromName": "rue Saint-Sulpice ",
+          "fromShortName": "Saint-Sulpice",
+          "toName": "place Royale ",
+          "toShortName": "Royale",
+          "scanDirection": 0,
+          "classification": 0,
+          "cityName": "Montréal",
+          "cityNameLeft": "Montréal",
+          "cityNameRight": "Montréal",
+          "cityId": "MTL",
+          "cityIdLeft": "MTL",
+          "cityIdRight": "MTL",
+          "borough": "Ville-Marie",
+          "boroughLeft": "Ville-Marie",
+          "boroughRight": "Ville-Marie",
+          "boroughId": 19,
+          "boroughIdLeft": 19,
+          "boroughIdRight": 19
+        }
+      }
+    ]
+  },
+  "status": "waiting"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "A_IGNORER",
+  "categoryId": "information",
+  "text": "This is a comment.",
+  "isPublic": true,
+  "audit": "A_IGNORER"
+}

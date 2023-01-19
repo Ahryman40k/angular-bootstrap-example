@@ -1,0 +1,288 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+    // ==========================================
+    // Starts the application in debug mode.
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug locally",
+      "preLaunchTask": "compile",
+      "program": "${workspaceRoot}/src/start.js",
+      "outFiles": [],
+      "sourceMaps": true,
+      "timeout": 20000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // Same as above, but no compilation and no
+    // validation.
+    //
+    // This can be used in association with the
+    // "watch" npm script for quick app reloading 
+    // during development:
+    //
+    // 1. Manually launch "npm run watch" 
+    //   (or "gulp watch") in a dedicated terminal.
+    //
+    // 2. Run this launch configuration to start 
+    // the application in debug mode. Use "CTRL-SHIFT-F5"
+    // to restart the app. It should be fast.
+    //
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug locally - fast (Launch npm run watch before)",
+      "program": "${workspaceRoot}/src/start.js",
+      "env": {
+        "fast-start": "true"
+      },
+      "outFiles": [],
+      "sourceMaps": true,
+      "timeout": 20000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Debug in Docker",
+      "preLaunchTask": "docker",
+      "address": "localhost", // For Docker Toolbox : 192.168.99.100
+      "port": 5858,
+      "localRoot": "${workspaceRoot}",
+      "remoteRoot": "/mtl/app",
+      "outFiles": [],
+      "sourceMaps": true,
+      "restart": true,
+      "timeout": 1800000,
+      "internalConsoleOptions": "neverOpen",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // This configuration allows you to debug
+    // a Gulp task.
+    // Simply set a breakpoint in the task you
+    // want to debug, change the "args" property
+    // in the following configuration to target it
+    // and start debugging by selecting this configuration
+    // in the "Debug" window of VSCode.
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug a Gulp task",
+      "preLaunchTask": "compile",
+      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+      "args": [
+        "test", // The task to debug
+        "--nc" // We already ran the compilation as a "preLaunchTask"!
+      ],
+      "env": {
+        "ide": "true"
+      },
+      "sourceMaps": true,
+      "timeout": 10000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // Same as above, but no compilation and no
+    // validation.
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug a Gulp task - fast (Launch npm run watch before)",
+      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+      "args": [
+        "test", // The task to debug
+        "--nc" // We already ran the compilation as a "preLaunchTask"!
+      ],
+      "env": {
+        "ide": "true",
+        "fast-start": "true"
+      },
+      "sourceMaps": true,
+      "timeout": 10000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // This configuration allows you to debug
+    // all test files
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug all tests",
+      "preLaunchTask": "compile",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      // You can add the "--bail" parameter on the next line so the
+      // tests stop as soon as one test fails!
+      "args": [
+        " ${workspaceRoot}/src/**/*.test.js", 
+        " ${workspaceRoot}/tests/**/*.test.js", 
+        "--require",
+        "source-map-support/register",        
+        "--no-timeouts", 
+        "--exit"
+      ],
+      "env": {
+        "ide": "true",
+        "NODE_APP_INSTANCE": "tests"
+      },
+      "sourceMaps": true,
+      "timeout": 10000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // Same as above, but no compilation and no
+    // validation.
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug all tests - fast (Launch npm run watch before)",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      // You can add the "--bail" parameter on the next line so the
+      // tests stop as soon as one test fails!
+      "args": [
+        " ${workspaceRoot}/src/**/*.test.js", 
+        " ${workspaceRoot}/tests/**/*.test.js", 
+        "--require",
+        "source-map-support/register",        
+        "--no-timeouts", "--exit"
+      ],
+      "env": {
+        "ide": "true",
+        "NODE_APP_INSTANCE": "tests",
+        "fast-start": "true"
+      },
+      "sourceMaps": true,
+      "timeout": 10000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+    // ==========================================
+    // This configuration allows you to debug
+    // the current opened file
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug current file",
+      "preLaunchTask": "compile",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "${fileDirname}/${fileBasenameNoExtension}.js", // The path to the test file (the .js)!
+        "--require",
+        "source-map-support/register",        
+        "--no-timeouts",
+        "--exit"
+      ],
+      "env": {
+        "ide": "true",
+        "NODE_APP_INSTANCE": "tests"
+      },
+      "sourceMaps": true,
+      "timeout": 10000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // Same as above, but no compilation and no
+    // validation.
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug current file - fast (Launch npm run watch before)",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "${fileDirname}/${fileBasenameNoExtension}.js", // The path to the test file (the .js)!
+        "--require",
+        "source-map-support/register",        
+        "--no-timeouts",
+        "--exit"
+      ],
+      "env": {
+        "ide": "true",
+        "NODE_APP_INSTANCE": "tests",
+        "fast-start": "true"
+      },
+      "sourceMaps": true,
+      "timeout": 10000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // Debug the 'src/test.ts' file.
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug the 'src/test.ts' file",
+      "preLaunchTask": "compile",
+      "program": "${workspaceRoot}/src/test.js",
+      "outFiles": [],
+      "sourceMaps": true,
+      "timeout": 20000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    },
+
+    // ==========================================
+    // Same as above, but no compilation and no
+    // validation.
+    // ==========================================
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug the 'src/test.ts' file - fast (Launch npm run watch before)",
+      "program": "${workspaceRoot}/src/test.js",
+      "env": {
+        "fast-start": "true"
+      },
+      "outFiles": [],
+      "sourceMaps": true,
+      "timeout": 20000,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
+      "outputCapture": "std",
+      "protocol": "inspector"
+    }
+
+  ]
+}

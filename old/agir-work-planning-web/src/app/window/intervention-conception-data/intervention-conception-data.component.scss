@@ -1,0 +1,15 @@
+
+@import '../../../styles/core/variables';
+.table-label-value tr >td{
+  font-size:$font-size-16;
+}
+.actif-detail {
+  width: 78%;
+}
+.actif-key {
+  font-weight: 700;
+  flex: 1;
+}
+.actif-value {
+  flex: 1;
+}

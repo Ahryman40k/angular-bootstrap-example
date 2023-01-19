@@ -1,0 +1,19 @@
+@import '../shared/scss/column-mixins.scss';
+
+$icon-width: 17px;
+$icon-height: 17px;
+
+:host ::ng-deep {
+  @include actions-style();
+  @include checkbox-style();
+
+  .icon-warning::before {
+    height: $icon-height;
+    width: $icon-width;
+  }
+}
+.hidden-column ::ng-deep {
+  .col-submission-number {
+    visibility: hidden;
+  }
+}

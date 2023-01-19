@@ -1,0 +1,28 @@
+<app-layout-modal modalTitle="Accepter l'intervention" *ngIf="form">
+  <div body>
+    <div *ngIf="canWriteRequirement">
+      <div>
+        <h6 class="font-weight-normal">
+          Voulez-vous accepter l'intervention telle quelle ou vous désirez ajouter une exigence à l'intervention?
+        </h6>
+      </div>
+      <app-checkbox
+        class="my-4"
+        [formControl]="addRequirement"
+        label="Ajout d'une exigence"
+        labelClass="font-weight-bold"
+        mode="switch"
+      ></app-checkbox>
+    </div>
+
+    <app-requirement-create [object]="intervention" *ngIf="addRequirement.value" ></app-requirement-create>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="reject()">
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="accept()" [disabled]="canSubmit">
+      Accepter
+    </button>
+  </div>
+</app-layout-modal>

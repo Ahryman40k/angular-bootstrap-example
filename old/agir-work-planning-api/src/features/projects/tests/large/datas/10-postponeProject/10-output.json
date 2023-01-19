@@ -1,0 +1,13 @@
+{
+  "error": {
+    "code": "unprocessableEntity",
+    "message": "A_IGNORER",
+    "details": [
+      {
+        "code": "InvalidStatusTransition",
+        "message": "Cannot transit status from \"replanned\" to \"postponed\".",
+        "target": "status"
+      }
+    ]
+  }
+}

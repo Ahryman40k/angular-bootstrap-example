@@ -1,0 +1,338 @@
+<div class="header">
+  <h3 class="header-title-container">
+    <ng-content select="[header-title]"></ng-content>
+  </h3>
+  <div
+    *ngIf="duplicateIntervention"
+    class="alert alert-warning alert-with-icon alert-text-base mb-0 mr-2 mb-2"
+    role="alert"
+  >
+    <div class="alert-icon-container">
+      <span class="icon icon-warning" aria-hidden="true"></span>
+    </div>
+    <div class="alert-content">
+      <strong>Attention!</strong>
+      Il y a un risque de doublon avec l'intervention
+      <strong>{{ duplicateIntervention.id }}</strong>
+    </div>
+  </div>
+  <div class="header-buttons">
+    <button class="btn btn-squared btn-tertiary" (click)="cancel.emit()" [disabled]="submitting">
+      Annuler
+    </button>
+    <ng-content *ngIf="Permission.PROJECT_WRITE | appPermission" select="[header-button]"></ng-content>
+    <button
+      class="btn btn-squared btn-primary"
+      (click)="submit.emit()"
+      [disabled]="submitting || !this.isValidBoroughId"
+    >
+      {{ buttonLabel }}
+    </button>
+  </div>
+</div>
+<div *ngIf="!isValidBoroughId" class="alert message-bar message-bar-warning" data-component-type="message-barre">
+  <div class="message-bar-icon-container">
+    <span class="icon icon-warning" aria-hidden="true"></span>
+  </div>
+  <div class="message-bar-container">
+    <strong class="message-bar-heading">Attention!</strong>
+    <p>L’intervention que vous êtes en train de créer se trouve à l’extérieur de votre espace de travail</p>
+  </div>
+</div>
+<div class="content-scroll">
+  <div class="content">
+    <div class="flex-1">
+      <div *ngIf="assets?.length" class="mb-4 mr-2">
+        <div class="d-flex justify-content-between">
+          <h4 class="mb-2">Actifs de l'intervention</h4>
+          <button
+            *ngIf="canEditAssets"
+            class="btn btn-secondary btn-squared py-1 mb-2 bg-white"
+            (click)="editAssetSelection()"
+          >
+            Éditer la sélection
+          </button>
+        </div>
+        <div class="form-group-input d-flex flex-row py-1 font-md align-items-center">
+          <i class="mr-1 icon-xs {{ assetType | appIconClassNameByAssetType }}"></i
+          >{{ assetType | appTaxonomy: 'assetType' }}
+        </div>
+        <app-asset-list
+          #assetList
+          [isAssetHasProperties]="isAssetHasProperties"
+          [items]="assets"
+          [isCreation]="true"
+          [isGeneratingArea]="isLoading"
+          [isLoading]="isLoadingAssets"
+          [isReadOnly]="isReadOnly || !canEditAssets"
+          (assetListChangeEvent)="onAssetListChange($event)"
+          (assetHoverEvent)="onAssetListHover($event)"
+        ></app-asset-list>
+      </div>
+      <form *ngIf="form" [formGroup]="form" class="content-form">
+        <h4 class="mb-4">Informations</h4>
+        <div *ngIf="isAssetTypeDisplayable()" class="form-group">
+          <label for="asset">Type d'actif</label>
+          <div class="form-group-input">
+            <vdm-select
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="assetType"
+              [items]="assetTypes"
+            ></vdm-select>
+            <app-form-errors formControlName="assetType">
+              <app-form-error *appFormError="let e; key: 'required'">Le type de l'actif est requis</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="assetOwner">Propriétaire</label>
+          <div *ngIf="asset?.id && !assets?.length" class="form-group-input">
+            <vdm-select [disabled]="true" [placeholder]="asset.ownerId | appTaxonomy: 'assetOwner'"></vdm-select>
+          </div>
+          <div *ngIf="!asset?.id || assets?.length" class="form-group-input">
+            <vdm-select
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="assetOwner"
+              [items]="assetOwners"
+            ></vdm-select>
+            <app-form-errors formControlName="assetOwner">
+              <app-form-error *appFormError="let e; key: 'required'">
+                Le propriétaire de l'actif est requis
+              </app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="requestor">Requérant</label>
+          <div class="form-group-input">
+            <vdm-select
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="requestor"
+              [items]="requestors"
+            ></vdm-select>
+            <app-form-errors formControlName="requestor">
+              <app-form-error *appFormError="let e; key: 'required'">Le requérant est requis</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label-optional" for="contact">
+            Contact du requérant
+            <span class="form-optional">Facultatif</span>
+          </label>
+          <div class="form-group-input">
+            <input type="text" id="contact" class="form-control" formControlName="contact" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="interventionName">Libellé de l'intervention</label>
+          <div class="form-group-input">
+            <input id="interventionName" class="form-control" type="text" formControlName="interventionName" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="interventionType">Type de l'intervention</label>
+          <div class="form-group-input">
+            <vdm-select
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="interventionType"
+              [items]="interventionTypes"
+            ></vdm-select>
+            <app-form-errors formControlName="interventionType">
+              <app-form-error *appFormError="let e; key: 'required'">
+                Le type d'information est requis
+              </app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="!isInterventionCreationOnOpportunityNoticeAcceptance">
+          <label class="form-label-optional" for="program">
+            Programme
+            <span class="form-optional">Facultatif</span>
+          </label>
+          <div class="form-group-input">
+            <vdm-select
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="program"
+              [items]="programs"
+              clearable="true"
+            ></vdm-select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="assetWorkType">Nature des travaux</label>
+          <div class="form-group-input">
+            <vdm-select
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="assetWorkType"
+              [items]="assetWorkTypes"
+            ></vdm-select>
+            <app-form-errors formControlName="assetWorkType">
+              <app-form-error *appFormError="let e; key: 'required'">La nature des travaux est requise</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="isInterventionAssetWorkTypeAmenagement">
+          <label for="requestor">Médaille d'aménagement</label>
+          <div class="form-group-input">
+            <vdm-select bindLabel="label.fr" bindValue="code" formControlName="medal" [items]="medalTypes"></vdm-select>
+            <app-form-errors formControlName="medal">
+              <app-form-error *appFormError="let e; key: 'required'">La médaille est requise</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label-optional" for="estimate">
+            Estimation budgétaire (k$)
+            <span class="form-optional">Facultatif</span>
+          </label>
+          <div class="form-group-input">
+            <app-input-float
+              #estimate
+              [placeholder]="placeholder"
+              [precision]="precision"
+              [inputValue]="estimateValue"
+              (onKeyUp)="setEstimate($event)"
+            >
+            </app-input-float>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="executor">Exécutant</label>
+          <div class="form-group-input">
+            <vdm-select
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="executor"
+              [items]="executors"
+            ></vdm-select>
+            <app-form-errors formControlName="executor">
+              <app-form-error *appFormError="let e; key: 'required'">L'exécutant est requis</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="interventionYear">Année de début initiale</label>
+          <div class="form-group-input">
+            <vdm-select bindLabel="label.fr" formControlName="interventionYear" [items]="years"></vdm-select>
+            <app-form-errors formControlName="interventionYear">
+              <app-form-error *appFormError="let e; key: 'required'">
+                L'année de début est requise
+              </app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="planificationYear">Année planifiée</label>
+          <div class="form-group-input">
+            <vdm-select [items]="planificationYears" formControlName="planificationYear"></vdm-select>
+            <app-form-errors formControlName="planificationYear">
+              <app-form-error *appFormError="let e; key: 'required'">
+                L'année planifiée est requise
+              </app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="content-map" [class.content-map-minimize]="isMinimized">
+      <div class="content-map-area">
+        <app-map
+          #map
+          [class.app-map-minimize]="isMinimized"
+          [disabled]="openDrawAssetModal || isMapLoading"
+          [withPanelMenu]="false"
+          [withPanel]="false"
+          [withRightPanel]="false"
+          [withNonGeolocatedProjectsPanel]="false"
+          [withPlanningBook]="false"
+          [initZoom]="25"
+          [popupsEnabled]="false"
+          [isLoading]="isMapLoading"
+        ></app-map>
+        <div class="content-map-buttons-top d-flex flex-column" *ngIf="isEditingAssets">
+          <button
+            class="btn btn-squared text-dark mb-1 pr-0"
+            [ngClass]="isAreaEditionEnabled ? 'btn-primary' : 'btn-secondary bg-white'"
+            (click)="isAreaEditionEnabled ? cancelInterventionArea() : editInterventionArea()"
+          >
+            <i class="icon icon-edit" aria-hidden="true"></i>
+          </button>
+          <button
+            class="btn btn-squared text-dark pr-0"
+            [ngClass]="isRoadSectionSelectionEnabled ? 'btn-primary' : 'btn-secondary bg-white'"
+            (click)="isRoadSectionSelectionEnabled ? stopSelectingRoadSections() : selectRoadSections()"
+          >
+            <i class="icon icon-cursor-pointer" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div *ngIf="!submitting && interventionArea" class="content-map-buttons">
+          <button
+            *ngIf="!interventionAreaEdit && !isEditingAssets"
+            class="btn btn-squared btn-secondary bg-white text-dark"
+            (click)="editInterventionArea()"
+            [disabled]="submitting"
+          >
+            Modifier la zone d'intervention
+          </button>
+          <button
+            *ngIf="interventionAreaEdit"
+            class="btn btn-squared btn-secondary bg-white text-dark mr-2"
+            (click)="cancelInterventionArea()"
+          >
+            Annuler
+          </button>
+          <button
+            *ngIf="interventionAreaEdit"
+            class="btn btn-squared btn-secondary bg-white text-dark mr-2"
+            (click)="removeAssetSelection()"
+          >
+            Effacer la zone
+          </button>
+          <button *ngIf="interventionAreaEdit" class="btn btn-squared btn-primary" (click)="validateInterventionArea()">
+            Valider
+          </button>
+        </div>
+        <div *ngIf="drawAssetPosition" class="content-map-top">
+          <button (click)="toggleMinimized()" class="btn btn-secondary btn-minimized bg-white">
+            <i class="icon icon-color-neutral-secondary icon-maximized ml-1" *ngIf="isMinimized"></i>
+            <i class="icon icon-color-neutral-secondary icon-minimized ml-1" *ngIf="!isMinimized"></i>
+          </button>
+        </div>
+        <div *ngIf="!interventionArea" class="content-map-buttons">
+          <button
+            *ngIf="!drawingAsset"
+            class="btn btn-squared btn-secondary bg-white text-dark"
+            (click)="startDrawAsset()"
+          >
+            Dessiner la zone d'intervention
+          </button>
+          <button
+            *ngIf="drawingAsset"
+            class="btn btn-squared btn-secondary bg-white text-dark mr-2"
+            (click)="cancelDrawAsset()"
+          >
+            Annuler
+          </button>
+          <button *ngIf="drawingAsset" class="btn btn-squared btn-primary" (click)="validateDrawnAsset()">
+            Valider
+          </button>
+        </div>
+        <div *ngIf="isEditingAssets" class="content-map-buttons">
+          <button class="btn btn-squared btn-secondary bg-white text-dark mr-2" (click)="cancelAssetSelection()">
+            Annuler
+          </button>
+          <button class="btn btn-squared btn-primary" (click)="submitAssets()">
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

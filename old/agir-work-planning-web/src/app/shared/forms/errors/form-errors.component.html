@@ -1,0 +1,10 @@
+<ng-container *ngIf="formControl.touched && formControl.invalid">
+  <ng-container *ngFor="let errorDirective of errorDirectives">
+    <ng-container *ngIf="formControl.errors && formControl.errors[errorDirective.key]">
+      <ng-container
+        *ngTemplateOutlet="errorDirective.template; context: { $implicit: formControl.errors[errorDirective.key] }"
+      >
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>

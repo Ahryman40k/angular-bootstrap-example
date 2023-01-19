@@ -1,0 +1,13 @@
+@import '../../../styles/core/variables';
+
+$spinner-left: 224px;
+$spinner-top: 530px;
+
+:host {
+  height: 100% !important;
+}
+
+.spinner {
+  left: $spinner-left;
+  top: $spinner-top;
+}

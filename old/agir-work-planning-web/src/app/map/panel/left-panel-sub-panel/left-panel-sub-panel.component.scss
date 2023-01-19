@@ -1,0 +1,21 @@
+@import '../../../../styles/core/variables';
+@import '../../../../styles/core/mixins';
+
+:host {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transform: translateX(0);
+
+  &.panel-collapsed {
+    transform: translateX(-#{$map-left-panel-sub-panel-width + $map-left-panel-width + $map-panel-menu-width});
+  }
+}
+
+.map-panel-sub-panel {
+  @include scrollbar(vertical);
+  background-color: $white;
+  width: $map-left-panel-sub-panel-width;
+  z-index: 1;
+}

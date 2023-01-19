@@ -1,0 +1,11 @@
+@mixin border-width($key, $size) {
+  .border-width-#{$key} {
+    border-width: $size !important;
+  }
+}
+
+@include border-width(xs, 1px);
+@include border-width(sm, 2px);
+@include border-width(md, 3px);
+@include border-width(lg, 5px);
+@include border-width(xl, 8px);

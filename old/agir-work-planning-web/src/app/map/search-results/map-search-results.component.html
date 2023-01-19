@@ -1,0 +1,61 @@
+<div *ngIf="allItemsLength === undefined" class="p-4 d-flex justify-content-center">
+  <app-spinner></app-spinner>
+</div>
+<div class="p-2" *ngIf="allItemsLength !== undefined">
+  <label class="text-neutral-primary mb-0">{{ allItemsLength }} résultats trouvés.</label>
+  <app-elements-card
+    *ngIf="projectsShown"
+    class="card-project mb-4 mt-2"
+    cardTitle="Projets"
+    icon="icon-folder"
+    [elements]="projects"
+  >
+    <ng-template let-project>
+      <app-project-card
+        class="element-card-item"
+        [project]="project"
+        [appMapHighlightHover]="project"
+        [navigationEnabled]="true"
+        [disableAddProjectToProgramBook]="true"
+      ></app-project-card>
+    </ng-template>
+  </app-elements-card>
+  <app-elements-card
+    *ngIf="interventionsShown"
+    class="card-intervention mb-4 mt-2"
+    cardTitle="Interventions"
+    icon="icon-flag"
+    [elements]="interventions"
+  >
+    <ng-template let-intervention>
+      <app-intervention-card
+        class="element-card-item"
+        [intervention]="intervention"
+        [appMapHighlightHover]="intervention"
+        [navigationEnabled]="true"
+      ></app-intervention-card>
+    </ng-template>
+  </app-elements-card>
+  <app-elements-card class="card-address mb-4 mt-2" cardTitle="Adresses" icon="icon-home" [elements]="addresses">
+    <ng-template let-address>
+      <app-address-card
+        class="element-card-item"
+        [address]="address"
+        [appMapHighlightHover]="address"
+        [navigationEnabled]="true"
+      ></app-address-card>
+    </ng-template>
+  </app-elements-card>
+  <!--
+  TODO: enable search assets from enter/lupe press in search bar after after november's "mise en prod"
+   <app-elements-card class="card-asset mb-4 mt-2" cardTitle="Actifs" icon="icon-package" [elements]="assets">
+    <ng-template let-asset>
+      <app-asset-card
+        class="element-card-item"
+        [asset]="asset"
+        [appMapHighlightHover]="asset"
+        [navigationEnabled]="true"
+      ></app-asset-card>
+    </ng-template>
+  </app-elements-card> -->
+</div>

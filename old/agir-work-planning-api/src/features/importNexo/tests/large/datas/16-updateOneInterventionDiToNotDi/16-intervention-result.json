@@ -1,0 +1,86 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'aqueduc / Rue random 1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2020,
+    "planificationYear": 2020,
+    "endYear": 2020,
+    "programId": null,
+    "contact": "Obiwan",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 42
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55778515338898, 45.50266148506185],
+            [-73.5577194392681, 45.50270472265968]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-DI-5312425"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5312425"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 42,
+      "burnedDown": 0,
+      "balance": 42
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 42,
+          "annualLength": 0.042,
+          "accountId": 0,
+          "year": 2020,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 42,
+        "totalLength": 0.042,
+        "note": null
+      }
+    },
+    "decisionRequired": false,
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "comments": [],
+    "documents": [],
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    }
+  }
+]

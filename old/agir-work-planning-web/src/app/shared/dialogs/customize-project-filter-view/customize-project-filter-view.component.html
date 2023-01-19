@@ -1,0 +1,232 @@
+<app-layout-modal modalTitle="Filtrer les projets">
+  <div body class="m-2">
+    <form [formGroup]="form">
+      <div>
+        <label>Année</label>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <div class="row">
+              <span class="col-md-2">De</span>
+              <input type="text" class="form-control col-md-10" mask="9999"
+                formControlName="fromEndYear" />
+              <app-form-errors formControlName="fromEndYear">
+                <app-form-error *appFormError="let e; key: 'minimum'">
+                  {{ERROR_YEAR_MIN_MAX_MSG}}
+                </app-form-error>
+                <app-form-error *appFormError="let e; key: 'max'">
+                  {{ERROR_YEAR_MIN_MAX_MSG}}
+                </app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <div class="row">
+              <span class="col-md-2">À</span>
+              <input type="text" class="form-control col-md-10" mask="9999"
+                formControlName="toStartYear" />
+              <app-form-errors formControlName="toStartYear">
+                <app-form-error *appFormError="let e; key: 'minimum'">
+                  {{ERROR_YEAR_MIN_MAX_MSG}}
+                </app-form-error>
+                <app-form-error *appFormError="let e; key: 'max'">
+                  {{ERROR_YEAR_MIN_MAX_MSG}}
+                </app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+          <app-form-error *ngIf="form.errors?.rangePlanificationYear">
+            L'année "À" doit être supérieur ou égal à l'année "De"
+          </app-form-error>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Type
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="projectTypeId$ | async"
+            formControlName="projectTypeId" [removableItems]="true"></vdm-multi-select>
+        </div>
+        <div class="col-md-6">
+          <label class="flex-1">
+            Nature
+          </label>
+          <br />
+          <app-radio-input id="radioNatureLocatedAll" [checked]="form.value.isGeolocated === null"
+            (click)="setIsGeolocated(null)">
+          </app-radio-input>Tout afficher <br />
+          <app-radio-input id="radioNatureLocatedYes" [checked]="form.value.isGeolocated === true"
+            (click)="setIsGeolocated(true)">
+          </app-radio-input>Projets géolocalisés<br />
+          <app-radio-input id="radioNatureLocatedNo" [checked]="form.value.isGeolocated === false"
+            (click)="setIsGeolocated(false)">
+          </app-radio-input>Projets non-géolocalisés<br />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Catégorie
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="categoryId$ | async"
+            formControlName="categoryId" [removableItems]="true"></vdm-multi-select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Sous-catégorie
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="subCategoryId$ | async"
+            formControlName="subCategoryId" [removableItems]="true"></vdm-multi-select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Statut
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="status$ | async" formControlName="status"
+            [removableItems]="true"></vdm-multi-select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Arrondissement
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="boroughId$ | async"
+            formControlName="boroughId" [removableItems]="true"></vdm-multi-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Exécutant
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="executorId$ | async"
+            formControlName="executorId" [removableItems]="true"></vdm-multi-select>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Médaille
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="medalId$ | async" formControlName="medalId"
+            [removableItems]="true"></vdm-multi-select>
+        </div>
+      </div>
+
+      <div *ngIf="Permission.PROJECT_BUDGET_READ | appPermission">
+        <label>Budget (K$)</label>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <div class="row">
+              <span class="col-md-2">De</span>
+              <input type="text" class="form-control col-md-10" vdmIntegerInput formControlName="fromBudget" />
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <div class="row">
+              <span class="col-md-2">À</span>
+              <input type="text" class="form-control col-md-9" vdmIntegerInput formControlName="toBudget" />
+            </div>
+          </div>
+          <app-form-error *ngIf="form.errors?.rangeBudget">
+            Le budget "À" doit être supérieur ou égal au budget "De"
+          </app-form-error>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Programme
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="programId$ | async"
+            formControlName="interventionProgramId" [removableItems]="true"></vdm-multi-select>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Nature des travaux
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="workTypeId$ | async"
+            formControlName="workTypeId" [removableItems]="true"></vdm-multi-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Type d'actif
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="code"
+            appendTo="app-customize-project-filter-view" [items]="interventionAssetTypeId$ | async"
+            formControlName="interventionAssetTypeId" [removableItems]="true"></vdm-multi-select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Programmation annuelle
+          </label>
+          <vdm-select bindLabel="label.fr" bindValue="value" [disabled]="programmeAnnuelDisable" [clearable]="true"
+            [placeholder]="'Choisir une année et un excecutant'" (ngModelChange)="updateCarnetItems($event)"
+            appendTo="app-customize-project-filter-view" [items]="annualPrograms" formControlName="annualProgram">
+          </vdm-select>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="flex-1">
+            Carnet
+          </label>
+          <vdm-multi-select bindLabel="label.fr" bindValue="id" appendTo="app-customize-project-filter-view"
+            [placeholder]="'Choisir d\'abord une programmation'" [disabled]="!(form?.value?.annualProgram)" [items]="carnet"
+            formControlName="carnet" [removableItems]="true">
+          </vdm-multi-select>
+          </div>
+          <div class="form-group col-md-12">
+            <p>Sélectionner une programmation pour choisir un de ses carnets</p>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="flex-1">
+            Numéro de soumission
+          </label>
+          <textarea rows="3" class="form-control w-100" appendTo="app-customize-project-filter-view"
+            formControlName="submissionNumber"></textarea>
+        </div>
+        <app-form-error *ngIf="form.errors?.submissionNumbersFormat">
+          Ce champs doit contenir uniquement des charactères numériques, des virgules et des espaces. <br />
+          Entre chaque virgule, 6 chiffres doivent être présents.
+        </app-form-error>
+      </div>
+    </form>
+  </div>
+
+  <div buttons class="d-flex justify-content-between flex-1">
+    <button class="btn btn-secondary btn-squared" type="button" (click)="resetTableView()">
+      Réinitialiser
+    </button>
+    <div>
+      <button class="btn btn-secondary btn-squared mr-2" type="button" (click)="cancel()">
+        Annuler
+      </button>
+      <button class="btn btn-primary btn-squared" type="button" (click)="saveTableView()">
+        Sauvegarder
+      </button>
+    </div>
+  </div>
+</app-layout-modal>

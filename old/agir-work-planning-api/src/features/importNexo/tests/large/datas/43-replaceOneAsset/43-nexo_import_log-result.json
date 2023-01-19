@@ -1,0 +1,55 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "success",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 4,
+      "errorDescription": "",
+      "projects": [
+        {
+          "id": "add-interventions-with-same-project",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "elementErrors": [],
+          "description": "\"\""
+        }
+      ],
+      "interventions": [
+        {
+          "id": "add-interventions-with-same-project-5283990",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 1,
+          "description": "\"\""
+        },
+        {
+          "id": "add-interventions-with-same-project-5283991",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 2,
+          "description": "\"\""
+        },
+        {
+          "id": "add-interventions-with-same-project-5284217",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "lineNumber": 3,
+          "description": "\"\""
+        },
+        {
+          "id": "add-interventions-with-same-project-5287026",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 4,
+          "description": "\"\""
+        }
+      ]
+    }
+  ]
+}

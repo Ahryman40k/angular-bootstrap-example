@@ -1,0 +1,15 @@
+.div-table {
+  @extend .d-flex;
+  p {
+    @extend .font-md;
+    @extend .mb-1;
+  }
+  p:first-child {
+    @extend .font-weight-bold;
+    @extend .text-dark;
+    flex: 1;
+  }
+  p:not(:first-child) {
+    flex: 3;
+  }
+}

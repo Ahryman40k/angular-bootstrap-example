@@ -1,0 +1,15 @@
+@import '../../../styles/core/variables';
+
+.display-order-input {
+  width: $taxonomy-table-col-order-input;
+}
+.display-order-label {
+  min-width: $taxonomy-table-col-order-label;
+}
+.main-attribute-input {
+  min-width: $taxonomy-asset-data-keys-col-main-attribute-input;
+}
+
+.trash-button .icon {
+  margin-left: 0;
+}

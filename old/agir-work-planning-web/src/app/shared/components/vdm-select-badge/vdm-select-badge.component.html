@@ -1,0 +1,28 @@
+<ng-select
+  class="mr-1 multi-select-checkbox"
+  #ngSelect
+  [appendTo]="appendTo"
+  [placeholder]="placeholder"
+  [bindLabel]="bindLabel"
+  [bindValue]="bindValue"
+  [clearable]="clearable"
+  [closeOnSelect]="closeOnSelect"
+  [items]="items"
+  [maxSelectedItems]="maxSelectedItems"
+  [searchable]="searchable"
+  [(ngModel)]="value"
+  [disabled]="disabled"
+  [groupBy] = "groupBy"
+>
+  <ng-template ng-label-tmp let-items="items" let-clear="clear">
+    <div class="placeholder chip-sm pr-1">
+      <span class="text-primary font-weight-bold">{{ placeholder }}</span>
+    </div>
+  </ng-template>
+
+  <ng-template ng-option-tmp let-item="item" let-index="index" let-item$="item$">
+    <div>
+      <label class="custom-control-label py-1">{{ item.label.fr }}</label>
+    </div>
+  </ng-template>
+</ng-select>

@@ -1,0 +1,2 @@
+<span class="badge-white badge d-flex" *ngIf="lastRefresh$ | async">Dernier rafraichissment: {{lastRefresh$ | async | date :'shortTime'}}</span>
+<span class="badge-white badge d-flex" *ngIf="!(lastRefresh$ | async)">Dernier rafraichissment: N/A</span>

@@ -1,0 +1,52 @@
+<div class="details">
+  <div>
+    <h4 class="title font-weight-bold mb-0">
+      <a appWindowLink href="window/assets/{{ asset?.typeId }}/{{ asset?.id }}/overview" appStopProp>{{ asset?.id }}</a>
+    </h4>
+    <p class="mb-0 mt-0 font-md">{{ asset?.typeId | appTaxonomy: TaxonomyGroup.assetType }}</p>
+    <label class="d-flex align-items-center font-sm mt-1 mb-0">
+      <i class="d-inline-block icon icon-xs icon-tag mr-1"></i>
+      Propriétaire: {{ asset?.ownerId | appTaxonomy: TaxonomyGroup.assetOwner }}
+    </label>
+    <label class="d-flex align-items-center font-sm mt-1 mb-0">
+      <i class="d-inline-block icon icon-xs icon-clock mr-1"></i>
+      Dernière intervention:&nbsp;
+      <a class="is-external-link link-xs" href="{{interventionService.getInterventionLink(lastIntervention)}}" appWindowLink *ngIf="lastIntervention">{{ lastIntervention.interventionYear }}</a>
+      <div *ngIf="!lastIntervention">{{ '' | vdmNa }}</div>
+    </label>
+    <div *ngFor="let property of properties; let i = index">
+      <label class="d-flex align-items-center font-sm mt-1 mb-0" *ngIf="i === 0">
+        <i class="d-inline-block icon icon-xs icon-info mr-1"></i>
+        {{ property.code | appTaxonomy: TaxonomyGroup.assetDataKey }}: {{ property.value | vdmNa }}
+      </label>
+
+      <label class="d-flex align-items-center font-sm mt-1 mb-0 pl-3" *ngIf="i > 0">
+        {{ property.code | appTaxonomy: TaxonomyGroup.assetDataKey }}: {{ property.value | vdmNa }}
+      </label>
+    </div>
+  </div>
+  <app-more-options-button buttonClass="p-0" *ngIf="showOptionsButton">
+    <a ngbDropdownItem appWindowLink [href]="interventionService.createInterventionLink(asset)" *ngIf="Permission.INTERVENTION_WRITE | appPermission">Créer une intervention</a>
+  </app-more-options-button>
+</div>
+
+<div *ngFor="let intervention of interventions" class="pt-3">
+  <div class="border-top"></div>
+  <div class="details pt-3">
+    <div>
+      <h6 class="font-weight-bold mb-0">
+        {{ intervention.interventionName }}
+      </h6>
+      <p class="mb-0 small mt-0">Arrondissement: {{ intervention.boroughId | appTaxonomy: TaxonomyGroup.borough }}</p>
+      <p class="mb-0 small mt-0">Statut: {{ intervention.status | appTaxonomy: TaxonomyGroup.interventionStatus }}</p>
+    </div>
+    <app-more-options-button buttonClass="p-0" dropdownPlacement="left">
+      <a ngbDropdownItem appWindowLink [href]="interventionLink(intervention.id)">Modifier l'intervention</a>
+    </app-more-options-button>
+  </div>
+  <div class="item-foot">
+    <p class="mb-0 pt-2">
+      <b>{{ intervention.workTypeId | appTaxonomy: TaxonomyGroup.workType }}</b>
+    </p>
+  </div>
+</div>

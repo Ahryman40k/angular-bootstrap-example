@@ -1,0 +1,38 @@
+<div
+  class="tab-pane fade show active"
+  id="info-projects-requestor"
+  role="tabpanel"
+  aria-labelledby="legend-requestor-tab"
+>
+  <div class="d-flex mt-4">
+    <div class="mb-2 pr-3">
+      <h6 class="ml-0 mb-1">Programmes</h6>
+      <div *ngFor="let programType of programTypes$ | async">
+        <div class="d-flex">
+          <p class="col-4 p-0 mr-n2 mb-1">{{ programType.properties.acronym.fr }}</p>
+          <p class="legend-mb">{{ programType.label.fr }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2 pr-3">
+      <h6 class="ml-0 mb-1">Requérants internes</h6>
+      <div *ngFor="let requestor of internalRequestors">
+        <div class="d-flex">
+          <p class="col-2 pl-0 m-0">{{ requestor.acronym }}</p>
+          <p class="legend-mb">{{ requestor.label }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2 pr-3">
+      <h6 class="ml-0 mb-1">Requérants externes</h6>
+      <div *ngFor="let requestor of externalRequestors">
+        <div class="d-flex">
+          <p class="col-2 pl-0 m-0">{{ requestor.acronym }}</p>
+          <p class="legend-mb">{{ requestor.label }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

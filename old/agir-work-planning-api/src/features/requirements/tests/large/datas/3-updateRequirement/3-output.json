@@ -1,0 +1,13 @@
+{
+  "id": "A_IGNORER",
+  "items": [
+    {
+      "id": "P00004",
+      "type": "project"
+    }
+  ],
+  "typeId": "programmation",
+  "subtypeId": "recommendedIntegration",
+  "text": "This is a modification.",
+  "audit": "A_IGNORER"
+}

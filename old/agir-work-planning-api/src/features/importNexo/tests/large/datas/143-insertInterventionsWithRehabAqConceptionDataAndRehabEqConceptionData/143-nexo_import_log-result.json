@@ -1,0 +1,71 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "success",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 2,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "1-egout-intervention-id",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 1,
+          "description": "\"\""
+        },
+        {
+          "id": "1-add-several-unlinked-interventions-PNI-5312546",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 2,
+          "description": "\"\""
+        }
+      ]
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "rehabAqConception",
+      "status": "success",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "17-PMR-PTI-035",
+          "importStatus": "success",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"\""
+        }
+      ]
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "rehabEgConception",
+      "status": "success",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "16-IBG-PTI-003 ÉG",
+          "importStatus": "success",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"\""
+        }
+      ]
+    }
+  ]
+}

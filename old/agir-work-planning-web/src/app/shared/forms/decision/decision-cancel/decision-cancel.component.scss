@@ -1,0 +1,8 @@
+@import '../../../../../styles/core/variables';
+
+.card {
+  background-color: $color-red-50;
+  border-left: 3px solid $color-red-danger;
+  border-radius: 3px;
+  border-top-left-radius: 0;
+}

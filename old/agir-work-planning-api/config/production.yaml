@@ -1,0 +1,87 @@
+#==========================================
+# This is the PRODUCTION environment-specific
+# config file, used when NODE_ENV = "production".
+#
+# The configurations specified here will override
+# the default ones provided by "default.yaml".
+#
+# More info about this file and the order config files
+# are loaded : https://github.com/lorenwest/node-config/wiki/Configuration-Files
+#==========================================
+
+api:
+  host: api.montreal.ca
+
+#==========================================
+# Mongo
+#==========================================
+mongo:
+  connectionString: mongodb://prdlmg01a.montrealnet.vdm.qc.ca:27001,prdlmg01b.montrealnet.vdm.qc.ca:27001,prdlmg01c.montrealnet.vdm.qc.ca:27001/agirworkplanning
+  connectionOptions:
+    replicaSet: rsprd01
+    user: REMPLACE_DANS_JENKINS
+    pass: REMPLACE_DANS_JENKINS
+
+#==========================================
+# Security
+#==========================================
+security:
+  jwt:
+    host: https://api.interne.montreal.ca
+  cors:
+    whitelist: https:\/\/([a-z0-9]+[.])*montreal([.qc])*[.]ca
+
+#==========================================
+# GLUU
+#==========================================
+gluu:
+  urlToken: "https://idp.montreal.ca"
+  serviceAccount:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+  openIdClient:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+
+#==========================================
+# GDA Gestion Des Acces
+#==========================================
+gda:
+  urls:
+    base: https://api.interne.montreal.ca/api/it-platforms/security/access-management
+
+#==========================================
+# Spatial Analysis
+#==========================================
+spatialAnalysis:
+  spatial:
+    url: https://api.interne.montreal.ca/api/it-platforms/geomatic/spatialanalysis/v1
+  wfs:
+    url: https://api.interne.montreal.ca
+
+#==========================================
+# Storage API
+#==========================================
+storageObject:
+  mock: false
+  gateway: https://api.interne.montreal.ca
+  volumeId: agirworkplanning
+
+# ==========================================
+# Initializes TLS Rejection
+# ==========================================
+tls:
+  reject: false
+
+rtuImport:
+  serviceAccount:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+  urls:
+    base: https://infortu.info-ex.com/services/rest/v2.0
+  certificate:
+    enabled: true
+
+rtuExport:
+  urls:
+    base: https://infortu.info-ex.com/services/rest/v2.0

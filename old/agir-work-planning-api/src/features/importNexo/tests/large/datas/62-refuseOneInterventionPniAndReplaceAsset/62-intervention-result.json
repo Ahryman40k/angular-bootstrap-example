@@ -1,0 +1,116 @@
+[
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-PNI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Réhabilitation / Segment d'aqueduc / Rue random 1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "rehabilitation",
+    "requestorId": "dre",
+    "boroughId": "LSL",
+    "status": "waiting",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "endYear": 2040,
+    "programId": "par",
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 25
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55963386595249, 45.49922727979822],
+            [-73.55957351624966, 45.499292140138564]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-PNI-123456"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "123456"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 40,
+      "burnedDown": 0,
+      "balance": 40
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 40,
+          "annualLength": 0.025,
+          "accountId": 0,
+          "year": 2040,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 40,
+        "totalLength": 0.025,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "decisions": [
+      {
+        "audit": "A_IGNORER",
+        "typeId": "revisionRequest",
+        "text": "Une nouvelle décision est requise. Un actif a été ajouté ou supprimé de l'intervention.",
+        "targetYear": 2040,
+        "previousPlanificationYear": 2040,
+        "id": "A_IGNORER"
+      },
+      {
+        "audit": "A_IGNORER",
+        "typeId": "refused",
+        "text": "This is a justification.",
+        "refusalReasonId": "mobility",
+        "id": "A_IGNORER"
+      }
+    ],
+    "comments": [
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "requestor",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "isPublic": false,
+        "text": "Ceci est un commentaire supplémentaire."
+      },
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "requestor",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "isPublic": false,
+        "text": "Ceci est un commentaire."
+      }
+    ],
+    "documents": []
+  }
+]

@@ -1,0 +1,42 @@
+<app-details-layout>
+  <span title>Commentaires</span>
+  <ng-container actions>
+    <app-sort [filters]="filters" [formControl]="sortFormControl"></app-sort>
+    <app-details-add-button
+      *ngIf="canWriteComment(null) && (restrictionItems| appRestrictions)"
+      class="ml-1"
+      [disabled]="!canInteract"
+      (onAdd)="createComment()"
+    ></app-details-add-button>
+  </ng-container>
+  <app-no-result *ngIf="!(comments$ | async)?.length">
+    Il n'y a pas de commentaires pour l'instant.
+  </app-no-result>
+  <app-list-item *ngFor="let comment of comments$ | async; let i = index" class="details-comment-list-item">
+    <span *ngIf="canReadPrivateComment" before>
+      <div *ngIf="comment.isPublic; else privateComment">
+        <i class="icon icon-eye icon-xs"></i>
+      </div>
+      <ng-template #privateComment>
+        <i class="icon icon-eye-off icon-xs"></i>
+      </ng-template>
+    </span>
+    <span description>
+      <label class="text-dark font-weight-bold">{{ comment.audit?.createdBy.displayName }}</label>
+      <label class="text-secondary font-weight-bold">{{ comment.categoryId | appTaxonomy: 'commentCategory' }}</label>
+      <label>
+        Le {{ comment.audit?.createdAt | date: 'longDate' }} à {{ comment.audit?.createdAt | date: 'shortTime' }}
+      </label>
+    </span>
+    <span description-extend>{{ comment.text }}</span>
+
+    <app-list-item-action *ngIf="canInteract && canWriteComment(comment) && (restrictionItems| appRestrictions)" (action)="updateComment(comment)">
+      <i class="icon icon-edit"></i>
+      Modifier
+    </app-list-item-action>
+    <app-list-item-action *ngIf="canInteract && canWriteComment(comment)  && (restrictionItems| appRestrictions)" (action)="showDeleteModal(comment)">
+      <i class="icon icon-trash"></i>
+      Supprimer
+    </app-list-item-action>
+  </app-list-item>
+</app-details-layout>

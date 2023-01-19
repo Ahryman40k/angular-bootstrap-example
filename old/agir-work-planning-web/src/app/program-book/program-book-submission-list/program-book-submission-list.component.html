@@ -1,0 +1,45 @@
+<div class="d-flex flex-column flex-grow-1 m-2">
+  <h4 class="mb-2">
+    {{title}}
+  </h4>
+  <ng-container *ngIf="pagination.totalCount">
+    <div class="cards">
+      <div *ngFor="let submission of submissions$ | async" class="card mr-2 mb-2 p-2">
+        <div class="submission-number d-flex justify-content-between align-items-center">
+          <app-submission-link [object]="submission"
+            [customText]="'Soumission ' + (submission | appDrmSubmissionNumberFormat)"></app-submission-link>
+          <app-more-options-button #moreOptions *ngIf="menuItems.length"
+            [dropdownPlacement]="['left-top','left-bottom']" dropdownContainer="body" [items]="menuItems(submission)">
+          </app-more-options-button>
+        </div>
+        <div class="projects d-flex align-items-center">
+          <i class="icon icon-folder icon-xs mr-1"></i>
+          <span>
+            {{submission.projectIds.length | vdmPad : 3}} projets
+          </span>
+
+        </div>
+        <div class="d-flex align-items-center status">
+          <i class="icon icon-checkbox mr-1 badge-success" *ngIf="submission.status === SubmissionStatus.VALID"></i>
+          <i class="icon icon-exclamation-full mr-1 badge-danger"
+            *ngIf="submission.status === SubmissionStatus.INVALID"></i>
+          <span class="badge">
+            {{ submission.progressStatus | appTaxonomy: TaxonomyGroup.submissionProgressStatus }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <ngb-pagination [collectionSize]="pagination.totalCount" [(page)]="pagination.currentPage" [maxSize]="3"
+        [pageSize]="pagination.pageSize" [rotate]="true" (pageChange)="onPageChanged()">
+        <ng-template ngbPaginationPrevious><span class="icon icon-chevron-left"></span></ng-template>
+        <ng-template ngbPaginationNext><span class="icon icon-chevron-right"></span></ng-template>
+      </ngb-pagination>
+    </div>
+  </ng-container>
+  <app-no-result *ngIf="pagination.totalCount === 0 && !isLoading" [message]="emptyListMessage" [showEmtyIcon]="true">
+  </app-no-result>
+  <div *ngIf="isLoading && pagination.totalCount === 0" class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+</div>

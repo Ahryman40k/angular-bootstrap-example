@@ -1,0 +1,7 @@
+<div class="d-flex flex-column">
+  <app-road-section-activity-row class="sticky-row header-row" [years]="years"></app-road-section-activity-row>
+  <app-road-section-activity-row class="content-row" [years]="years" *ngFor="let labelProject of labelProjects"
+    [labelProject]="labelProject"></app-road-section-activity-row>
+  <app-road-section-activity-row class="content-row" [years]="years" *ngFor="let intervention of interventions"
+    [intervention]="intervention"></app-road-section-activity-row>
+</div>

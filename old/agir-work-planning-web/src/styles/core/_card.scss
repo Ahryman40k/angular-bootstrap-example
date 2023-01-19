@@ -1,0 +1,148 @@
+@import 'variables';
+
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+
+$border-size: 1px;
+$border-radius: 3px;
+$card-border-radius: 10px;
+$icon-container-size: 24px;
+$icon-size: 16px;
+$shadow-color: rgba(0, 0, 0, 0.12);
+$shadow-size: 1px;
+
+@mixin card-box-shadow {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  margin-bottom: 0;
+}
+
+.card-header-top {
+  height: 5px;
+  background-color: $color-gray-500;
+  border-top-left-radius: $card-border-radius;
+  border-top-right-radius: $card-border-radius;
+}
+
+.card-header {
+  @extend .p-2;
+  border-radius: $border-radius !important;
+}
+
+.card-header,
+.card-header:first-child {
+  align-items: center;
+  background-color: inherit;
+  display: flex;
+  border-bottom: 0;
+}
+
+.card-header-top + .card-header {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.card-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: $color-gray-500;
+  width: $icon-container-size;
+  height: $icon-container-size;
+  border-radius: 50px;
+
+  &::before {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
+
+.element-card-item {
+  @extend .border-top;
+  @extend .p-2;
+
+  &.element-list-item {
+    .title {
+      @extend .font-md;
+    }
+
+    .description {
+      @extend .font-sm;
+    }
+  }
+}
+
+.elevation {
+  @include card-box-shadow();
+  border: none !important;
+  border-radius: $border-radius;
+}
+
+@each $color, $value in $app-colors {
+  .card-#{$color} {
+    .card-header-top {
+      background-color: $value;
+    }
+
+    .card-header-icon {
+      background-color: $value;
+    }
+  }
+}
+
+.quote-card-secondary {
+  background-color: $color-gray-100;
+  border-left: 3px solid $color-gray-500;
+  border-radius: $border-radius;
+  padding-right: $card-right-padding;
+}
+.gray-card {
+  background-color: $color-gray-100;
+}
+.quote-card-danger {
+  background-color: $color-red-50;
+  border-left: 3px solid $color-red-danger;
+  border-radius: $border-radius;
+  border-top-left-radius: 0;
+}
+
+.card-hover {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-gray-100;
+  }
+
+  label {
+    cursor: pointer;
+  }
+}
+
+.window-card {
+  background-color: $color-gray-100;
+  border-left: 3px solid $color-gray-500;
+  border-radius: $border-radius;
+}
+
+a.card {
+  &.active {
+    @include card-box-shadow();
+    background-color: $card-bg;
+    border: $card-border-width solid transparent;
+    .card-title {
+      color: $action;
+    }
+  }
+}
+
+// The map selection panel has its own style for cards
+// TODO: Remove it when working on the new UI.
+app-map-selection-panel {
+  .card {
+    border: 0;
+    border-radius: $card-border-radius;
+  }
+}

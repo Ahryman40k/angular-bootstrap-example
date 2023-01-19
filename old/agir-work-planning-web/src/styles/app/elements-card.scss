@@ -1,0 +1,10 @@
+app-elements-card {
+  .element-card-item {
+    .title {
+      @extend .font-md;
+    }
+    .description {
+      @extend .font-sm;
+    }
+  }
+}

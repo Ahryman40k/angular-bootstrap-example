@@ -1,0 +1,48 @@
+<div class="popup-header-border" [ngClass]="headerClass"></div>
+<div class="popup-body p-2 hover-background">
+  <ng-container
+    *ngIf="objects[currentIndex] && isInitialized"
+    [ngSwitch]="objectTypeService.getObjectTypeFromModel(objects[currentIndex])"
+  >
+    <app-intervention-card
+      *ngSwitchCase="ObjectType.intervention"
+      [intervention]="objects[currentIndex]"
+      [navigationEnabled]="true"
+    ></app-intervention-card>
+    <app-project-card
+      *ngSwitchCase="ObjectType.project"
+      [project]="objects[currentIndex]"
+      [navigationEnabled]="true"
+    ></app-project-card>
+    <app-rtu-project-card
+      *ngSwitchCase="ObjectType.rtuProject"
+      [rtuProject]="objects[currentIndex]"
+      [navigationEnabled]="true"
+    ></app-rtu-project-card>
+    <app-address-card
+      *ngSwitchCase="ObjectType.address"
+      [address]="objects[currentIndex]"
+      [navigationEnabled]="true"
+    ></app-address-card>
+    <app-asset-card
+      *ngSwitchCase="ObjectType.asset"
+      [asset]="objects[currentIndex]"
+      [navigationEnabled]="true"
+    ></app-asset-card>
+    <div *ngSwitchDefault>LAYOUT ERROR. OBJECT TYPE NOT SUPPORTED.</div>
+  </ng-container>
+  <app-spinner *ngIf="!objects[currentIndex] || !isInitialized" class="d-flex mx-auto"></app-spinner>
+</div>
+<div class="popup-navigation border-top">
+  <div class="p-2 d-flex justify-content-between">
+    <p class="mb-0 font-md">{{ currentIndex + 1 }}/{{ features.length }}</p>
+    <div class="d-flex">
+      <button class="btn btn-icon btn-icon-only p-0" (click)="previous()">
+        <i class="icon icon-chevron-left"></i>
+      </button>
+      <button class="btn btn-icon btn-icon-only p-0" (click)="next()">
+        <i class="icon icon-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

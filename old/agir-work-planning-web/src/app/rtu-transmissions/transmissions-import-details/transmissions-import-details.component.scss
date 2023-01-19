@@ -1,0 +1,54 @@
+
+@import '../../../styles/core/variables';
+
+.back-button:before {
+  background-color: $color-pale-sky;
+}
+
+.errorDetails {
+  padding-top: $padding-0 !important;
+}
+
+.responsive-table {
+  padding-bottom: $responsive-table-scroll-padding-bottom;
+}
+
+.table thead th {
+  border-bottom: 2px solid $color-gray-300;
+  border-top: none;
+}
+
+.table-lg thead th.sorting:after {
+  width: 24px;
+  height: 24px;
+}
+
+.table tbody th, .table tbody td {
+  border-top: none;
+}
+
+.values-list {
+  margin: 0 0.5rem 0 0;
+
+  &:after {
+    content: "\00B7";
+    font-weight: bold;
+    padding-left: 0.5rem
+  }
+
+  &:last-child:after {
+    content: "";
+  }
+}
+
+.base-line-height {
+  line-height: $line-height-base;
+}
+
+.project-number-column {
+  width: $transmission-import-table-col-project-number;
+}
+
+.street-column {
+  width: $transmission-import-table-col-street-name;
+}

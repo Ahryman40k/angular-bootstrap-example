@@ -1,0 +1,66 @@
+$map-height: 450px;
+$icon-calendar-margin-left: -30px;
+
+$header-height: 70px;
+$assets-header-height: 110px;
+
+$dropdown-height: 56px;
+
+$large-screen-worktype-checkbox-height: 48px;
+$medium-screen-worktype-checkbox-height: 64px;
+
+.map {
+  height: $map-height;
+}
+
+:host {
+  height: 100%;
+}
+
+.header {
+  height: $header-height;
+}
+
+.header-assets {
+  height: $assets-header-height;
+}
+
+.content {
+  height: calc(100% - #{$header-height});
+}
+
+.icon.icon-calendar {
+  margin-left: $icon-calendar-margin-left;
+}
+
+.assets-form {
+  height: calc(100% - #{$assets-header-height});
+}
+
+@mixin assets-worktype-selection($checkbox-height) {
+  .check-all {
+    height: $checkbox-height;
+  }
+
+  .assets-list {
+    height: calc(100% - #{$checkbox-height});
+  }
+
+  .worktype-for-all-assets-checked {
+    .check-all {
+      height: calc(#{$checkbox-height} + #{$dropdown-height});
+    }
+
+    .assets-list {
+      height: calc(100% - #{$checkbox-height} - #{$dropdown-height});
+    }
+  }
+}
+
+@media (min-width: 1385px) {
+  @include assets-worktype-selection($large-screen-worktype-checkbox-height);
+}
+
+@media (max-width: 1384px) {
+  @include assets-worktype-selection($medium-screen-worktype-checkbox-height);
+}

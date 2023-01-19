@@ -1,0 +1,52 @@
+@import '../../../../styles/core/variables';
+
+$btn-menu-item-height-width-background-size: 12px;
+$active-filter-border: 2px;
+$active-filter-border-radius: 50%;
+$z-index: 1;
+
+.menu-panel {
+  width: $map-panel-menu-width;
+}
+
+.btn-menu-item {
+  position: relative;
+
+  &.btn:not(:disabled):not(.disabled).active:focus {
+    box-shadow: none;
+  }
+  &.btn-menu-item-on::before {
+    background-image: url('../../../../assets/icons/active-filter.svg');
+    display: block;
+    content: ' ';
+    background-size: $btn-menu-item-height-width-background-size $btn-menu-item-height-width-background-size;
+    height: $btn-menu-item-height-width-background-size;
+    width: $btn-menu-item-height-width-background-size;
+    position: absolute;
+    left: $active-filter-left;
+    top: $active-filter-top;
+    pointer-events: none;
+    z-index: $z-index;
+  }
+}
+
+.active {
+  background-color: $color-aqua-spring;
+  border-right: solid $active-filter-border $color-turquoise-700;
+  .icon::before {
+    background-color: $color-turquoise-700 !important;
+  }
+  .active-filter {
+    background-color: $color-turquoise-500;
+    border-radius: $active-filter-border-radius;
+    border: $active-filter-border solid $color-aqua-spring;
+    display: inline-block;
+    height: $active-filter-size;
+    min-width: $active-filter-size;
+    position: absolute;
+    left: $active-filter-left;
+    top: $active-filter-top;
+    pointer-events: none;
+    z-index: $z-index;
+  }
+}

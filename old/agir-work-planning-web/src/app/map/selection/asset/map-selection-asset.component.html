@@ -1,0 +1,5 @@
+<div class="map-selection-item">
+  <app-asset-card *ngIf="asset" class="card elevation p-2 m-0" [asset]="asset"></app-asset-card>
+  <app-spinner-card *ngIf="!asset"></app-spinner-card>
+</div>
+<app-map-selection-distance-results *ngIf="asset" [asset]="asset" [point]="point"></app-map-selection-distance-results>

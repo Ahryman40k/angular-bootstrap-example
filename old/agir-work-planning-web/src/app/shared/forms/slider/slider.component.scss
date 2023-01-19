@@ -1,0 +1,25 @@
+@import '../../../../styles/core/variables';
+
+.slider-container {
+  height: $slider-height;
+  position: relative;
+
+  .bar {
+    background-color: $color-gray-250;
+    border-radius: $slider-border-radius;
+    overflow: hidden;
+    position: absolute;
+    top: $slider-bar-top;
+    width: 100%;
+
+    .fill {
+      background-color: $color-turquoise-500;
+      display: block;
+      height: $slider-fill-height;
+    }
+
+    .disabled {
+      background-color: $color-gray-250;
+    }
+  }
+}

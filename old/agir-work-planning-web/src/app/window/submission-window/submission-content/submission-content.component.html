@@ -1,0 +1,87 @@
+<div class="nav-header p-3 d-flex border-bottom border-width-sm breadcrumb">
+  <div class=" d-flex flex-column justify-content-center">
+    <a class="text-secondary clickable d-flex font-md" [routerLink]="['/annual-programs/']">
+      Programmations annuelles
+    </a>
+  </div>
+  <div class="d-flex flex-column justify-content-center mx-1">
+    <em class="icon icon-chevron-right icon-xs"></em>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <a href="annual-programs/{{ programBook?.annualProgramId }}/summary" class="text-secondary clickable d-flex font-md"
+      >{{ programBook?.annualProgram?.executorId | appTaxonomy: 'executor' }} {{ programBook?.annualProgram?.year }}
+    </a>
+  </div>
+  <div class="d-flex flex-column justify-content-center mx-1">
+    <em class="icon icon-chevron-right icon-xs"></em>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <a href="program-books/{{ programBook?.id }}/summary" class="text-secondary clickable d-flex font-md">
+      {{ programBook?.name }}
+    </a>
+  </div>
+  <div class="d-flex flex-column justify-content-center mx-1">
+    <em class="icon icon-chevron-right icon-xs"></em>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <a class="text-secondary clickable d-flex font-md">Soumission #{{ submission.submissionNumber }}</a>
+  </div>
+</div>
+
+<div class="pt-0 pb-0  shadow-sm  block-info">
+  <div class="d-flex justify-content-between align-items-center pt-2 pb-2">
+    <div class="pl-4 align-items-center">
+      <h3 class=" pr-4 pb-0">Soumission #{{ submission.submissionNumber }}</h3>
+      <div class="d-flex mt-2">
+        <span class="badge mr-2">
+          {{ submission.progressStatus | appTaxonomy: TaxonomyGroup.submissionProgressStatus }}
+        </span>
+        <i class="icon icon-checkbox mr-1 badge-success" *ngIf="submission.status === SubmissionStatus.VALID"></i>
+        <i
+          class="icon icon-exclamation-full mr-1 badge-danger"
+          *ngIf="submission.status === SubmissionStatus.INVALID"
+        ></i>
+      </div>
+      <div class="pt-2 pb-2">
+        <div class="d-flex">
+          <span class="mr-10 bold title">Carnet</span>
+          <a class="clickable d-flex" appWindowLink [href]="hrefProgramBook">
+            {{ programBook?.name }}
+          </a>
+        </div>
+        <div class="d-flex">
+          <span class="mr-10 bold title">Budget</span>
+          <span>{{ budget }}k$</span>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex col-xs-12 pr-3">
+      <app-more-options-button [items]="moreOptionsMenuItems"></app-more-options-button>
+      <a appWindowLink [href]="submissionNumberHref" *ngIf="isSubmissionValid">
+        <button class="btn btn-primary btn-squared bg-green btn-md ml-2">
+          <i class="icon icon-color-secondary icon-map"></i>
+          Voir sur la carte
+        </button>
+      </a>
+      <!--<button type="button" (click)="close()" class="btn btn-secondary btn-squared font-weight-bold px-2">
+        Fermer
+      </button>-->
+    </div>
+  </div>
+</div>
+<div class="pl-mb-4 px-3 nav-tabs">
+  <nav class="nav-tabs">
+    <ul class="nav" role="tablist">
+      <ng-container *ngFor="let item of menuItems">
+        <li class="nav-item d-flex" *ngIf="(item.permission | appPermission) || !item.permission">
+          <a class="nav-link" [class.active]="isActivePage(item)" [routerLink]="item.link">
+            {{ item.label }}
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>
+</div>
+<div class="px-3 tab-container scrollable">
+  <router-outlet></router-outlet>
+</div>

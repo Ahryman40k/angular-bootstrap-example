@@ -1,0 +1,17 @@
+<form class="text-center" [formGroup]="form">
+  <div class="d-flex justify-content-between">
+    <span class="font-sm">Autour</span>
+    <h6 class="font-sm" *ngIf="distanceEnabled">{{ form.value.distance }}m</h6>
+  </div>
+  <div class="d-flex justify-content-between align-content-center align-items-center">
+    <button class="btn btn-icon btn-icon-only" (click)="toggleEye()">
+      <i class="icon icon-xs" [class.icon-eye]="distanceEnabled" [class.icon-eye-off]="!distanceEnabled"></i>
+    </button>
+    <app-slider
+      class="flex-1 pl-2"
+      [min]="globalFilterService.config.distance.min"
+      [max]="globalFilterService.config.distance.max"
+      formControlName="distance"
+    ></app-slider>
+  </div>
+</form>

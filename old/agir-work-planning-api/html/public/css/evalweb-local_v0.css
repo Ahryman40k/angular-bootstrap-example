@@ -1,0 +1,439 @@
+/* DÉBUT formulaire pour le type recherche (accueil)*/
+#type_recherche{
+	margin-left:15px;
+}
+#type_recherche hr{
+	margin-left:-15px;
+}
+#type_recherche div.radio{
+	margin:25px 0;
+}
+#type_recherche div.radio span{
+	display:block;
+}
+#type_recherche div.radio input[type="radio"] {
+	margin-left: -30px;
+}
+/* FIN formulaire pour le type recherche (accueil)*/
+
+/*Overide jquery.ui.theme*/
+.ui-widget *{
+	font-family: Arial, sans-serif;
+	font-size:0.95em;
+}
+.ui-autocomplete {
+	position: absolute;
+	cursor: default;
+	height: 200px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.label-return {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: normal;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* DÉBUT zone d'impression*/
+#logo_impression,
+#logo_impression img{
+	display:none;
+}
+.table-condensed > thead > tr > th.text-right, 
+.table-condensed > tbody > tr > th.text-right, 
+.table-condensed > tfoot > tr > th.text-right, 
+.table-condensed > thead > tr > td.text-right, 
+.table-condensed > tbody > tr > td.text-right, 
+.table-condensed > tfoot > tr > td.text-right 
+.text-right{
+	padding-right:10px;
+}
+.btn-print a .glyphicons {
+	display:inline;
+	padding-left:36px;
+}
+.btn-print a .glyphicons.print:before {
+   font-size:20px;
+}
+
+@media print {
+	.zone_nonimprimable{
+		display:none;
+		float:none;
+	}
+	body {
+		font-size:12px;
+		font-family:Arial, Helvetica, sans-serif;	
+		line-height:1.2;
+	}
+	hr{
+		display:none;
+	}
+	div#play-zone {
+		padding:0;
+	}
+	div.table-responsive{
+		display: block;
+		width:100%;
+	}
+	div.table-responsive,
+	div.table-responsive table,
+	div.table-responsive table tbody{
+		border:none;
+		overflow: auto;
+		white-space:normal;
+		margin:0;
+		padding:0;
+		font-size:11px;
+	}
+	.table-responsive > .table > thead > tr > th, 
+	.table-responsive > .table > tbody > tr > th, 
+	.table-responsive > .table > tfoot > tr > th, 
+	.table-responsive > .table > thead > tr > td, 
+	.table-responsive > .table > tbody > tr > td, 
+	.table-responsive > .table > tfoot > tr > td {
+		padding:0 10px 0 0;
+		white-space: normal;
+		width:10%;		
+		line-height:1.2;
+	}
+	h1 {
+		font-size: 16px;
+		margin-bottom:3px;
+		margin-top:5px;
+		color:#000;
+	}
+	h2{
+		font-size:14px;
+		padding-top:2px;
+		padding-bottom:1px;
+		margin-top:5px;
+		margin-bottom:5px;
+		border-bottom:2px solid black;
+		color:#000;
+	}
+	h3, table th h3, table th h2 {
+		font-size: 12px;
+		color:#000000;
+		margin:5px 0;
+		border-bottom:1px solid #D8D8D8;
+	}
+	h1,h2,h3,h4,h5,h6{
+		font-weight:bold;
+	}
+	/*DÉBUT Entête Logo impression*/
+	#logo_impression{
+		margin:0px 0px 15px 0px;
+	}
+	#logo_impression,
+	#logo_impression img{
+		display:block;
+	}
+	#main-content-col{
+		margin-bottom:15px;
+	}
+	#main-content-col p{
+		margin:0
+	}
+	/*FIN Entête Logo impression*/
+	
+	/*DÉBUT Infos bas de page*/
+	#infos_impression{
+		margin-top:15px;
+		display:block;
+		border-top:1px solid #000000;
+		page-break-inside:avoid;
+		font-size:10px;
+	}
+	#infos_impression table tr td,
+	#infos_impression table tr th{
+		text-align:left;
+		font-size:10px;
+	}
+	#infos_impression table tr td+td{
+		text-align:right;
+	}
+	#infos_impression table tr th br{
+		display:none;
+	}
+	#dateImpression{
+		display:inline;
+	}
+	/*FIN Infos bas de page*/
+	
+	/*DÉBUT styles par section*/
+	div#section-1,
+	div#section-2,
+	div#section-3,
+	div#section-4,
+	div#section-5{
+		page-break-inside:avoid;
+		margin-bottom:8px;
+	}
+	div#section-1 table tr td,
+	div#section-2 table tr td,
+	div#section-3 table tr td,
+	div#section-4 table tr td,
+	div#section-5 table tr td,
+	div#section-5 table tr th+th+th+th,
+	div#section-5 table#repartitionTable2 tr td,
+	div#section-5 table#repartitionTable1 #repartitionT2{
+		width:35%;
+	}
+	div#section-1 table tr th,
+	div#section-2 table tr th,
+	div#section-5 table#repartitionTable1 #repartitionT1{
+		width:65%;
+	}
+	div#section-3 table tr td+th,
+	div#section-4 table tr td+th,
+	div#section-5 table#repartitionTable2 tr th{
+		width:10%;
+	}
+	div#section-3 table tr td+th+td,
+	div#section-4 table tr td+th+td,
+	div#section-5 table tr th+th+th,
+	div#section-5 table tr td+th+td,
+	div#section-5 table tr th+th+th+th+th,
+	div#section-5 table tr td+th+td+td+th+th{
+		width:1%;
+	}
+	div#section-5 table tr th+th+th+th+th+th,
+	div#section-5 table tr td+th+td+td+th+th,
+	div#section-5 table tr td+th+td+td+td+td{
+		width:7%;
+	}
+	div#section-5 table tr th+th+th+th+th,
+	div#section-5 table tr td+th+td+td+td,
+	div#section-5 table tr td+th+td+td+th{
+		width:8%;
+	}
+	div#section-5 table tr td+th{
+		width:13%;
+	}
+	/*FIN styles par section*/
+}
+/* FIN zone d'impression*/
+
+/* DÉBUT Ajustement page résultats pour ajout des comparables 2016 */
+.report-menu-link a{
+    color: #428bca;
+}
+.comparables {
+	text-align: right;
+}
+.comparables .btn{
+	margin: 34px 0 40px 20px;
+	padding:8px 20px;
+	font-size: 14px;
+}
+/* FIN Ajustement page résultats pour ajout des comparables 2016 */
+
+
+/* DÉBUT carte consultation des ventes*/
+.map-vente #hdr-ssl,
+.map-vente .nav-map{
+	position:fixed;
+	width: 100%;
+	z-index: 3000;
+}
+.map-vente #hdr-ssl {
+	top:0;
+}
+.map-vente .nav-map {
+	top:80px;
+	background-color: white;
+}
+.map-vente .nav-map .nav-haut {
+	margin: 30px 0 20px 25px;
+}
+.map-vente .nav-map .nav-haut h1 {
+	margin-bottom: 0;
+}
+.map-vente .nav-map .comparables {
+	position:absolute;
+	top:0;
+	right: 25px;
+}
+.map-vente .nav-map .comparables .map-icon-wrapper{
+	display: none;
+}
+.map-vente .nav-map .comparables .map-icon-wrapper div{
+	display: none;
+	cursor: pointer;
+}
+.map-vente .nav-map .comparables .map-icon-wrapper div img{
+	margin-top: 10px;
+}
+.map-vente .nav-map .comparables .map-icon-wrapper,
+.map-vente .nav-map .comparables .btn {
+	display: inline-block;
+}
+.map-vente .nav-map .comparables .btn{
+	margin: 30px 0 20px 20px;
+}
+.map-vente .drt-comparable {
+	margin-top: 180px;
+}
+.map-vente .drt-comparable .col-lg-6:first-child {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+.map-vente .map-container  {
+	height: calc(100% - 180px);
+	width: 50%;
+	top: 180px;
+	right: 0;
+	position: fixed;
+}
+.map-vente .map-container #map {
+	height: 100%;
+	width: 100%;
+}
+.map-vente .fiche-immeuble {
+	border: 1px solid #cccccc;
+	margin-bottom: 30px;
+	height: 200px;
+}
+.map-vente .fiche-immeuble.active {
+	border: 1px solid #000000;
+	background-color: #f5f5f5;
+}
+.map-vente .fiche-immeuble .fiche-immeuble-content{
+	padding: 20px 15px 25px;
+}
+.map-vente .fiche-immeuble .fiche-immeuble-content address {
+	font-weight:bold;
+	margin-bottom: 12px;
+	color: #000000;
+	line-height: 1.2em;
+}
+.map-vente .fiche-immeuble .fiche-immeuble-content p {
+	margin: 0;
+}
+.map-vente .fiche-immeuble .fiche-immeuble-content p,
+.map-vente .fiche-immeuble .fiche-immeuble-content a.google-link {
+	font-size: 12px;
+}
+.map-vente .fiche-immeuble .fiche-immeuble-content a.google-link {
+	margin-top: 12px;
+	display: block;
+}
+.map-vente #targetPropAddress {
+	cursor: pointer;
+}
+.map-vente #targetPropAddress:hover {
+	text-decoration: underline;
+}
+.map-vente .targetPropSelected {
+   text-decoration: underline;
+}
+.map-vente #targetPropAddressImg {
+	vertical-align: text-bottom;
+}
+
+@media (max-width: 480px) {
+  #list-immeuble .col-xs-6 {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) { 
+	.map-vente .nav-map {
+		top: 60px;
+	}
+	.map-vente .nav-map .comparables .map-icon-wrapper {
+		display: inline-block;
+	}
+	.map-vente .nav-map .comparables .map-icon-wrapper div{
+		display: inline-block;
+	}
+	.map-vente .drt-comparable {
+		margin-top: 160px;
+	}
+	.map-vente .map-container  {
+		height: calc(100% - 160px);
+		width: 100%;
+		top: 160px;
+	}
+}
+/*FIN carte consultation des ventes*/
+/*-------------------------
+	Inline help tip
+--------------------------*/
+.help-tip{
+	/*position: absolute;*/
+	text-align: center;
+	background-color: #337ab7;
+	border-radius: 50%;
+	width: 18px;
+	height: 18px;
+	font-size: 12px;
+	line-height: 18px;
+	cursor: default;
+	z-index: 3000;
+	margin-left: 2px;
+	padding: 2px 6px;
+}
+.help-tip:before{
+	content:'?';
+	font-weight: bold;
+	color:#fff;
+}
+.help-tip:hover {
+	cursor: pointer
+}
+.help-tip:hover p{
+	display:block;
+	transform-origin: 100% 0%;
+	-webkit-animation: fadeIn 0.3s ease-in-out;
+	animation: fadeIn 0.3s ease-in-out;
+}
+.help-tip p{
+	display: none;
+	text-align: left;
+	background-color: white;
+	padding: 2px;
+	width: 255px;
+	position: absolute;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+	right: -4px;
+	color: #FFF;
+	font-size: 13px;
+	line-height: 1.4;
+}
+.help-tip p:before{
+	position: absolute;
+	content: '';
+	width:0;
+	height: 0;
+	border:6px solid transparent;
+	border-bottom-color:white;
+	right:10px;
+	top:-12px;
+}
+.help-tip p:after{
+	width:100%;
+	height:40px;
+	content:'';
+	position: absolute;
+	top:-40px;
+	left:0;
+}
+/* Autre */
+#nip_oublie .row{
+	margin-bottom: 15px;
+	margin-top:5px;
+}
+.oublier-code-link {
+	font-size:12px;
+}
+#main-content-col {
+	/*min-height:244px;*/
+}
+.modal label {
+	position: relative;
+}
+

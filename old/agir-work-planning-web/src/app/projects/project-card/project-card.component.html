@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-between align-items-center mb-1">
+  <div class="d-flex">
+    <h4 class="title mr-2">
+      <a appWindowLink href="window/projects/{{ project.id }}/overview" appStopProp>{{ project.id }}</a>
+    </h4>
+    <app-submission-link [object]="project"></app-submission-link>
+  </div>
+  <app-more-options-button [items]="menuItems$ | async" buttonClass="p-0"></app-more-options-button>
+</div>
+<div class="description mb-2 font-md">{{ project.projectName }}</div>
+<div class="details">
+  <ng-container *ngIf="programBookToDisplay">
+    <label class="d-flex align-items-center font-sm font-weight-bold text-primary mb-1">
+      <i class="d-inline-block icon icon-xs icon-calendar mr-1"></i>
+      <a href="program-books/{{ programBookToDisplay.id }}" appStopProp>
+        {{ programBookToDisplay.name }}
+      </a>
+    </label>
+  </ng-container>
+  <label *ngIf="project.projectTypeId === ProjectType.nonIntegrated" class="d-flex font-sm mb-1">
+    <i class="d-inline-block icon icon-xs icon-table mr-1 "></i>
+    {{ projectProgram$ | async | vdmNa }}
+  </label>
+  <label *ngIf="Permission.PROJECT_BUDGET_READ | appPermission" class="d-flex align-items-center font-sm mb-1">
+    <i class="d-inline-block icon icon-xs icon-money mr-1"></i>
+    {{ project.globalBudget?.allowance | vdmCurrencyK | vdmNa }}
+  </label>
+  <label *ngIf="project.interventionIds?.length" class="d-flex align-items-center font-sm mb-1">
+    <i class="d-inline-block icon icon-xs icon-flag mr-1"></i>
+    <ng-container [ngPlural]="project.interventionIds.length">
+      <ng-template ngPluralCase="=1">1 intervention</ng-template>
+      <ng-template ngPluralCase="other">{{ project.interventionIds?.length }} interventions</ng-template>
+    </ng-container>
+  </label>
+  <label *ngIf="projectCategory" class="d-flex align-items-center font-sm mb-1">
+    <i class="d-inline-block icon icon-xs icon-clock mr-1"></i>
+    {{ projectCategory | appTaxonomy: TaxonomyGroup.projectCategory }}
+  </label>
+</div>
+<div class="d-flex align-content-center align-items-center mt-1 flex-wrap">
+  <span class="badge badge-dark mr-1 mt-1">{{ [project.startYear, project.endYear] | vdmJoin: ' - ' }}</span>
+  <span class="badge badge-success mr-1 mt-1">
+    {{ project.status | appTaxonomy: TaxonomyGroup.projectStatus }}
+  </span>
+  <span class="badge badge-success-light mr-1 mt-1">
+    {{ project.projectTypeId | appTaxonomy: TaxonomyGroup.projectType }}
+  </span>
+  <app-medal *ngIf="project.medalId" class="mr-1 mt-1" [medalId]="project.medalId"></app-medal>
+</div>

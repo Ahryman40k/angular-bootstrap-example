@@ -1,0 +1,299 @@
+#==========================================
+# This config file lists all the default
+# configurations. It is the very first file loaded
+# to build configurations and is always loaded,
+# wathever the NODE_ENV is. The other environment-specific
+# config files will simply override the configurations
+# they need.
+#
+# More info about this file and the order config files
+# are loaded : https://github.com/lorenwest/node-config/wiki/Configuration-Files
+#==========================================
+
+environment:
+  isLocal: false
+
+project:
+  # To change in your project!
+  repositoryUrl: https://bitbucket.org/villemontreal/TODO
+
+  # To change in your project!
+  # Leave empty if no such discussion URL exists
+  discussionUrl: https://villemontreal.hipchat.com/chat/room/TODO
+
+  # To change in your project!
+  maintainers:
+    - name: Jane Doe
+      email: jane.doe@ville.montreal.qc.ca
+    - name: John Doe
+      email: john.doe@ville.montreal.qc.ca
+
+#==========================================
+# Logging configs
+#==========================================
+logging:
+  # If the path starts with a ".", it is considered to be relative
+  # to the root of the project.
+  dir: ./log
+  level: info
+
+  # Should be let to false on all environements except
+  # on local (local.yaml and local-test.yaml) for GrayLog
+  # to work properly!
+  humanReadableInConsole: false
+  addStackTraceToErrorMessagesInDev: false
+  logSource: false
+  logToFile: false
+  logRotateFilesNbr: 30
+  logRotateThresholdMB: 100
+  logRotateMaxTotalSizeMB: 1000
+
+#==========================================
+# Server configs
+#==========================================
+server:
+  port: 12345
+  swaggerEditorAlonePort: 12346
+
+#==========================================
+# Debug configs
+#==========================================
+debug:
+  host: 0.0.0.0
+  port: 5858
+  watch:
+    notifications:
+      enabled: false
+      sound: false
+
+#==========================================
+# API configs
+# *Public* informations to access the API.
+#==========================================
+api:
+  scheme: https
+  host: undefined_api_host
+  port: 443
+  domainPath: /public-works/planning
+
+#==========================================
+# Routing configs
+#==========================================
+routing:
+  caseSensitive: false
+  maxRequestSizeMb: 50
+  routes:
+    # Those routes will be prefixed with "/documentation" + the domainPath
+    openAPI:
+      specsFile: /v1/specification
+      ui: /v1/ui
+      editor: /v1/editor
+    readme:
+      route: /v1/readme
+    # Those routes will be prefixed with "/diagnostics" + the domainPath
+    diagnostics:
+      ping: /v1/ping
+      info: /v1/info
+      metrics: /v1/metrics
+      healthCheck: /v1/health/check
+      healthReport: /v1/health/report
+    # Those routes will not be prefixed with anything! They are made
+    # to be available only when the API is accessible as a
+    # *root* context.
+    rootDiagnostics:
+      ping: /diagnostics/v1/ping
+      info: /diagnostics/v1/info
+      metrics: /diagnostics/v1/metrics
+
+#==========================================
+# Templating Engine
+#==========================================
+templatingEngine:
+  enableCache: true
+
+#==========================================
+# Open API configs
+#==========================================
+openApi:
+  # Note that "true" won't work on the "production"
+  # environment...
+  exposeSwaggerEditor: false
+
+#==========================================
+# Mongo database configuration
+#==========================================
+mongo:
+  # The connectionString to the Mongo server.
+  #
+  # If the connectionString is "mock", a Mongo server
+  # will be automatically started, without
+  # the need for a real server to be available.
+  # This "mock" connectionString is only allowed
+  # on the "development" environment or when tests
+  # are ran.
+  # This mocked Mongo server is provided by "Mockgoose".
+  #
+  # A real connectionString example : mongodb://localhost:27017/mongo-db
+  connectionString: mock
+
+  connectionOptions:
+    w: 1
+    wtimeout: 5000
+    auto_reconnect: true
+    server:
+      reconnectTries: 604800
+      reconnectInterval: 1000
+  updater:
+    lockMaxAgeSeconds: 60
+    mongoSchemaUpdatesDirPath: /src/repositories/clients/mongo/updates
+  mockServer:
+    serverVersion: 3.6.12
+
+#==========================================
+# Data Sources configs
+#==========================================
+dataSources:
+
+#==========================================
+# Security
+#==========================================
+security:
+  jwt:
+    enable: true
+    host: undefined_security_jwt_host
+    endPoints:
+      publicKey: /api/security/v1/keys
+      tokenTranslator:
+        url: /api/security/v1/token-translator
+        enable: false
+        mock: false
+        mockRole:
+    whitelist:
+      ALL: []
+      GET: []
+      POST: []
+      PUT: []
+      DELETE: []
+  cors:
+    whitelist: .*
+
+#==========================================
+# GLUU
+#==========================================
+gluu:
+  mock: false
+  urlToken: "https://idp.dev.montreal.ca"
+  serviceAccount:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+    scope: "profile openid email user_name"
+  openIdClient:
+    username: REMPLACE_DANS_JENKINS
+    password: REMPLACE_DANS_JENKINS
+
+#==========================================
+# GDA Gestion Des Accès Service
+#==========================================
+gda:
+  mock: false
+  provision: true
+  urls:
+    base: https://api.dev.interne.montreal.ca/api/it-platforms/security/access-management
+    provision: /v1/provision
+    privileges: /v1/privileges
+
+#==========================================
+# Spatial Analysis
+#==========================================
+spatialAnalysis:
+  spatial:
+    url: https://api.dev.interne.montreal.ca/api/it-platforms/geomatic/spatialanalysis/v1
+  wfs:
+    url: https://api.dev.interne.montreal.ca
+    dWithinMeterTolerance: 20
+    baseCoordinatesSrs: EPSG:4326
+  caching:
+    duration: 86400000 #24h
+
+#==========================================
+# Storage API
+#==========================================
+#
+# 60 seconds
+# 60 minutes
+# 24 hours
+# 365.25 days
+# 7 years
+#
+storageObject:
+  ttl: 220903200
+  maxByteWeight: 52428800
+
+# ==========================================
+# Rules
+# ==========================================
+rules:
+  opportunityNotice:
+    outdatedInDays: 7
+# ==========================================
+# Initializes TLS Rejection
+# ==========================================
+tls:
+  reject: false
+
+#==========================================
+# RTU import
+#==========================================
+rtuImport:
+  serviceAccount:
+    username: TESTAPI2
+    password: VDM1Test!
+    scope: NG
+  projectsConfig:
+    paging:
+      partnerIds: 2
+    timeout:
+      # time in ms
+      response: 60000
+      # time in ms
+      deadline: 60000
+    sessionRetryMax: 1
+  urls:
+    base: http://207.253.1.16:8082/services/rest/v2.0
+    session: /session
+    filter: /extensions/infortu/active-filter
+    projects: /extensions/infortu/projects
+  certificate:
+    enabled: false
+    fileName: rtuCertificate.crt
+
+#==========================================
+# RTU export
+#==========================================
+rtuExport:
+  exportValues:
+    contactId: "0901060"
+    organizationId: "09"
+    typeValue: "Grand Projet"
+    typeDefinition: "Grand Projet"
+    sessionRetryMax: 1
+  paging:
+    size: 100
+  urls:
+    base: http://207.253.1.16:8082/services/rest/v2.0
+    projects: /extensions/infortu/projects
+    contacts: /extensions/infortu/contacts
+
+#==========================================
+# NEXO import
+#==========================================
+nexoImport:
+  dbChunkSize: 100
+  assets:
+    limit: 50 #nb max of assets to proceed at the same time
+
+#==========================================
+# Interventions / Projects extraction
+#==========================================
+extraction:
+  chunkSize: 500

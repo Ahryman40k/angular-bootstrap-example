@@ -1,0 +1,9 @@
+<div id="layer-manager">
+  <div *ngIf="!isMapLoaded" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <vdm-lm-bootstrap *ngIf="isMapLoaded && theme === 'bootstrap-theme'" [layerManagerConfig]="layerManagerConfig" [targetMap]="targetMap"></vdm-lm-bootstrap>
+  <vdm-lm-default *ngIf="isMapLoaded && theme === 'default-theme'" [layerManagerConfig]="layerManagerConfig" [targetMap]="targetMap"></vdm-lm-default>
+</div>

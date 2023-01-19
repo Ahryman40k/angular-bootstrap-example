@@ -1,0 +1,269 @@
+[
+  {
+    "id": "P00002",
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": null,
+    "boroughId": "VM",
+    "executorId": "di",
+    "geometry": "A_IGNORER",
+    "globalBudget": {
+      "allowance": 250
+    },
+    "importFlag": null,
+    "inChargeId": "dre",
+    "interventionIds": [
+      "I00001"
+    ],
+    "servicePriorities": [],
+    "projectName": "PI - Standard / sur Rue Saint-Maurice, de Rue Dupré, à Rue Saint-Henri",
+    "projectTypeId": "integrated",
+    "startYear": 2020,
+    "endYear": 2024,
+    "status": "finalOrdered",
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "rank": 0,
+          "year": 2020,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 123456
+            },
+            {
+              "type": "others",
+              "amount": 20,
+              "accountId": 654321
+            },
+            {
+              "type": "professionalServices",
+              "amount": 30,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 40,
+              "accountId": 987654
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 100,
+          "annualBudget": 100,
+          "status": "programmed",
+          "categoryId": "new",
+          "interventionIds": [
+            "I00001"
+          ],
+          "programBookId": "A_IGNORER",
+          "interventionsTotalBudget": 0
+        },
+        {
+          "rank": 1,
+          "year": 2021,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 123456
+            },
+            {
+              "type": "others",
+              "amount": 20,
+              "accountId": 654321
+            },
+            {
+              "type": "professionalServices",
+              "amount": 30,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 40,
+              "accountId": 987654
+            }
+          ],
+          "annualAllowance": 100,
+          "additionalCostsTotalBudget": 100,
+          "annualBudget": 200,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [
+            "I00001"
+          ],
+          "interventionsTotalBudget": 100
+        },
+        {
+          "rank": 2,
+          "year": 2022,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 123456
+            },
+            {
+              "type": "others",
+              "amount": 20,
+              "accountId": 654321
+            },
+            {
+              "type": "professionalServices",
+              "amount": 30,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 40,
+              "accountId": 987654
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 100,
+          "annualBudget": 100,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [
+            "I00001"
+          ],
+          "interventionsTotalBudget": 0
+        },
+        {
+          "rank": 3,
+          "year": 2023,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 123456
+            },
+            {
+              "type": "others",
+              "amount": 20,
+              "accountId": 654321
+            },
+            {
+              "type": "professionalServices",
+              "amount": 30,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 40,
+              "accountId": 987654
+            }
+          ],
+          "annualAllowance": 50,
+          "additionalCostsTotalBudget": 100,
+          "annualBudget": 150,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [
+            "I00001"
+          ],
+          "interventionsTotalBudget": 50
+        },
+        {
+          "rank": 4,
+          "year": 2024,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 123456
+            },
+            {
+              "type": "others",
+              "amount": 20,
+              "accountId": 654321
+            },
+            {
+              "type": "professionalServices",
+              "amount": 30,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 40,
+              "accountId": 987654
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 100,
+          "annualBudget": 100,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [
+            "I00001"
+          ],
+          "interventionsTotalBudget": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 650,
+        "additionalCostTotals": [
+          {
+            "type": "contingency",
+            "amount": 50,
+            "note": "This is the contingency note content."
+          },
+          {
+            "type": "others",
+            "amount": 100,
+            "note": "This is the others note content."
+          },
+          {
+            "type": "professionalServices",
+            "amount": 150,
+            "note": "This is the professionalServices note content."
+          },
+          {
+            "type": "workExpenditures",
+            "amount": 200,
+            "note": "This is the workExpenditures note content."
+          }
+        ],
+        "totalAdditionalCosts": 500,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 150
+      }
+    },
+    "comments": [
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "information",
+        "id": "A_IGNORER",
+        "isPublic": true,
+        "text": "This is the comment content."
+      }
+    ],
+    "decisions": [],
+    "documents": [
+      {
+        "audit": "A_IGNORER",
+        "documentName": "projectDocument",
+        "fileName": "test-pdf.pdf",
+        "id": "A_IGNORER",
+        "validationStatus": "validated",
+        "notes": "notes",
+        "objectId": "A_IGNORER",
+        "type": "other"
+      }
+    ],
+    "geometryPin": "A_IGNORER",
+    "length": {
+      "unit": "m",
+      "value": 42
+    },
+    "medalId": null,
+    "roadNetworkTypeId": "local",
+    "drmNumber": "5000",
+    "submissionNumber": "500001"
+  }
+]

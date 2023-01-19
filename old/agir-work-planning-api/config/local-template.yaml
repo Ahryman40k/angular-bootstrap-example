@@ -1,0 +1,106 @@
+#==========================================
+# Default local configurations
+#==========================================
+
+environment:
+  isLocal: true
+
+logging:
+  humanReadableInConsole: true
+  level: debug
+
+templatingEngine:
+  enableCache: false
+
+debug:
+  watch:
+    notifications:
+      enabled: true
+      sound: false
+
+api:
+  scheme: http
+  host: localhost
+  port: 12345
+
+openApi:
+  exposeSwaggerEditor: true
+
+# mongo:
+#   connectionString: mongodb://dvllmg01a.ile.montreal.qc.ca:27001,dvllmg01b.ile.montreal.qc.ca:27001,dvllmg01c.ile.montreal.qc.ca:27001/agirworkplanning
+#   connectionOptions:
+#     replicaSet: rsdvl01
+#     user: agirworkplanning
+#     pass: F7uQIEcowVQSXOKA7AI2BvYl2H
+
+mongo:
+  connectionString: mongodb://localhost:27017/agirworkplanning
+  connectionOptions:
+    native_parser: true
+    useMongoClient: true
+    wtimeout: 5000
+    replicaSet:
+    user:
+    pass:
+    auto_reconnect: true
+    server:
+      reconnectTries: 604800
+      reconnectInterval: 1000
+
+#==========================================
+# Security
+#==========================================
+security:
+  jwt:
+    enable: true
+    host: https://api.dev.interne.montreal.ca
+    endPoints:
+      tokenTranslator:
+        enable: true
+  cors:
+    whitelist: .*
+
+#==========================================
+# GLUU
+#==========================================
+gluu:
+  urlToken: "https://idp.dev.montreal.ca"
+  serviceAccount:
+    username: srvAccAgirPlan
+    password: asdf1234
+    scope: "profile openid email user_name"
+  openIdClient:
+    username: "@!4025.CA62.9BB6.16C5!0001!2212.0010!0008!331A.09D5.4824.1C82"
+    password: Fw5p2pwa
+
+#==========================================
+# GDA Gestion Des Accès
+#==========================================
+gda:
+  provision: false
+  urls:
+    base: https://api.dev.interne.montreal.ca/api/it-platforms/security/access-management
+
+#==========================================
+# Storage API
+#==========================================
+storageObject:
+  mock: false
+  gateway: https://api.dev.interne.montreal.ca
+  volumeId: agirworkplanning
+
+# ==========================================
+# Initializes TLS Rejection
+# ==========================================
+tls:
+  reject: true
+
+#==========================================
+# RTU import
+#==========================================
+rtuImport:
+  serviceAccount:
+    username: TESTAPI
+    password: VDM1Test
+  urls:
+    base: http://207.253.1.16:8082/services/rest/v2.0

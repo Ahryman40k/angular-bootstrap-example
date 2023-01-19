@@ -1,0 +1,23 @@
+<div class="item" *ngIf="item" tabindex="0" (keydown.space)="$event.stopPropagation(); onItemClick()"
+  (click)="onItemClick()" [class.active]="active">
+  <div class="d-flex align-items-center">
+    <app-checkbox class="checkbox-sm py-0 pt-1" [value]="active"></app-checkbox>
+    <i *ngIf="item.icon && iconPosition === eIconPosition.Left" class="icon {{ item.icon }} icon-xs mr-1"></i>
+    <label class="filter-item-label flex-1 mb-0 font-sm" [ngbTooltip]="item.label" [openDelay]="2000">
+      {{ item.label }}
+    </label>
+    <i *ngIf="item.icon && iconPosition === eIconPosition.Right && !item.item?.subItems"
+      class="icon {{ item.icon }} icon-xs mr-1"></i>
+    <button *ngIf="item.item?.subItems" class="btn btn-icon btn-icon-only p-0"
+      (click)="$event.stopPropagation(); toggleCollapse()">
+      <i class="icon icon-chevron p-0" [class.icon-chevron-up]="!isSubItemsCollapsed"
+        [class.icon-chevron-down]="isSubItemsCollapsed"></i>
+    </button>
+  </div>
+  <ng-container *ngIf="!isSubItemsCollapsed">
+    <div class="item d-flex pb-1 filter-item-sub-item-padding-left" *ngFor="let subItem of item.item?.subItems">
+      <label class="filter-item-label flex-1 mb-0 font-sm">{{subItem.label}}</label>
+      <i *ngIf="subItem.icon" class="icon {{ subItem.icon }} icon-xs mr-1"></i>
+    </div>
+  </ng-container>
+</div>

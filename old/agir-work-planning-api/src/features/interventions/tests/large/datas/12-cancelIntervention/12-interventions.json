@@ -1,0 +1,89 @@
+[
+  {
+    "audit": "A_IGNORER",
+    "moreInformationAudit": "A_IGNORER",
+    "executorId": "di",
+    "assets": [
+      {
+        "id": "5311806",
+        "typeId": "aqueductSegment",
+        "ownerId": "dre",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [[-73.554318, 45.503531], [-73.554245, 45.503655], [-73.554094, 45.503922]]
+        },
+        "length": {
+          "value": 46.851990636307875,
+          "unit": "m"
+        },
+        "externalReferenceIds": []
+      }
+    ],
+    "boroughId": "VM",
+    "estimate": {
+      "allowance": 75,
+      "burnedDown": 0,
+      "balance": 75
+    },
+    "interventionArea": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-73.553968, 45.504173], [-73.553998, 45.50418], [-73.554, 45.504177], [-73.554373, 45.503508], [-73.554311, 45.503498], [-73.554313, 45.503508], [-73.553938, 45.504165], [-73.553968, 45.504173]]]
+      },
+      "isEdited": false,
+      "geometryPin": [-73.55412871428571, 45.503887]
+    },
+    "interventionName": "Réhabilitation / Segment d'aqueduc / rue de la Capitale",
+    "interventionTypeId": "initialNeed",
+    "interventionYear": 2040,
+    "medalId": null,
+    "planificationYear": 2040,
+    "requestorId": "dre",
+    "workTypeId": "rehabilitation",
+    "contact": "Yoda",
+    "decisionRequired": false,
+    "importFlag": null,
+    "programId": "sae",
+    "roadSections": {
+      "type": "FeatureCollection",
+      "features": "A_IGNORER"
+    },
+    "status": "canceled",
+    "roadNetworkTypeId": "local",
+    "streetName": "streetName",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "id": "I00002",
+    "decisions": [
+      {
+        "audit": "A_IGNORER",
+        "id": "A_IGNORER",
+        "typeId": "canceled",
+        "text": "Annulation de l'intervention"
+      },
+      {
+        "audit": "A_IGNORER",
+        "id": "A_IGNORER",
+        "typeId": "accepted",
+        "text": "Accepté (Go)",
+        "targetYear": 2040,
+        "previousPlanificationYear": 2040
+      },
+      {
+        "audit": "A_IGNORER",
+        "id": "A_IGNORER",
+        "typeId": "revisionRequest",
+        "text": "Ajout d'une demande de révision",
+        "targetYear": 2040,
+        "previousPlanificationYear": 2040
+      },
+      {
+        "audit": "A_IGNORER",
+        "id": "A_IGNORER",
+        "typeId": "refused",
+        "refusalReasonId": "mobility",
+        "text": "Refus de l'intervention"
+      }
+    ]
+  }
+]

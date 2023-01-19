@@ -1,0 +1,285 @@
+#!groovy
+// Documentation disponible ici : 
+// https://sticonfluence.interne.montreal.ca/display/IEP/2+-+Configuration
+
+@Library('cicd-lib')
+import vdmtl.cicd.*
+import jenkins.model.*
+
+def rateLimitingPerMinute = params.rateLimitingPerMinute ?: 1000
+def rateLimitingPerSecond = params.rateLimitingPerSecond ?: 20
+
+pipeline = new Pipeline()
+
+// For more information on the configuration options,
+// see https://bitbucket.org/villemontreal/cicd-lib/src/master/docs/Config.md
+ctx = pipeline.createContext([
+    // Namespaces are used in K8s to group similar microservices together.
+    // For example, if two APIs and a SPA are used to provide the complete application
+    // they should all use the same namespace.
+    namespace: ["gt-agir"], 
+    application: [
+        name: "agir-work-planning-api", 
+        type: "service",
+        tier: "backend",
+        runtime: "nodejs", 
+        framework: "Express",
+        keywords: ["Sample", "API"],
+        //labels: [key1: "val1", key2: "val2"], //DEPRECATED
+        //description: "Please, describe your API.",
+        //icon: "https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-lightbulb.svg"
+    ],
+    packaging: [
+        dockerfilePath: "./Dockerfile",  // The location of the Dockerfile to use
+    ],
+    execution: [
+        service: [
+            // Any port can be used as long as it matches the port on which your container listens.
+            // This port is defined for you API in config/default.yaml under server.port and is
+            // also by default 12345.  This value and the one below must be the same.
+            //
+            // You don't need to worry about port clashes with other applications, because K8s 
+            // provides a unique IP address for each service.  You can therefore leave the port as is,
+            // or choose any port you would like as long as it matches with the port used by
+            // your application inside its container.
+            "port": 12345
+        ],
+        resources: [
+            minCpu: "100m",
+            minMemory: "128Mi",
+            maxCpu: "1000m",
+            maxMemory: "2000Mi" // ex: "256Mi"
+        ],
+        autoScaling: [
+            // K8s will start more containers of your application when the current ones
+            // reach the cpuUsagePercentage limit set below.
+            // minReplicas indicates the minimum number of instances of containers of
+            // your app, while maxReplicas is the maximum K8s will be allowed to start.
+            // NOTE: It is the responsibility of your application to synchronize its
+            // data between multiple replicas.  If your application does not support
+            // such scaling, set both Replicas values to 1.
+            minReplicas: 2,
+            maxReplicas: 3,
+            cpuUsagePercentage: 50
+        ],
+        crons: [
+            // Runs the Info-RTU import every day around midnight.
+            [
+                type: "custom",
+                schedule: "0 5 * * *",
+                image: "this",
+                args: ["node", "scripts/info-rtu/import.js"]
+            ]
+        ]
+    ],
+    approval: [
+        enabled: true,
+        // List of AD groups or usernames per non dev environment.
+        // These people will be able to approve the deployment of
+        // the application into ACCEPT and PROD.
+
+        approvers: [
+                "urielju",
+                "uchou83",
+                "uroymyy",
+                "udicrbr",
+                "uloursi"
+        ]
+
+        /*overrides: [
+            "training@accept": [
+                approvers: [
+                    "urielju",
+                    "uchou83",
+                    "uroymyy",
+                    "udicrbr"
+                ]
+            ],
+            "accept": [
+                approvers: [
+                    "urielju",
+                    "uchou83",
+                    "uroymyy",
+                    "udicrbr"
+                ]
+            ],
+            "prod" : [
+                approvers: [
+                    "urielju",
+                    "uroymyy",
+                    "udicrbr",
+                    "uchou83"
+                ]
+            ]
+        ]*/
+        // Can be overridden for Prod:
+        // overrides: [
+        //     prod: [
+        //         approvers: ["user1", "user2"]
+        //     ]
+        // ],
+    ],
+    notifications: [
+        chat: [
+            room: "agir-planification-ci",
+            notify: true
+        ],
+        mail: [
+            to: [
+                // Full email, or prefix of the email address ville.montreal.qc.ca
+                // ex: "john.doe", "jane.dear@mailinator.com"
+                // Note that the code U (e.g., udev123) will not work since there
+                // is no email using that id.
+                "julien.riel",
+                "wilman.tello.borja",
+                "brian.dicroce"
+            ]
+        ]
+    ],
+    secrets : [
+        [
+            type: "file",
+            path: "/mtl/app/config/local.json",
+            content: [
+                map: [
+                    "api.domainPath": [
+                        config: "api.domainPath"
+                    ],
+                    "mongo.connectionOptions.user": [
+                        Jenkins: [
+                            key   : "agirworkplanning-bd",
+                            type  : "username",
+                        ]
+                    ],
+                    "mongo.connectionOptions.pass": [
+                        Jenkins: [
+                            key   : "agirworkplanning-bd",
+                            type  : "password",
+                        ]
+                    ],
+                    "gluu.serviceAccount.username": [
+                        Jenkins: [
+                            key   : "agirworkplanning-srvacc",
+                            type  : "username",
+                        ]
+                    ],
+                    "gluu.serviceAccount.password": [
+                        Jenkins: [
+                            key   : "agirworkplanning-srvacc",
+                            type  : "password",
+                        ]
+                    ],
+                    "gluu.openIdClient.username": [
+                        Jenkins: [
+                            key   : "agirworkplanning-oidc",
+                            type  : "username",
+                        ]
+                    ],
+                    "gluu.openIdClient.password": [
+                        Jenkins: [
+                            key   : "agirworkplanning-oidc",
+                            type  : "password",
+                        ]
+                    ],
+                    "rtuImport.serviceAccount.username": [
+                        Jenkins: [
+                            key   : "agirworkplanning-rtu-import",
+                            type  : "username",
+                        ]
+                    ],
+                    "rtuImport.serviceAccount.password": [
+                        Jenkins: [
+                            key   : "agirworkplanning-rtu-import",
+                            type  : "password",
+                        ]
+                    ]
+/*                    "dataSources.db311.user": [
+                        // Les credentials doivent être créés dans Jenkins avec le suffix -DEV, -ACCEPT ou -PROD, ex: db311-service-account-DEV
+                        // Selon la branche, le bon suffix sera ajouté automatiquement lors du déploiement à la Jenkins.key définie ici.
+                        Jenkins: [
+                            key   : "db311-service-account", 
+                            type  : "username",
+                        ]
+                    ],
+                    "dataSources.db311.password": [
+                        Jenkins: [
+                            key   : "db311-service-account", 
+                            type  : "password",
+                        ]
+                    ],*/
+                ]
+            ]
+        ],
+    ],  
+    // API Manager configuration
+    api: [
+        domainPath: "/public-works/planning",
+        networkAccess: [
+            profile: "public", // Available profile:
+                //   "public"   (open to all, blacklist can be added),
+                //   "internal" (open internally only, extra whitelist can be added),
+                //   "private"  (closed to all, whitelist must be added)
+            // Check documentation for defining a whitelist or a blacklist
+        ],
+        rateLimiting: [
+            perMinute: rateLimitingPerMinute,
+            perSecond: rateLimitingPerSecond
+        ],
+        security: [
+            enabled: true,
+            whitelist: [
+                ALL: [
+                    "/diagnostics/.+",
+                    "/documentation/.+"
+                ]
+            ],
+            customJwtDataProvider: [
+                name: "agir-planning-api-jwt-provider",
+                uri: "https://api.<ENV>.interne.montreal.ca/api/it-platforms/security/access-management/v1/privileges",
+                method: "POST",
+                options: [
+                    application: "AGIR-PLANNING",
+                    fields: [
+                        "application",
+                        "permissions"
+                    ],
+                ]
+            ]
+        ],
+    ],
+])
+pipeline.start(ctx) {
+
+    pipeline.withSourceCode(ctx) {
+
+        pipeline.buildStage(ctx) {
+            pipeline.buildDockerImage(ctx)
+        }
+
+        pipeline.prePublishStage(ctx) {
+            pipeline.publishDraftDockerImage(ctx)
+        }
+    }
+
+    pipeline.withDraftDockerImage(ctx) {
+        pipeline.testInDraftDockerContainerStage(ctx) {
+            try {
+                sh """
+                    cd /mtl/app
+                    npm install
+                    npm run test-jenkins -- --report=$WORKSPACE/output/test-results/report.xml
+                """
+            } finally {
+                junit "output/test-results/*.xml"
+            }
+        }
+
+        pipeline.publishStage(ctx) {
+            pipeline.publishDockerImage(ctx)
+        }
+
+        pipeline.deployStage(ctx) {
+            pipeline.deployApp(ctx)
+        }
+    }
+}

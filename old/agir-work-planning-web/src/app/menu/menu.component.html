@@ -1,0 +1,37 @@
+<div class="panel-backdrop h-100 w-100 position-fixed" [class.shown]="contentShown" (click)="onClose()"></div>
+<div class="menu-panel h-100 d-flex flex-column bg-white position-absolute" [class.shown]="contentShown">
+  <div class="bg-primary-red py-0 px-2 text-white d-flex align-items-center">
+    <app-svg height="30" width="31" key="vdm"></app-svg>
+    <span class="navbar-brand ml-3">Menu</span>
+    <button type="button" class="btn btn-secondary-reverse btn-icon-left btn-hide-label-xl ml-auto" (click)="onClose()">
+      <span class="icon icon-x icon-color-dark" aria-hidden="true"></span>
+    </button>
+  </div>
+  <menu class="menu d-flex flex-column align-content-center align-items-center">
+    <ng-container *ngFor="let item of menuItems">
+      <a
+        *ngIf="item.permission | appPermission"
+        class="menu-item w-100 link-unstyled border-bottom p-2"
+        (click)="navigateTo(item.link)"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <em class="icon {{ item.icon }} icon-xs icon-color-dark mr-1 d-inline"></em>
+        {{ item.title }}
+      </a>
+    </ng-container>
+    <div class="flex-grow-1"></div>
+    <a
+      *ngIf="'ACCESS_MANAGEMENT:ACCESS' | appPermission"
+      class="menu-item w-100 link-unstyled border-top p-2"
+      target="_blank"
+      [href]="getGdaRoute()"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="onClose()"
+    >
+      <em class="icon icon-users icon-xs icon-color-dark mr-1 d-inline"></em>
+      Gestion des accès
+    </a>
+  </menu>
+</div>

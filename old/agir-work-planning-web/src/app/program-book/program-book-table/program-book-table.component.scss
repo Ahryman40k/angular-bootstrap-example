@@ -1,0 +1,19 @@
+@import '../../../styles/core/variables';
+@import '../shared/scss/varaiables.scss';
+
+.project-detail {
+  padding-left: 6rem;
+}
+
+.responsive-table {
+  padding-bottom: $responsive-table-scroll-padding-bottom;
+}
+
+app-table-column-header {
+  background-color: $color-white;
+}
+
+.main {
+  height: calc(100% - #{$project-programmed-label-height});
+  width: 100%;
+}

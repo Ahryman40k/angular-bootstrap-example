@@ -1,0 +1,158 @@
+[
+  {
+    "id": "P00001",
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": null,
+    "boroughId": "VM",
+    "executorId": "dre",
+    "externalReferenceIds": [ 
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-DRE"
+      }
+    ],
+    "geometry": "A_IGNORER",
+    "globalBudget": {
+      "allowance": 420
+    },
+    "importFlag": "import-nexo",
+    "inChargeId": "dre",
+    "interventionIds": [ "I00001" ],
+    "servicePriorities": [],
+    "projectName": "PI - Standard / sur Rue Saint-Maurice, de Rue Dupré, à Rue Saint-Henri",
+    "projectTypeId": "integrated",
+    "startYear": 2022,
+    "endYear": 2024,
+    "status": "planned",
+    "streetName": "Rue Saint-Maurice",
+    "streetFrom": "Rue Dupré",
+    "streetTo": "Rue Saint-Henri",
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [ 
+        {
+          "rank": 0,
+          "year": 2022,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 150,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 150,
+          "status": "planned",
+          "categoryId": "new",
+          "interventionIds": [ "I00001" ],
+          "interventionsTotalBudget": 150
+        },
+        {
+          "rank": 1,
+          "year": 2023,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 150,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 150,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [ "I00001" ],
+          "interventionsTotalBudget": 150
+        },
+        {
+          "rank": 2,
+          "year": 2024,
+          "additionalCosts": [ 
+            {
+              "type": "contingency",
+              "amount": 0
+            }, 
+            {
+              "type": "others",
+              "amount": 0
+            }, 
+            {
+              "type": "professionalServices",
+              "amount": 0
+            }, 
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 120,
+          "additionalCostsTotalBudget": 0,
+          "annualBudget": 120,
+          "status": "planned",
+          "categoryId": "completing",
+          "interventionIds": [ "I00001" ],
+          "interventionsTotalBudget": 120
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 420,
+        "additionalCostTotals": [ 
+          {
+            "type": "contingency",
+            "amount": 0
+          }, 
+          {
+            "type": "others",
+            "amount": 0
+          }, 
+          {
+            "type": "professionalServices",
+            "amount": 0
+          }, 
+          {
+            "type": "workExpenditures",
+            "amount": 0
+          }
+        ],
+        "totalAdditionalCosts": 0,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 420
+      }
+    },
+    "comments": [],
+    "decisions": [],
+    "documents": [],
+    "geometryPin": "A_IGNORER",
+    "length": {
+      "unit": "m",
+      "value": 236.7
+    },
+    "medalId": null
+  }
+]

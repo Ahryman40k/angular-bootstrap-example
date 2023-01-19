@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+  <div class="form-group flex-column col-md-7 mb-4 pl-0" *ngIf="form.controls.isProjectVisible">
+    <label class="font-weight-bold">Rattaché à</label>
+    <vdm-select bindLabel="label" [items]="linkedObjects" bindValue="value" formControlName="isProjectVisible"></vdm-select>
+  </div>
+  <div class="form-group flex-column col-md-7 mb-4 pl-0">
+    <label class="font-weight-bold">Catégorie</label>
+    <vdm-select
+      bindLabel="label.fr"
+      bindValue="code"
+      formControlName="categoryId"
+      [items]="commentCategories"
+    ></vdm-select>
+    <app-form-errors formControlName="categoryId">
+      <app-form-error *appFormError="let e; key: 'required'">Une catégorie est requise</app-form-error>
+    </app-form-errors>
+  </div>
+  <div class="form-group mb-4">
+    <label class="font-weight-bold" for="form-control-default-one">Commentaire</label>
+    <textarea rows="6" formControlName="description" class="form-control w-100"></textarea>
+    <app-form-errors formControlName="description">
+      <app-form-error *appFormError="let e; key: 'required'">Une description est requise</app-form-error>
+    </app-form-errors>
+  </div>
+  <app-checkbox formControlName="isPublic" *ngIf="canWritePrivateComment">
+    <label class="font-weight-bold">Commentaire public</label>
+  </app-checkbox>
+</form>

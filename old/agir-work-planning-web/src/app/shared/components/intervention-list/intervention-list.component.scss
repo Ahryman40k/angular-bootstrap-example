@@ -1,0 +1,19 @@
+@import '../../../../styles/core/variables';
+
+$list-max-height: 320px;
+
+.item-list-hover {
+  &.hover,
+  &:hover {
+    background-color: $color-gray-100;
+  }
+}
+
+.list-height {
+  max-height: $list-max-height;
+}
+
+.intervention-list > li {
+  list-style-type: none;
+  width: 100%;
+}

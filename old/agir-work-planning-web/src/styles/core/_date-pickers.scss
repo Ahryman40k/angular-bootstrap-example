@@ -1,0 +1,39 @@
+$ngb-header-height: 68px;
+$border-width: 1px;
+$ngb-weekdays-mt: 7px;
+$selected-date-circle: 1.25rem;
+
+.ngb-dp-header {
+  height: $ngb-header-height;
+  display: grid;
+}
+
+ngb-datepicker-navigation {
+  background-color: $color-white;
+  border-bottom: solid $color-gray-300 $border-width;
+}
+
+.ngb-dp-months {
+  justify-content: space-around;
+}
+
+ngb-datepicker-month-view .ngb-dp-weekdays {
+  border: none;
+  background-color: $color-white !important;
+  margin-top: $ngb-weekdays-mt;
+  .ngb-dp-weekday {
+    color: $color-gray-500;
+    font-style: normal;
+    text-transform: capitalize;
+    visibility: hidden;
+  }
+  .ngb-dp-weekday:first-letter {
+    visibility: visible;
+  }
+}
+
+.btn-light.bg-primary.text-white {
+  background-color: $color-turquoise-300 !important;
+  color: $color-black !important;
+  border-radius: $selected-date-circle !important;
+}

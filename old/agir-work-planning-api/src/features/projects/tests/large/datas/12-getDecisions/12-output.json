@@ -1,0 +1,20 @@
+[
+  {
+    "audit": "A_IGNORER",
+    "id": "A_IGNORER",
+    "endYear": null,
+    "startYear": null,
+    "text": "This is a cancel decision.",
+    "typeId": "canceled"
+  },
+  {
+    "audit": "A_IGNORER",
+    "id": "A_IGNORER",
+    "endYear": 2043,
+    "previousEndYear": 2042,
+    "previousStartYear": 2040,
+    "startYear": 2041,
+    "text": "This is a reschedule decision.",
+    "typeId": "replanned"
+  }
+]

@@ -1,0 +1,29 @@
+<div
+  class="d-flex mr-2"
+  [class.filter-separator]="collapsible"
+  [class.mb-1]="titleH6.children"
+  [class.w-100]="!collapsible"
+>
+  <div class="d-flex justify-content-between" [class.w-100]="!collapsible">
+    <div class="d-flex flex-column justify-content-center">
+      <h6 #titleH6 class="mr-1 font-sm"><ng-content select="[title]"></ng-content></h6>
+    </div>
+    <ng-content select="[titleAction]"></ng-content>
+  </div>
+  <button class="btn btn-icon btn-icon-only p-0" *ngIf="collapsible" (click)="toggleCollapse()">
+    <i class="icon" [class.icon-chevron-up]="!collapsed" [class.icon-chevron-down]="collapsed"></i>
+  </button>
+</div>
+<ng-content></ng-content>
+<ng-container *ngIf="!collapsed">
+  <app-filter-item [item]="selectAllItem" (itemClick)="selectAllItems()" *ngIf="selectAll"></app-filter-item>
+  <app-filter-item
+    *ngFor="let item of filterItems"
+    [item]="item"
+    [iconPosition]="iconPosition"
+    (itemClick)="onItemClick(item)"
+    (removeClick)="onRemoveClick(item)"
+    [canDelete]="canDelete"
+  ></app-filter-item>
+</ng-container>
+<ng-content select="[action]"></ng-content>

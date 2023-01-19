@@ -1,0 +1,35 @@
+<div class="p-4 h-100" *ngIf="form" [formGroup]="form">
+  <div class="d-flex justify-content-between">
+    <h3>Sélection multiple d'actifs</h3>
+    <button type="button" class="close" aria-label="Fermer">
+      <span class="icon icon-x icon-n" (click)="closePanel()"></span>
+    </button>
+  </div>
+  <h4 class="mt-2">Couche d'actif choisie</h4>
+  <div class="mt-1">
+    <span class="font-md text-dark">Un seul type d'actif peut être sélectionné.</span>
+  </div>
+  <div class="mt-2">
+    <vdm-select
+      class="rounded-select"
+      bindLabel="label.fr"
+      bindValue="code"
+      formControlName="assetType"
+      [items]="assetTypes"
+    ></vdm-select>
+  </div>
+  <h4 class="mt-4">Actifs sélectionnés</h4>
+  <div class="my-2">
+    <span class="font-md text-dark">
+      Cliquer sur un tronçon de voie afin de sélectionner les actifs disponibles dans cette zone.
+    </span>
+  </div>
+  <app-asset-list
+    [isAssetHasProperties] = "isAssetHasProperties"
+    [items]="selectedAssets"
+    (resetEvent)="reset()"
+    (assetHoverEvent)="onAssetListHover($event)"
+    (submitEvent)="submit($event)"
+    [isLoading]="mapService.isLoadingRoadSection"
+  ></app-asset-list>
+</div>

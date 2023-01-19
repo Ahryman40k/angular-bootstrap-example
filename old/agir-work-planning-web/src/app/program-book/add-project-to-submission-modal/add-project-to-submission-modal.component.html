@@ -1,0 +1,44 @@
+<app-layout-modal [modalTitle]="modalTitle" [scrollable]="false">
+  <div body>
+    <div>
+      <h4>Projet sélectionné</h4>
+    </div>
+    <div class="d-felx justify-content-center">
+      <a class="clickable" appWindowLink [href]="linkProject">
+        {{ project.id }}
+      </a>
+      <span class="badge project-type ml-1 mr-1">
+        {{ project.projectTypeId | appTaxonomy: TaxonomyGroup.projectType }}
+      </span>
+      <span>
+        {{ project.projectName }}
+      </span>
+    </div>
+    <div class="w-50">
+      <label>Soumissions compatibles</label>
+      <vdm-select
+        bindLabel="submissionNumber"
+        bindValue="submissionNumber"
+        [formControl]="submissionCtrl"
+        [items]="submissions$ | async"
+        autofocus="true"
+      ></vdm-select>
+      <app-form-errors [formControl]="submissionCtrl">
+        <app-form-error *appFormError="let e; key: 'required'">Numéro de soumission est obligatoire</app-form-error>
+      </app-form-errors>
+    </div>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="reject()">
+      Annuler
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary btn-squared add-button"
+      (click)="submit()"
+      [disabled]="submitting || submissionCtrl.invalid"
+    >
+      Confirmer
+    </button>
+  </div>
+</app-layout-modal>

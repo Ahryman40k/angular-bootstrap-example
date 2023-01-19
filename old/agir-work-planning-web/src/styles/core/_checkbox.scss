@@ -1,0 +1,14 @@
+.checkbox-sm {
+  label::before {
+    width: 12px;
+    height: 12px;
+    left: -1.5rem;
+  }
+  label::after {
+    top: 0.1rem;
+    left: -1.4rem;
+    width: 12px;
+    height: 12px;
+    background: no-repeat 50% / 1rem;
+  }
+}

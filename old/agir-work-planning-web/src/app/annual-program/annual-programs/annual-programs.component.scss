@@ -1,0 +1,40 @@
+@import '../../../styles/core/variables';
+
+$annual-program-list-width: 352px;
+.content-container{
+  height: 100vh;
+}
+h2{
+  font-size: $font-size-12;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: $line-height-32;
+  color: $color-pale-sky;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.left-menu {
+  width: $annual-program-list-width;
+}
+.executors-last-child button{
+  display: block;
+  position: relative;
+  margin-top: 26px;
+  &:before{
+    top: -27px;
+    right: 0px;
+    width: 100%;
+    content: '';
+    display: block;
+    height: 11px;
+    margin-top: 10px;
+    padding-bottom: 50px;
+    position: absolute;
+    border-top: 1px solid $color-gray-300;
+  }
+}

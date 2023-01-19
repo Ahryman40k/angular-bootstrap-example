@@ -1,0 +1,14 @@
+<div
+  class="file-drop-container-v2 row text-break {{invalidBorderStyle}}"
+  id="file-droparea"
+  appDragDropFile
+  (onFileDropped)="onFileDragged($event)"
+>
+  <div class="file-selector-button p-0 mr-1 {{selectorButtonClass}}">
+    <input type="file" id="form-group-file-upload-{{uniqueId}}" class="sr-only" onclick="this.value=null;" (change)="onFileChange($event)" />
+    <label class="btn btn-secondary btn-squared {{buttonSizeClass}} mb-0" for="form-group-file-upload-{{uniqueId}}">Parcourir</label>
+  </div>
+  <span class="font-md text-secondary">
+    {{ fileLabel }}
+  </span>
+</div>

@@ -1,0 +1,169 @@
+<div *ngIf="intervention" class="details-overview p-4">
+  <div class="mb-4 mr-4 flex-1">
+    <div class="d-flex justify-content-between">
+      <h2>Vue d'ensemble de {{ intervention.id }}</h2>
+      <app-more-options-button *ngIf="project" [items]="menuItems"></app-more-options-button>
+    </div>
+    <p class="mt-1 mb-1">
+      {{ intervention.interventionName | vdmNa }}
+    </p>
+    <div class="d-flex flex-column" *ngIf="windowService.currentProject">
+      <div class="d-flex">
+        <div class="mr-1">
+          <span class="badge badge-dark">
+            {{ intervention.planificationYear }}
+          </span>
+        </div>
+        <div class="mr-1" *ngIf="intervention?.status">
+          <span class="badge badge-success">
+            {{ intervention.status | appTaxonomy: TaxonomyGroup.interventionStatus | vdmNa }}
+          </span>
+        </div>
+        <div>
+          <span class="badge badge-success-light">
+            {{ intervention.interventionTypeId | appTaxonomy: TaxonomyGroup.interventionType | vdmNa }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <h4 class="font-weight-bold my-3">Emplacement englobé</h4>
+    <div class="d-flex justify-content-between">
+      <table class="table-label-value flex-1">
+        <tbody>
+          <tr>
+            <td>Arrondissement</td>
+            <td>{{ intervention.boroughId | appTaxonomy: TaxonomyGroup.borough | vdmNa }}</td>
+          </tr>
+          <tr>
+            <td>Voie</td>
+            <td>{{ intervention.streetName?.trim() | titlecase | vdmNa }}</td>
+          </tr>
+          <tr *ngIf="interventionMeterLength">
+            <td>Longueur</td>
+            <td>{{ interventionMeterLength | appMetersToKilometers }} km</td>
+          </tr>
+          <tr *ngIf="intervention.medalId">
+            <td class="pt-1">Médaille</td>
+            <td>
+              <app-medal [medalId]="intervention.medalId"></app-medal>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table-label-value flex-1">
+        <tbody>
+          <tr *ngIf="intervention.streetFrom">
+            <td class="td-sm">De</td>
+            <td>{{ intervention.streetFrom }}</td>
+          </tr>
+          <tr *ngIf="intervention.streetTo">
+            <td class="td-sm">À</td>
+            <td>{{ intervention.streetTo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="border-bottom my-4"></div>
+    <div class="mb-4" *ngIf="isInterventionHasAssets(intervention)">
+      <h4 class="flex-grow-1 font-weight-bold">Actifs de l'intervention</h4>
+      <div class="d-flex mt-2">
+        <i class="mr-1 icon-xs {{ assetType | appIconClassNameByAssetType }}"></i>
+        <p class="font-sm">{{ assetType | appTaxonomy: 'assetType' | vdmNa }}</p>
+      </div>
+      <app-asset-list
+        #assetList
+        [isAssetHasProperties]="isAssetHasProperties"
+        [items]="interventionAssets"
+        [isReadOnly]="true"
+      ></app-asset-list>
+    </div>
+    <div class="d-flex justify-content-between align-items-center pb-1">
+      <h4 class="flex-grow-1 font-weight-bold">Détails de l'intervention</h4>
+      <button
+        *ngIf="(Permission.INTERVENTION_WRITE | appPermission) && (interventionRestrictionItems | appRestrictions)"
+        class="btn btn-secondary btn-squared"
+        (click)="editIntervention()"
+        [disabled]="!canInteract"
+      >
+        <span class="icon icon-edit"></span>
+        <span>
+          Éditer
+        </span>
+      </button>
+    </div>
+    <table class="table-label-value">
+      <tbody>
+        <tr *ngIf="intervention.assets?.length === 1 && !intervention.assets[0].id">
+          <td>Actif</td>
+          <td>
+            {{ intervention.assets[0].id | vdmNa }} -
+            {{ intervention.assets[0].typeId | appTaxonomy: 'assetType' | vdmNa }}
+          </td>
+        </tr>
+        <tr>
+          <td>Propriétaire</td>
+          <td>{{ intervention.assets[0].ownerId | appTaxonomy: TaxonomyGroup.assetOwner | vdmNa }}</td>
+        </tr>
+        <tr
+          *ngIf="
+            (Permission.INTERVENTION_BUDGET_READ | appPermission) &&
+            (intervention.status !== InterventionStatus.wished ||
+              (interventionRestrictionItems | appRestrictions: [RestrictionType.REQUESTOR]))
+          "
+        >
+          <td>Estimation budgétaire</td>
+          <td>{{ intervention.estimate.allowance | vdmCurrencyK | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td>Nature des travaux</td>
+          <td>{{ intervention.workTypeId | appTaxonomy: TaxonomyGroup.workType | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td>Requérant</td>
+          <td>{{ intervention.requestorId | appTaxonomy: TaxonomyGroup.requestor | vdmNa }}</td>
+        </tr>
+        <tr *ngIf="Permission.INTERVENTION_REQUESTOR_CONTACT_READ | appPermission">
+          <td>Contact du requérant</td>
+          <td>{{ intervention.contact | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td>Programme</td>
+          <td>{{ interventionProgram | async | vdmNa }}</td>
+        </tr>
+        <tr *ngIf="Permission.INTERVENTION_INITIAL_YEAR_READ | appPermission">
+          <td>Année de début soumise/souhaitée</td>
+          <td>{{ intervention.interventionYear | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td>Année planifiée</td>
+          <td>{{ intervention.planificationYear | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td>Type d'intervention</td>
+          <td>{{ intervention.interventionTypeId | appTaxonomy: TaxonomyGroup.interventionType | vdmNa }}</td>
+        </tr>
+        <tr>
+          <td>Exécutant</td>
+          <td>{{ intervention.executorId | appTaxonomy: TaxonomyGroup.executor | vdmNa }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="map border rounded" [class.invisible]="!('INTERVENTION_ZONE:READ' | appPermission)">
+    <app-map
+      #map
+      [withPanelMenu]="false"
+      [withPanel]="false"
+      [withRightPanel]="false"
+      [withNonGeolocatedProjectsPanel]="false"
+      [withPlanningBook]="false"
+      [withInterventions]="false"
+      [withProjects]="false"
+      [initZoom]="25"
+      [isLoading]="!mapInitialized"
+      [popupsEnabled]="false"
+      class="d-inline-block w-100 h-100"
+    ></app-map>
+  </div>
+</div>

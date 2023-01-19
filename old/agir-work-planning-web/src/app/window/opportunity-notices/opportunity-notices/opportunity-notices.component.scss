@@ -1,0 +1,21 @@
+@import '../../../../styles/core/variables';
+
+$main-title-margin-bottom: 100px;
+$ul-columns: 3;
+$ul-padding: 0;
+
+ul {
+  padding: $ul-padding;
+  list-style-type: none;
+  -webkit-columns: $ul-columns;
+  -moz-columns: $ul-columns;
+  columns: $ul-columns;
+}
+
+.mainTitle {
+  margin-bottom: $main-title-margin-bottom;
+}
+
+.card-hover:hover {
+  cursor: default;
+}

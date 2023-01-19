@@ -1,0 +1,33 @@
+<ng-select
+  [ngClass]="ngSelectClass"
+  class="pl-0 multi-select-checkbox flex-fill"
+  [appendTo]="appendTo"
+  [placeholder]="placeholder"
+  [bindLabel]="bindLabel"
+  [bindValue]="bindValue"
+  [clearable]="false"
+  [closeOnSelect]="closeOnSelect"
+  [hideSelected]="hideSelected"
+  [items]="items"
+  [maxSelectedItems]="maxSelectedItems"
+  [multiple]="multiple"
+  [selectableGroup]="selectableGroup"
+  [searchable]="searchable"
+  [(ngModel)]="value"
+  [disabled]="disabled"
+>
+  <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+    <div class="placeholder chip-sm pr-0">
+      <span class="text-primary font-weight-bold">{{ placeholder }} {{multiple ? '('+ items.length + ')' : ''}}</span>
+    </div>
+  </ng-template>
+  <ng-template ng-option-tmp let-item="item" let-index="index" let-item$="item$">
+    <div *ngIf="isCheckboxEnabled" class="flex-fill custom-control custom-checkbox pr-2">
+      <input type="checkbox" [ngModel]="item$.selected" class="custom-control-input" />
+      <label class="form-check-label custom-control-label ml-2">{{ item.label.fr }}</label>
+    </div>
+    <div *ngIf="!isCheckboxEnabled">
+      <label class="custom-control-label py-1">{{ item.label.fr }}</label>
+    </div>
+  </ng-template>
+</ng-select>

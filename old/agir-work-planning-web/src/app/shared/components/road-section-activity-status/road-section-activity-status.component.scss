@@ -1,0 +1,46 @@
+@import '../../../../styles/core/variables';
+$status-bar-height: 16px;
+$border-radius: 10px;
+
+.status-bar {
+  height: $status-bar-height;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: $year-cell-width;
+}
+
+.left-border-rounded {
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+
+.right-border-rounded {
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+@mixin create-margin-left($quarter) {
+  .margin-left-#{$quarter} {
+    margin-left: $quarter * ($year-cell-width/4) - ($year-cell-width/4);
+  }
+}
+
+@include create-margin-left(1);
+@include create-margin-left(2);
+@include create-margin-left(3);
+@include create-margin-left(4);
+
+@mixin create-margin-right($quarter) {
+  .margin-right-#{$quarter} {
+    margin-right: (4 - $quarter) * ($year-cell-width/4);
+  }
+}
+
+@include create-margin-right(1);
+@include create-margin-right(2);
+@include create-margin-right(3);
+@include create-margin-right(4);

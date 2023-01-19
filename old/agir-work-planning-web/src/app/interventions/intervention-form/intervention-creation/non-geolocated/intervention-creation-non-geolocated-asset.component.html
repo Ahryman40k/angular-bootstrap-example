@@ -1,0 +1,36 @@
+<app-intervention-form-layout
+  [form]="form"
+  [isValidBoroughId]="isValidBoroughId"
+  [project]="project"
+  [submitting]="submitting"
+  [assetTypes]="assetTypes$ | async"
+  [assetOwners]="assetOwners$ | async"
+  [assetWorkTypes]="assetWorkTypes$ | async"
+  buttonLabel="Créer"
+  [medalTypes]="medalTypes$ | async"
+  [requestors]="requestors$ | async"
+  [executors]="executors$ | async"
+  [programs]="programs$ | async"
+  [categories]="categories$ | async"
+  [interventionTypes]="interventionTypes$ | async"
+  [years]="years"
+  [drawAssetPosition]="drawAssetPosition"
+  [(interventionArea)]="interventionArea"
+  [duplicateIntervention]="duplicateIntervention$ | async"
+  (mapChange)="map = $event"
+  (cancel)="cancel()"
+  (submit)="submitAndNavigate()"
+  (removeInterventionArea)="removeInterventionArea()"
+  (drawnAssetChange)="assetDrawn($event)"
+>
+  <span header-title>Créer une intervention à partir d'un actif non-géolocalisé</span>
+  <button
+    *ngIf="canCreateProject()"
+    header-button
+    class="btn btn-squared btn-secondary"
+    (click)="submitAndCreateProject()"
+    [disabled]="submitting || isInterventionWithProgram || !isValidBoroughId"
+  >
+    Créer une intervention et un projet
+  </button>
+</app-intervention-form-layout>

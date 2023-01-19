@@ -1,0 +1,25 @@
+[
+  {
+    "submissionNumber": "500001",
+    "projectIds": ["P00001"],
+    "drmNumber": "5000",
+    "programBookId": "A_IGNORER",
+    "status": "valid",
+    "progressStatus": "preliminaryDraft",
+    "progressHistory": [],
+    "audit": "A_IGNORER",
+    "requirements": [
+      {
+        "id": "A_IGNORER",
+        "mentionId": "beforeTender",
+        "typeId": "other",
+        "subtypeId": "other",
+        "text": "This is the requirement content.",
+        "isDeprecated": false,
+        "projectIds": ["P00001"],
+        "planningRequirementId": "A_IGNORER",
+        "audit": "A_IGNORER"
+      }
+    ]
+  }
+]

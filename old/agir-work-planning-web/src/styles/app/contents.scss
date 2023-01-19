@@ -1,0 +1,14 @@
+.content-scroll {
+  @include scrollbar(vertical);
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  .content {
+    @extend .p-4;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    max-width: $details-content-max-width;
+  }
+}

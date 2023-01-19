@@ -1,0 +1,74 @@
+@import '../core/variables';
+
+app-program-book-table {
+  .col-borough {
+    width: $program-book-table-col-borough;
+  }
+  .col-budget {
+    width: $program-book-table-col-budget;
+  }
+  .col-category {
+    width: $program-book-table-col-category;
+  }
+  .col-end-year {
+    width: $program-book-table-col-end-year;
+  }
+  .col-executor {
+    width: $program-book-table-col-executor;
+  }
+  .col-initial-requestor {
+    width: $program-book-table-col-initial-requestor;
+  }
+  .col-label {
+    width: $program-book-table-col-label;
+  }
+  .col-length {
+    width: $program-book-table-col-length;
+  }
+  .col-medals {
+    width: $program-book-table-col-medals;
+  }
+  .col-no-bic-info-rtu {
+    width: $program-book-table-col-no-bic-info-rtu;
+  }
+  .col-priority-level {
+    width: $program-book-table-col-priority-level;
+  }
+  .col-priority-service {
+    width: $program-book-table-col-priority-service;
+  }
+  .col-project-id {
+    width: $program-book-table-col-project-id;
+  }
+  .col-project-type {
+    width: $program-book-table-col-project-type;
+  }
+  .col-rank {
+    width: $program-book-table-col-rank;
+  }
+  .col-road-network-type {
+    width: $program-book-table-col-road-network-type;
+  }
+  .col-start-year {
+    width: $program-book-table-col-start-year;
+  }
+  .col-street-from {
+    width: $program-book-table-col-street-from;
+  }
+  .col-street-name {
+    width: $program-book-table-col-street-name;
+  }
+  .col-street-to {
+    width: $program-book-table-col-street-to;
+  }
+  .col-sub-category {
+    width: $program-book-table-col-sub-category;
+  }
+  .col-submission-number {
+    width: $program-book-table-col-submission-number;
+  }
+  .col-options {
+    width: $program-book-table-col-options;
+    display: flex;
+  }
+}

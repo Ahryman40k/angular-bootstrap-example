@@ -1,0 +1,26 @@
+<div
+  *ngIf="condition && (permission | appPermission)"
+  class="table-body-cell {{ columnClass }}"
+  [ngClass]="{ 'border-white': isOpened }"
+>
+  <ng-template [cdkPortalOutlet]="componentPortal" *ngIf="options.component; else notComponent"></ng-template>
+  <ng-template #notComponent>
+    <span *ngIf="isText && !taxonomyGroup">{{ value | vdmNa }}</span>
+    <span *ngIf="isText && taxonomyGroup">{{ value | appTaxonomy: taxonomyGroup | vdmNa | vdmJoin: ', ' }}</span>
+    <span *ngIf="isBadge && !taxonomyGroup" class="badge align-middle {{ innerClass }}">
+      {{ value }}
+    </span>
+    <span *ngIf="isBadge && taxonomyGroup" class="badge align-middle {{ innerClass }}">
+      {{ value | appTaxonomy: taxonomyGroup }}
+    </span>
+    <span *ngIf="annualProgramYear">
+      {{ value | vdmProjectCategories: ReturnCategory.category:annualProgramYear | vdmNa }}
+    </span>
+    <a *ngIf="link" class="clickable {{ innerClass }}" appWindowLink [href]="link">
+      {{ value }}
+    </a>
+    <div class="d-flex align-items-center clickable ml-1" *ngIf="options.iconClass" [ngbTooltip]="options.iconTooltip">
+      <i [class]="'icon ' + options.iconClass" aria-hidden="true"></i>
+    </div>
+  </ng-template>
+</div>

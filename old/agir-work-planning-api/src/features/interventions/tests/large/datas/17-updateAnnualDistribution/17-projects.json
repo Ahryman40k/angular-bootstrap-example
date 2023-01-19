@@ -1,0 +1,105 @@
+[
+  {
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": [
+      "successive",
+      "priority"
+    ],
+    "boroughId": "VM",
+    "comments": [],
+    "endYear": 2040,
+    "executorId": "di",
+    "geometry": {
+      "type":"Polygon",
+      "coordinates":[[[-73.553968, 45.504173], [-73.553998, 45.50418], [-73.554, 45.504177], [-73.554373, 45.503508], [-73.554311, 45.503498], [-73.554313, 45.503508], [-73.553938, 45.504165], [-73.553968, 45.504173]]]
+    },
+    "geometryPin": [-73.55412871428571, 45.503887],
+    "globalBudget": {
+      "allowance": 75
+    },
+    "importFlag": null,
+    "inChargeId": "dre",
+    "interventionIds": [
+      "I00002"
+    ],
+    "servicePriorities": [],
+    "projectName": "This is a project name.",
+    "projectTypeId": "integrated",
+    "startYear": 2040,
+    "status": "planned",
+    "streetName": "streetName",
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "rank": 0,
+          "year": 2040,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 0
+            },
+            {
+              "type": "others",
+              "amount": 0
+            },
+            {
+              "type": "professionalServices",
+              "amount": 0
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 0
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 0,
+          "interventionsTotalBudget": 42,
+          "annualBudget": 42,
+          "status": "planned",
+          "categoryId": "new",
+          "interventionIds": [
+            "I00002"
+          ]
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 42,
+        "additionalCostTotals": [
+          {
+            "type": "contingency",
+            "amount": 0
+          },
+          {
+            "type": "others",
+            "amount": 0
+          },
+          {
+            "type": "professionalServices",
+            "amount": 0
+          },
+          {
+            "type": "workExpenditures",
+            "amount": 0
+          }
+        ],
+        "totalAdditionalCosts": 0,
+        "totalInterventionBudgets": 42,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        }
+      }
+    },
+    "decisions": [],
+    "documents": [],
+    "medalId": null,
+    "roadNetworkTypeId": "local",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "id": "P00004",
+    "length": {
+      "value": 74.04498237394195,
+      "unit": "m"
+    }
+  }
+]

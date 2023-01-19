@@ -1,0 +1,8 @@
+{
+  "decision": {
+    "typeId": "replanned",
+    "startYear": 2041,
+    "endYear": 2043,
+    "text": "This is a reschedule decision."
+  }
+}

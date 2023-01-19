@@ -1,0 +1,21 @@
+{
+  "projectTypeId": "other",
+  "projectName": "This is a project name.",
+  "boroughId": "VM",
+  "status": null,
+  "executorId": "dre",
+  "startYear": 2040,
+  "endYear": 2042,
+  "streetName": "",
+  "geometry": null,
+  "interventionIds": [],
+  "inChargeId": null,
+  "servicePriorities": [],
+  "globalBudget": {
+    "allowance": 542
+  },
+  "subCategoryIds": [
+    "priority",
+    "urgent"
+  ]
+}

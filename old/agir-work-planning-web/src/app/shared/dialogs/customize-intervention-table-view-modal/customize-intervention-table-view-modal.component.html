@@ -1,0 +1,36 @@
+<app-layout-modal modalTitle="Personnaliser la vue tableau">
+  <div body class="m-2">
+    <h5 class="mb-2">Éléments sélectionnés</h5>
+    <div cdkDropList class="badge-group mb-2 drag-area" (cdkDropListDropped)="drop($event)">
+      <div class="drag-element" *ngFor="let column of selectedColumns; let i = index" cdkDrag
+        [cdkDragDisabled]="i === 0">
+        <a class="badge badge-secondary badge-icon-right rounded-pill py-1">
+          <span class=""> {{ column.label }}</span>
+          <span *ngIf="i > 0" class="icon icon-x-circle-full clickable" appStopProp
+            (click)="moveColumnFromSelectedToUnselected(column.property)"></span>
+        </a>
+      </div>
+    </div>
+    <h5 class="mb-2">Éléments à ajouter</h5>
+    <div class="badge-group mb-2">
+      <a *ngFor="let column of unselectedColumns" class="badge badge-secondary badge-icon-right rounded-pill py-1">
+        <span class="badge-label text-primary"> {{ column.label }}</span>
+        <span class="icon icon-plus-circle-full clickable" appStopProp
+          (click)="moveColumFromUnselectedToSelected(column)"></span>
+      </a>
+    </div>
+  </div>
+  <div buttons class="d-flex justify-content-between flex-1">
+    <button class="btn btn-secondary btn-squared" type="button" (click)="resetTableView()">
+      Réinitialiser
+    </button>
+    <div>
+      <button class="btn btn-secondary btn-squared mr-2" type="button" (click)="cancel()">
+        Annuler
+      </button>
+      <button class="btn btn-primary btn-squared" type="button" (click)="saveTableView()">
+        Sauvegarder
+      </button>
+    </div>
+  </div>
+</app-layout-modal>

@@ -1,0 +1,18 @@
+#==========================================
+# Image pour exécuter l'application en poitant sur le disque hôte
+# Ceci peut être pratique quand il est question de debugger une erreur qui se produit uniquement dans Docker.
+# e.g: Les tests ne passent pas sur le serveur de build mais passent en local
+#
+# docker build -t local/planif -f ./Dockerfile.local
+# docker run -it -v `pwd`:/mtl/app local/planif /bin/bash
+#==========================================
+FROM node:14.19.3
+
+# Work dir
+WORKDIR /mtl/app
+
+# Expose the project files
+VOLUME /mtl/app
+
+
+

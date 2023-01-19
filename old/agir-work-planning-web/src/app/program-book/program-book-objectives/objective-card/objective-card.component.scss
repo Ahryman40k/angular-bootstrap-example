@@ -1,0 +1,21 @@
+@import '../../../../styles/core/variables';
+
+$objective-card-border: 4px;
+$objective-card-height: 208px;
+$objective-card-width: 320px;
+$progress-bar-result-height: 25px;
+
+:host {
+  display: flex;
+}
+
+.objective-card {
+  border-radius: $objective-card-border;
+  min-height: $objective-card-height;
+  width: $objective-card-width;
+}
+
+.progress-result {
+  height: $progress-bar-result-height;
+}
+

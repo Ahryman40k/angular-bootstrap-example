@@ -1,0 +1,115 @@
+vdm-map {
+  display: block;
+}
+
+#main-map {
+  height: 100vh;
+  width: 100vw;
+  /* border: 2px dashed blue; */
+}
+
+#grid-conteneur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: tomato;
+  display: grid;
+  grid-template-columns: 20px repeat(5, 1fr) 20px;
+  grid-template-rows: 20px repeat(5, 1fr) 20px;
+  width: 100vw;
+  height: 100vh;
+  visibility: hidden;
+  /* border: 2px dashed red; */
+}
+
+#longlat {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  visibility: visible;
+  width: auto;
+  height: auto;
+}
+
+#mini-map {
+  height: 100%;
+  width: 100%;
+  /* border: 2px dashed green; */
+  visibility: visible;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 6;
+  grid-row-end: 7;
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+#menu-outils {
+  height: 100%;
+  width: 100%;
+  /* border: 2px dashed green; */
+  visibility: visible;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 5;
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+#street-view {
+  height: 100%;
+  width: 100%;
+  /* border: 2px dashed green; */
+  visibility: visible;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+#gestionnaire-couche {
+  height: 100%;
+  width: 100%;
+  /* border: 2px dashed green; */
+  visibility: visible;
+  grid-column-start: 6;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  background-color: white;
+  overflow-y: scroll;
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+#ok-cancel {
+  height: 100%;
+  width: 100%;
+  /* border: 2px dashed green; */
+  visibility: visible;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 5;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+#data-pad {
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 5;
+  grid-row-end: 7;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  background-color: white;
+}

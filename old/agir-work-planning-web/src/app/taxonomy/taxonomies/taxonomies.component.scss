@@ -1,0 +1,15 @@
+@import '../../../styles/core/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.left-menu {
+  width: $details-menu-width;
+
+  h3 {
+    width: $details-menu-width;
+  }
+}

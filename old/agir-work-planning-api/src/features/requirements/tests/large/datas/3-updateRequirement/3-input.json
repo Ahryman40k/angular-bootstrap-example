@@ -1,0 +1,11 @@
+{
+  "typeId": "programmation",
+  "subtypeId": "recommendedIntegration",
+  "text": "This is a modification.",
+  "items":[
+    {
+      "id": "P00004",
+      "type": "project"
+    }
+  ]
+}

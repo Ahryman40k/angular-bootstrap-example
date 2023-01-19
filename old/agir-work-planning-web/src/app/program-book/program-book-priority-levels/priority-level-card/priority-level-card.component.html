@@ -1,0 +1,144 @@
+<div class="priority-level-card">
+  <div class="d-flex justify-content-between priority-level-card-title mb-1">
+    <div class="d-flex align-items-center">
+      <h6 class="mr-2">Niveau {{ priorityLevel.rank }}</h6>
+      <span *ngIf="priorityLevel.rank === FIRST_RANK" class="icon icon-lock icon-sm icon-color-primary"></span>
+    </div>
+    <div *ngIf="priorityLevel.rank !== FIRST_RANK && hasWriteAccess" class="pt-1">
+      <button
+        [disabled]="isAutomaticLoadingInProgress"
+        *ngIf="priorityLevel.rank !== SECOND_RANK"
+        class="btn btn-icon btn-icon-only"
+        (click)="emitDecreaseRank(priorityLevel.rank)"
+      >
+        <span class="icon icon-arrow-right rotate"></span>
+      </button>
+      <button
+        [disabled]="isAutomaticLoadingInProgress"
+        *ngIf="priorityLevel.rank != priorityLevelLength"
+        class="btn btn-icon btn-icon-only"
+        (click)="emitIncreaseRank(priorityLevel.rank)"
+      >
+        <span class="icon icon-arrow-left rotate"></span>
+      </button>
+      <button
+        [disabled]="isAutomaticLoadingInProgress"
+        class="btn btn-icon btn-icon-only"
+        (click)="openPriorityLevelSortModal(priorityLevel)"
+      >
+        <span class="icon icon-funnel"></span>
+      </button>
+      <button
+        [disabled]="isAutomaticLoadingInProgress"
+        class="btn btn-icon btn-icon-only pr-0"
+        (click)="emitDeleteRank(priorityLevel.rank)"
+      >
+        <span class="icon icon-trash"></span>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex col-md-9 flex-wrap">
+      <div>
+        <app-category-dropdown
+          #categoryDropdowns
+          [priorityLevelRank]="priorityLevel.rank"
+          [disabled]="isDisabled"
+          [taxonomies]="taxonomies"
+          [projectCategoryCriteria]="priorityLevel.criteria.projectCategory"
+          [index]="index"
+          (vdmOutsideClick)="closeCategoryDropdown(index)"
+          (projectCategoryChange)="emitNewCriteria($event, PriorityLevelCriteria.projectCategory)"
+          [priorityLevelCriteriaRemoved]="priorityLevelCriteriaRemoved"
+        >
+        </app-category-dropdown>
+      </div>
+      <div class="mr-1 mt-1">
+        <vdm-multi-select-checkbox
+          #workTypeId
+          placeholder="Nature des travaux"
+          [disabled]="isDisabled"
+          [items]="taxonomies.assetWorkTypes"
+          [value]="priorityLevel.criteria.workTypeId"
+          (valueChange)="emitNewCriteria($event, PriorityLevelCriteria.workTypeId)"
+          (mousedown)="$event.stopPropagation()"
+        ></vdm-multi-select-checkbox>
+      </div>
+      <div class="mr-1 mt-1">
+        <vdm-multi-select-checkbox
+          #requestorId
+          placeholder="Requérants"
+          [disabled]="isDisabled"
+          [items]="taxonomies.requestors"
+          [value]="priorityLevel.criteria.requestorId"
+          (valueChange)="emitNewCriteria($event, PriorityLevelCriteria.requestorId)"
+          (mousedown)="$event.stopPropagation()"
+        ></vdm-multi-select-checkbox>
+      </div>
+      <div class="mr-1 mt-1">
+        <vdm-multi-select-checkbox
+          #assetTypeId
+          placeholder="Actifs"
+          [disabled]="isDisabled"
+          [items]="taxonomies.assetTypes"
+          [value]="priorityLevel.criteria.assetTypeId"
+          (valueChange)="emitNewCriteria($event, PriorityLevelCriteria.assetTypeId)"
+          (mousedown)="$event.stopPropagation()"
+        ></vdm-multi-select-checkbox>
+      </div>
+    </div>
+    <div class="d-flex col-md-3 justify-content-md-end p-0">
+      <span class="mr-2" [ngPlural]="priorityLevel.projectCount" *ngIf="priorityLevel.projectCount">
+        <ng-template ngPluralCase="1">{{ priorityLevel.projectCount }} projet trouvé</ng-template>
+        <ng-template ngPluralCase="other">{{ priorityLevel.projectCount }} projets trouvés</ng-template>
+      </span>
+      <span *ngIf="!priorityLevel.projectCount" class="mr-2">Aucun projet trouvé</span>
+    </div>
+    <div class="d-flex col-md-9 flex-wrap">
+      <div class="mr-1 mt-1">
+        <vdm-multi-select-checkbox
+          #interventionType
+          placeholder="Type intervention"
+          [disabled]="isDisabled"
+          [items]="interventionTypes"
+          [value]="priorityLevel.criteria.interventionType"
+          ngSelectClass="dropdownItemsBgWhite"
+          (valueChange)="emitNewCriteria($event, PriorityLevelCriteria.interventionType)"
+          (mousedown)="$event.stopPropagation()"
+        ></vdm-multi-select-checkbox>
+      </div>
+      <div>
+        <app-priority-service-dropdown
+          #serviceDropdowns
+          [disabled]="isDisabled"
+          [taxonomies]="taxonomies"
+          [index]="index"
+          (vdmOutsideClick)="closeServiceDropdown(index)"
+          [servicePrioritiesCriteria]="priorityLevel.criteria.servicePriorities"
+          (servicePrioritiesChange)="emitNewCriteria($event, PriorityLevelCriteria.servicePriorities)"
+          [priorityLevelCriteriaRemoved]="priorityLevelCriteriaRemoved"
+        >
+        </app-priority-service-dropdown>
+      </div>
+    </div>
+  </div>
+  <div class="badge-group mt-2 d-flex flex-wrap">
+    <ng-container *ngFor="let criteriaType of criteria | keyvalue">
+      <a
+        class="badge badge-secondary badge-icon-right badge-dismiss rounded-lg ml-0 mr-1 p-1"
+        *ngFor="let selectedCriteria of criteriaType.value"
+      >
+        <span class="badge-label text-primary mr-1"> {{ getCriteriaLabel(selectedCriteria, criteriaType.key) }}</span>
+        <span
+          *ngIf="priorityLevel.rank !== FIRST_RANK && hasWriteAccess"
+          class="icon icon-x-circle-full clickable"
+          appStopProp
+          (click)="emitRemoveCriteria(selectedCriteria, criteriaType.key)"
+        ></span>
+      </a>
+    </ng-container>
+  </div>
+  <div *ngIf="isSubmitted && priorityLevelHasNoCriteria" class="text-danger font-weight-bold font-sm pb-2">
+    Veuillez définir au moins un critère au niveau
+  </div>
+</div>

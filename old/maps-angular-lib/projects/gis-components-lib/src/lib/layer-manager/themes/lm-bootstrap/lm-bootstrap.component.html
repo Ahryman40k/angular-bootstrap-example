@@ -1,0 +1,9 @@
+<div class="accordion" id="accordion">
+  <vdm-lm-group-bootstrap 
+   *ngFor="let group of layerManagerConfig.layerGroups"
+   [layerGroup]="group"
+   [isSuperGroup] = "true"
+   (toggle)="handleToggleEvent($event)"
+   >
+   </vdm-lm-group-bootstrap>
+</div>

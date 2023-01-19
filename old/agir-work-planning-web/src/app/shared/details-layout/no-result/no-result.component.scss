@@ -1,0 +1,7 @@
+$icon-width: 6rem;
+$icon-height: 6rem;
+
+.icon-empty::before {
+  width: $icon-width;
+  height: $icon-height;
+}

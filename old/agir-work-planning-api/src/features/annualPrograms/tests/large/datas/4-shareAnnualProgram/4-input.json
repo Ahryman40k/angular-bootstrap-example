@@ -1,0 +1,12 @@
+{
+  "executorId": "borough",
+  "year": 2042,
+  "budgetCap": 24,
+  "description": "This is an update.",
+  "sharedRoles": [ 
+    "INTERNAL-GUEST-RESTRICTED", 
+    "INTERNAL-GUEST-STANDARD", 
+    "EXECUTOR"
+  ],
+  "status": "submittedFinal"
+}

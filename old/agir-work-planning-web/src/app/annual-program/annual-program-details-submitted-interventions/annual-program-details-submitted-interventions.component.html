@@ -1,0 +1,53 @@
+<h4 class="d-flex justify-content-between align-items-center mt-3 mb-3">
+  Interventions soumises
+</h4>
+
+<div class="scrollable-horizontal main">
+  <div>
+    <div class="responsive-table" *ngIf="interventions?.length > 0">
+      <div class="responsive-table-header font-sm">
+        <app-table-column-header
+          *ngFor="let column of columns"
+          class="d-flex"
+          [class]="column.className"
+          [id]="column.columnName"
+          [columnLabel]="SubmittedInterventionColumnLabels[column.columnName]"
+          [columnClass]="column.columnName"
+          [condition]="undefined"
+          [permission]="Permission.PROGRAM_BOOK_PROGRAM"
+          [sorting]="column.sorting"
+          [direction]="sortedDirection"
+          (sortChange)="handleSortChange($event, column)"
+        >
+        </app-table-column-header>
+      </div>
+      <div id="responsive-table-body">
+        <div *ngFor="let intervention of interventions; let i = index">
+          <app-annual-program-interventions-table-items [columns]="columns" [intervention]="intervention">
+          </app-annual-program-interventions-table-items>
+        </div>
+      </div>
+    </div>
+    <app-no-result
+      *ngIf="interventions?.length === 0 && !isInitializingTable"
+      [message]="emptyListMessage"
+      [showEmtyIcon]="true"
+    ></app-no-result>
+  </div>
+  <app-spinner *ngIf="isInitializingTable" class="d-flex mx-auto mt-1"></app-spinner>
+  <div *ngIf="!isInitializingTable" class="d-flex justify-content-center m-2">
+    <ngb-pagination
+      *ngIf="pagination.totalCount > pagination.pageSize"
+      [collectionSize]="pagination.totalCount"
+      [(page)]="pagination.currentPage"
+      [maxSize]="3"
+      [pageSize]="pagination.pageSize"
+      [rotate]="true"
+      (pageChange)="onPageChanged($event)"
+    >
+      <ng-template ngbPaginationPrevious><span class="icon icon-chevron-left"></span></ng-template>
+      <ng-template ngbPaginationNext><span class="icon icon-chevron-right"></span></ng-template>
+    </ngb-pagination>
+  </div>
+  <div class="box"></div>
+</div>

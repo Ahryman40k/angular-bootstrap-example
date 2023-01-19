@@ -1,0 +1,73 @@
+<button class="btn btn-icon btn-icon-only mb-2" [routerLink]="['../']">
+  <span class="icon icon-arrow-left back-button"></span>
+</button>
+<div *ngIf="importLog">
+  <h4 class="mb-1">Import {{ importLog.startDateTime | appDateFormat : 'yyyy-MM-dd HH:mm' }}</h4>
+  <div class="d-flex flex-row align-items-start mb-4">
+    <app-transmission-status-badge [transmission]="importLog"></app-transmission-status-badge>
+    <span class="icon icon-dot-interpunct"></span>
+    <span class="font-md base-line-height">Fin de transmission: {{ importLog.endDateTime | appDateFormat : 'yyyy-MM-dd HH:mm' }}</span>
+  </div>
+  <h5>Projets en erreur</h5>
+  <div class="mt-4 responsive-table">
+    <table class="table table-lg">
+      <thead>
+        <tr>
+          <th class="sorting project-number-column" appSort sorting="true" (sortChange)="sortColumn($event.direction)">
+            No Projet
+          </th>
+          <th>Description</th>
+          <th class="street-column">Voie</th>
+          <th class="street-column">De</th>
+          <th class="street-column">À</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of importLog.failedProjects">
+        <tr>
+          <td class="align-middle">
+            {{ item.projectId }}
+          </td>
+          <td class="align-middle">
+            {{ item.projectName }}
+          </td>
+          <td class="align-middle">
+            {{ item.streetName }}
+          </td>
+          <td class="align-middle">
+            {{ item.streetFrom }}
+          </td>
+          <td class="align-middle">
+            {{ item.streetTo }}
+          </td>
+          <td class="border-0 col-options d-flex flex-1 justify-content-end align-middle"  [ngClass]="{'border-white': item.opened}">
+            <div class="d-flex flex-column justify-content-center" *ngIf="item.errorDescriptions.length > 0">
+              <button class="btn btn-icon btn-secondary"
+                (click)="item.opened = !item.opened">
+                <i class="icon" [class.icon-chevron-up]="item.opened" [class.icon-chevron-down]="!item.opened"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td *ngIf="item.opened" class="border-bottom errorDetails" colspan="6">
+            <div class="pl-2 ml-7 border-left border-width-sm">
+              <div class="d-flex py-2">
+                <div class="flex-2 d-flex flex-column">
+                  <h6 class="mb-0">Description de l'erreur</h6>
+                </div>
+                <div class="flex-6 pr-3">
+                  <h6 class="mb-0 word-break font-weight-normal text-neutral-secondary" *ngFor="let error of item.errorDescriptions">
+                    <span class="values-list">
+                      {{ error }}
+                    </span>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="d-flex flex-column h-100" *ngIf="programBook && annualProgram">
+  <div class="d-flex px-4 py-2 border-bottom breadcrumb p-2" *ngIf="annualProgram">
+    <div class="d-flex flex-column justify-content-center">
+      <a class="text-secondary clickable d-flex font-md" [routerLink]="['/annual-programs/']">
+        Programmations annuelles
+      </a>
+    </div>
+    <div class="d-flex flex-column justify-content-center mx-1">
+      <em class="icon icon-chevron-right icon-xs"></em>
+    </div>
+    <div class="d-flex flex-column justify-content-center">
+      <a class="text-secondary clickable d-flex font-md" [routerLink]="['/annual-programs/', annualProgram.id]">
+        {{ annualProgram.executorId | appTaxonomy: 'executor' }} {{ annualProgram.year }}
+      </a>
+    </div>
+    <div class="d-flex flex-column justify-content-center mx-1">
+      <em class="icon icon-chevron-right icon-xs"></em>
+    </div>
+    <vdm-select
+      *ngIf="annualProgramProgramBooks?.length"
+      class="program-book-select py-0"
+      bindValue="id"
+      bindLabel="name"
+      [formControl]="programBooksControl"
+      [items]="annualProgramProgramBooks"
+    ></vdm-select>
+  </div>
+  <div *ngIf="isAutomaticLoadingInProgress" class="alert message-bar message-bar-info alert-dismissible fade show" data-component-type="message-barre">
+    <div class="message-bar-icon-container">
+      <span class="icon icon-info" aria-hidden="true"></span>
+    </div>
+    <div class="message-bar-container">
+      <p>Un chargement est en cours dans ce carnet</p>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer le message">
+      <span class="icon icon-x" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="d-flex px-3 justify-content-between pb-name pt-2">
+    <h3>{{ programBook.name }}</h3>
+    <div class="d-flex">
+      <app-more-options-button
+        [disabled]="isAutomaticLoadingInProgress"
+        *ngIf="Permission.PROGRAM_BOOK_WRITE | appPermission"
+        [items]="getProgramBookMenuItems()"
+        buttonClass="p-0"
+      ></app-more-options-button>
+      <button class="btn btn-primary btn-squared bg-green btn-md ml-2" (click)="viewMap()">
+        <i class="icon icon-color-secondary icon-map"></i>
+        Voir sur la carte
+      </button>
+    </div>
+  </div>
+
+  <div class="d-flex px-3 year pb-2">
+    <span class="badge badge-dark mr-1">{{ annualProgram?.year }}</span>
+    <span class="badge badge-success">{{ programBook?.status | appTaxonomy: 'programBookStatus' }}</span>
+  </div>
+
+  <div class="pl-mb-4 px-3 nav-tabs">
+    <nav class="nav-tabs">
+      <ul class="nav" role="tablist" #programBookNavOptions>
+        <ng-container *ngFor="let item of navItems">
+          <li class="nav-item" *ngIf="(item.permission | appPermission) || !item.permission">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="item.url">{{ item.label }}</a>
+          </li>
+        </ng-container>
+      </ul>
+    </nav>
+  </div>
+  <div class="px-3 tab-container scrollable">
+    <router-outlet></router-outlet>
+  </div>
+</div>

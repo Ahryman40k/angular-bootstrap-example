@@ -1,0 +1,127 @@
+[
+  {
+    "id": "P00002",
+    "moreInformationAudit": "A_IGNORER",
+    "subCategoryIds": null,
+    "boroughId": "VM",
+    "executorId": "di",
+    "externalReferenceIds": [],
+    "geometry": "A_IGNORER",
+    "globalBudget": {
+      "allowance": 42
+    },
+    "importFlag": null,
+    "inChargeId": "dre",
+    "interventionIds": [
+      "I00004"
+    ],
+    "servicePriorities": [],
+    "projectName": "PI - Standard / sur streetName, de streetFrom, à streetTo",
+    "projectTypeId": "integrated",
+    "startYear": 2040,
+    "endYear": 2040,
+    "status": "planned",
+    "streetName": "streetName",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "audit": "A_IGNORER",
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "rank": 0,
+          "year": 2040,
+          "additionalCosts": [
+            {
+              "type": "contingency",
+              "amount": 10,
+              "accountId": 123456
+            },
+            {
+              "type": "others",
+              "amount": 20,
+              "accountId": 654321
+            },
+            {
+              "type": "professionalServices",
+              "amount": 30,
+              "accountId": 456789
+            },
+            {
+              "type": "workExpenditures",
+              "amount": 40,
+              "accountId": 987654
+            }
+          ],
+          "annualAllowance": 0,
+          "additionalCostsTotalBudget": 100,
+          "annualBudget": 142,
+          "status": "planned",
+          "categoryId": "new",
+          "interventionIds": [
+            "I00004"
+          ],
+          "interventionsTotalBudget": 42
+        }
+      ],
+      "distributionSummary": {
+        "totalBudget": 142,
+        "additionalCostTotals": [
+          {
+            "type": "contingency",
+            "amount": 10,
+            "note": "This is the contingency note content."
+          },
+          {
+            "type": "others",
+            "amount": 20,
+            "note": "This is the others note content."
+          },
+          {
+            "type": "professionalServices",
+            "amount": 30,
+            "note": "This is the professionalServices note content."
+          },
+          {
+            "type": "workExpenditures",
+            "amount": 40,
+            "note": "This is the workExpenditures note content."
+          }
+        ],
+        "totalAdditionalCosts": 100,
+        "totalAnnualBudget": {
+          "totalAllowance": 0
+        },
+        "totalInterventionBudgets": 42
+      }
+    },
+    "comments": [
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "information",
+        "id": "A_IGNORER",
+        "isPublic": true,
+        "text": "This is the comment content."
+      }
+    ],
+    "decisions": [],
+    "documents": [
+      {
+        "audit": "A_IGNORER",
+        "documentName": "projectDocument",
+        "fileName": "test-pdf.pdf",
+        "id": "A_IGNORER",
+        "validationStatus": "validated",
+        "notes": "notes",
+        "objectId": "A_IGNORER",
+        "type": "other"
+      }
+    ],
+    "geometryPin": "A_IGNORER",
+    "length": {
+      "unit": "m",
+      "value": "A_IGNORER"
+    },
+    "medalId": null,
+    "roadNetworkTypeId": "local"
+  }
+]

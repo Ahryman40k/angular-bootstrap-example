@@ -1,0 +1,97 @@
+<form [formGroup]="yearsForm" class="d-flex form-inline">
+  <div class="btn-group pl-3 pr-2" role="group">
+    <div ngbButtonLabel class="btn-primary pr-0 btn-selected">
+      <span class="icon icon-map"></span>
+    </div>
+    <div ngbButtonLabel class="btn-primary pr-0">
+      <a href="export/projects"><span class="icon icon-list"></span></a>
+    </div>
+  </div>
+  <div class="navbar-separator pt-2 pb-2"></div>
+  <div *ngIf="false" class="content-box pl-3 pt-1">
+    <label class="small mb-0 d-block">Objectifs</label>
+    <div class="mt-0">
+      <label class="h2 text-primary align-middle mb-1 mt-0 pt-0">{{ percentage }}</label>
+      <label class="text-primary align-middle mt-0 pt-0">%</label>
+      <label class="pb-0 pt-0 ml-3 mb-1 mt-0 h6 more text-primary align-middle border-bottom border-primary">
+        Plus
+      </label>
+    </div>
+  </div>
+  <div *ngIf="false" class="border-left mx-5 mb-2 mt-3"></div>
+  <div class="pl-2 content-box">
+    <div class="d-flex align-items-center h-100">
+      <div class="d-flex align-items-center toggle-button-box border">
+        <app-toggle-button
+          icon="icon icon-eye icon-sm"
+          label="Passé"
+          class="toggle-past"
+          id="buttonPast"
+          formControlName="pastProjectsVisible"
+        ></app-toggle-button>
+        <div class="input-toggle-box d-flex align-items-center">
+          <span class="year-select-sign">-</span>
+          <input
+            [readonly] = "!yearsForm.value.pastProjectsVisible"
+            class="year-input p-0 text-left shadow-none border-0"
+            mask="9"
+            placeholder="0"
+            formControlName="pastYear"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pl-2 content-box">
+    <div class="d-flex align-items-center h-100">
+      <div class="d-flex align-items-center toggle-button-box border">
+        <app-toggle-button
+          label="En cours"
+          [readonly]="true"
+          class="toggle-present"
+          id="buttonPresent"
+          formControlName="presentProjectsVisible"
+        ></app-toggle-button>
+        <vdm-select
+          class="year-select border-0 h-auto"
+          ngSelectClass="planning-book"
+          formControlName="yearSelect"
+          [items]="yearList"
+        ></vdm-select>
+      </div>
+    </div>
+  </div>
+  <div class="year-select content-box pl-2">
+    <div class="d-flex align-items-center h-100">
+      <div class="d-flex align-items-center toggle-button-box border">
+        <app-toggle-button
+          toggled="true"
+          icon="icon icon-eye icon-sm"
+          label="Futur"
+          class="toggle-future"
+          id="buttonFuture"
+          formControlName="futureProjectsVisible"
+        ></app-toggle-button>
+        <div class="input-toggle-box d-flex align-items-center">
+          <span class="year-select-sign m-0">+</span>
+          <input
+            [readonly] = "!yearsForm.value.futureProjectsVisible"
+            appEmptyPlaceholder
+            class="year-input p-0 text-left shadow-none border-0"
+            mask="9"
+            placeholder="0"
+            formControlName="endYear"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="search-bar ml-5 pr-2">
+  <app-search-box
+    class="planning-book-search"
+    (itemSelected)="mapNavigateToItem($event)"
+    (search)="mapNavigateToSearchResult($event)"
+    (clear)="onSearchBoxClear()"
+  ></app-search-box>
+</div>

@@ -1,0 +1,15 @@
+<app-layout-modal [title]="title">
+  <div body>
+    <app-alert type="danger">
+      <span title>Attention!</span>
+      <span description *ngFor="let error of errors">
+        {{error.value()}}
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-primary btn-squared mr-2" (click)="cancel()">
+      Retour
+    </button>
+  </div>
+</app-layout-modal>

@@ -1,0 +1,11 @@
+@import '../../../styles/core/variables';
+
+.disabled {
+  color: $color-lighter-gray;
+  .icon-color-secondary {
+    fill: $color-lighter-gray;
+    &:before {
+      background-color: $color-lighter-gray !important;
+    }
+  }
+}

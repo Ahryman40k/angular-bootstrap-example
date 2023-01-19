@@ -1,0 +1,28 @@
+@import '../../../../styles/core/variables';
+$id-cell-width: 250px;
+$empty-id-cell-height: 40px;
+$year-label-margin-left: 3px;
+
+.id-cell {
+  width: $id-cell-width;
+}
+
+.empty-id-cell {
+  height: $empty-id-cell-height;
+}
+
+.year-cell {
+  width: $year-cell-width;
+  background-color: $color-gray-100;
+}
+
+.year-label {
+  margin-left: $year-label-margin-left !important;
+}
+.sticky-column {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  background-color: $color-gray-100;
+  z-index: 2;
+}

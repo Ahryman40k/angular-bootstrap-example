@@ -1,0 +1,8 @@
+app-filter-layout app-filter-item-layout:not(:last-child) {
+  @extend .border-bottom;
+  @extend .mb-3;
+}
+
+app-filter-item:not(:last-child) {
+  margin-bottom: 0.1rem;
+}

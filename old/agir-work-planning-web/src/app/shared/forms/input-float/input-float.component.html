@@ -1,0 +1,9 @@
+<input
+  #inputFloat
+  [placeholder]="placeholder"
+  class="form-control"
+  [(ngModel)]="value"
+  type="text"
+  [mask]="mask" [patterns]="estimatePattern"
+  (input)="keyUp($event.target)"
+/>

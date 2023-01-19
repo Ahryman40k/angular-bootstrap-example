@@ -1,0 +1,36 @@
+@import 'variables';
+$badge-border-radius: 2px;
+
+.badge {
+  border-radius: $badge-border-radius;
+}
+.badge-align-middle {
+  vertical-align: middle;
+}
+
+.badge-fuchsia {
+  color: white;
+  background-color: $color-fuchsia;
+}
+
+.badge-gray {
+  color: $color-shark;
+  background-color: $color-gray-90;
+}
+.badge-light-blue {
+  color: $color-blue-teal;
+  background-color: $color-blue-light;
+}
+.badge-medium-blue {
+  color: $color-white;
+  background-color:$color-medium-blue;
+}
+.badge-white {
+  color: $color-pale-sky;
+  background-color: $color-white;
+}
+
+.badge-pink {
+  color: $color-shark;
+  background-color: $color-pink;
+}

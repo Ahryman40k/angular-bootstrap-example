@@ -1,0 +1,14 @@
+$more-information-field-min-height: 42px; // We need to use a min height to be consistent with all rows.
+
+tr {
+  min-height: $more-information-field-min-height;
+}
+
+[more-information-field-control] {
+  flex: 1;
+}
+
+tr.has-save-action:hover,
+.is-editing {
+  background-color: $color-gray-100;
+}

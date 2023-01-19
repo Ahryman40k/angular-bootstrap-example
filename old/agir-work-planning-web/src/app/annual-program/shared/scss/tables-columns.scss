@@ -1,0 +1,70 @@
+@import '_variables';
+
+@mixin column-submitted-intervention-style {
+  .col-id {
+    width: $submitted-intervention-table-col-id;
+  }
+  .col-interventionName {
+    width: $submitted-intervention-table-col-interventionName;
+  }
+  .col-programId {
+    width: $submitted-intervention-table-col-programId;
+  }
+  .col-decisionRequired {
+    width: $submitted-intervention-table-col-decisionRequired;
+  }
+  .col-interventionTypeId {
+    width: $submitted-intervention-table-col-interventionTypeId;
+  }
+  .col-requestorId {
+    width: $submitted-intervention-table-col-requestorId;
+  }
+  .col-streetName {
+    width: $submitted-intervention-table-col-streetName;
+  }
+  .col-streetFrom {
+    width: $submitted-intervention-table-col-streetFrom;
+  }
+  .col-streetTo {
+    width: $submitted-intervention-table-col-streetTo;
+  }
+  .col-boroughId {
+    width: $submitted-intervention-table-col-boroughId;
+  }
+  .last-element .table-body-cell{
+    width: 100%;
+  }
+}
+
+@mixin column-project-to-schedule-style {
+  .col-id {
+    width: $project-toschedule-table-col-id;
+  }
+  .col-projectName {
+    width: $project-toschedule-table-col-projectName;
+  }
+  .col-projectTypeId {
+    width: $project-toschedule-table-col-projectTypeId;
+  }
+  .col-category {
+    width: $project-toschedule-table-col-category;
+  }
+  .col-status {
+    width: $project-toschedule-table-col-status;
+  }
+  .col-streetName {
+    width: $project-toschedule-table-col-streetName;
+  }
+  .col-streetFrom {
+    width: $project-toschedule-table-col-streetFrom;
+  }
+  .col-streetTo {
+    width: $project-toschedule-table-col-streetTo;
+  }
+  .col-boroughId {
+    width: $project-toschedule-table-col-boroughId;
+  }
+  .last-element .table-body-cell{
+    width: 100%;
+  }
+}

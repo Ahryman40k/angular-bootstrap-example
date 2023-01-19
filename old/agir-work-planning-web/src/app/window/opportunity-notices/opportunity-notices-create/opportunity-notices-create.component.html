@@ -1,0 +1,74 @@
+<div class="opportunity-notice p-4">
+  <div class="row">
+    <div class="col-md-8 mb-1 flex-1">
+      <h2 class="mb-1">Gestion des avis d'opportunités d'intégration</h2>
+      <div class="mb-1">Sélectionner les actifs sur lesquels vous désirez aviser le requérant de l'intégration potentielle au projet.</div>
+      <div class="d-flex">
+        <vdm-select-badge
+          #assetTypeId
+          placeholder="Requérant"
+          [items]="requestors$ | async"
+          [clearable]="true"
+          bindLabel="label.fr"
+          bindValue="code"
+          (valueChange)="setFilter($event, undefined)"
+          (mousedown)="$event.stopPropagation()"
+        ></vdm-select-badge>
+        <vdm-multi-select-checkbox
+          #assetTypeId
+          placeholder="Type d'actifs"
+          [disabled]="false"
+          [items]="assetTypes$ | async"
+          (valueChange)="setFilter(undefined, $event)"
+          (mousedown)="$event.stopPropagation()"
+          ></vdm-multi-select-checkbox>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end align-items-center">
+      <button *ngIf="Permission.OPPORTUNITY_NOTICE_WRITE | appPermission" [disabled]="false" class="btn btn-primary btn-squared mr-2" (click)="createNonGeoOpportunityNotice()">
+        <span class="icon icon-plus"></span>
+        <span>Créer un avis non-géolocalisé</span>
+      </button>
+      <button [disabled]="false" class="btn btn-secondary btn-squared" (click)="changeToOpportunityNoticesPage()">
+        Fermer
+      </button>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="mb-4 mr-4 flex-1 w-50">
+      <nav class="nav-tabs" >
+        <ul class="nav" role="tablist" #programBookNavOptions>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['assets-without-intervention']" active>Actifs sans intervention</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['assets-with-intervention']">Actifs avec intervention</a>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <div class="map border rounded w-50">
+      <app-map
+        #map
+        [withPanelMenu]="false"
+        [withPanel]="false"
+        [withRightPanel]="false"
+        [withNonGeolocatedProjectsPanel]="false"
+        [withPlanningBook]="false"
+        [withInterventions]="false"
+        [withProjects]="false"
+        [initZoom]="25"
+        [popupsEnabled]="false"
+        [disabledPopups]="[ObjectType.project]"
+        class="d-inline-block w-100 h-100"
+      ></app-map>
+    </div>
+  </div>
+</div>
+
+

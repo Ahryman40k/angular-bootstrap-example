@@ -1,0 +1,9 @@
+<app-filter-item [item]="selectAllItem" (itemClick)="selectAllItems()" *ngIf="selectAll"></app-filter-item>
+<app-submission-number-filter-item
+  *ngFor="let item of filterItems"
+  [item]="item"
+  [iconPosition]="iconPosition"
+  (itemClick)="onItemClick(item)"
+  (removeClick)="onRemoveClick(item)"
+  [canDelete]="canDelete"
+></app-submission-number-filter-item>

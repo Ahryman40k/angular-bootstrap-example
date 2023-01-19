@@ -1,0 +1,4 @@
+<app-popup-layout [colorClass]="rtuProject | appRtuProjectColor">
+  <app-rtu-project-card *ngIf="rtuProject" [rtuProject]="rtuProject"></app-rtu-project-card>
+  <app-spinner *ngIf="!rtuProject" class="d-flex mx-auto"></app-spinner>
+</app-popup-layout>

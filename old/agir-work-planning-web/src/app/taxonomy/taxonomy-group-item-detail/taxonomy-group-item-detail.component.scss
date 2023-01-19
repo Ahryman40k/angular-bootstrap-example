@@ -1,0 +1,13 @@
+.values-list {
+  margin: 0 0.5rem 0 0;
+
+  &:after {
+    content: "\00B7";
+    font-weight: bold;
+    padding-left: 0.5rem
+  }
+
+  &:last-child:after {
+    content: "";
+  }
+}

@@ -1,0 +1,37 @@
+@import '../../../styles/core/variables';
+@import '../shared/scss/column-mixins.scss';
+
+$width-street-name: 10vw;
+$width-street-from: 10vw;
+$width-street-to: 10vw;
+$clear-bottom-bar-pb: 5.5rem;
+
+.clear-bottom-bar {
+  padding-bottom: $clear-bottom-bar-pb;
+}
+
+:host ::ng-deep {
+  @include actions-style();
+  @include checkbox-style();
+
+  @include column-style();
+
+  .without-border-bottom {
+    border-bottom: none !important;
+  }
+
+  .border-top {
+    border-top: 1px solid $color-gray-300;
+    margin-top: -1px;
+  }
+
+  .col-street-name {
+    width: $width-street-name;
+  }
+  .col-street-from {
+    width: $width-street-from;
+  }
+  .col-street-to {
+    width: $width-street-to;
+  }
+}

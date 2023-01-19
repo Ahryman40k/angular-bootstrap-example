@@ -1,0 +1,29 @@
+<div class="d-flex align-items-center">
+  <i class="card-header-icon icon icon-color-white icon-location mr-1 bg-primary"></i>
+  <h6 class="flex-1">{{ boroughName }}</h6>
+</div>
+<div class="mt-2">
+  <div class="d-flex">
+    <i class="icon icon-folder icon-xs mr-1"></i>
+    <span class="mr-1 font-sm text-dark">
+      {{ projectCount }}
+      <ng-container [ngPlural]="projectCount">
+        <ng-template ngPluralCase="=0">projet</ng-template>
+        <ng-template ngPluralCase="=1">projet</ng-template>
+        <ng-template ngPluralCase="other">projets</ng-template>
+      </ng-container>
+    </span>
+  </div>
+  <div class="d-flex mt-1">
+    <i class="icon icon-flag icon-xs mr-1"></i>
+    <span class="mr-1 font-sm text-dark">
+      {{ interventionCount }}
+      <ng-container [ngPlural]="interventionCount">
+        <ng-template ngPluralCase="=0">intervention</ng-template>
+        <ng-template ngPluralCase="=1">intervention</ng-template>
+        <ng-template ngPluralCase="other">interventions</ng-template>
+      </ng-container>
+    </span>
+  </div>
+</div>
+<ng-content select="[medal]"></ng-content>

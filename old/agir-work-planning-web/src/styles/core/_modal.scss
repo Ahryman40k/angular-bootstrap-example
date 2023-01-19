@@ -1,0 +1,46 @@
+@import 'variables';
+
+$media-max-width: 767.98px;
+
+.modal-dialog {
+  @include scrollbar(vertical);
+  align-items: center;
+  display: flex !important;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  margin: 0;
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal-content {
+  @extend .shadow-lg;
+  margin: auto;
+  max-width: $modal-max-width-lg;
+}
+
+@media (max-width: $media-max-width) {
+  .modal .modal-content {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+.modal-fullscreen .modal-dialog {
+  @extend .w-100;
+  @extend .h-100;
+}
+
+.modal-fullscreen .modal-content {
+  @extend .w-100;
+  @extend .h-100;
+  max-width: 100%;
+}
+.modal-large .modal-content {
+  @extend .shadow-lg;
+  margin: auto;
+  max-width: $modal-form-max-width ;
+}

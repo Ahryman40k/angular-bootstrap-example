@@ -1,0 +1,40 @@
+<div class="d-flex h-100">
+  <div class="flex-1 border-right h-100 d-flex flex-column">
+    <div class="border-bottom d-flex justify-content-between p-2 shadow-sm">
+      <h3>
+        Historique des importations
+      </h3>
+      <div class="d-flex">
+        <app-more-options-button buttonClass="p-0" dropdownPlacement="bottom" *ngIf="'TAXONOMY:WRITE' | appPermission">
+          <a ngbDropdownItem href="pre-planification/correspondance/borough">Consulter la correspondance des éléments NEXO</a>
+        </app-more-options-button>
+        <div class="d-flex flex-column justify-content-center">
+          <button class="btn btn-primary btn-squared btn-md" (click)="import()">Importer</button>
+        </div>
+      </div>
+    </div>
+    <div class="scrollable" (scroll)="onScroll($event)">
+      <div *ngFor="let nexoImportLog of (nexoImportLogs$ | async)" [class.menu-link-active]="nexoImportLog === selectedImportLog" (click)="selectNexoLog(nexoImportLog)">
+        <div class="p-2 border-bottom clickable">
+          <span class="font-weight-bold text-dark">
+            {{nexoImportLog.audit.createdAt | date: 'yyyy/MM/dd HH:mm'}}
+          </span>
+          <p class="mb-1 font-sm">
+            Responsable: {{nexoImportLog.audit.createdBy.displayName}}
+          </p>
+          <span class="badge mr-1" ngClass="{{nexoImportLog.status | appNexoLogBadge}}">{{ nexoImportLog.status | appTaxonomy: TaxonomyGroup.nexoImportStatus }}</span>
+        </div>
+      </div>
+      <div class="spinner position-absolute d-flex justify-content-center" *ngIf="isLoading">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="d-flex justify-content-center">
+            <app-spinner></app-spinner>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex-3">
+    <app-import-nexo-log-details [nexoImportLog]="selectedImportLog"></app-import-nexo-log-details>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<ng-container>
+  <a
+    *ngIf="item.link && item.linkNewWindow"
+    class="options-dropdown-item"
+    ngbDropdownItem
+    appWindowLink
+    [href]="item.link"
+    [disabled]="item.disabled"
+    appStopProp
+  >
+    {{ item.label }}
+  </a>
+  <a
+    *ngIf="item.link && !item.linkNewWindow"
+    class="options-dropdown-item"
+    [disabled]="item.disabled"
+    ngbDropdownItem
+    [routerLink]="'/' + item.link"
+    appStopProp
+  >
+    {{ item.label }}
+  </a>
+  <button [disabled]="item.disabled" *ngIf="item.action" ngbDropdownItem (mouseup)="item.action()" class="options-dropdown-item" appStopProp>
+    {{ item.label }}
+  </button>
+</ng-container>

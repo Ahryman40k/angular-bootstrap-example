@@ -1,0 +1,126 @@
+<app-layout-modal [modalTitle]="title">
+  <div body>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="name">Nom de l'objectif</label>
+          <input type="text" class="form-control mr-3" formControlName="name" ngbAutofocus />
+          <app-form-errors formControlName="name">
+            <app-form-error *appFormError="let e; key: 'required'">Le nom de l'objectif est requis</app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="name">Type d'objectif</label>
+          <vdm-select
+            [items]="objectiveTypes$ | async"
+            formControlName="objectiveType"
+            appendTo="app-layout-modal"
+            bindLabel="label.fr"
+            bindValue="code">
+          </vdm-select>
+          <app-form-errors formControlName="objectiveType">
+            <app-form-error *appFormError="let e; key: 'required'">Le type d'objectif est requis</app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6" *ngIf="!objective">
+          <app-radio-input
+            id="radio-1"
+            [checked]="!isObjectiveBidType"
+            label="Objectif personnalisé"
+            (click)="toggleObjectiveTargetType()"
+          ></app-radio-input>
+        </div>
+      </div>
+      <div class="custom-objective" [class.pl-4]="!objective" *ngIf="!objective || !isObjectiveBidType">
+        <div class="row">
+          <div class="form-group col">
+            <label class="pr-3">Requérant</label>
+            <vdm-select
+              class="select-control"
+              [items]="requestors$ | async"
+              formControlName="requestors"
+              appendTo="app-layout-modal"
+              bindLabel="label.fr"
+              bindValue="code"
+              [clearable]="true"
+            ></vdm-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label class="flex-1">Type d'actif</label>
+            <vdm-multi-select
+              [items]="assetTypes"
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="assetTypes"
+              appendTo="app-layout-modal"
+              [closeOnSelect]="false"
+              [searchable]="false"
+              [selectableGroup]="true"
+            ></vdm-multi-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label class="flex-1">Nature des travaux</label>
+            <vdm-multi-select
+              [items]="workTypes"
+              bindLabel="label.fr"
+              bindValue="code"
+              formControlName="workTypes"
+              appendTo="app-layout-modal"
+              [closeOnSelect]="false"
+              [hideSelected]="true"
+              [searchable]="false"
+            ></vdm-multi-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label class="flex-1">Valeur cible</label>
+            <div class="d-flex flex-row justify-content-between align-content-center">
+              <input
+                type="text"
+                class="input-group form-control pl-1 mr-2"
+                vdmIntegerInput
+                formControlName="referenceValue"
+              />
+              <vdm-select
+                class="select-control select-target-type"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="targetType"
+                appendTo="app-layout-modal"
+                [items]="targetTypes$ | async"
+              ></vdm-select>
+            </div>
+            <app-form-errors formControlName="referenceValue">
+              <app-form-error *appFormError="let e; key: 'required'">La valeur cible est requise</app-form-error>
+              <app-form-error *appFormError="let e; key: 'min'">La valeur cible doit être minimum de 1</app-form-error>
+            </app-form-errors>
+          </div>
+        </div>
+      </div>
+      <app-alert *ngIf="errorMessage" type="danger">
+        <span title>Erreur lors de la création de votre objectif.</span>
+        <span description>{{ errorMessage }}</span>
+      </app-alert>
+    </form>
+  </div>
+  <div buttons>
+    <button
+      type="button"
+      class="btn btn-tertiary btn-squared bg-white mr-2"
+      (click)="cancel()"
+      [disabled]="isSubmitting"
+    >
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="isSubmitting">
+      {{ buttonLabel }}
+    </button>
+  </div>
+</app-layout-modal>

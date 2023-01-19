@@ -1,0 +1,20 @@
+@import '../../../../../styles/core/variables';
+
+:host {
+  display: block;
+}
+
+.item {
+  outline: none;
+  &.active {
+    background-color: $color-aqua-spring;
+  }
+}
+
+app-checkbox {
+  pointer-events: none;
+}
+
+.filter-item-sub-item-padding-left {
+  padding-left: $filter-item-sub-item-padding-padding-left;
+}

@@ -1,0 +1,61 @@
+<div class="d-flex">
+  <div *ngIf="labelProject" class="d-flex border-bottom">
+    <div class="border-right id-cell sticky-column">
+      <h5 class="flex-1 ml-1 my-1">
+        <a *ngIf="labelProjectType === LabelProjectType.nonIntegrated" appWindowLink href="window/projects/{{ labelProject.project.id }}/overview" appStopProp container="body"
+        ngbTooltip="{{project.projectTypeId | appTaxonomy: TaxonomyGroup.projectType}} / {{labelProject.program | appTaxonomy: TaxonomyGroup.programType}}"
+        >
+          {{ labelProject.project.id }}
+        </a>
+        <a *ngIf="labelProjectType === LabelProjectType.integrated" appWindowLink href="window/projects/{{ labelProject.project.id }}/overview" appStopProp container="body"
+        ngbTooltip="{{project.projectTypeId | appTaxonomy: TaxonomyGroup.projectType}}"
+        >
+          {{ labelProject.project.id }}
+        </a>
+        <a *ngIf="labelProjectType === LabelProjectType.rtuProject" appWindowLink href="window/rtuProjects/{{ labelProject.project.id }}" appStopProp container="body"
+        ngbTooltip="{{rtuProject.partnerId | appTaxonomy: TaxonomyGroup.infoRtuPartner: 'category' | appPartnerCategory}} / {{rtuProject.partnerId | appTaxonomy: TaxonomyGroup.infoRtuPartner}}"
+        >
+          {{ labelProject.project.id }}
+        </a>
+      </h5>
+    </div>
+    <div *ngFor="let year of years" class="border-right year-cell d-flex">
+      <div class="position-relative">
+        <app-road-section-activity-status *ngIf="projectYears?.includes(year)" [activeYear]="year" [years]="years" [labelProject]="labelProject" [showLabel]="year === labelYear"></app-road-section-activity-status>
+      </div>
+      <div class="flex-1 border-right"></div>
+      <div class="flex-1 border-right"></div>
+      <div class="flex-1 border-right"></div>
+      <div class="flex-1"></div>
+    </div>
+  </div>
+  <div *ngIf="!intervention && !labelProject && years?.length" class="d-flex border-bottom border-top">
+    <div *ngIf="years?.length" class="border-right id-cell empty-id-cell sticky-column">
+    </div>
+    <div *ngFor="let year of years" class="border-right year-cell d-flex flex-column justify-content-end">
+      <p class="font-md font-weight-bold m-0 text-dark year-label">{{year}}</p>
+    </div>
+  </div>
+  <div *ngIf="intervention" class="d-flex border-bottom">
+    <div class="border-right id-cell sticky-column">
+      <h5 class="flex-1 ml-1 my-1">
+        <a appWindowLink href="window/interventions/{{ intervention.id }}/overview" appStopProp container="body"
+          ngbTooltip="{{ intervention?.assets[0]?.typeId  | appTaxonomy: TaxonomyGroup.assetType }} / {{ intervention.programId | appTaxonomy: TaxonomyGroup.programType }}">
+          {{ intervention.id }}
+        </a>
+      </h5>
+    </div>
+    <div *ngFor="let year of years" class="border-right year-cell d-flex">
+      <div class="position-relative">
+        <app-road-section-activity-status *ngIf="intervention.planificationYear === year" [activeYear]="year" [years]="years"
+          [intervention]="intervention" [showLabel]="year === intervention.planificationYear">
+        </app-road-section-activity-status>
+      </div>
+      <div class="flex-1 border-right"></div>
+      <div class="flex-1 border-right"></div>
+      <div class="flex-1 border-right"></div>
+      <div class="flex-1"></div>
+    </div>
+  </div>
+</div>
+

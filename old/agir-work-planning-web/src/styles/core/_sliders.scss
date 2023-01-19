@@ -1,0 +1,13 @@
+app-slider {
+  .custom-range::-webkit-slider-runnable-track {
+    background-color: transparent;
+  }
+
+  .custom-range::-webkit-slider-thumb:active {
+    background-color: $color-turquoise-700;
+  }
+
+  .custom-range:disabled {
+    background-color: transparent !important;
+  }
+}

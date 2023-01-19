@@ -1,0 +1,26 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "failure",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 1,
+          "description": "\"Une modification de l'année de début de l'intervention a été détectée. Or, l'intervention appartient à un projet intégré présent dans un carnet de programmation ou disposant d'autres interventions non fournies par l'import NEXO. Dans ce cas précis, il n'est pas permis de modifier l'année de début de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\nUne modification de l'année de fin de l'intervention a été détectée. Or, l'intervention appartient à un projet intégré présent dans un carnet de programmation ou disposant d'autres interventions non fournies par l'import NEXO. Dans ce cas précis, il n'est pas permis de modifier l'année de fin de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\""
+        }
+      ]
+    }
+  ]
+}

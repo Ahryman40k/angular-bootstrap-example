@@ -1,0 +1,39 @@
+<ul>
+  <li class="layer-title">
+    <label class="checkbox">
+      <input
+        type="checkbox"
+        class="layer-group"
+        [checked]="layerGroup.isChecked"
+        [disabled]="!layerGroup.isActive"
+        (change)="onToggle($event.target.checked, layerGroup)"
+      />
+      <span class="checkbox-widget"></span>
+      <span class="layer-title-label">{{ layerGroup.label | titlecase }}</span>
+    </label>
+    <span class="caret" (click)="onCollapse($event)"></span>
+  </li>
+  <ng-container *ngIf="layerGroup.layers">
+    <li class="nested layer-title" *ngFor="let layer of layerGroup.layers">
+      <label class="checkbox">
+        <input
+          class="layer-checkbox"
+          type="checkbox"
+          [checked]="layer.isChecked"
+          [disabled]="!layer.isActive"
+          (change)="onToggle($event.target.checked, layer)"
+        />
+        <span class="checkbox-widget"></span>
+        <span class="layer-title-label">{{ layer.label }}</span>
+      </label>
+    </li>
+  </ng-container>
+  <li class="nested" *ngIf="layerGroup.layerGroups">
+    <vdm-lm-group-default
+      *ngFor="let group of layerGroup.layerGroups"
+      [layerGroup]="group"
+      (toggle)="onToggle($event.checked, $event.logicalCorrespondance)"
+    >
+    </vdm-lm-group-default>
+  </li>
+</ul>

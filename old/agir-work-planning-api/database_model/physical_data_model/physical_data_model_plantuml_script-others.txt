@@ -1,0 +1,100 @@
+@startuml
+
+title Modèle Physique de données
+
+object audit {
+  O | **createdAt** : DateTime
+  O | **createdByUserName** : String
+  O | **createdByDisplayName** : String
+  O | **lastModifiedAt** : DateTime
+  O | **lastModifiedByUserName** : String
+  O | **lastModifiedByDisplayName** : String
+  O | **expiredAt** : DateTime
+  O | **expiredByUserName** : String
+  O | **expiredByDisplayName** : String
+}
+
+object counters {
+  M | **_id** : ObjectId
+  M | **key** : String
+  O | **sequence** : Int
+}
+
+object taxonomies {
+  M | **_id** : ObjectId
+  O | **group** : String
+  O | **code** : String
+  O | **label** : Map<String, String>
+  O | **description** : Map<String, String>
+  O | **properties** : Object
+  O | **isActive** : Boolean
+  O | **displayOrder** : Int
+  O | **valueString1** : String
+  O | **valueString2** : String
+  O | **valueBoolean1** : Boolean
+}
+
+object users_preferences {
+  M | **_id** : ObjectId
+  M | **key** : String
+  M | **userId** : String
+  M | **value** : Object[]
+}
+
+object constraints {
+  M | **_id** : ObjectId
+  M | **typeId** : String
+  M | **description** : String
+  O | **justification** : String
+}
+
+object conflictualItems {
+  M | **id** : String
+  M | **type** : String
+}
+
+object history {
+  M | **_id** : ObjectId
+  M | **objectTypeId** : String
+  M | **referenceId** : String
+  M | **actionId** : String
+  O | **categoryId** : String
+}
+
+object summary {
+  O | **statusFrom** : String
+  O | **statusTo** : String
+  O | **comments** : String
+}
+
+object import_relations {
+  M | **_id** : ObjectId
+  M | **projectId** : String
+  M | **bicProjectNumber** : String
+  O | **bicProjectId** : String
+}
+
+object imp_rel_interventions {
+  M | **interventionId** : String
+  O | **medaille_amenagement** : String
+  O | **nom_arrondissement** : String
+  O | **no_projet** : String
+  O | **type_intervention** : String
+  O | **longueur_interv_requerant** : String
+  O | **longueur_global** : String
+}
+
+
+constraints o-- "0..1" audit
+constraints o-- "2" conflictualItems
+
+history o-- "0..1" audit
+history o-- "0..1" summary
+
+import_relations o-- "1..n" imp_rel_interventions
+
+taxonomies o-- "0..1" audit
+
+users_preferences o-- "0..1" audit
+
+@enduml

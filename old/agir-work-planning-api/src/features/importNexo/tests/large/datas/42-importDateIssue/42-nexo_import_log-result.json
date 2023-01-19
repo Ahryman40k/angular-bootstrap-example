@@ -1,0 +1,26 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "failure",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 1,
+          "description": "\"La mise à jour de l’intervention (ligne 1 - col I) n’a pas été mise à jour dans AGIR. L’intervention AGIR est déjà à jour selon l’info que l’on retrouve dans NEXO.\""
+        }
+      ]
+    }
+  ]
+}

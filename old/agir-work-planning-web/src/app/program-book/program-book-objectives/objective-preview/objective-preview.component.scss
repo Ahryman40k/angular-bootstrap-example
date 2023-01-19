@@ -1,0 +1,17 @@
+
+@import '../../../../styles/core/variables';
+
+.objective-name{
+  font-style: normal;
+  font-weight: 400;
+  font-size: $legend-font-size;
+  color: $color-shark;
+}
+.progressbar{
+  top:4px;
+  position: relative;
+}
+.objectifBlock{
+  line-height: 16px;
+  width: 60%;
+}

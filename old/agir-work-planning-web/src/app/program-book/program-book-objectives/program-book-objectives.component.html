@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between mt-4 mb-3">
+  <div class="d-flex">
+    <h4 class="d-block">Objectifs du carnet</h4>
+  </div>
+  <app-details-add-button
+    [disabled]="isAutomaticLoadingInProgress"
+    (onAdd)="openObjectiveModal()"
+    *ngIf="(Permission.PROGRAM_BOOK_OBJECTIVE_WRITE | appPermission) && (restrictionItems | appRestrictions)"
+  ></app-details-add-button>
+</div>
+
+<div class="d-flex flex-wrap justify-content-start align-items-stretch" *ngIf="programBook">
+  <ng-container *ngIf="!isInitializingProgramBookObjectives">
+    <app-objective-card
+      [objective]="objective"
+      [programBook]="programBook"
+      [restrictionItems]="restrictionItems"
+      *ngFor="let objective of objectives"
+    ></app-objective-card>
+  </ng-container>
+  <app-no-result *ngIf="!isInitializingProgramBookObjectives && !objectives?.length" class="flex-1">
+    Cette section est présentement vide
+  </app-no-result>
+  <app-spinner *ngIf="isInitializingProgramBookObjectives" class="d-flex mx-auto mt-1"></app-spinner>
+</div>

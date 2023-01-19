@@ -1,0 +1,28 @@
+@import '../../../../styles/core/variables';
+
+:host {
+  &.active {
+    button {
+      background-color: $color-aqua-spring;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: solid 2px $color-turquoise-700;
+      div span {
+        color: $color-turquoise-700 !important;
+      }
+    }
+    button:hover {
+      border-right: solid 2px $color-turquoise-700;
+    }
+  }
+  &:not(.active) {
+    .btn.btn-squared.btn-link:hover {
+      background-color: transparent;
+      border-color: transparent;
+      div span {
+        color: $color-turquoise-700 !important;
+      }
+    }
+  }
+}
+

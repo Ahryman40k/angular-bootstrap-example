@@ -1,0 +1,13 @@
+<div class="pt-2">
+  <h5>À propos</h5>
+
+  <div *ngIf="diagnostic" class="mt-2">
+    <div>Version {{diagnostic.version}} (Serveur)</div>
+    <div>Version {{versionUI}} (UI)</div>
+  </div>
+
+  <div class="mt-2">Dernière importation des données:</div>
+  <div *ngIf="bicImport">
+    <div>{{bicImport.audit.createdAt | date: 'dd/MM/yyyy HH:mm:ss'}} </div>
+  </div>
+</div>

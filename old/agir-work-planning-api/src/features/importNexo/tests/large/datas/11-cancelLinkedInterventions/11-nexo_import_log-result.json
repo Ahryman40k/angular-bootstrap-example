@@ -1,0 +1,40 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "success",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 3,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-several-linked-interventions-PNI-11175033",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "lineNumber": 1,
+          "description": "\"\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5312067",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "lineNumber": 2,
+          "description": "\"\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5311759",
+          "importStatus": "success",
+          "modificationType": "deletion",
+          "lineNumber": 3,
+          "description": "\"\""
+        }
+      ]
+    }
+  ]
+}

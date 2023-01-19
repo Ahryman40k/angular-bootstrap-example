@@ -1,0 +1,58 @@
+<app-filter-layout>
+  <span title>Affichage actuel</span>
+  <div *ngIf="isLoading" class="d-flex w-100 justify-content-center pr-2">
+    <app-spinner></app-spinner>
+  </div>
+  <app-filter-item-layout [items]="labels$ | async" bindLabel="label.fr" bindValue="key" [formControl]="labelsControl"
+    [class.d-none]="isLoading">
+    <span class="text-break" title *ngIf="currentFavorite">{{ currentFavorite.name }}</span>
+    <button titleAction *ngIf="currentFavorite" class="btn btn-icon btn-icon-only p-0"
+      (click)="globalFavoriteService.selectFavorite(null)">
+      <i class="icon icon-x icon-color-neutral-secondary icon-sm"></i>
+    </button>
+    <div action class="mt-1" *ngIf="(labels$ | async)?.length && (selectedFavorite$ | async) === null">
+      <button class="btn btn-primary btn-squared btn-sm mr-1 p-1 mb-1" (click)="openSaveModal()">
+        <span>Sauvegarder</span>
+      </button>
+      <button class="btn btn-secondary btn-squared btn-sm mr-1 p-1" (click)="clearCurrentSelection()">
+        <span>Réinitialiser</span>
+      </button>
+    </div>
+    <div action class="mt-1" *ngIf="selectedFavorite$ | async">
+      <button class="btn btn-primary btn-squared btn-sm mr-1 p-1 mb-1"
+        (click)="globalFavoriteService.submitFavoriteToUpdate(currentFavorite)">
+        <span>Enregistrer</span>
+      </button>
+      <button class="btn btn-secondary btn-squared btn-sm mr-1 p-1" (click)="globalFavoriteService.cancelUpdate()">
+        <span>Réinitialiser</span>
+      </button>
+    </div>
+    <app-no-result-placeholder *ngIf="!(labels$ | async)?.length" icon="icon-rectangle-folded">
+      Votre sélection est vide. Veuillez activer des filtres dans la barre de gauche pour personnaliser votre vue.
+    </app-no-result-placeholder>
+  </app-filter-item-layout>
+  <h6 class="my-2 font-sm">Éléments visibles sur la carte</h6>
+  <div class="d-flex justify-content-between">
+    <div class="d-flex flex-column justify-content-center">
+      <h6 class="mr-1 font-sm">Projets</h6>
+    </div>
+    <button class="btn btn-icon btn-icon-only p-0 mr-2" (click)="toggleProjectSection()">
+      <i class="icon" [class.icon-chevron-up]="isProjectSectionOpened"
+        [class.icon-chevron-down]="!isProjectSectionOpened"></i>
+    </button>
+  </div>
+  <form class="d-flex flex-column" [formGroup]="form">
+    <div class="pl-1" *ngIf="isProjectSectionOpened">
+      <app-checkbox class="checkbox-sm pl-3 pb-0" label="Projets" labelClass="font-sm" formControlName="projectsVisible"
+        *ngIf="Permission.PROJECT_ZONE_READ | appPermission"></app-checkbox>
+      <app-checkbox class="checkbox-sm pl-3 pb-0" label="Projets partenaires" labelClass="font-sm"
+        formControlName="partnerProjectsVisible" *ngIf="Permission.PARTNER_PROJECT_READ | appPermission"></app-checkbox>
+      <app-checkbox class="checkbox-sm pl-3 pb-0" label="Projets villes liées" labelClass="font-sm"
+        formControlName="linkedCityProjectsVisible" *ngIf="Permission.RTU_PROJECT_READ | appPermission"></app-checkbox>
+      <app-checkbox class="checkbox-sm pl-3 pb-0" label="Projets arrondissements" labelClass="font-sm"
+        formControlName="boroughProjectsVisible" *ngIf="Permission.RTU_PROJECT_READ | appPermission"></app-checkbox>
+    </div>
+    <app-checkbox class="checkbox-sm pl-3 pb-0" label="Interventions" labelClass="font-sm"
+      formControlName="interventionsVisible" *ngIf="Permission.INTERVENTION_ZONE_READ | appPermission"></app-checkbox>
+  </form>
+</app-filter-layout>

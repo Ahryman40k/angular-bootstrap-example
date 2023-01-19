@@ -1,0 +1,617 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.60889503594831, 45.51428088010101]
+      },
+      "properties": {
+        "NOM": "Outremont",
+        "TYPE": "Arrondissement",
+        "CODEID": "11",
+        "ABREV": "OUT",
+        "NUM": 5,
+        "CODEMAMROT": "REM05",
+        "AIRE": 3813355.72326504,
+        "MUNID": 66023,
+        "PERIM": 10836.6706340882
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.62607130189726, 45.427274961571925]
+      },
+      "properties": {
+        "NOM": "LaSalle",
+        "TYPE": "Arrondissement",
+        "CODEID": "22",
+        "ABREV": "LSL",
+        "NUM": 18,
+        "CODEMAMROT": "REM17",
+        "AIRE": 25197267.8224814,
+        "MUNID": 66023,
+        "PERIM": 25259.8494666826
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.6523627854, 45.5072037088]
+      },
+      "properties": {
+        "NOM": "Mont-Royal",
+        "TYPE": "Ville liée",
+        "CODEID": "62",
+        "ABREV": "MR",
+        "NUM": 2,
+        "CODEMAMROT": "66072",
+        "AIRE": 7445560.04257386,
+        "MUNID": 66023,
+        "PERIM": 18314.0385229221
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5517489630759, 45.51216390141073]
+      },
+      "properties": {
+        "NOM": "Ville-Marie",
+        "TYPE": "Arrondissement",
+        "CODEID": "9",
+        "ABREV": "VM",
+        "NUM": 20,
+        "CODEMAMROT": "REM19",
+        "AIRE": 21500631.743203,
+        "MUNID": 66023,
+        "PERIM": 26585.9598520566
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.58106421317045, 45.525670552210556]
+      },
+      "properties": {
+        "NOM": "Le Plateau-Mont-Royal",
+        "TYPE": "Arrondissement",
+        "CODEID": "5",
+        "ABREV": "PMR",
+        "NUM": 22,
+        "CODEMAMROT": "REM21",
+        "AIRE": 8151665.08032495,
+        "MUNID": 66023,
+        "PERIM": 13158.3280066326
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.6457776318, 45.4814748406]
+      },
+      "properties": {
+        "NOM": "Hampstead",
+        "TYPE": "Ville liée",
+        "CODEID": "54",
+        "ABREV": "HS",
+        "NUM": 10,
+        "CODEMAMROT": "66062",
+        "AIRE": 1768055.2836058,
+        "MUNID": 66023,
+        "PERIM": 5875.84891707071
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.58161926269531, 45.47265128615832]
+      },
+      "properties": {
+        "NOM": "Le Sud-Ouest",
+        "TYPE": "Arrondissement",
+        "CODEID": "63",
+        "ABREV": "SO",
+        "NUM": 21,
+        "CODEMAMROT": "REM20",
+        "AIRE": 18144269.4942672,
+        "MUNID": 66023,
+        "PERIM": 29633.1613299134
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.51349899432653, 45.65914920988703]
+      },
+      "properties": {
+        "NOM": "Rivière-des-Prairies-Pointe-aux-Trembles",
+        "TYPE": "Arrondissement",
+        "CODEID": "57",
+        "ABREV": "RDPPAT",
+        "NUM": 19,
+        "CODEMAMROT": "REM33",
+        "AIRE": 50047004.4704679,
+        "MUNID": 66023,
+        "PERIM": 38573.0676375956
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.67475813633689, 45.438392245813986]
+      },
+      "properties": {
+        "NOM": "Lachine",
+        "TYPE": "Arrondissement",
+        "CODEID": "28",
+        "ABREV": "LCH",
+        "NUM": 17,
+        "CODEMAMROT": "REM27",
+        "AIRE": 23127785.9947689,
+        "MUNID": 66023,
+        "PERIM": 25399.5260110105
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.7519972806, 45.4567080267]
+      },
+      "properties": {
+        "NOM": "Dorval",
+        "TYPE": "Ville liée",
+        "CODEID": "51",
+        "ABREV": "DV",
+        "NUM": 1,
+        "CODEMAMROT": "66087",
+        "AIRE": 28156149.6564735,
+        "MUNID": 66023,
+        "PERIM": 32357.5668097976
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.62762451171875, 45.59338068769037]
+      },
+      "properties": {
+        "NOM": "Montréal-Nord",
+        "TYPE": "Arrondissement",
+        "CODEID": "2",
+        "ABREV": "MTN",
+        "NUM": 16,
+        "CODEMAMROT": "REM16",
+        "AIRE": 12430208.2276064,
+        "MUNID": 66023,
+        "PERIM": 16416.9410478673
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.8991928100586, 45.47987347203981]
+      },
+      "properties": {
+        "NOM": "L'Île-Bizard-Sainte-Geneviève",
+        "TYPE": "Arrondissement",
+        "CODEID": "39",
+        "ABREV": "IBZSGV",
+        "NUM": 6,
+        "CODEMAMROT": "REM32",
+        "AIRE": 36532506.0843929,
+        "MUNID": 66023,
+        "PERIM": 28399.2483610122
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.8587735621, 45.4528537127]
+      },
+      "properties": {
+        "NOM": "Kirkland",
+        "TYPE": "Ville liée",
+        "CODEID": "59",
+        "ABREV": "KL",
+        "NUM": 3,
+        "CODEMAMROT": "66102",
+        "AIRE": 9687581.29393964,
+        "MUNID": 66023,
+        "PERIM": 17837.5845664163
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.81885528564453, 45.49142704415611]
+      },
+      "properties": {
+        "NOM": "Dollard-des-Ormeaux",
+        "TYPE": "Ville liée",
+        "CODEID": "65",
+        "ABREV": "DO",
+        "NUM": 11,
+        "CODEMAMROT": "66142",
+        "AIRE": 15065158.7481239,
+        "MUNID": 66023,
+        "PERIM": 21358.3439314698
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.9607520172, 45.4336302706]
+      },
+      "properties": {
+        "NOM": "Senneville",
+        "TYPE": "Ville liée",
+        "CODEID": "43",
+        "ABREV": "SV",
+        "NUM": 77,
+        "CODEMAMROT": "66127",
+        "AIRE": 18609960.8406296,
+        "MUNID": 66023,
+        "PERIM": 21837.3109951091
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.69422912597656, 45.531605383770994]
+      },
+      "properties": {
+        "NOM": "Ahuntsic-Cartierville",
+        "TYPE": "Arrondissement",
+        "CODEID": "4",
+        "ABREV": "AC",
+        "NUM": 24,
+        "CODEMAMROT": "REM23",
+        "AIRE": 25571187.4830152,
+        "MUNID": 66023,
+        "PERIM": 37790.0972344973
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.666276071, 45.4682461372]
+      },
+      "properties": {
+        "NOM": "Côte-Saint-Luc",
+        "TYPE": "Ville liée",
+        "CODEID": "56",
+        "ABREV": "CL",
+        "NUM": 72,
+        "CODEMAMROT": "66058",
+        "AIRE": 6810209.67280951,
+        "MUNID": 66023,
+        "PERIM": 16248.5545739044
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.59676700275871, 45.587271844347754]
+      },
+      "properties": {
+        "NOM": "Saint-Léonard",
+        "TYPE": "Arrondissement",
+        "CODEID": "6",
+        "ABREV": "SLN",
+        "NUM": 14,
+        "CODEMAMROT": "REM14",
+        "AIRE": 13550689.4569742,
+        "MUNID": 66023,
+        "PERIM": 16325.5444247774
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.65028381347656, 45.460612252738706]
+      },
+      "properties": {
+        "NOM": "Montréal-Ouest",
+        "TYPE": "Ville liée",
+        "CODEID": "52",
+        "ABREV": "MO",
+        "NUM": 75,
+        "CODEMAMROT": "66047",
+        "AIRE": 1419449.31152679,
+        "MUNID": 66023,
+        "PERIM": 7276.14231945283
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.8058139401, 45.4398555366]
+      },
+      "properties": {
+        "NOM": "Pointe-Claire",
+        "TYPE": "Ville liée",
+        "CODEID": "47",
+        "ABREV": "PC",
+        "NUM": 8,
+        "CODEMAMROT": "66097",
+        "AIRE": 34446517.1608728,
+        "MUNID": 66023,
+        "PERIM": 27073.2972503751
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.7419886151, 45.4321793097]
+      },
+      "properties": {
+        "NOM": "L'Île-Dorval",
+        "TYPE": "Ville liée",
+        "CODEID": "50",
+        "ABREV": "ID",
+        "NUM": 73,
+        "CODEMAMROT": "66092",
+        "AIRE": 180508.863341272,
+        "MUNID": 66023,
+        "PERIM": 1814.42421705588
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5369873046875, 45.57511957785422]
+      },
+      "properties": {
+        "NOM": "Mercier-Hochelaga-Maisonneuve",
+        "TYPE": "Arrondissement",
+        "CODEID": "10",
+        "ABREV": "MHM",
+        "NUM": 23,
+        "CODEMAMROT": "REM22",
+        "AIRE": 27408411.8682898,
+        "MUNID": 66023,
+        "PERIM": 33178.8130238171
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.63483428955078, 45.49094569262732]
+      },
+      "properties": {
+        "NOM": "Côte-des-Neiges-Notre-Dame-de-Grâce",
+        "TYPE": "Arrondissement",
+        "CODEID": "61",
+        "ABREV": "CDNNDG",
+        "NUM": 27,
+        "CODEMAMROT": "REM34",
+        "AIRE": 21483754.6915099,
+        "MUNID": 66023,
+        "PERIM": 35557.9541002904
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5812759399414, 45.55733331588203]
+      },
+      "properties": {
+        "NOM": "Rosemont-La Petite-Patrie",
+        "TYPE": "Arrondissement",
+        "CODEID": "8",
+        "ABREV": "RPP",
+        "NUM": 25,
+        "CODEMAMROT": "REM24",
+        "AIRE": 15886530.2734387,
+        "MUNID": 66023,
+        "PERIM": 19394.1638434482
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.71208190917969, 45.50514383337021]
+      },
+      "properties": {
+        "NOM": "Saint-Laurent",
+        "TYPE": "Arrondissement",
+        "CODEID": "29",
+        "ABREV": "SLR",
+        "NUM": 15,
+        "CODEMAMROT": "REM15",
+        "AIRE": 43077847.4826827,
+        "MUNID": 66023,
+        "PERIM": 36589.4075636401
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.8606353613, 45.4154120577]
+      },
+      "properties": {
+        "NOM": "Beaconsfield",
+        "TYPE": "Ville liée",
+        "CODEID": "46",
+        "ABREV": "BF",
+        "NUM": 7,
+        "CODEMAMROT": "66107",
+        "AIRE": 24922505.7501012,
+        "MUNID": 66023,
+        "PERIM": 23295.5736908574
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.61801147460938, 45.55721311928203]
+      },
+      "properties": {
+        "NOM": "Villeray-Saint-Michel-Parc-Extension",
+        "TYPE": "Arrondissement",
+        "CODEID": "66",
+        "ABREV": "VSMPE",
+        "NUM": 26,
+        "CODEMAMROT": "REM25",
+        "AIRE": 16477356.1380656,
+        "MUNID": 66023,
+        "PERIM": 21180.0495681032
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.59947204589844, 45.48805749706375]
+      },
+      "properties": {
+        "NOM": "Westmount",
+        "TYPE": "Ville liée",
+        "CODEID": "64",
+        "ABREV": "WM",
+        "NUM": 4,
+        "CODEMAMROT": "66032",
+        "AIRE": 4016301.00638293,
+        "MUNID": 66023,
+        "PERIM": 8959.39749998973
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.5208366362, 45.6288226082]
+      },
+      "properties": {
+        "NOM": "Montréal-Est",
+        "TYPE": "Ville liée",
+        "CODEID": "60",
+        "ABREV": "ME",
+        "NUM": 74,
+        "CODEMAMROT": "66007",
+        "AIRE": 13974007.395917,
+        "MUNID": 66023,
+        "PERIM": 16860.1484244684
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.56610184208351, 45.61108281735147]
+      },
+      "properties": {
+        "NOM": "Anjou",
+        "TYPE": "Arrondissement",
+        "CODEID": "7",
+        "ABREV": "ANJ",
+        "NUM": 9,
+        "CODEMAMROT": "REM09",
+        "AIRE": 13878193.7139332,
+        "MUNID": 66023,
+        "PERIM": 18275.9473311428
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.84859561920166, 45.48104698981748]
+      },
+      "properties": {
+        "NOM": "Pierrefonds-Roxboro",
+        "TYPE": "Arrondissement",
+        "CODEID": "38",
+        "ABREV": "PFDROX",
+        "NUM": 13,
+        "CODEMAMROT": "REM31",
+        "AIRE": 33765273.4103151,
+        "MUNID": 66023,
+        "PERIM": 51360.0927328792
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.9393043867, 45.4236279348]
+      },
+      "properties": {
+        "NOM": "Sainte-Anne-de-Bellevue",
+        "TYPE": "Ville liée",
+        "CODEID": "44",
+        "ABREV": "BV",
+        "NUM": 76,
+        "CODEMAMROT": "66117",
+        "AIRE": 11150545.7354066,
+        "MUNID": 66023,
+        "PERIM": 19274.0460231343
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.57205384905684, 45.4506520236834]
+      },
+      "properties": {
+        "NOM": "Verdun",
+        "TYPE": "Arrondissement",
+        "CODEID": "16",
+        "ABREV": "VRD",
+        "NUM": 12,
+        "CODEMAMROT": "REM12",
+        "AIRE": 22328673.5349607,
+        "MUNID": 66023,
+        "PERIM": 20314.6970828615
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-73.9140217669, 45.4166955896]
+      },
+      "properties": {
+        "NOM": "Baie-d'Urfé",
+        "TYPE": "Ville liée",
+        "CODEID": "45",
+        "ABREV": "BU",
+        "NUM": 71,
+        "CODEMAMROT": "66112",
+        "AIRE": 8025920.55691145,
+        "MUNID": 66023,
+        "PERIM": 11652.905184678
+      }
+    }
+  ]
+}

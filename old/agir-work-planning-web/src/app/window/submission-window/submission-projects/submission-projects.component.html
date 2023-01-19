@@ -1,0 +1,34 @@
+<h4 class="d-flex justify-content-between align-items-center mt-3 mb-3">
+  Projets de la soumission
+</h4>
+<div class="scrollable-horizontal main">
+  <div>
+    <div class="responsive-table" *ngIf="projects?.length > 0">
+      <div class="responsive-table-header font-sm">
+        <app-table-column-header
+          *ngFor="let column of columns"
+          class="d-flex"
+          [class]="column.className"
+          [id]="column.columnName"
+          [columnLabel]="ProjectsToScheduleColumnLabels[column.columnName]"
+          [columnClass]="column.columnName"
+          [condition]="undefined"
+          [permission]="Permission.PROGRAM_BOOK_PROGRAM"
+          [sorting]="column.sorting"
+          [direction]="sortedDirection"
+          (sortChange)="handleSortChange($event, column)"
+        >
+        </app-table-column-header>
+      </div>
+      <div id="responsive-table-body">
+        <div *ngFor="let submissionProject of submissionProjects; let i = index">
+          <app-submission-projects-table-items [submissionProject]="submissionProject" [columns]="columns">
+          </app-submission-projects-table-items>
+        </div>
+      </div>
+    </div>
+    <app-no-result *ngIf="projects?.length === 0 && !isInitializingTable" [showEmtyIcon]="true"></app-no-result>
+  </div>
+  <app-spinner *ngIf="isInitializingTable" class="d-flex mx-auto mt-1"></app-spinner>
+  <div class="box"></div>
+</div>

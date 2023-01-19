@@ -1,0 +1,5 @@
+<span *ngFor="let item of data?.augmented; let last = last">
+  {{ item.year }} |
+  <a appWindowLink href="program-books/{{ item?.programBook?.id }}/summary"> {{ item?.programBook?.name }} </a>
+  <span *ngIf="!last"> ; </span>
+</span>

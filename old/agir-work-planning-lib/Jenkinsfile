@@ -1,0 +1,79 @@
+#!groovy
+@Library('cicd-lib')
+import vdmtl.cicd.*
+import jenkins.model.*
+
+pipeline = new Pipeline()
+
+// For more information on the configuration options,
+// see https://bitbucket.org/villemontreal/cicd-lib/src/master/docs/Config.md
+ctx = pipeline.createContext([
+        namespace: ["gt-agir"],
+        application: [
+                name: "agir-work-planning-lib",
+                type: "lib", // service, lib, containerImage, package
+                runtime: "nodejs",
+                description: "Template to start a project for a new Node.js library (npm package)",
+                keywords: [
+                    "agir",
+                    "planning",
+                    "lib",
+                ],
+                //icon: "https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-lightbulb.svg",
+        ],
+        packaging: [
+                dockerfilePath: "Dockerfile"
+        ],
+        notifications: [
+            chat: [
+                room: "agir-planification-ci",
+                notify: true
+            ],
+            mail: [
+                to: [
+                // Full email, or prefix of the email address ville.montreal.qc.ca
+                // ex: "john.doe", "jane.dear@mailinator.com"
+                // Note that the code U (e.g., udev123) will not work since there
+                // is no email using that id.
+                "julien.riel",
+                "yann.debonnel"
+                ]
+            ]
+        ],
+])
+
+pipeline.start(ctx) {
+
+    pipeline.withSourceCode(ctx) {
+
+        pipeline.buildStage(ctx) {
+            pipeline.buildDockerImage(ctx)
+        }
+
+        pipeline.prePublishStage(ctx) {
+            pipeline.publishDraftDockerImage(ctx)
+        }
+    }
+
+    pipeline.withDraftDockerImage(ctx) {
+        pipeline.testInDraftDockerContainerStage(ctx) {
+            try {
+                // Include all commands to run your test within
+                // your application's docker image.
+                // Note that the commands must be in a single 'sh' wrapper.
+                sh """
+                    cd /mtl/app
+                    npm run test-jenkins -- --report=$WORKSPACE/output/test-results/report.xml
+                """
+            }
+            finally {
+                junit "output/test-results/*.xml"
+            }
+        }
+
+        pipeline.publishStage(ctx) {
+            pipeline.publishLibrary(ctx)
+        }
+
+    }
+}

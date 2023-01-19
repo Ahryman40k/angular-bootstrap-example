@@ -1,0 +1,64 @@
+#==========================================
+# Default local configurations
+#==========================================
+
+environment:
+  isLocal: true
+
+logging:
+  humanReadableInConsole: true
+
+templatingEngine:
+  enableCache: false
+
+debug:
+  watch:
+    notifications:
+      enabled: true
+      sound: false
+
+api:
+  scheme: http
+  host: localhost
+  port: 12345
+
+openApi:
+  exposeSwaggerEditor: true
+
+mongo:
+  connectionString: mock
+  connectionOptions:
+    replicaSet:
+    user:
+    pass:
+
+#==========================================
+# Security
+#==========================================
+security:
+  jwt:
+    enable: false
+
+#==========================================
+# GLUU
+#==========================================
+gluu:
+  mock: true
+
+#==========================================
+# GDA Gestion Des Access
+#==========================================
+gda:
+  mock: true
+  enricher: true
+
+#==========================================
+# Spatial Analysis
+#==========================================
+spatialAnalysis:
+  spatial:
+    url: https://api.dev.interne.montreal.ca/api/it-platforms/geomatic/spatialanalysis/v1
+  wfs:
+    url: https://api.dev.interne.montreal.ca
+    dWithinMeterTolerance: 10
+    baseCoordinatesSrs: EPSG:4326

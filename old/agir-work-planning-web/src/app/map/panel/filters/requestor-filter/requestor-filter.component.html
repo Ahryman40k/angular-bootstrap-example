@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form" *ngIf="form && requestors$">
+  <span title>Requérants</span>
+  <app-filter-item-layout
+    [items]="requestors$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="requestors"
+  ></app-filter-item-layout>
+</app-filter-layout>

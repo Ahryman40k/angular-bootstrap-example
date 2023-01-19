@@ -1,0 +1,18 @@
+<app-layout-modal modalTitle="Supprimer un favori">
+  <div body>
+    <app-alert type="warning">
+      <span title>Attention!</span>
+      <span description>
+        La suppression de favoris entrainera la perte des données. Êtes-vous certain de vouloir continuer?
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()" [disabled]="submitting">
+      Annuler
+    </button>
+    <button type="submit" class="btn btn-primary btn-squared add-button" (click)="submit()" [disabled]="submitting">
+      Supprimer
+    </button>
+  </div>
+</app-layout-modal>

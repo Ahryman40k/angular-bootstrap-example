@@ -1,0 +1,43 @@
+<div class="scrollable">
+  <ng-container *ngIf="!isInitializing" class="details-comment-list-item">
+    <app-list-item *ngFor=" let assetGroupByType of assetGroupsByType$ | async" isButtonAlwaysVisible="true" isDescriptionCollapsible="true" mainContentClass="m-auto pt-1" [isHovered]="assetGroupByType.items | appIsIncluded:hoveredAssetIds" (mouseenter)="onAssetListHover(assetGroupByType.items)" (mouseleave)="clearHighlight()" #item>
+      <span class="d-flex align-items-center" title>
+        <i *ngIf="assetGroupByType.icon" class="icon {{assetGroupByType.icon}} icon-xs mr-1"></i>
+        <h5>{{assetGroupByType.key | appTaxonomy: TaxonomyGroup.assetType }}</h5>
+        <i class="icon"
+        [class.icon-chevron-up]="item.showDescription"
+        [class.icon-chevron-down]="!item.showDescription"
+        role="icon"></i>
+      </span>
+      <span description class="flex-column align-items-start w-100">
+        <ng-container *ngIf="item.showDescription">
+          <div class="d-flex small pt-2">
+            <div>
+              <div class="font-weight-bold text-dark" *ngFor="let asset of assetGroupByType.items">
+                <a appWindowLink href="window/assets/{{ asset?.typeId }}/{{ asset?.id }}/overview" appStopProp>{{asset.id | vdmNa }}</a>
+              </div>
+            </div>
+            <div>
+              <div *ngFor="let asset of assetGroupByType.items"><span class="mx-1">•</span>Propriétaire: {{asset.ownerId | appTaxonomy: TaxonomyGroup.assetOwner}}</div>
+            </div>
+          </div>
+        </ng-container>
+      </span>
+      <div *ngIf="!isAssetListWithIntervention" extra-action-button>
+          <button *ngIf="!assetGroupByType.hasOpportunityNotice && !isAssetListWithIntervention && (Permission.OPPORTUNITY_NOTICE_WRITE | appPermission)" class="btn btn-secondary btn-squared" (click)="$event.stopPropagation();createGeoOpportunityNotice(assetGroupByType)">
+            <span class="icon icon-plus"></span>
+            <span>Créer un avis</span>
+          </button>
+          <button *ngIf="assetGroupByType.hasOpportunityNotice" class="btn btn-secondary btn-squared" disabled>
+            <span>Avis créé</span>
+          </button>
+      </div>
+    </app-list-item>
+  </ng-container>
+  <app-no-result *ngIf="!isInitializing && !(assetGroupsByType$| async)?.length">
+    Il n'y a pas d'actifs pour l'instant.
+  </app-no-result>
+  <div class="d-flex justify-content-center py-1">
+    <app-spinner  *ngIf="isInitializing"></app-spinner>
+  </div>
+</div>

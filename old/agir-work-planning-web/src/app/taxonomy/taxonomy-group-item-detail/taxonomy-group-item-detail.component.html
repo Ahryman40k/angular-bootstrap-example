@@ -1,0 +1,59 @@
+<div class="pl-2 ml-7 border-left border-width-sm" *ngIf="group.code === TaxonomyGroup.service">
+  <div class="d-flex py-2">
+    <div class="flex-2 d-flex flex-column">
+      <h6 class="mb-0">Requérants</h6>
+    </div>
+    <div class="flex-6 pr-3">
+      <h6 class="mb-0 word-break font-weight-normal text-neutral-secondary">
+        <span class="values-list" *ngFor="let requestor of taxonomy.properties.requestors">
+          {{ requestor | appTaxonomy: TaxonomyGroup.requestor }}
+        </span>
+      </h6>
+    </div>
+  </div>
+</div>
+
+<div class="pl-2 ml-7 border-left border-width-sm" *ngIf="group.code === TaxonomyGroup.assetType">
+  <div class="d-flex py-2">
+    <div class="flex-2 d-flex flex-column">
+      <h6 class="mb-0">Propriétaires</h6>
+    </div>
+    <div class="flex-6 pr-3">
+      <h6 class="mb-0 word-break font-weight-normal text-neutral-secondary">
+        <span class="values-list" *ngFor="let owner of taxonomy.properties.owners">
+          {{ owner | appTaxonomy: TaxonomyGroup.assetOwner }}
+        </span>
+      </h6>
+    </div>
+  </div>
+  <div class="d-flex py-2">
+    <div class="flex-2 d-flex flex-column">
+      <h6 class="mb-0">Natures des travaux</h6>
+    </div>
+    <div class="flex-6 pr-3">
+      <h6 class="mb-0 word-break font-weight-normal text-neutral-secondary">
+        <span class="values-list" *ngFor="let workType of taxonomy.properties.workTypes">
+          {{ workType | appTaxonomy: TaxonomyGroup.workType }}
+        </span>
+      </h6>
+    </div>
+  </div>
+  <div class="d-flex py-2">
+    <div class="flex-2 d-flex flex-column">
+      <h6 class="mb-0">Attributs d'actifs</h6>
+    </div>
+    <div class="flex-6 pr-3">
+      <h6 class="mb-1 word-break font-weight-normal text-neutral-secondary" *ngFor="let dataKey of orderedDataKeys">
+        <span class="font-weight-bold values-list">
+          {{ dataKey.code | appTaxonomy: TaxonomyGroup.assetDataKey }}
+        </span>
+        <span class="values-list">
+          {{ dataKey.isMainAttribute ? 'Attribut principal' : 'Attribut secondaire' }}
+        </span>
+        <span class="values-list">
+          Ordre d'affichage : {{ dataKey.displayOrder }}
+        </span>
+      </h6>
+    </div>
+  </div>
+</div>

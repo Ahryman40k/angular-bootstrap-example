@@ -1,0 +1,43 @@
+#==========================================
+# Default local configurations, when running
+# tests.
+#
+# It will be picked up because the "NODE_APP_INSTANCE" 
+# environment variable is automatically set to "tests" 
+# when tests are started...
+#
+# More info about this file and the order config files
+# are loaded : https://github.com/lorenwest/node-config/wiki/Configuration-Files
+#==========================================
+
+
+    
+api:
+  scheme: http
+  host: localhost
+  port: 12345
+
+mongo:
+  connectionString: mock
+  connectionOptions:
+    auto_reconnect: false
+
+#==========================================
+# Security
+#==========================================
+security:
+  jwt:
+    enable: false
+
+#==========================================
+# GLUU
+#==========================================
+gluu:
+  mock: true
+
+#==========================================
+# GDA Gestion Des Access
+#==========================================
+gda:
+  mock: true
+  enricher: true

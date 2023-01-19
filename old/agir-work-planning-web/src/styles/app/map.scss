@@ -1,0 +1,30 @@
+@import '../core/variables';
+
+.with-left-panel {
+  .mapboxgl-ctrl-bottom-left,
+  .mapboxgl-ctrl-top-left {
+    @include transition(vf, cubic-bezier(0, 0, 0.2, 1), left);
+    left: $map-panel-menu-width;
+  }
+
+  &.left-panel-opened {
+    .mapboxgl-ctrl-bottom-left,
+    .mapboxgl-ctrl-top-left {
+      left: $map-panel-menu-width + $map-left-panel-width;
+    }
+  }
+
+  &.left-panel-large-opened {
+    .mapboxgl-ctrl-bottom-left,
+    .mapboxgl-ctrl-top-left {
+      left: $map-panel-menu-width + $map-left-panel-width-large;
+    }
+  }
+
+  &.left-panel-sub-panel-opened {
+    .mapboxgl-ctrl-bottom-left,
+    .mapboxgl-ctrl-top-left {
+      left: $map-panel-menu-width + $map-left-panel-width + $map-left-panel-sub-panel-width;
+    }
+  }
+}

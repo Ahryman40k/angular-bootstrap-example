@@ -1,0 +1,12 @@
+<div class="bg-dark text-white notification p-2 mb-1 d-flex rounded">
+  <div class="d-flex flex-column justify-content-center icon-fixed">
+    <i
+      class="icon icon-color-white"
+      [class.icon-check-circle]="type === 'success'"
+      [class.icon-warning]="type !== 'success'"
+    ></i>
+  </div>
+  <div class="scrollable ml-2">
+    <span><ng-content></ng-content></span>
+  </div>
+</div>

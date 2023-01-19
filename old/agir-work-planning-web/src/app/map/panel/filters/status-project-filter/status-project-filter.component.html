@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Statuts de projets</span>
+  <app-filter-item-layout
+    [items]="projectStatuses$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="projectStatuses"
+  ></app-filter-item-layout>
+</app-filter-layout>

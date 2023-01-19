@@ -1,0 +1,8 @@
+$filter-item-padding: 0.2rem;
+
+.filter-item-label {
+  font-weight: normal;
+  overflow: hidden;
+  padding-top: $filter-item-padding;
+  padding-bottom: $filter-item-padding;
+}

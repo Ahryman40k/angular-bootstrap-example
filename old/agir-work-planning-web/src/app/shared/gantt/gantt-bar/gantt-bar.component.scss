@@ -1,0 +1,29 @@
+@import '../../../../styles/core/variables';
+$border-radius: 10px;
+$gantt-bar-height: 16px;
+
+:host {
+  display: flex;
+  position: relative;
+}
+
+.gantt-bar-progress {
+  width: 100%;
+  height: $gantt-bar-height;
+  background-color: $color-turquoise-500 !important;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+vdm-gantt-cell:first-child {
+  border-left: 1px solid $color-gray-300 !important;
+}
+
+.gantt-bar-container {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}

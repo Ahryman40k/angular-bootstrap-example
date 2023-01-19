@@ -1,0 +1,12 @@
+@import '../../../styles/core/variables';
+$annual-program-details-width: 50%;
+
+.details {
+  max-width: $annual-program-details-width;
+}
+
+.statistic span {
+  font-size: $legend-font-size;
+color: $color-platinum;
+
+}

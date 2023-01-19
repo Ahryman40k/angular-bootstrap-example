@@ -1,0 +1,18 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "failure",
+      "numberOfItems": null,
+      "errorDescription": "Le fichier est vide",
+      "projects": [],
+      "interventions": []
+    }
+  ]
+}

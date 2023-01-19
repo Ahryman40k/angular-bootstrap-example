@@ -1,0 +1,54 @@
+<div ngbDropdown class="mr-1 mt-1" placement="bottom-left" #dropdown="ngbDropdown">
+  <button
+    class="btn btn-sm btn-secondary"
+    [ngClass]="isSelected ? 'selected' : 'not-selected'"
+    ngbDropdownToggle
+    [disabled]="disabled">
+    <span>Priorité service <span *ngIf="servicePrioritiesCriteria?.length">({{servicePrioritiesCriteria?.length}})</span></span>
+  </button>
+  <div ngbDropdownMenu>
+    <div class="d-flex my-1">
+      <h6 class="col-5 pr-0 pl-2">Service</h6>
+      <h6 class="col-5 pl-2">Priorité</h6>
+    </div>
+    <form *ngIf="form" [formGroup]="form">
+      <div formArrayName="servicePriorities">
+        <div *ngFor="let servicePriority of servicePriorities.controls; let i = index">
+          <div [formGroupName]="i" class="d-flex my-1">
+            <div class="col-5 pr-0">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="properties.acronym.fr"
+                bindValue="code"
+                formControlName="service"
+                [items]="availableServices[i]"
+              ></vdm-select>
+            </div>
+            <div class="col-5">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="code"
+                bindValue="code"
+                formControlName="priorityId"
+                [items]="availablePriorities[i]"
+              ></vdm-select>
+            </div>
+            <button
+              class="btn btn-icon btn-icon-only p-0"
+              (click)="removeServicePriority(i)">
+              <i class="icon icon-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button
+    *ngIf="canAddNewService"
+      id="add-priority-btn"
+      class="btn btn-tertiary btn-sm"
+      (click)="addServicePriority()">
+      <i class="icon icon-plus icon-color-primary"></i>
+      Ajouter une priorité service
+    </button>
+  </div>
+</div>

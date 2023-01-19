@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Statuts des projets RTU</span>
+  <app-filter-item-layout
+    [items]="rtuProjectStatuses$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="rtuProjectStatuses"
+  ></app-filter-item-layout>
+</app-filter-layout>

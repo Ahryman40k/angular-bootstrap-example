@@ -1,0 +1,91 @@
+[
+  {
+    "audit": "A_IGNORER",
+    "moreInformationAudit": "A_IGNORER",
+    "executorId": "dre",
+    "assets": [
+      {
+        "id": "5311806",
+        "typeId": "aqueductSegment",
+        "ownerId": "dre",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [[-73.554318, 45.503531], [-73.554245, 45.503655], [-73.554094, 45.503922]]
+        },
+        "length": {
+          "value": 46.851990636307875,
+          "unit": "m"
+        },
+        "externalReferenceIds": []
+      },
+      {
+        "id": "123456",
+        "typeId": "aqueductSegment",
+        "ownerId": "dre",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -73.5539723932743,
+              45.504181360687454
+            ],
+            [
+              -73.55409309267996,
+              45.50394449965264
+            ]
+          ]
+        },
+        "length": {
+          "value": 27.192991737634078,
+          "unit": "m"
+        },
+        "externalReferenceIds": []
+      }
+    ],
+    "boroughId": "VM",
+    "estimate": {
+      "allowance": 150,
+      "burnedDown": 0,
+      "balance": 150
+    },
+    "interventionArea": {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-73.553968, 45.504173], [-73.553998, 45.50418], [-73.554, 45.504177], [-73.554373, 45.503508], [-73.554311, 45.503498], [-73.554313, 45.503508], [-73.553938, 45.504165], [-73.553968, 45.504173]]]
+      },
+      "isEdited": false,
+      "geometryPin": [-73.55422745454547, 45.5036860909091]
+    },
+    "interventionName": "Reconstruction / Segment d'aqueduc / nouvelle rue",
+    "interventionTypeId": "initialNeed",
+    "interventionYear": 2040,
+    "medalId": null,
+    "planificationYear": 2040,
+    "requestorId": "dre",
+    "workTypeId": "reconstruction",
+    "contact": "Obiwan",
+    "decisionRequired": true,
+    "importFlag": null,
+    "programId": "sae",
+    "roadSections": {
+      "type": "FeatureCollection",
+      "features": "A_IGNORER"
+    },
+    "status": "waiting",
+    "roadNetworkTypeId": "local",
+    "streetName": "streetName",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "id": "I00002",
+    "comments": [
+      {
+        "id": "A_IGNORER",
+        "categoryId": "historic",
+        "text": "Hello world !",
+        "isPublic": false,
+        "isProjectVisible": true,
+        "audit": "A_IGNORER"
+      }
+    ]
+  }
+]

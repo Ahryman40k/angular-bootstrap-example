@@ -1,0 +1,59 @@
+@import './variables';
+
+$deg90: 90deg;
+$deg180: 180deg;
+$deg270: 270deg;
+
+@mixin rotate($key, $value) {
+  .rotate-#{$key} {
+    transform: rotate($value);
+  }
+}
+
+@include rotate(90, $deg90);
+@include rotate(180, $deg180);
+@include rotate(270, $deg270);
+
+$scrollbar-orientations: (vertical, horizontal, both);
+@mixin scrollbar($orientation) {
+  &::-webkit-scrollbar {
+    width: $scrollbar-size;
+    height: $scrollbar-size;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb-bg;
+    border-top-left-radius: $scrollbar-border-radius;
+    border-top-right-radius: $scrollbar-border-radius;
+    border-bottom-left-radius: $scrollbar-border-radius;
+    border-bottom-right-radius: $scrollbar-border-radius;
+  }
+
+  @if (not index($scrollbar-orientations, $orientation)) {
+    @error "Invalid argument exception. '#{$orientation}' is not a valid value. The values are: #{$scrollbar-orientations}";
+  }
+
+  @if ($orientation == vertical or $orientation == both) {
+    overflow-y: auto;
+  }
+
+  @if ($orientation == horizontal or $orientation == both) {
+    overflow-x: auto;
+  }
+}
+
+$transition-durations: (
+  vf: 0.2s,
+  f: 0.4s,
+  m: 0.5s,
+  s: 0.6s,
+  vs: 0.8s
+);
+@mixin transition($duration, $timing, $properties...) {
+  @if (not map-has-key($transition-durations, $duration)) {
+    @error "Invalid argument exception. '#{$duration}' is not a valid value. The values are: #{$transition-durations}";
+  }
+
+  transition-property: $properties;
+  transition-duration: map-get($transition-durations, $duration);
+  transition-timing-function: $timing;
+}

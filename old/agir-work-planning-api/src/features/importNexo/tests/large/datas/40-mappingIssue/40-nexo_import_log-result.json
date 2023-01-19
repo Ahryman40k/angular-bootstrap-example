@@ -1,0 +1,152 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "failure",
+      "numberOfItems": 19,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "missing-mandatory-value-2-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): NoDossierSE\""
+        },
+        {
+          "id": "missing-mandatory-value-3-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 2,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): UniteResponsable\""
+        },
+        {
+          "id": "missing-mandatory-value-4-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 3,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): Arrondissement\""
+        },
+        {
+          "id": "missing-mandatory-value-5-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 4,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): CodeActif\""
+        },
+        {
+          "id": "missing-mandatory-value-6-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 5,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): CodeTravaux\""
+        },
+        {
+          "id": "missing-mandatory-value-7-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 6,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): CodeExecutant\""
+        },
+        {
+          "id": "missing-mandatory-value-8-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 7,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): AnneeDebutTravaux\""
+        },
+        {
+          "id": "missing-mandatory-value-9-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 8,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): AnneeFinTravaux\""
+        },
+        {
+          "id": "missing-mandatory-value-10-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 9,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): DateMAJProjet\""
+        },
+        {
+          "id": "NO_ID_PROVIDED",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 10,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): Comparaison\""
+        },
+        {
+          "id": "NO_ID_PROVIDED",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 11,
+          "description": "\"Certains éléments obligatoires sont manquants. Colonne(s): DateMAJProjet,NoDossierSE,UniteResponsable,Arrondissement,CodeActif,CodeTravaux,CodeExecutant,AnneeDebutTravaux,AnneeFinTravaux,Comparaison\""
+        },
+        {
+          "id": "wrong-work-type-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 12,
+          "description": "\"La correspondance avec un type travaux AGIR n’existe pas pour ce code NEXO: 42 (col U) Descriptif: Réhabilitation (col V). Veuillez définir la correspondance dans l’onglet Type travaux\""
+        },
+        {
+          "id": "wrong-requestor-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 13,
+          "description": "\"La correspondance avec un requérant AGIR n’existe pas pour ce code NEXO: DI (col J). Veuillez définir la correspondance dans l’onglet Requérant\""
+        },
+        {
+          "id": "wrong-asset-type-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 14,
+          "description": "\"La correspondance avec un type d’actif AGIR n’existe pas pour ce code NEXO: 42 (col S) Descriptif: Aqueduc (col T). Veuillez définir la correspondance dans l’onglet Type d’actif\""
+        },
+        {
+          "id": "wrong-executor-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 15,
+          "description": "\"La correspondance avec un exécutant AGIR n’existe pas pour ce code NEXO: 42 (col Y) Descriptif: DI (col Z). Veuillez définir la correspondance dans l’onglet Exécutant\""
+        },
+        {
+          "id": "wrong-borough-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 16,
+          "description": "\"La correspondance avec un arrondissement AGIR n'existe pas pour cette valeur NEXO: Unknown (col L). Veuillez définir la correspondance dans l'onglet Arrondissement.\""
+        },
+        {
+          "id": "wrong-program-book-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 17,
+          "description": "\"La correspondance avec un programme AGIR n’existe pas pour ce code NEXO: C21aq (col AD) Descriptif: Réhabilitation aqueduc 2021 DI (col AE) Veuillez définir la correspondance dans l’onglet Programme.\""
+        },
+        {
+          "id": "wrong-pair-asset-type-work-type-10032867",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 18,
+          "description": "\"Cette nature des travaux AGIR Réhabilitation n’est pas valide pour ce type d’actif PumpingStation dans AGIR. Veuillez contacter l’administrateur de AGIR.\""
+        },
+        {
+          "id": "all-correspondence-issues-0",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 19,
+          "description": "\"La correspondance avec un type travaux AGIR n’existe pas pour ce code NEXO: 42 (col U) Descriptif: Réhabilitation (col V). Veuillez définir la correspondance dans l’onglet Type travaux\nLa correspondance avec un requérant AGIR n’existe pas pour ce code NEXO: DI (col J). Veuillez définir la correspondance dans l’onglet Requérant\nLa correspondance avec un type d’actif AGIR n’existe pas pour ce code NEXO: 42 (col S) Descriptif: Aqueduc (col T). Veuillez définir la correspondance dans l’onglet Type d’actif\nLa correspondance avec un exécutant AGIR n’existe pas pour ce code NEXO: 42 (col Y) Descriptif: DI (col Z). Veuillez définir la correspondance dans l’onglet Exécutant\nLa correspondance avec un arrondissement AGIR n'existe pas pour cette valeur NEXO: Unknown (col L). Veuillez définir la correspondance dans l'onglet Arrondissement.\nLa correspondance avec un programme AGIR n’existe pas pour ce code NEXO: C21aq (col AD) Descriptif: Réhabilitation aqueduc 2021 DI (col AE) Veuillez définir la correspondance dans l’onglet Programme.\""
+        }
+      ]
+    }
+  ]
+}

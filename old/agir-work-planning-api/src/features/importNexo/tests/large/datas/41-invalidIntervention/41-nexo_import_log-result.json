@@ -1,0 +1,40 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "failure",
+      "numberOfItems": 3,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-several-linked-interventions-PNI-11175033",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"Certains éléments censés être identiques avec les autres entrées du même dossier sont différents. Colonne(s) : UniteResponsable,Responsable,Arrondissement,Rue,De,A,CodeExecutant,AnneeDebutTravaux,AnneeFinTravaux,Budget,CodeStatutCarnet,DateMAJProjet\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5312067",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 2,
+          "description": "\"Certains éléments censés être identiques avec les autres entrées du même dossier sont différents. Colonne(s) : UniteResponsable,Responsable,Arrondissement,Rue,De,A,CodeExecutant,AnneeDebutTravaux,AnneeFinTravaux,Budget,CodeStatutCarnet,DateMAJProjet\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5311759",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 3,
+          "description": "\"Certains éléments censés être identiques avec les autres entrées du même dossier sont différents. Colonne(s) : UniteResponsable,Responsable,Arrondissement,Rue,De,A,CodeExecutant,AnneeDebutTravaux,AnneeFinTravaux,Budget,CodeStatutCarnet,DateMAJProjet\""
+        }
+      ]
+    }
+  ]
+}

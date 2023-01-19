@@ -1,0 +1,26 @@
+<app-filter-layout [formGroup]="form" class="pr-2">
+  <span title>Programmations annuelles</span>
+  <div *ngIf="!isLoading">
+  <app-filter-item [item]="selectAllItem" (itemClick)="selectAllItems()"></app-filter-item>
+    <ng-container formArrayName="annualProgramForms" *ngFor="let annualProgram of annualPrograms; let i = index ">
+      <ng-container [formGroupName]="i">
+        <app-filter-item-layout
+          [items]="annualProgram.programBooks"
+          bindValue="id"
+          bindLabel="name"
+          bindIcon="icon"
+          [collapsible]="true"
+          formControlName="programBooks"
+        >
+          <span title>
+            {{ annualProgram.year }} -
+            {{ annualProgram.executorId | appTaxonomy: 'executor' }}
+          </span>
+        </app-filter-item-layout>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div *ngIf="isLoading" class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+</app-filter-layout>

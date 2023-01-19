@@ -1,0 +1,141 @@
+<app-details-layout>
+  <span title>Données de conception</span>
+  <ng-container actions>
+    <app-details-add-button class="ml-1"></app-details-add-button>
+  </ng-container>
+  <app-no-result *ngIf="!intervention?.designData && !hasAssetDesignData()" [message]="noResultMessage"></app-no-result>
+  <div *ngIf="intervention?.designData">
+    <table class="table-label-value flex-1">
+      <tr *ngIf="nexoReferenceNumber">
+        <td>Numéro de référence - Nexo</td>
+        <td>{{ nexoReferenceNumber }}</td>
+      </tr>
+      <tr>
+        <td>Actif en amont</td>
+        <td>
+          <span class="d-flex"
+            >{{ intervention?.designData?.upstreamAssetType | appTaxonomy: 'assetType' }}
+            <i class="icon icon-dot-interpunct"></i> ID #{{ intervention?.designData.upstreamAssetId }}</span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Actif en aval</td>
+        <td>
+          <span class="d-flex"
+            >{{ intervention?.designData?.downstreamAssetType | appTaxonomy: 'assetType' }}
+            <i class="icon icon-dot-interpunct"></i> ID #{{ intervention?.designData.downstreamAssetId }}</span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Commentaire</td>
+        <td>{{ intervention?.designData?.comment }}</td>
+      </tr>
+      <tr>
+        <td>Période de contrat</td>
+        <td>{{ intervention?.designData?.contractRange }}</td>
+      </tr>
+      <tr>
+        <td>Dernière modification</td>
+        <td>
+          {{ intervention?.designData.audit?.lastModifiedAt | date: 'dd MMMM yyyy' }} par
+          {{ intervention?.designData.audit?.lastModifiedBy.userName }}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="intervention?.assets.length && hasAssetDesignData()">
+    <table class="table-label-value flex-1">
+      <tr *ngIf="nexoReferenceNumber">
+        <td>Numéro de référence - Nexo</td>
+        <td>{{ nexoReferenceNumber }}</td>
+      </tr>
+    </table>
+
+    <ng-container *ngFor="let asset of intervention?.assets; let first = first">
+      <app-list-item
+        *ngIf="asset.assetDesignData && !hasAuditPropertyOrEmpty(asset)"
+        [mainClass]="first ? '' : 'border-top'"
+      >
+        <span title>
+          <div class="mb-1">{{ asset?.typeId | appTaxonomy: 'assetType' | vdmNa }} #{{ asset?.id }}</div>
+        </span>
+        <span description>
+          Dernière modification le {{ asset.assetDesignData.audit?.lastModifiedAt | date: 'dd MMMM yyyy' }} par
+          {{ asset.assetDesignData.audit?.lastModifiedBy.userName }}
+        </span>
+        <app-list-item-details>
+          <app-list-item-details-field>
+            <span title>Détails</span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Actif en amont</span>
+              <span class="actif-value"
+                >{{ asset.assetDesignData.upstreamAssetType | appTaxonomy: 'assetType' | vdmNa }} ID #{{
+                  asset.assetDesignData.upstreamAssetId
+                }}
+              </span>
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Profondeur en amont</span>
+              <span class="actif-value">{{ asset.assetDesignData.upstreamDepth }}</span>
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Actif en aval</span>
+              <span class="actif-value"
+                >{{ asset.assetDesignData.downstreamAssetType | appTaxonomy: 'assetType' | vdmNa }} ID #{{
+                  asset.assetDesignData.downstreamAssetId
+                }}</span
+              >
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Profondeur en aval</span>
+              <span class="actif-value">{{ asset.assetDesignData.downstreamDepth | vdmNa }}</span>
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Nombre de raccords</span>
+              <span class="actif-value">{{ asset.assetDesignData.numberOfConnections | vdmNa }}</span>
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Déformation</span>
+              <span class="actif-value">{{ asset.assetDesignData.deformation | vdmNa }}</span>
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Infiltration </span>
+              <span class="actif-value" *ngIf="asset.assetDesignData.hasInfiltration">Oui</span>
+              <span class="actif-value" *ngIf="!asset.assetDesignData.hasInfiltration">Non</span>
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Obstruction </span>
+              <span class="actif-value" *ngIf="asset.assetDesignData.hasObstruction">Oui</span>
+
+              <span class="actif-value" *ngIf="!asset.assetDesignData.hasObstruction">Non</span>
+            </span>
+            <div description class="actif-detail" *ngIf="asset.assetDesignData.hasObstruction">
+              <span class="actif-key mb-1"></span>
+              <div class="actif-value">
+                <div class="d-flex">
+                  <span class="actif-key">Chainage</span>
+                  <span class="actif-value">{{ asset.assetDesignData.obstructionChaining | vdmNa }}</span>
+                </div>
+                <div class="d-flex">
+                  <span class="actif-key">ID de départ</span>
+                  <span class="actif-value">{{ asset.assetDesignData.obstructionAssetId | vdmNa }}</span>
+                </div>
+              </div>
+            </div>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Commentaire </span>
+              <span class="actif-value">{{ asset.assetDesignData.comment | vdmNa }}</span>
+            </span>
+            <span description class="actif-detail">
+              <span class="actif-key mb-1">Période de contrat </span>
+              <span class="actif-value">{{ intervention?.designData?.contractRange | vdmNa }}</span>
+            </span>
+          </app-list-item-details-field>
+        </app-list-item-details>
+      </app-list-item>
+    </ng-container>
+  </div>
+</app-details-layout>

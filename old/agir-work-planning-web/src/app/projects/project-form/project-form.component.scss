@@ -1,0 +1,32 @@
+@import '../../../styles/core/mixins';
+@import '../../../styles/core/variables';
+
+$table-max-height: 220px;
+$container-height: 99vh;
+$assets-height: 85vh;
+$map-height: 100%;
+
+.view-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: $container-height;
+}
+
+.map-container {
+  height: $content-map-height-minimized;
+}
+
+.edit-project-area {
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.intervention-list > li {
+  list-style-type: none;
+  width: 100%;
+}
+
+.category-div {
+  height: 35px;
+}

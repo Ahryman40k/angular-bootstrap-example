@@ -1,0 +1,43 @@
+<app-layout-modal modalTitle="Modifier le rang du projet">
+  <div body>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-6">
+          <label class="font-weight-bold">Rang actuel</label>
+          <input type="number" class="form-control" formControlName="actualRank">
+        </div>
+        <div class="col-6">
+          <label class="font-weight-bold">Rang modifié</label>
+          <input type="text" class="form-control" formControlName="newRank">
+          <app-form-errors formControlName="newRank">
+            <app-form-error *appFormError="let e; key: 'required'">Le rang modifié est requis</app-form-error>
+            <app-form-error *appFormError="let e; key: 'pattern'">Les caractères non numériques sont invalides</app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="col-12 mt-5">
+          <label class="font-weight-bold">
+            Note
+          </label>
+          <textarea formControlName="note" class="form-control w-100"></textarea>
+          <app-form-errors formControlName="note">
+            <app-form-error *appFormError="let e; key: 'required'">La note est requise</app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div buttons>
+    <button
+      type="button"
+      class="btn btn-tertiary btn-squared bg-white mr-2"
+      (click)="cancel()">
+      Annuler
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-squared"
+      (click)="submit()">
+      Modifier
+    </button>
+  </div>
+</app-layout-modal>

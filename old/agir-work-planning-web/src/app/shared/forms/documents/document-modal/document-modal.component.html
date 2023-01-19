@@ -1,0 +1,113 @@
+<app-layout-modal [modalTitle]="modalTitle">
+  <div body>
+    <form [formGroup]="form">
+      <div class="mb-2">
+        <div>
+          <label class="font-weight-bold">Nom du document</label>
+        </div>
+        <div>
+          <input class="form-control col-md-6" formControlName="documentName" ngbAutofocus />
+        </div>
+        <app-form-errors formControlName="documentName">
+          <app-form-error *appFormError="let e; key: 'required'">Le nom du document est requis</app-form-error>
+        </app-form-errors>
+      </div>
+      <div class="mb-2" *ngIf="objectType === ObjectType.intervention">
+        <div>
+          <label class="font-weight-bold">Rattaché à</label>
+        </div>
+        <div class="col-md-6 px-0">
+          <vdm-select bindLabel="label" [items]="linkedObjects" bindValue="value" formControlName="isProjectVisible"></vdm-select>
+        </div>
+        <app-form-errors formControlName="isProjectVisible">
+          <app-form-error *appFormError="let e; key: 'required'">L'élément rattaché est requis</app-form-error>
+        </app-form-errors>
+      </div>
+      <div *ngIf="objectType === ObjectType.intervention" class="mb-2">
+        <div>
+          <label class="font-weight-bold">Type de document</label>
+        </div>
+        <div class="col-md-6 px-0">
+          <vdm-select
+            appendTo="app-document-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            formControlName="type"
+            [items]="documentTypes$ | async"
+          ></vdm-select>
+          <app-form-errors formControlName="type">
+            <app-form-error *appFormError="let e; key: 'required'">Le type de document est requis</app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div class="mb-2">
+        <div>
+          <label class="font-weight-bold">Pièce jointe</label>
+        </div>
+        <div class="col-md-6">
+          <app-toolbox-file
+            formControlName="file"
+            [defaultValue]="document ? document.fileName : null"
+          ></app-toolbox-file>
+        </div>
+        <app-form-errors formControlName="file">
+          <app-form-error *appFormError="let e; key: 'required'">La pièce jointe est requise</app-form-error>
+          <app-form-error *appFormError="let e; key: 'fileMaxSizeMo'">
+            La pièce jointe ne doit pas dépasser {{ e.max }} mo et le fichier est de {{ e.actual / 1000000 }} mo
+          </app-form-error>
+          <app-form-error *appFormError="let e; key: 'fileType'">
+            Le type de fichier est invalide
+          </app-form-error>
+        </app-form-errors>
+      </div>
+      <div *ngIf="objectType === ObjectType.intervention" class="mb-2">
+        <div>
+          <label class="font-weight-bold">Validation par les planificateurs</label>
+        </div>
+        <div class="col-md-6 px-0">
+          <vdm-select
+            appendTo="app-document-modal"
+            bindLabel="label.fr"
+            bindValue="code"
+            formControlName="validationStatus"
+            [items]="documentStatuses$ | async"
+          ></vdm-select>
+          <app-form-errors formControlName="validationStatus">
+            <app-form-error *appFormError="let e; key: 'required'">
+              La validation par les planificateurs est requise
+            </app-form-error>
+          </app-form-errors>
+        </div>
+      </div>
+      <div *ngIf="objectType !== ObjectType.submissionNumber" class="mb-2">
+        <div>
+          <label class="font-weight-bold form-label-optional">
+            Notes
+            <span class="form-optional">Facultatif</span>
+          </label>
+        </div>
+        <textarea formControlName="notes" class="form-control w-100" (focus)="populateNotes()"></textarea>
+      </div>
+    </form>
+    <app-alert type="warning" *ngIf="didFileChange">
+      <span title>Attention!</span>
+      <span description>
+        Le téléchargement d’un nouveau fichier écrasera le fichier précédent.
+      </span>
+    </app-alert>
+    <app-alert type="warning" *ngIf="isDocumentNameOverridden$ | async">
+      <span title>Attention!</span>
+      <span description>
+        Un document ayant ce nom existe déjà.
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="cancel()" [disabled]="submitting">
+      Annuler
+    </button>
+    <button type="button" class="btn btn-primary btn-squared" (click)="submit()" [disabled]="submitting">
+      {{ confirmLabel }}
+    </button>
+  </div>
+</app-layout-modal>

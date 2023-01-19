@@ -1,0 +1,16 @@
+/* #streetview-map {
+  display: none;
+} */
+
+#streetview-pano {
+  width: 200px;
+  height: 200px;
+}
+
+#streetview-container {
+  position: relative;
+}
+
+/* * {
+  height: 100%;
+} */

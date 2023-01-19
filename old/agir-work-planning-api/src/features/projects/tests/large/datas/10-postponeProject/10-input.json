@@ -1,0 +1,8 @@
+{
+  "decision": {
+    "typeId": "postponed",
+    "startYear": 2042,
+    "endYear": 2044,
+    "text": "This is a postpone decision."
+  }
+}

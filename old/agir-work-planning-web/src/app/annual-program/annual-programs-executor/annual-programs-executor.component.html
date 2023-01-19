@@ -1,0 +1,62 @@
+<div class="pl-0 ml-1 mr-0">
+  <h3 class="mb-1">
+    {{ (executor$ | async)?.label?.fr }}
+  </h3>
+  <span class="d-block mb-3">Liste de toutes les programmations dans lequel cet exécutant est inclus.</span>
+  <h4 class="mb-4">Programmations annuelles</h4>
+
+  <ng-container *ngIf="pagination.totalCount">
+    <div
+      (click)="navigateTo(annualProgram)"
+      class="border-bottom list-item-link-gray"
+      *ngFor="let annualProgram of annualPrograms"
+    >
+      <div class="p-2 pb-0">
+        <div class="d-flex">
+          <div class="d-flex">
+            <span class="year-col">{{ annualProgram.year }}</span>
+          </div>
+          <div class="ml-2 d-flex">
+            <span
+              [ngClass]="{
+                'badge-success': annualProgram.status === 'new',
+                'badge-success-light': annualProgram.status === 'programming',
+                'badge-gray': annualProgram.status === 'submittedFinal'
+              }"
+              class="badge"
+              >{{ annualProgram.status | appTaxonomy: 'annualProgramStatus' }}</span
+            >
+          </div>
+          <div class="options-button">
+            <app-more-options-button
+              *ngIf="'PROGRAM_BOOK:WRITE' | appPermission"
+              buttonClass="p-0 ml-auto"
+              [items]="menuItems(annualProgram) | async"
+            ></app-more-options-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3 mb-2" *ngIf="this.pagination.totalCount > 10">
+      <ngb-pagination
+        [collectionSize]="pagination.totalCount"
+        [(page)]="pagination.currentPage"
+        [maxSize]="3"
+        [pageSize]="pagination.pageSize"
+        [rotate]="true"
+        (pageChange)="onPageChanged()"
+      >
+        <ng-template ngbPaginationPrevious><span class="icon icon-chevron-left"></span></ng-template>
+        <ng-template ngbPaginationNext><span class="icon icon-chevron-right"></span></ng-template>
+      </ngb-pagination>
+    </div>
+  </ng-container>
+</div>
+<app-no-result
+  *ngIf="pagination.totalCount === 0 && !isLoading"
+  [message]="emptyListMessage"
+  [showEmtyIcon]="true"
+></app-no-result>
+<div *ngIf="isLoading && pagination.totalCount === 0" class="d-flex justify-content-center">
+  <app-spinner></app-spinner>
+</div>

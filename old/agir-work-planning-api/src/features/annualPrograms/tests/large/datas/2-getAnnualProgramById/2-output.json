@@ -1,0 +1,10 @@
+{
+  "id": "A_IGNORER",
+  "executorId": "di",
+  "year": 2040,
+  "description": "This is a description.",
+  "budgetCap": 42,
+  "status": "new",
+  "programBooks": [],
+  "audit": "A_IGNORER"
+}

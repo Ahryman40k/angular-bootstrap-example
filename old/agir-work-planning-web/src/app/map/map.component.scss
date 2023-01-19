@@ -1,0 +1,72 @@
+@import '../../styles/core/variables';
+
+$bottom-panel-padding-left: 57px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.selection-panel {
+  right: $map-right-panel-width;
+  top: 0;
+}
+
+.bottom-panel {
+  padding-left: $bottom-panel-padding-left;
+  padding-right: $map-right-panel-width;
+  bottom: 0%;
+}
+
+app-bottom-panel {
+  background-color: $color-white;
+  z-index: 4;
+}
+
+app-map-panel-menu {
+  background-color: $color-white;
+  z-index: 4;
+}
+
+app-map-left-panel {
+  left: $map-panel-menu-width;
+}
+
+.main-display {
+  display: grid;
+  flex: 1;
+
+  vdm-geometry-draw-tool,
+  vdm-simple-selection {
+    display: none;
+  }
+}
+
+.selection-alert {
+  border-radius: 6px;
+  position: absolute;
+  z-index: 3;
+}
+
+.selection-alert button {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.cover-map {
+  z-index: 3;
+  background-color: $color-pale-sky;
+  opacity: 40%;
+}
+
+.loading {
+  z-index: 3;
+  background-color: $color-white;
+}
+
+.left-panel {
+  padding-right: 1px;
+  z-index: 5;
+}

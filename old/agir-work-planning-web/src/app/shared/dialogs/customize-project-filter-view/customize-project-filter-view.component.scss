@@ -1,0 +1,9 @@
+@import '../../../../styles/core/variables';
+
+$badge-x-padding: 0.8rem;
+
+.badge {
+  background-color: $color-aqua-spring;
+  padding-right: $badge-x-padding;
+  padding-left: $badge-x-padding;
+}

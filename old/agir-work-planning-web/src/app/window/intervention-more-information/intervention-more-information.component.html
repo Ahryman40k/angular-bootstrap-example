@@ -1,0 +1,119 @@
+<div class="more-information container narrow-layout px-2 py-4" *ngIf="intervention">
+  <div class="d-flex mb-1">
+    <div class="flex-fill">
+      <h2>Informations Supplémentaires</h2>
+    </div>
+  </div>
+  <div *ngIf="intervention.audit.lastModifiedAt" class="d-flex justify-content-start align-content-center mb-3">
+    <p class="font-sm space-after">Dernière modification par&nbsp;</p>
+    <span class="font-sm font-weight-bold">{{ intervention.audit.lastModifiedBy.displayName }}</span>
+    <p class="font-sm space-after">, le&nbsp;</p>
+    <span class="font-sm font-weight-bold">{{ intervention.audit.lastModifiedAt | date: 'dd/MM/yyyy' }}</span>
+  </div>
+  <div>
+    <table class="table-narrow">
+      <tbody>
+        <app-more-information-field fieldTitle="Type de réseau">
+          <p more-information-field-value>
+            {{ intervention.roadNetworkTypeId | appTaxonomy: 'roadNetworkType' | vdmNa }}
+          </p>
+        </app-more-information-field>
+
+        <app-more-information-field
+          fieldTitle="No Référence du requérant"
+          [saveAction]="getSaveAction(requestorReferenceNumberControl)"
+          (cancel)="cancel(requestorReferenceNumberControl)"
+          [canEdit]="
+            (Permission.INTERVENTION_WRITE | appPermission) &&
+            canInteract &&
+            (interventionRestrictionItems | appRestrictions)
+          "
+        >
+          <p more-information-field-value>
+            {{ intervention.externalReferenceIds | appExternalReference: 'requestorReferenceNumber' | vdmNa }}
+          </p>
+          <div more-information-field-control>
+            <input class="form-control form-control-sm" [formControl]="requestorReferenceNumberControl" type="text" />
+            <app-form-errors [formControl]="requestorReferenceNumberControl">
+              <app-form-error *appFormError="let e; key: 'required'">Le champ est requis</app-form-error>
+              <app-form-error *appFormError="let e; key: 'maxlength'">
+                Le nombre maximum de caractères est de 100
+              </app-form-error>
+              <app-form-error *appFormError="let e; key: 'pattern'">
+                Les caractères non alphanumériques sont invalides
+              </app-form-error>
+            </app-form-errors>
+          </div>
+        </app-more-information-field>
+        <app-more-information-field
+          fieldTitle="Numéro investi"
+          [saveAction]="getSaveAction(ptiNumberControl)"
+          (cancel)="cancel(ptiNumberControl)"
+          [canEdit]="
+            (Permission.INTERVENTION_WRITE | appPermission) &&
+            canInteract &&
+            (interventionRestrictionItems | appRestrictions)
+          "
+        >
+          <p more-information-field-value>
+            {{ intervention.externalReferenceIds | appExternalReference: 'ptiNumber' | vdmNa }}
+          </p>
+          <div more-information-field-control>
+            <input class="form-control form-control-sm" [formControl]="ptiNumberControl" type="text" />
+            <app-form-errors [formControl]="ptiNumberControl">
+              <app-form-error *appFormError="let e; key: 'required'">Le champ est requis</app-form-error>
+              <app-form-error *appFormError="let e; key: 'maxlength'">
+                Le nombre maximum de caractères est de 100
+              </app-form-error>
+              <app-form-error *appFormError="let e; key: 'pattern'">
+                Les caractères non alphanumériques sont invalides
+              </app-form-error>
+            </app-form-errors>
+          </div>
+        </app-more-information-field>
+        <ng-container *ngFor="let externalReference of intervention.externalReferenceIds">
+          <app-more-information-field
+            *ngIf="
+              externalReference.type !== externalReferenceType.ptiNumber &&
+              externalReference.type !== externalReferenceType.requestorReferenceNumber
+            "
+            [fieldTitle]="externalReference.type | appTaxonomy: TaxonomyGroup.externalReferenceType"
+            [canEdit]="false"
+          >
+            <p more-information-field-value>
+              {{ externalReference.value | vdmNa }}
+            </p>
+          </app-more-information-field>
+        </ng-container>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between align-items-center py-3">
+      <h4 class="flex-grow-1 font-weight-bold">Autres informations</h4>
+      <app-details-add-button
+        *ngIf="
+          (Permission.INTERVENTION_WRITE | appPermission) &&
+          canInteract &&
+          (interventionRestrictionItems | appRestrictions)
+        "
+        (onAdd)="showCreateModal()"
+        ngClass="btn-sm"
+      ></app-details-add-button>
+    </div>
+    <div *ngFor="let comment of comments$ | async; let i = index" class="d-flex align-items-start p-2 border-bottom">
+      <h6 class="flex-1 font-md font-weight-normal other-information-comment-text">{{ comment.text }}</h6>
+      <app-more-options-button
+        *ngIf="(Permission.INTERVENTION_WRITE | appPermission) && (interventionRestrictionItems | appRestrictions)"
+        class="other-information-comment-options"
+        dropdownPlacement="left-top"
+      >
+        <app-list-item-action (action)="showEditModal(comment)">
+          Éditer l'information
+        </app-list-item-action>
+        <app-list-item-action (action)="showDeleteModal(comment)">
+          Supprimer l'information
+        </app-list-item-action>
+      </app-more-options-button>
+    </div>
+    <app-no-result *ngIf="!(comments$ | async)?.length">Aucune autre information</app-no-result>
+  </div>
+</div>

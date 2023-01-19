@@ -1,0 +1,34 @@
+<app-layout-modal modalTitle="Consulter les notes de déplacement">
+  <div body>
+      <div class="row">
+        <div class="col-4">
+          <div class="font-weight-bold text-neutral-primary mb-2">Rang initial</div>
+          <div class="font-weight-bold text-neutral-primary mb-2">Rang modifié</div>
+          <div class="font-weight-bold text-neutral-primary">Note</div>
+        </div>
+        <div class="col-8 mb-3">
+          <div class="mb-2">{{initialRank | vdmNa}}</div>
+          <div class="mb-2">{{rank | vdmNa}}</div>
+          <div class="consult-sequencing-notes-text">{{orderedProject.note | vdmNa}}</div>
+        </div>
+        <div class="col-12 font-sm">
+          Dernière modification par <strong>{{orderedProject.audit | appAuditBy }}</strong>, le <strong>{{orderedProject.audit | appAuditDateTime | date: 'dd/MM/yyyy'}}</strong>
+        </div>
+      </div>
+  </div>
+  <div class="d-flex flex-1" [ngClass]="arePriorityScenariosOutdated ? 'justify-content-end' : 'justify-content-between'" buttons>
+    <button
+      *ngIf="(Permission.PROGRAM_BOOK_PRIORITY_SCENARIOS_WRITE | appPermission) && orderedProject.isManuallyOrdered && !arePriorityScenariosOutdated"
+      type="button"
+      class="btn btn-secondary btn-squared"
+      (click)="deleteManualRank()">
+      Supprimer le rang manuel
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-squared"
+      (click)="cancel()">
+      Fermer
+    </button>
+  </div>
+</app-layout-modal>

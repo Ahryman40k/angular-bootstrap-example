@@ -1,0 +1,13 @@
+<div class="page-content p-4 container">
+  <div class="d-flex mb-4">
+    <div class="flex-fill">
+      <h2><ng-content select="[title]"></ng-content></h2>
+    </div>
+    <div class="d-flex">
+      <ng-content select="[actions]"></ng-content>
+    </div>
+  </div>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 1,
+          "description": "\"\""
+        }
+      ]
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsBudgetSE",
+      "status": "failure",
+      "numberOfItems": 3,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-one-intervention-PNI",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"La répartition annuelle du budget pour le dossier \"add-one-intervention-PNI\" n'a pu être ajoutée dans AGIR car la période de l'intervention ne correspond pas aux années budgétaires.\""
+        },
+        {
+          "id": "add-one-intervention-PNI",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 2,
+          "description": "\"La répartition annuelle du budget pour le dossier \"add-one-intervention-PNI\" n'a pu être ajoutée dans AGIR car la période de l'intervention ne correspond pas aux années budgétaires.\""
+        },
+        {
+          "id": "add-one-intervention-PNI",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 3,
+          "description": "\"La répartition annuelle du budget pour le dossier \"add-one-intervention-PNI\" n'a pu être ajoutée dans AGIR car la période de l'intervention ne correspond pas aux années budgétaires.\""
+        }
+      ]
+    }
+  ]
+}

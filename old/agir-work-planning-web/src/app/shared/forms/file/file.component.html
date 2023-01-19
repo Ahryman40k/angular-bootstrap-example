@@ -1,0 +1,19 @@
+<input #fileInput type="file" class="d-none" (click)="chooseFile()" (change)="onFileChange($event)" [accept]="accept" />
+<div class="input-group" [class.disabled]="disabled">
+  <input
+    #input
+    [attr.id]="id"
+    type="text"
+    class="form-control"
+    [placeholder]="placeholder || 'Sélectionnez un fichier...'"
+    readonly
+    [value]="value ? value.name : ''"
+    (click)="fileInput.click()"
+    (keydown.space)="fileInput.click()"
+    (blur)="insideBlur()"
+    [disabled]="disabled"
+  />
+  <div class="input-group-append" (click)="input.focus(); input.click()">
+    <span class="input-group-text">Choisir</span>
+  </div>
+</div>

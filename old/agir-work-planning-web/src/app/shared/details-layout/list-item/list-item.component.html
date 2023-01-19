@@ -1,0 +1,52 @@
+<div class="{{ mainClass }}">
+  <div class="hover-visible card-hover px-1" (click)="clickCard()" [class.hovered]="isHovered">
+    <div class="py-2 d-flex">
+      <div class="mr-2">
+        <ng-content select="[before]"></ng-content>
+      </div>
+      <div class="flex-grow-1 {{ mainContentClass }}">
+        <h5 class="font-weight-bold mb-0 flex-fill">
+          <ng-content select="[title]"></ng-content>
+        </h5>
+        <div class="d-flex">
+          <ng-content select="[description]"></ng-content>
+        </div>
+        <div class="d-flex">
+          <ng-content select="[description-details]"></ng-content>
+        </div>
+        <h6 class="mt-1 font-weight-normal word-break"><ng-content select="[description-extend]"></ng-content></h6>
+        <span class="badge badge-success-light">
+          <ng-content select="[description-tag]"></ng-content>
+        </span>
+      </div>
+      <div class="d-flex flex-column justify-content-center" [class.hover-visible-item]="!isButtonAlwaysVisible" [class.pr-1]="!hasOptions">
+        <div class="d-flex justify-content-end">
+          <div class="d-flex flex-column justify-content-center flex-grow-1" *ngIf="hasDetails">
+            <button class="btn btn-icon btn-secondary btn-squared">
+              <span
+                class="icon"
+                [class.icon-chevron-up]="showDescription"
+                [class.icon-chevron-down]="!showDescription"
+                role="icon"
+              ></span>
+            </button>
+          </div>
+          <app-more-options-button
+            class="flex-grow-1"
+            dropdownPlacement="left-top"
+            *ngIf="hasOptions"
+            [class.pl-2]="hasDetails"
+          >
+            <ng-content select="app-list-item-action"></ng-content>
+          </app-more-options-button>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <ng-content select="[extra-action-button]"></ng-content>
+      </div>
+    </div>
+  </div>
+  <div class="pb-2 px-1" *ngIf="showDescription && hasDetails">
+    <ng-content select="app-list-item-details"></ng-content>
+  </div>
+</div>

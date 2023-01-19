@@ -1,0 +1,51 @@
+<h4 class="mt-4 mb-3 d-flex justify-content-between">
+  {{title}}
+</h4>
+<div class="responsive-table clear-bottom-bar" [class.d-none]="isLoading" *ngIf="(projects$ | async)?.length">
+  <div class="responsive-table-header font-sm">
+    <ng-container *ngFor="let column of columns; let first=first;let last=last">
+      <div class="checkbox" *ngIf="first">
+        <app-checkbox [disabled]="isCheckAllDisabled" (change)="switchCheckbox($event)" [value]="checkboxValue">
+        </app-checkbox>
+      </div>
+      <app-table-column-header *ngIf="column.condition"
+        [class]="column.className"
+        [columnLabel]="ProgramBookTableColumnLabels[column.columnName]"
+        [columnClass]="column.columnName"
+        [permission]="Permission.SUBMISSION_WRITE"
+        [condition]="column.condition"
+        [sorting]="column.sorting"
+        [direction]="sortedDirection"
+        (sortChange)="handleSortChange($event)"
+        >
+      </app-table-column-header>
+      <div class="actions" *ngIf="last">
+      </div>
+    </ng-container>
+  </div>
+  <div id="responsive-table-body">
+      <app-program-book-submission-table-items
+        #programBookTableItems
+        [columnConfig]="columnConfig"
+        [programTaxonomies]="programTaxonomies"
+        [boroughTaxonomies]="boroughTaxonomies"
+        [columnOptions]="columnOptions.bind(this)"
+        [annualProgram]="annualProgram"
+        [programBook]="programBook">
+      </app-program-book-submission-table-items>
+
+  </div>
+</div>
+<app-no-result *ngIf="!(projects$ | async)?.length && !isLoading"
+[message]="emptyListMessage" [showEmtyIcon]="true"></app-no-result>
+<div *ngIf="isLoading" class="d-flex justify-content-center">
+  <app-spinner></app-spinner>
+</div>
+<div class="container-fluid fixed-bottom p-3 add-button-container shadow-top bg-white" *ngIf="(selectedProjects$ | async).length">
+  <button class="btn btn-secondary btn-squared float-left ml-2 border-0" role="button" (click)="cancel()">
+    <span class="btn-label">{{actions.cancel}}</span>
+  </button>
+  <button class="btn btn-secondary btn-squared float-right ml-2" role="button" (click)="createSubmission()">
+    <span class="btn-label">{{actions.createSubmission}}</span>
+  </button>
+</div>

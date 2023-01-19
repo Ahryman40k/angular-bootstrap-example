@@ -1,0 +1,47 @@
+@import '../../../../styles/core/variables';
+@import '../../../../styles/core/mixins';
+
+$panel-toggle-btn-height: 40px;
+$panel-toggle-btn-width: 40px;
+$panel-toggle-btn-icon-margin: 9px;
+$panel-toggle-btn-radius: 20px;
+
+:host {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+
+  &.panel-collapsed {
+    display: none;
+  }
+}
+
+.map-panel {
+  @include scrollbar(vertical);
+  background-color: $map-panel-bg-color;
+  width: $map-right-panel-width;
+  z-index: 2;
+}
+
+.btn-toggle {
+  background-color: $color-gray-100;
+  border-bottom-left-radius: $panel-toggle-btn-radius;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: $panel-toggle-btn-radius;
+  border-top-right-radius: 0;
+  color: $color-gray-500;
+  height: $panel-toggle-btn-height;
+  padding: 0;
+  position: absolute;
+  right: 100%;
+  top: #{map-get($spacers, 1)};
+  width: $panel-toggle-btn-width;
+  z-index: 1;
+
+  i {
+    margin-left: $panel-toggle-btn-icon-margin;
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [
+        {
+          "id": "16-IBG-PTI-003 ÉG",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "elementErrors": [],
+          "description": "\"\""
+        }
+      ],
+      "interventions": [
+        {
+          "id": "1-egout-intervention-id",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "lineNumber": 1,
+          "description": "\"\""
+        }
+      ]
+    },
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "rehabEgConception",
+      "status": "failure",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "16-IBG-PTI-003 ÉG",
+          "importStatus": "failure",
+          "modificationType": null,
+          "lineNumber": 1,
+          "description": "\"L'identifiant de programme \"null\" de l'intervention associée à la ligne 1 n’appartient pas aux valeurs acceptées: psr,ssr.\""
+        }
+      ]
+    }
+  ]
+}

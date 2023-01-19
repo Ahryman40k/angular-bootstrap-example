@@ -1,0 +1,579 @@
+{
+  "assets.street-trees": [
+    {
+      "id": "1",
+      "ownerId": "dep",
+      "geometry": {
+        "type": "Polygon"
+      },
+      "length": {
+        "unit": "m",
+        "value": 0
+      },
+      "sourceId": "streetTrees",
+      "typeId": "streetTree"
+    }
+  ],
+  "assets.fireHydrant": [
+    {
+      "id": "1",
+      "ownerId": "dgrse",
+      "geometry": {
+        "type": "Polygon"
+      },
+      "length": {
+        "unit": "m",
+        "value": 0
+      },
+      "typeId": "fireHydrant"
+    }
+  ],
+  "taxonomies": [
+    {
+      "id": 1,
+      "items": [
+        {
+          "id": "1",
+          "group": "interventionType",
+          "code": "intervention",
+          "label": {
+            "en": "intervention",
+            "fr": "intervention"
+          }
+        },
+        {
+          "id": "1",
+          "group": "assetOwner",
+          "code": "dep",
+          "label": {
+            "en": "DEP",
+            "fr": "DEP"
+          }
+        },
+        {
+          "id": "1",
+          "group": "assetOwner",
+          "code": "dgrse",
+          "label": {
+            "en": "DGRSE",
+            "fr": "DGRSE"
+          }
+        },
+        {
+          "id": "1",
+          "group": "assetType",
+          "code": "streetTree",
+          "label": {
+            "en": "Street Tree",
+            "fr": "Arbre de rue"
+          }
+        },
+        {
+          "id": "1",
+          "group": "assetType",
+          "code": "fireHydrant",
+          "label": {
+            "en": "Fire Hydrant",
+            "fr": "Borne fontaine"
+          }
+        },
+        {
+          "id": "1",
+          "group": "requestors",
+          "code": "hq",
+          "label": {
+            "en": "Hydro-Québec",
+            "fr": "Hydro-Québec"
+          }
+        },
+        {
+          "id": "1",
+          "group": "requestors",
+          "code": "bell",
+          "label": {
+            "en": "Bell",
+            "fr": "Bell"
+          }
+        },
+        {
+          "id": "1",
+          "group": "contactInfo",
+          "code": "simon.villiard",
+          "label": {
+            "en": "Simon Villiard",
+            "fr": "Simon Villiard"
+          }
+        },
+        {
+          "id": "1",
+          "group": "contactInfo",
+          "code": "michael.lavigne",
+          "label": {
+            "en": "Michael Lavigne",
+            "fr": "Michael Lavigne"
+          }
+        },
+        {
+          "id": "1",
+          "group": "contactInfo",
+          "code": "martin.carpentier",
+          "label": {
+            "en": "Martin Carpentier",
+            "fr": "Martin Carpentier"
+          }
+        },
+        {
+          "id": "1",
+          "group": "contactInfo",
+          "code": "julien.blanchard",
+          "label": {
+            "en": "Julien Blanchard",
+            "fr": "Julien Blanchard"
+          }
+        },
+        {
+          "id": "1",
+          "group": "priority",
+          "code": "100",
+          "label": {
+            "en": "100",
+            "fr": "100"
+          }
+        },
+        {
+          "id": "1",
+          "group": "priority",
+          "code": "200",
+          "label": {
+            "en": "200",
+            "fr": "200"
+          }
+        },
+        {
+          "id": "1",
+          "group": "priority",
+          "code": "300",
+          "label": {
+            "en": "300",
+            "fr": "300"
+          }
+        },
+        {
+          "id": "1",
+          "group": "priority",
+          "code": "400",
+          "label": {
+            "en": "400",
+            "fr": "400"
+          }
+        },
+        {
+          "id": "1",
+          "group": "programs",
+          "code": "so",
+          "label": {
+            "en": "No Subject",
+            "fr": "Sans-Objet"
+          }
+        },
+        {
+          "id": "1",
+          "group": "programs",
+          "code": "pcpr",
+          "label": {
+            "en": "PCPR",
+            "fr": "PCPR"
+          }
+        },
+        {
+          "id": "1",
+          "group": "programs",
+          "code": "PRCPR",
+          "label": {
+            "en": "PRCPR",
+            "fr": "PRCPR"
+          }
+        },
+        {
+          "id": "1",
+          "group": "workType",
+          "code": "reconstruction",
+          "label": {
+            "en": "Reconstruction",
+            "fr": "Reconstruction"
+          }
+        },
+        {
+          "id": "1",
+          "group": "workType",
+          "code": "rehabilitation",
+          "label": {
+            "en": "Rehabilitation",
+            "fr": "Réhabilitation"
+          }
+        },
+        {
+          "id": "AC",
+          "group": "boroughs",
+          "code": "AC",
+          "label": {
+            "fr": "Ahuntsic-Cartierville",
+            "en": ""
+          }
+        },
+        {
+          "id": "ANJ",
+          "group": "boroughs",
+          "code": "ANJ",
+          "label": {
+            "fr": "Anjou",
+            "en": ""
+          }
+        },
+        {
+          "id": "CDNNDG",
+          "group": "boroughs",
+          "code": "CDNNDG",
+          "label": {
+            "fr": "Côte-des-Neiges–Notre-Dame-de-Grâce",
+            "en": ""
+          }
+        },
+        {
+          "id": "LAC",
+          "group": "boroughs",
+          "code": "LAC",
+          "label": {
+            "fr": "Lachine",
+            "en": ""
+          }
+        },
+        {
+          "id": "LSL",
+          "group": "boroughs",
+          "code": "LSL",
+          "label": {
+            "fr": "LaSalle",
+            "en": ""
+          }
+        },
+        {
+          "id": "PMR",
+          "group": "boroughs",
+          "code": "PMR",
+          "label": {
+            "fr": "Le Plateau-Mont-Royal",
+            "en": ""
+          }
+        },
+        {
+          "id": "SO",
+          "group": "boroughs",
+          "code": "SO",
+          "label": {
+            "fr": "Le Sud-Ouest",
+            "en": ""
+          }
+        },
+        {
+          "id": "IBZSGV",
+          "group": "boroughs",
+          "code": "IBZSGV",
+          "label": {
+            "fr": "L’Île-Bizard–Sainte-Geneviève",
+            "en": ""
+          }
+        },
+        {
+          "id": "MHM",
+          "group": "boroughs",
+          "code": "MHM",
+          "label": {
+            "fr": "Mercier–Hochelaga-Maisonneuve",
+            "en": ""
+          }
+        },
+        {
+          "id": "MTN",
+          "group": "boroughs",
+          "code": "MTN",
+          "label": {
+            "fr": "Montréal-Nord",
+            "en": ""
+          }
+        },
+        {
+          "id": "OUT",
+          "group": "boroughs",
+          "code": "OUT",
+          "label": {
+            "fr": "Outremont",
+            "en": ""
+          }
+        },
+        {
+          "id": "PFDROX",
+          "group": "boroughs",
+          "code": "PFDROX",
+          "label": {
+            "fr": "Pierrefonds-Roxboro",
+            "en": ""
+          }
+        },
+        {
+          "id": "RDPPAT",
+          "group": "boroughs",
+          "code": "RDPPAT",
+          "label": {
+            "fr": "Rivière-des-Prairies–Pointe-aux-Trembles",
+            "en": ""
+          }
+        },
+        {
+          "id": "RPP",
+          "group": "boroughs",
+          "code": "RPP",
+          "label": {
+            "fr": "Rosemont–La Petite-Patrie",
+            "en": ""
+          }
+        },
+        {
+          "id": "SLR",
+          "group": "boroughs",
+          "code": "SLR",
+          "label": {
+            "fr": "Saint-Laurent",
+            "en": ""
+          }
+        },
+        {
+          "id": "SLN",
+          "group": "boroughs",
+          "code": "SLN",
+          "label": {
+            "fr": "Saint-Léonard",
+            "en": ""
+          }
+        },
+        {
+          "id": "VRD",
+          "group": "boroughs",
+          "code": "VRD",
+          "label": {
+            "fr": "Verdun",
+            "en": ""
+          }
+        },
+        {
+          "id": "VM",
+          "group": "boroughs",
+          "code": "VM",
+          "label": {
+            "fr": "Ville-Marie",
+            "en": ""
+          }
+        },
+        {
+          "id": "VSMPE",
+          "group": "boroughs",
+          "code": "VSMPE",
+          "label": {
+            "fr": "Villeray–Saint-Michel–Parc-Extension",
+            "en": ""
+          }
+        },
+        {
+          "id": "1",
+          "group": "Statuses",
+          "code": "in-progress",
+          "label": {
+            "en": "In Progress",
+            "fr": "En progrès"
+          }
+        }
+      ]
+    }
+  ],
+  "interventions": {
+    "paging": {
+      "offset": 0,
+      "limit": 10,
+      "total": 20
+    },
+    "items": [
+      {
+        "asset": {
+          "id": "1",
+          "owner": {
+            "taxonomyCode": "asset.owner",
+            "value": {
+              "en": "Gestion de l'eau",
+              "fr": "Gestion de l'eau"
+            }
+          },
+          "geometry": {
+            "type": "Polygon"
+          },
+          "length": {
+            "unit": "m",
+            "value": 0
+          },
+          "type": {
+            "taxonomyCode": "asset-type",
+            "value": {
+              "en": "Fire hydrant",
+              "fr": "Borne fontaine"
+            }
+          }
+        },
+        "borough": null,
+        "contactInfo": {
+          "group": "requestorContacts",
+          "taxonomyCode": "simon.villiard",
+          "value": {
+            "en": "Simon Villiard",
+            "fr": "Simon Villiard"
+          }
+        },
+        "duration": null,
+        "estimate": 123331,
+        "interventionArea": null,
+        "interventionType": {
+          "group": "WorkTypes",
+          "taxonomyCode": "IT16234",
+          "value": {
+            "en": "IT16234",
+            "fr": "IT16234"
+          }
+        },
+        "interventionTypeId": "followup",
+        "priority": {
+          "group": "requestorPriorities",
+          "taxonomyCode": "2",
+          "value": {
+            "en": "2",
+            "fr": "2"
+          }
+        },
+        "program": {
+          "group": "programs",
+          "taxonomyCode": "so",
+          "value": {
+            "en": "SO",
+            "fr": "SO"
+          }
+        },
+        "requestor": {
+          "group": "requestors",
+          "taxonomyCode": "hq",
+          "value": {
+            "en": "Hydro-Québec",
+            "fr": "Hydro-Québec"
+          }
+        },
+        "roadSections": null,
+        "status": null,
+        "targetDate": null,
+        "workType": null,
+        "id": 1
+      },
+      {
+        "asset": {
+          "id": "1",
+          "owner": {
+            "taxonomyCode": "asset.owner",
+            "value": {
+              "en": "Gestion de l'eau",
+              "fr": "Gestion de l'eau"
+            }
+          },
+          "geometry": {
+            "type": "Polygon"
+          },
+          "length": {
+            "unit": "m",
+            "value": 0
+          },
+          "type": {
+            "taxonomyCode": "asset-type",
+            "value": {
+              "en": "Fire hydrant",
+              "fr": "Borne fontaine"
+            }
+          }
+        },
+        "boroughId": null,
+        "contactInfoId": null,
+        "duration": null,
+        "estimate": 0,
+        "id": 2,
+        "interventionArea": null,
+        "interventionTypeId": "initialNeed",
+        "priorityType": null,
+        "program": "1",
+        "requestorId": "1",
+        "roadSections": null,
+        "status": null,
+        "targetDate": null,
+        "workTypeId": null
+      },
+      {
+        "asset": {
+          "id": "1",
+          "ownerId": "dgrse",
+          "geometry": {
+            "type": "Polygon"
+          },
+          "length": {
+            "unit": "m",
+            "value": 0
+          },
+          "typeId": "fireHydrant"
+        },
+        "boroughId": null,
+        "contactInfoId": "michael.lavigne",
+        "duration": 3,
+        "estimate": 0,
+        "id": 3,
+        "interventionArea": null,
+        "interventionTypeId": "initialNeed",
+        "priorityType": "2",
+        "programId": "pcpr",
+        "requestorId": "hq",
+        "roadSections": null,
+        "status": null,
+        "targetDate": 2020,
+        "workTypeId": null
+      },
+      {
+        "asset": {
+          "id": "1",
+          "ownerId": "dgrse",
+          "geometry": {
+            "type": "Polygon"
+          },
+          "length": {
+            "unit": "m",
+            "value": 0
+          },
+          "typeId": "fireHydrant"
+        },
+        "boroughId": null,
+        "contactInfoId": "martin.carpentier",
+        "duration": 4,
+        "estimate": 2000,
+        "id": 4,
+        "interventionArea": null,
+        "interventionTypeId": "initialNeed",
+        "interventionYear": 2019,
+        "priorityType": "300",
+        "programId": "PRCPR",
+        "requestorId": "bell",
+        "roadSections": null,
+        "status": null,
+        "workTypeId": null
+      }
+    ]
+  }
+}

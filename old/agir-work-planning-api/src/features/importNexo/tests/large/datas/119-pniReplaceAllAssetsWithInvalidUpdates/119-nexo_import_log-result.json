@@ -1,0 +1,61 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "failure",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "failure",
+      "numberOfItems": 6,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "add-several-linked-interventions-PNI-1",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 1,
+          "description": "\"Une modification des actifs de l'intervention a été détectée. Or, l'intervention appartient à un projet non-intégré dont le statut est \"envoyé préliminaire\" ou \"envoyé final\". Dans ce cas précis, il n'est pas permis de modifier les actifs de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-11175033",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 2,
+          "description": "\"Une modification des actifs de l'intervention a été détectée. Or, l'intervention appartient à un projet non-intégré dont le statut est \"envoyé préliminaire\" ou \"envoyé final\". Dans ce cas précis, il n'est pas permis de modifier les actifs de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5312067",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 3,
+          "description": "\"Une modification des actifs de l'intervention a été détectée. Or, l'intervention appartient à un projet non-intégré dont le statut est \"envoyé préliminaire\" ou \"envoyé final\". Dans ce cas précis, il n'est pas permis de modifier les actifs de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-5311759",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 4,
+          "description": "\"Une modification des actifs de l'intervention a été détectée. Or, l'intervention appartient à un projet non-intégré dont le statut est \"envoyé préliminaire\" ou \"envoyé final\". Dans ce cas précis, il n'est pas permis de modifier les actifs de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-2",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 5,
+          "description": "\"Une modification des actifs de l'intervention a été détectée. Or, l'intervention appartient à un projet non-intégré dont le statut est \"envoyé préliminaire\" ou \"envoyé final\". Dans ce cas précis, il n'est pas permis de modifier les actifs de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\""
+        },
+        {
+          "id": "add-several-linked-interventions-PNI-3",
+          "importStatus": "failure",
+          "modificationType": "modification",
+          "lineNumber": 6,
+          "description": "\"Une modification des actifs de l'intervention a été détectée. Or, l'intervention appartient à un projet non-intégré dont le statut est \"envoyé préliminaire\" ou \"envoyé final\". Dans ce cas précis, il n'est pas permis de modifier les actifs de l'intervention via l'import NEXO. Veuillez contacter les planificateurs afin d'effectuer les modifications directement via l'interface AGIR-Planification.\""
+        }
+      ]
+    }
+  ]
+}

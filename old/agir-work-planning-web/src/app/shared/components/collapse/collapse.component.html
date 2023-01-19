@@ -1,0 +1,9 @@
+<div class="border-bottom d-flex px-2 py-3 clickable" (click)="click()">
+  <div class="flex-fill">
+    <h5>{{ title }}</h5>
+  </div>
+  <div class="d-flex flex-row-reverse">
+    <span class="icon icon-chevron-down icon-color-primary" [class.icon-chevron-up]="!collapsed" role="icon"></span>
+  </div>
+</div>
+<ng-content *ngIf="!collapsed"></ng-content>

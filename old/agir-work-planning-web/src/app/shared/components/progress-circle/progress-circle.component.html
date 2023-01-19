@@ -1,0 +1,13 @@
+<div class="progress-container">
+  <div class="progress-circle m-0" role="progessbar" [attr.data-percentage]="percentage">
+    <div class="progress-left">
+      <span class="progress-bar"></span>
+    </div>
+    <div class="progress-right">
+      <span class="progress-bar"></span>
+    </div>
+    <div class="progress-value" *ngIf="percentage === 100">
+      <span class="icon icon-check icon-color-primary icon-xxs" role="icon"></span>
+    </div>
+  </div>
+</div>

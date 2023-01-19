@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Arrondissements</span>
+  <app-filter-item-layout
+    [items]="boroughs$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="boroughs"
+  ></app-filter-item-layout>
+</app-filter-layout>

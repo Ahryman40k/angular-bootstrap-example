@@ -1,0 +1,293 @@
+<div class="view-container p-0 m-0">
+  <div class="d-flex mx-4 header my-2 align-items-center">
+    <div class="flex-grow-1 mr-2" id="title">
+      <h3>{{ title }}</h3>
+    </div>
+    <div
+      *ngIf="duplicateProject$ | async"
+      class="alert alert-warning alert-with-icon alert-text-base mb-0 mr-2"
+      role="alert"
+    >
+      <div class="alert-icon-container">
+        <span class="icon icon-warning" aria-hidden="true"></span>
+      </div>
+      <div class="alert-content">
+        <strong>Attention!</strong>
+        &nbsp; Il y a un risque de doublon avec le projet
+        <strong>{{ (duplicateProject$ | async).id }}</strong>
+      </div>
+    </div>
+    <div class="d-flex flex-row-reverse">
+      <button class="btn btn-primary btn-squared" [disabled]="!canInteract" (click)="submit()">
+        {{ btnLabel }}
+      </button>
+      <div class="btn btn-secondary btn-squared mr-2" (click)="onCancel()">
+        Annuler
+      </div>
+    </div>
+  </div>
+  <hr class="h-0 mt-0 mb-0 p-0" />
+  <div class="content-scroll">
+    <div class="d-flex content">
+      <div class="col-md-6">
+        <div class="pb-4" *ngIf="!isNonGeolocatedProject">
+          <h4>Interventions du projet</h4>
+          <app-intervention-list
+            #interventionList
+            [interventionsList]="interventionsList"
+            [items]="interventions | async"
+            [isReadOnly]="false"
+            [isEditorActivated]="geometryEditorActivated"
+            [isGeneratingArea]="generatingProjectArea"
+            [projectType]="form?.controls?.projectType?.value?.code"
+            (interventionAddEvent)="addIntervention($event)"
+            (interventionRemoveEvent)="removeIntervention($event)"
+          ></app-intervention-list>
+        </div>
+
+        <h4>Informations</h4>
+        <form class="py-3 px-2" [formGroup]="form" (ngSubmit)="submit()">
+          <div class="form-group row">
+            <label class="form-label form-label-optional" for="projectType">
+              Type de projet
+            </label>
+            <div class="col-sm-8 px-0 d-flex flex-column">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="label.fr"
+                formControlName="projectType"
+                [items]="taxos.projectTypes"
+                (change)="changeType()"
+              ></vdm-select>
+              <app-form-errors formControlName="projectType">
+                <app-form-error *appFormError="let e; key: 'required'">
+                  Le type de projet est requis
+                </app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="form-label form-label-optional" for="executor">
+              Exécutant
+            </label>
+            <div class="col-sm-8 px-0 d-flex flex-column">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="executor"
+                [items]="taxos.executors"
+              ></vdm-select>
+              <app-form-errors formControlName="executor">
+                <app-form-error class="mt-0" *appFormError="let e; key: 'required'">
+                  L'exécutant est requis
+                </app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="form-label form-label-optional" for="category">
+              Catégorie
+              <span class="form-optional">Facultatif</span>
+            </label>
+            <div class="col-sm-8 px-0 d-flex">
+              <div
+                class="mr-2 d-flex flex-column justify-content-center category-div"
+                *ngIf="projectHasCategories(selectedProject)"
+              >
+                <span class="text-dark">
+                  {{ selectedProject | vdmProjectCategories: 'category' | vdmNa }}
+                </span>
+              </div>
+              <vdm-multi-select
+                class="flex-fill"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="category"
+                [hideSelected]="true"
+                [items]="taxos.projectSubCategories"
+                [selectableGroup]="true"
+                [searchable]="false"
+              ></vdm-multi-select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="form-label form-label-optional" for="inChargeId">
+              Requérant initial
+              <span class="form-optional">Facultatif</span>
+            </label>
+            <div class="col-sm-8 px-0 d-flex flex-column">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="label.fr"
+                bindValue="code"
+                formControlName="inChargeId"
+                [items]="initialRequestors$ | async"
+                [disabled]="(initialRequestors$ | async)?.length ? undefined : ''"
+                clearable="true"
+              ></vdm-select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="form-label form-label-optional" for="boroughs">
+              Arrondissement
+            </label>
+            <div class="col-sm-8 px-0 d-flex flex-column">
+              <vdm-select
+                class="flex-fill"
+                bindLabel="label.fr"
+                formControlName="boroughs"
+                [items]="interventionsBoroughs"
+              ></vdm-select>
+              <app-form-errors formControlName="boroughs">
+                <app-form-error class="mt-0" *appFormError="let e; key: 'required'">
+                  L'arrondissement est requis
+                </app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="form-label" for="projectName" [class.form-label-optional]="isNonGeolocatedProject">
+              Titre du projet
+              <span *ngIf="isNonGeolocatedProject" class="form-optional">Facultatif</span>
+            </label>
+            <input class="form-control col-sm-8" type="text" formControlName="projectName" />
+            <div class="col-sm-4"></div>
+            <app-form-errors formControlName="projectName">
+              <app-form-error *appFormError="let e; key: 'required'">Le titre est requis</app-form-error>
+            </app-form-errors>
+          </div>
+          <div class="form-group row">
+            <label for="interventionYear" class="form-label">Période du projet</label>
+            <div class="input-group px-0 justify-content-between">
+              <div class="input-group-prepend flex-1 mr-1">
+                <div class="form-group w-100 mb-0">
+                  <vdm-select
+                    class="flex-fill"
+                    bindLabel="label.fr"
+                    formControlName="startYear"
+                    [items]="startYears$ | async"
+                  ></vdm-select>
+                  <app-form-errors formControlName="startYear">
+                    <app-form-error *appFormError="let e; key: 'required'">L'année de début est requise</app-form-error>
+                  </app-form-errors>
+                  <app-form-errors formControlName="startYear">
+                    <app-form-error *appFormError="let e; key: 'min'">
+                      L'année de début doit être minimum {{ currentYear }}
+                    </app-form-error>
+                  </app-form-errors>
+                  <app-form-errors formControlName="startYear">
+                    <app-form-error *appFormError="let e; key: 'isFromToDateSeqenceInvalid'"
+                      >L'année de début doit être inférieure ou égale à l'année de fin</app-form-error
+                    >
+                  </app-form-errors>
+                  <app-form-errors formControlName="startYear">
+                    <app-form-error *appFormError="let e; key: 'max'">
+                      L'année de début doit inclure les années des interventions incluses
+                    </app-form-error>
+                  </app-form-errors>
+                </div>
+              </div>
+              <div class="input-group-prepend flex-1 ml-1">
+                <div class="form-group w-100 mb-0">
+                  <vdm-select
+                    class="flex-fill"
+                    bindLabel="label.fr"
+                    formControlName="endYear"
+                    [items]="endYears$ | async"
+                  ></vdm-select>
+                  <app-form-errors formControlName="endYear">
+                    <app-form-error *appFormError="let e; key: 'required'">L'année de fin est requise</app-form-error>
+                  </app-form-errors>
+                  <app-form-errors formControlName="endYear">
+                    <app-form-error *appFormError="let e; key: 'min'">
+                      L'année de fin doit inclure les années des interventions incluses
+                    </app-form-error>
+                  </app-form-errors>
+                  <app-form-errors formControlName="endYear">
+                    <app-form-error *appFormError="let e; key: 'isFromToDateSeqenceInvalid'"
+                      >L'année de fin doit être supérieure ou égale à l'année de début</app-form-error
+                    >
+                  </app-form-errors>
+                  <app-form-errors formControlName="endYear">
+                    <app-form-error *appFormError="let e; key: 'max'">
+                      L'année de fin doit être maximum {{ currentYear + 100 }}
+                    </app-form-error>
+                  </app-form-errors>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row" *ngIf="isNonGeolocatedProject">
+            <label class="form-label" for="globalBudget" [class.form-label-optional]="!isBudgetRequired">
+              Budget (k$)
+              <span *ngIf="!isBudgetRequired" class="form-optional">Facultatif</span>
+            </label>
+            <div class="flex-1">
+              <input
+                id="globalBudget"
+                placeholder="En milliers de dollars"
+                class="form-control"
+                type="text"
+                vdmIntegerInput
+                formControlName="globalBudget"
+              />
+              <app-form-errors formControlName="globalBudget">
+                <app-form-error *appFormError="let e; key: 'required'">
+                  Le budget global est requis
+                </app-form-error>
+              </app-form-errors>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row map-container">
+          <div class="col-12">
+            <div class="edit-project-area position-absolute mr-5 mb-4" *ngIf="projectArea">
+              <button
+                class="btn btn-secondary bg-white text-dark btn-squared"
+                (click)="editProjectArea()"
+                *ngIf="!geometryEditorActivated"
+              >
+                Modifier la zone de projet
+              </button>
+              <div *ngIf="geometryEditorActivated">
+                <button class="btn btn-secondary bg-white text-dark btn-squared" (click)="geometryEditorSave()">
+                  Enregistrer la zone de projet
+                </button>
+                <button class="btn btn-squared btn-danger" (click)="cancelGeometryEdition()">
+                  <i class="icon icon-x-circle p-0 m-0"></i>
+                </button>
+              </div>
+            </div>
+            <app-map
+              #map
+              class="position-relative d-inline-block w-100 h-100 border rounded"
+              [withPanelMenu]="false"
+              [withPanel]="false"
+              [withRightPanel]="false"
+              [withNonGeolocatedProjectsPanel]="false"
+              [withPlanningBook]="false"
+              [disabled]="preventMapInteractions"
+              [withProjects]="false"
+              [withInterventions]="false"
+              [initZoom]="25"
+              [isLoading]="isMapLoading"
+            ></app-map>
+          </div>
+        </div>
+        <app-alert class="mt-2" *ngIf="generatingProjectArea">
+          <span description>Génération de la zone de projet...</span>
+        </app-alert>
+      </div>
+    </div>
+  </div>
+</div>

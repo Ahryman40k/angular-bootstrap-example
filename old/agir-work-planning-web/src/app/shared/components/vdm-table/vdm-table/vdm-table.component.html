@@ -1,0 +1,125 @@
+<table
+  cdk-table
+  *ngIf="isProjectsList === false"
+  cdk-table multiTemplateDataRows [trackBy]="trackBy" [dataSource]="datasource"
+  class="table"
+>
+<ng-container *ngFor="let column of columns; let i = index" [cdkColumnDef]="column.property" [sticky]="column.sticky">
+  <th cdk-header-cell (click)="sort(column)" *cdkHeaderCellDef [colSpan]="1">
+    <div class="d-flex justify-content-between">
+      <span class="title">{{ (column.label !== 'Exigences de conception') ? column.label : ' ' }}</span>
+      <ng-container *ngIf="column.property === datasource?.sortedColumn?.property">
+        <span class="icon icon-chevron-up" *ngIf="!!column.sortAsc"></span>
+        <span class="icon icon-chevron-down" *ngIf="!column.sortAsc"></span>
+      </ng-container>
+      </div>
+      </th>
+      <td cdk-cell *cdkCellDef="let element; let i = index">
+    <ng-container *ngIf="column.component && column.property === 'requirementsConception'">
+      <button class="btn btn-icon btn-secondary showRequirements" *ngIf="column.augmented(element)?.length"
+        (click)="expandedElement = expandedElement === element ? null : element">
+        <em class="icon" [class.icon-chevron-up]="!!expandedElement" [class.icon-chevron-down]="!expandedElement"></em>
+      </button>
+
+    </ng-container>
+    <ng-template *ngIf="column.component && column.property !== 'requirementsConception'; else value"
+      [cdkPortalOutlet]="createComponent(element, column, column.augmented ? column.augmented(element) : null)">
+    </ng-template>
+    <ng-template #value>
+      <ng-container *ngIf="column.format; else rawValue">
+        {{ valueOrDefault(column.format(element)) }}
+      </ng-container>
+      <ng-template #rawValue>
+        <ng-container *ngIf="column.property !== 'requirementsConception'">
+          {{ valueOrDefault(get(element, column.property)) }}
+        </ng-container>
+      </ng-template>
+      </ng-template>
+      </td>
+      </ng-container>
+<ng-container cdkColumnDef="expandedDetail">
+  <td cdk-cell *cdkCellDef="let element" [attr.colspan]="displayedColumns.length" class="background-colored">
+    <div class="sub-elelement-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+      <div class="sub-elelement-description">
+        <ng-template [cdkPortalOutlet]="createComponentDetail(element, columns, 'requirementsConception')">
+        </ng-template>
+      </div>
+    </div>
+  </td>
+</ng-container>
+
+<tr class="table-row" cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></tr>
+<tr class="table-row" class="sub-elelement-row" [class.sub-elexpanded-row]="expandedElement === element"
+  [attr.data-id]="element.id" cdk-row *cdkRowDef="let element; columns: displayedColumns"></tr>
+
+<tr cdk-row *cdkRowDef="let row; columns: ['expandedDetail']" class="sub-eldetail-row"></tr>
+</table>
+
+<table *ngIf="isProjectsList === true" cdk-table multiTemplateDataRows [trackBy]="trackBy" [dataSource]="datasource"
+  class="table">
+  <ng-container *ngFor="let column of columns; let i = index" [cdkColumnDef]="column.property" [sticky]="column.sticky">
+    <th cdk-header-cell (click)="sort(column)" *cdkHeaderCellDef [colSpan]="1">
+      <div class="d-flex justify-content-between">
+        <span class="title">{{ (column.label !== 'Exigences de conception') ? column.label : ' ' }}</span>
+        <ng-container *ngIf="column.property === datasource?.sortedColumn?.property">
+          <span class="icon icon-chevron-up" *ngIf="!!column.sortAsc"></span>
+          <span class="icon icon-chevron-down" *ngIf="!column.sortAsc"></span>
+        </ng-container>
+      </div>
+    </th>
+    <td cdk-cell *cdkCellDef="let element; let i = index">
+      <ng-container *ngIf="column.component && column.property === 'submissionNumberConception'">
+        <button class="btn btn-icon btn-secondary showRequirements" *ngIf="column.augmented(element)?.display"
+          (click)="expandedElement = expandedElement === element ? null : element">
+          <em class="icon" [class.icon-chevron-up]="!!expandedElement"
+            [class.icon-chevron-down]="!expandedElement"></em>
+        </button>
+
+      </ng-container>
+      <ng-template *ngIf="column.component && column.property !== 'submissionNumberConception'; else value"
+        [cdkPortalOutlet]="createComponent(element, column, column.augmented ? column.augmented(element) : null)">
+      </ng-template>
+      <ng-template #value>
+        <ng-container *ngIf="column.format; else rawValue">
+          {{ valueOrDefault(column.format(element)) }}
+        </ng-container>
+        <ng-template #rawValue>
+          <ng-container *ngIf="column.property !== 'submissionNumberConception'">
+            {{ valueOrDefault(get(element, column.property)) }}
+          </ng-container>
+        </ng-template>
+      </ng-template>
+    </td>
+  </ng-container>
+  <ng-container cdkColumnDef="expandedDetail">
+    <td cdk-cell *cdkCellDef="let element" [attr.colspan]="displayedColumns.length" class="background-colored">
+      <div class="sub-elelement-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="sub-elelement-description">
+          <ng-template [cdkPortalOutlet]="createComponentDetail(element, columns, 'submissionNumberConception')">
+          </ng-template>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr class="table-row" cdk-header-row *cdkHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+  <tr class="table-row" class="sub-elelement-row" [class.sub-elexpanded-row]="expandedElement === element"
+    [attr.data-id]="element.id" cdk-row *cdkRowDef="let element; columns: displayedColumns"></tr>
+
+  <tr cdk-row *cdkRowDef="let row; columns: ['expandedDetail']" class="sub-eldetail-row"></tr>
+</table>
+
+<div class="paginator d-flex justify-content-center p-1">
+  <ngb-pagination
+    [collectionSize]="datasource.count"
+    [page]="datasource.pagination.pageIndex"
+    [maxSize]="3"
+    [pageSize]="datasource.pagination.pageSize"
+    [rotate]="true"
+    (pageChange)="onPageChanged($event)"
+  >
+    <ng-template ngbPaginationPrevious><span class="icon icon-chevron-left"></span></ng-template>
+    <ng-template ngbPaginationNext><span class="icon icon-chevron-right"></span></ng-template>
+  </ngb-pagination>
+</div>

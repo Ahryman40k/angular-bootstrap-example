@@ -1,0 +1,195 @@
+[
+  {
+    "id": "I00003",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-several-linked-interventions-DRE"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Construction / Regard d'égoût / Rue Saint-Maurice-2",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "PMR",
+    "status": "integrated",
+    "interventionYear": 2020,
+    "planificationYear": 2020,
+    "endYear": 2020,
+    "programId": null,
+    "contact": "Obiwan",
+    "assets": [
+      {
+        "typeId": "sewerManhole",
+        "ownerId": "deeu",
+        "length": {
+          "unit": "m",
+          "value": 250
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-73.56860786676407, 45.51463984955846]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-several-linked-interventions-DRE-5070685"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5070685"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 40,
+      "burnedDown": 0,
+      "balance": 40
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 40,
+          "annualLength": 0.25,
+          "accountId": 0,
+          "year": 2020,
+          "rank": 0
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 1
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2022,
+          "rank": 2
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2023,
+          "rank": 3
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 40,
+        "totalLength": 0.25,
+        "note": null
+      }
+    },
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    },
+    "decisionRequired": false,
+    "streetName": "Rue Saint-Maurice-2",
+    "streetFrom": "Rue Dupré-2",
+    "streetTo": "Rue Saint-Henri-2",
+    "comments": [],
+    "documents": []
+  },
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-several-linked-interventions-DRE"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'aqueduc / Rue Saint-Maurice-1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2022,
+    "planificationYear": 2022,
+    "endYear": 2023,
+    "programId": null,
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 240
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.56832355260849, 45.51450264616376],
+            [-73.56820821762085, 45.51445002011541]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-several-linked-interventions-DRE-5166916"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5166916"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 300,
+      "burnedDown": 0,
+      "balance": 300
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2022,
+          "rank": 2
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2023,
+          "rank": 3
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 0,
+        "totalLength": 0,
+        "note": null
+      }
+    },
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    },
+    "decisionRequired": false,
+    "streetName": "Rue Saint-Maurice-1",
+    "streetFrom": "Rue Dupré-1",
+    "streetTo": "Rue Saint-Henri-1",
+    "comments": [],
+    "documents": []
+  }
+]

@@ -1,0 +1,11 @@
+<app-filter-layout [formGroup]="form" *ngIf="form && workTypes$">
+  <span title>Nature des travaux</span>
+  <app-filter-item-layout
+    [items]="workTypes$ | async"
+    bindValue="code"
+    bindLabel="label.fr"
+    bindIcon="icon"
+    [selectAll]="true"
+    formControlName="workTypes"
+  ></app-filter-item-layout>
+</app-filter-layout>

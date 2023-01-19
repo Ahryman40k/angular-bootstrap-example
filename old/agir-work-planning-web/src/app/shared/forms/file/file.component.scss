@@ -1,0 +1,18 @@
+@import '../../../../styles/core/variables';
+:host {
+  &.ng-touched.ng-invalid {
+    .form-control,
+    .input-group-text {
+      border-color: $color-red-danger;
+    }
+  }
+}
+
+.input-group:not(.disabled),
+input.form-control:not(:disabled) {
+  cursor: pointer;
+}
+
+input.form-control:not(:disabled) {
+  background-color: inherit;
+}

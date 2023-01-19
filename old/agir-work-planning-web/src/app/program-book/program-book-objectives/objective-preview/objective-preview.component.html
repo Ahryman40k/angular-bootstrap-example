@@ -1,0 +1,16 @@
+<div class="d-flex objectifBlock mt-1 mb-1" *ngIf="objective && condition">
+  <span class="flex-2 objective-name mr-2">{{ objective.name }}</span>
+  <span class="flex-1 text-dark font-sm font-weight-bold">{{ objective.values | vdmObjectiveProgress }}%</span>
+  <div class="flex-4 mx-2 mb-1 progressbar">
+    <ngb-progressbar
+      class="bg-primary"
+      height="8px"
+      [value]="objective.values | vdmObjectiveProgress"
+    ></ngb-progressbar>
+  </div>
+
+  <span class="font-sm flex-2 ">
+    {{ objective?.values?.calculated | number }}/{{ objective?.values?.reference | number }}
+    {{ objective | vdmObjectiveProgressLabel }}</span
+  >
+</div>

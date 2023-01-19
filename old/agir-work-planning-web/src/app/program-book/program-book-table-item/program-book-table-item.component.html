@@ -1,0 +1,30 @@
+<div *ngIf="columnOptions" class="responsive-table-row align-items-stretch borderoffset {{background}}">
+  <app-table-column-item *ngFor="let column of columnConfig.columns"
+    [id]="column.columnName"
+    class="d-flex {{background}}"
+    [annualProgramYear]="columnOptions[column.columnName]?.annualProgramYear"
+    [columnClass]="column.columnName"
+    [condition]="columnOptions[column.columnName]?.condition"
+    [innerClass]="columnOptions[column.columnName]?.innerClass"
+    [isBadge]="columnOptions[column.columnName]?.isBadge"
+    [link]="columnOptions[column.columnName]?.link"
+    [permission]="columnOptions[column.columnName]?.permission"
+    [taxonomyGroup]="columnOptions[column.columnName]?.taxonomyGroup"
+    [value]="columnOptions[column.columnName]?.value"
+    [isOpened]="opened">
+  </app-table-column-item>
+  <div class="table-body-cell col-options d-flex flex-1 justify-content-end" [ngClass]="{'border-white': opened}">
+    <div class="d-flex flex-column justify-content-center">
+      <button class="btn btn-icon btn-secondary" [ngClass]="{'btn-info': orderedProject?.isManuallyOrdered}"
+        (click)="opened = !opened">
+        <i class="icon" [class.icon-chevron-up]="opened" [class.icon-chevron-down]="!opened"></i>
+      </button>
+    </div>
+    <app-more-options-button #moreOptions [dropdownPlacement]="['left-top','left-bottom']" dropdownContainer="body" [items]="menuItems | async"></app-more-options-button>
+  </div>
+</div>
+<div *ngIf="opened" class="project-detail border-bottom pb-2">
+  <app-program-book-project-detail [annualProgram]="annualProgram" [project]="project"
+    [previousOrderedProject]="previousOrderedProject" [orderedProject]="orderedProject" [programBook]="programBook">
+  </app-program-book-project-detail>
+</div>

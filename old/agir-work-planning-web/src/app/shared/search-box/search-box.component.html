@@ -1,0 +1,97 @@
+<div class="input-group form-control" (click)="openSearch()">
+  <ng-template #resultTemplate let-result="result" let-term="term">
+    <ng-container [ngSwitch]="getResultType(result)">
+      <ng-container *ngSwitchCase="ObjectType.project">
+        <ng-container *ngTemplateOutlet="projectTemplate; context: { project: result, term: term }"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="ObjectType.intervention">
+        <ng-container *ngTemplateOutlet="interventionTemplate; context: { intervention: result, term: term }">
+        </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="ObjectType.address">
+        <ng-container *ngTemplateOutlet="addressTemplate; context: { address: result, term: term }"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="ObjectType.submissionNumber">
+        <ng-container *ngTemplateOutlet="submissionNumberTemplate; context: { project: result, term: term }">
+        </ng-container>
+      </ng-container>
+      <div *ngSwitchDefault>INVALID RESULT TYPE</div>
+    </ng-container>
+  </ng-template>
+
+  <button class="btn btn-icon btn-icon-only" (click)="onEnterPress()">
+    <span class="icon icon-search icon-focus-within" aria-hidden="true"></span>
+  </button>
+  <input #searchInput type="text" class="form-control border-0 search-input" placeholder="Rechercher la carte"
+    container="body" [formControl]="searchBarControl" [ngbTypeahead]="searchTerm" [resultTemplate]="resultTemplate"
+    (keyup.enter)="onEnterPress()" [inputFormatter]="formatter" [focusFirst]="false" [value]="searchBarTerm || ''"
+    maxlength="100" />
+  <button class="btn btn-icon btn-icon-only search-clear" (click)="clearInput()">
+    <span class="icon icon-x mr-0" aria-hidden="true"></span>
+  </button>
+</div>
+
+<ng-template #projectTemplate let-project="project" let-term="term">
+  <div class="auto-complete-item">
+    <div class="auto-complete-item-icon">
+      <i class="icon-folder"></i>
+    </div>
+    <div class="auto-complete-item-info">
+      <span class="auto-complete-item-title">
+        <ngb-highlight [result]="project.id" [term]="term"></ngb-highlight>
+      </span>
+      <span class="auto-complete-item-description">
+        <ngb-highlight [result]="project.projectName" [term]="term"></ngb-highlight>
+      </span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #interventionTemplate let-intervention="intervention" let-term="term">
+  <div class="auto-complete-item">
+    <div class="auto-complete-item-icon">
+      <i class="icon-flag"></i>
+    </div>
+    <div class="auto-complete-item-info">
+      <span class="auto-complete-item-title">
+        <ngb-highlight [result]="intervention.id" [term]="term"></ngb-highlight>
+      </span>
+      <span class="auto-complete-item-description">
+        <ngb-highlight [result]="intervention.interventionName" [term]="term"></ngb-highlight>
+      </span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #addressTemplate let-address="address" let-term="term">
+  <div class="auto-complete-item">
+    <div class="auto-complete-item-icon">
+      <i class="icon-home"></i>
+    </div>
+    <div class="auto-complete-item-info">
+      <span class="auto-complete-item-title">
+        <ngb-highlight [result]="getAddressLine1(address)" [term]="term"></ngb-highlight>
+      </span>
+      <span class="auto-complete-item-description">
+        <ngb-highlight [result]="getAddressLine2(address)" [term]="term"></ngb-highlight>
+      </span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #submissionNumberTemplate let-project="project" let-term="term">
+  <div class="auto-complete-item">
+    <div class="auto-complete-item-icon">
+      <i class="icon-file-edit"></i>
+    </div>
+    <div class="auto-complete-item-info">
+      <span class="auto-complete-item-title">
+        <span class="font-weight-bold">Soumission </span>
+        <ngb-highlight [result]="project | appDrmSubmissionNumberFormat" [term]="term"></ngb-highlight>
+      </span>
+      <span class="auto-complete-item-description">
+        <ngb-highlight [result]="project.projectName" [term]="term"></ngb-highlight>
+      </span>
+    </div>
+  </div>
+</ng-template>

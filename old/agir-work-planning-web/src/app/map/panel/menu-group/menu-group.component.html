@@ -1,0 +1,21 @@
+<div class="menu-panel">
+  <ng-container *ngFor="let item of menuItems">
+    <div
+      *ngIf="!item.isDisabled && !item.inWindow && (item.permission | appPermission)"
+      class="d-flex justify-content-center p-1 btn-menu-item"
+      routerLinkActive="active"
+      #childrenLinksActive="routerLinkActive"
+      [class.btn-menu-item-on]="!item.isDisabled && (item.isActive$ | async)"
+    >
+      <button
+        class="btn btn-icon btn-icon-only"
+        [routerLink]="{ outlets: { leftPanel: [item.link] } }"
+        [ngbTooltip]="item.title"
+        container="body"
+        placement="right"
+      >
+        <i class="icon {{ item.icon }} icon-color-neutral-secondary" aria-hidden="true"></i>
+      </button>
+    </div>
+  </ng-container>
+</div>

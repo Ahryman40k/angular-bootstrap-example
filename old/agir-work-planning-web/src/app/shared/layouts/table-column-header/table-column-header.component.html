@@ -1,0 +1,4 @@
+<div *ngIf="condition && (permission | appPermission)" [ngClass]="[columnClass]" bindClass
+  appSort [columnName]="columnLabel" [sorting]="sorting" [direction]="direction" (sortChange)="handleSortChange($event)">
+  {{columnLabel}}
+</div>

@@ -1,0 +1,27 @@
+<app-intervention-form-layout
+  [form]="form"
+  [isValidBoroughId]="isValidBoroughId"
+  [assets]="assetService.selectedAssets$ | async"
+  [assetTypes]="assetTypes$ | async"
+  [assetOwners]="assetOwners$ | async"
+  [assetWorkTypes]="assetWorkTypes$ | async"
+  buttonLabel="Créer"
+  [categories]="categories$ | async"
+  [duplicateIntervention]="duplicateIntervention$ | async"
+  [(interventionArea)]="interventionArea"
+  [interventionTypes]="interventionTypes$ | async"
+  [medalTypes]="medalTypes$ | async"
+  [requestors]="requestors$ | async"
+  [executors]="executors$ | async"
+  [submitting]="submitting"
+  [years]="years"
+  (mapChange)="map = $event"
+  (cancel)="cancel()"
+  (submit)="submitAndNavigate()"
+  [isLoadingAssets]="isLoadingAssets"
+  (removeInterventionArea)="removeInterventionArea()"
+  [isReadOnly]="isReadOnly"
+  (drawnAssetChange)="assetDrawn($event)"
+>
+  <span header-title>Créer une intervention à partir d'actifs géolocalisés</span>
+</app-intervention-form-layout>

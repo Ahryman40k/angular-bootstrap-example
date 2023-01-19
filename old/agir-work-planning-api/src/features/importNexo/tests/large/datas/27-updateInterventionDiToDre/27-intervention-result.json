@@ -1,0 +1,188 @@
+[
+  {
+    "id": "I00002",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-two-interventions-PI-DRE-DI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Réhabilitation / Regard d'égoût / Rue random 7",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "rehabilitation",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2020,
+    "planificationYear": 2020,
+    "endYear": 2022,
+    "programId": null,
+    "contact": "Yoda",
+    "assets": [
+      {
+        "typeId": "sewerManhole",
+        "ownerId": "deeu",
+        "length": {
+          "unit": "m",
+          "value": 42
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-73.55370417237282, 45.50870925649973]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-two-interventions-PNI-and-PI-5094805"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5094805"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 30,
+      "burnedDown": 0,
+      "balance": 30
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2020,
+          "rank": 0
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 1
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2022,
+          "rank": 2
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 0,
+        "totalLength": 0,
+        "note": null
+      }
+    },
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    },
+    "decisionRequired": false,
+    "streetName": "Rue random 7",
+    "streetFrom": "Rue random 8",
+    "streetTo": "Rue random 9",
+    "comments": [],
+    "documents": []
+  },
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "dre",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-two-interventions-PI-DRE-DI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'égoût / Rue random 4",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2021,
+    "planificationYear": 2021,
+    "endYear": 2021,
+    "programId": null,
+    "contact": "Obiwan",
+    "assets": [
+      {
+        "typeId": "sewerSegment",
+        "ownerId": "dre",
+        "length": {
+          "unit": "m",
+          "value": 52
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55395227670668, 45.508422132459046],
+            [-73.5534480214119, 45.50905558911386]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-two-interventions-PNI-and-PI-5630414"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5630414"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 24,
+      "burnedDown": 0,
+      "balance": 24
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 24,
+          "annualLength": 0.052,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 1
+        },
+        {
+          "annualAllowance": 0,
+          "annualLength": 0,
+          "accountId": 0,
+          "year": 2022,
+          "rank": 2
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 24,
+        "totalLength": 0.052,
+        "note": null
+      }
+    },
+    "project": {
+      "id": "P00001",
+      "typeId": "integrated"
+    },
+    "decisionRequired": false,
+    "streetName": "Rue random 4",
+    "streetFrom": "Rue random 5",
+    "streetTo": "Rue random 6",
+    "comments": [],
+    "documents": []
+  }
+]

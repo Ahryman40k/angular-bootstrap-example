@@ -1,0 +1,8 @@
+.contextual-menu {
+  display: block;
+  position: fixed;
+
+  .dropdown-menu {
+    position: relative !important;
+  }
+}

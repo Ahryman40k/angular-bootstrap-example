@@ -1,0 +1,33 @@
+<app-layout-modal [modalTitle]="modalTitle">
+  <div body>
+    <app-priority-level-sort-criteria
+      *ngFor="let sortCriteria of priorityLevel.sortCriterias;  let first = first; let last = last"
+      [sortCriteria]="sortCriteria"
+      [isFirst]="first"
+      [isLast]="last"
+      [isAddMode]="false"
+      (rankIncreased)="increaseRank($event)"
+      (rankDecreased)="decreaseRank($event)"
+      (criteriaRemoved)="removeCriteria($event)"
+    ></app-priority-level-sort-criteria>
+    <app-priority-level-sort-criteria
+      *ngFor="let sortCriteria of sortCriteriasToAdd"
+      [sortCriteria]="sortCriteria"
+      [isAddMode]="true"
+      (criteriaAdded)="addCriteria($event)"
+    ></app-priority-level-sort-criteria>
+  </div>
+  <div buttons class="d-flex flex-1 justify-content-between">
+    <button class="btn btn-secondary btn-squared mr-2" type="button" (click)="restartPriorityLevelSort()" [disabled]="isSubmitting">
+      Réinitialiser le tri
+    </button>
+    <div>
+      <button class="btn btn-tertiary btn-squared mr-2" type="button" (click)="cancel()" [disabled]="isSubmitting">
+        Annuler
+      </button>
+      <button class="btn btn-primary btn-squared" type="button" (click)="applyPriorityLevelSort()" [disabled]="isSubmitting">
+        Appliquer
+      </button>
+    </div>
+  </div>
+</app-layout-modal>

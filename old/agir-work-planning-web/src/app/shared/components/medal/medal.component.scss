@@ -1,0 +1,10 @@
+@import '../../../../styles/core/variables';
+
+.medal {
+  height: $badge-height;
+  border-radius: $medal-border-radius;
+  display: flex;
+  padding: $medal-padding;
+  width: fit-content;
+  align-items: center;
+}

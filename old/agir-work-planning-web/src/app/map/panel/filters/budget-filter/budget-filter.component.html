@@ -1,0 +1,22 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Budget</span>
+  <div class="pr-2">
+    <div class="form-group">
+      <label>
+        De
+        <span class="hint">&nbsp;(k$)</span>
+      </label>
+      <input type="text" vdmIntegerInput class="form-control" formControlName="budgetFrom" />
+    </div>
+    <div class="form-group">
+      <label>
+        À
+        <span class="hint">&nbsp;(k$)</span>
+      </label>
+      <input type="text" vdmIntegerInput class="form-control" formControlName="budgetTo" />
+    </div>
+    <app-form-error *ngIf="form.errors?.budget">
+      Le budget "À" doit être supérieur ou égal au budget "De"
+    </app-form-error>
+  </div>
+</app-filter-layout>

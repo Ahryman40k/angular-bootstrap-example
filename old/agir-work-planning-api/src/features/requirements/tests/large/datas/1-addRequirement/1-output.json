@@ -1,0 +1,17 @@
+{
+  "id": "A_IGNORER",
+  "items": [
+    {
+      "id": "P00004",
+      "type": "project"
+    },
+    {
+      "id": "I00002",
+      "type": "intervention"
+    }
+  ],
+  "typeId": "other",
+  "subtypeId": "otherRequirements",
+  "text": "This is a requirement.",
+  "audit": "A_IGNORER"
+}

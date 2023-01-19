@@ -1,0 +1,203 @@
+import { RtuProjectPins } from './logic-layers/projects/project-pins-enum';
+
+/**
+ * List of layers on the map.
+ * Theses ID match the Id on the mapbox styles
+ */
+export enum MapLayers {
+  ALLEYS = 'ruelles',
+  AQUEDUCS = 'aqueducs',
+  AQUEDUCT_JOIN = 'raccord_aqueduc',
+  AQUEDUCTS_ACCESSORIES = 'accessoires-aqueducs',
+  AQUEDUCTS_ENTRANCES_SEGMENTS = 'segments-entrees-de-service-eau',
+  AQUEDUCTS_VALVE_CHAMBERS = 'chambres-de-vannes-aqueducs',
+  AREAS = 'zones',
+  BARRELS = 'futs',
+  BIKES_PATHS = 'pistes-cyclables',
+  BUS_LINE = 'lignes-de-bus',
+  BUS_STOP = 'arrets-de-bus',
+  BUS_SHELTER = 'abribus',
+  CABLES = 'cables',
+  CITIES = 'cities',
+  CSEM_MASSIF = 'csem-massif',
+  CSEM_STRUCTURE = 'csem-structure',
+  ELECTRICAL_TERMINALS = 'bornes-electriques',
+  FIRE_HYDRANTS = 'fire-hydrants',
+  FLOW_DIRECTION = 'sens-de-circulation',
+  GAZ = 'energir',
+  GAZ_BORDER = 'energir-border',
+  GREEN_SPACE = 'espaces-verts',
+  HIGHWAYS = 'autoroutes',
+  HYDRO_QUEBEC_LINES = 'lignes-hydro-quebec',
+  HYDRO_QUEBEC_SUBSTATIONS = 'postes-hydro-quebec',
+  ILOTS = 'ilots',
+  INT_LOGICAL_CIRCULE_NODE = 'int-logiques-noeuds-circule',
+  INTERSECTIONS = 'intersections',
+  LEAD_GROUNDS = 'terrains-plomb',
+  LEGAL_CADASTRE = 'cadastre-legal',
+  LOTS_NUMBERS = 'numeros-de-lots',
+  MOBILITY_AXIS = 'axes-de-mobilite',
+  NODES = 'noeuds',
+  PAVEMENT = 'chaussees',
+  POLES = 'poteaux',
+  POTABLE_WATER = 'eau-potable',
+  PYLONES = 'pylones',
+  RAINY_WATER = 'eaux-pluviales',
+  REM_STATIONS = 'rem-stations',
+  REVISION_ROAD_NETWORK = 'reseau-en-revision-voirie',
+  ROAD = 'voirie',
+  ROAD_ARTERIAL_NETWORK = 'reseau-arteriel',
+  SENSITIVES_SITES = 'sites-sensibles',
+  SEWER_DROP = 'chute-a-egout',
+  SEWERS = 'egouts',
+  SEWERS_ACCESSORIES = 'accessoires-egouts',
+  SEWERS_CHAMBERS = 'chambres-egouts',
+  SEWERS_JOINS = 'raccords-egouts',
+  SEWERS_MANHOLES = 'regards-egouts',
+  SEWERS_SUMPS = 'puisards',
+  SHOPPING_STREETS = 'rues-commercantes',
+  STREET_TREE = 'arbres-sur-rue',
+  SIDEWALKS = 'trottoirs',
+  SUBWAY_LINES = 'lignes-de-metro',
+  SUBWAY_STATIONS = 'stations-de-metro',
+  TRACKS = 'voies-ferrees',
+  TRAFFIC_LIGHT = 'feux-de-circulation',
+  UNIFIED_NODES = 'noeuds-unifies',
+  UNIFIED_SECTIONS = 'troncons-unifies',
+  VALVES = 'vannes',
+  WASTE_WATER = 'eaux-usees',
+  WATER_POINT = 'points-eau',
+  WATER_SERVICE_ENTRANCES = 'entrees-de-service-eau',
+  WATERCOURSES_DITCHES = 'cours-eau-et-fosses',
+  CIRCLE_COMPARISON = 'circle-comparison'
+}
+
+export enum MapLayersSources {
+  // VTS sources
+  ACTIFS_EAU = 'water-assets',
+  ADDRESSES_PINS = 'addresses-pins',
+  AQUEDUCS = 'aqueducs',
+  BASEMAP = 'basemap',
+  BORNES_RECHARGES = 'bornes-de-recharge',
+  CADASTRE_QUEBEC = 'cadastre-du-quebec',
+  CITIES_BOROUGHS = 'cities-boroughs',
+  COUNT_BY_BOROUGH = 'count-by-borough',
+  COUNT_BY_CITY = 'count-by-city',
+  CSEM = 'csem',
+  DECOUPAGES_ADMINISTRATIFS = 'decoupages-administratifs',
+  DYNAMIC_SELECTION_RADIUS = 'dynamic-selection-radius',
+  EAU_INSPECTION_PERMIS = 'eau-inspection-permis',
+  ECLAIRAGE = 'eclairage',
+  EGOUTS = 'egouts',
+  ESPACES_VERTS = 'espaces-verts',
+  GAZ = 'energir',
+  HORTICULTURE = 'horticulture',
+  HYDRO_QUEBEC = 'hydro-quebec',
+  NEIGE = 'neige',
+  PLAN_INTERVENTION_2016 = 'plan-intervention-2016',
+  RACCORDS_AQUEDUC = 'raccords-aqueduc',
+  RESEAU_ROUTIER = 'reseau-routier',
+  RESEAU_FERROVIAIRE = 'reseau-ferroviaire',
+  RESEAU_HYDROGRAPHIQUE = 'reseau-hydrographique',
+  SECURITE_CIVILE = 'securite-civile',
+  SIGNALISATION_ENTRAVES = 'signalisation-et-entraves',
+  TRANSPORT_COMMUN = 'transport-en-commun',
+  VOIRIE = 'voirie',
+
+  // Planif sources
+  ASSETS_PINS = 'assets-pins',
+  DECISION_REQUIRED_PINS = 'decision-required-pins',
+  DECISION_REQUIRED_NOT_WISHED_PINS = 'decision-required-not-wished-pins',
+  DECISION_REQUIRED_WISHED_PINS = 'decision-required-wished-pins',
+  DECISION_NOT_REQUIRED_WAITING_PINS = 'decision-not-required-waiting-pins',
+  INTERVENTION_AREAS = 'intervention-areas',
+  INTERVENTION_AREAS_SECONDARY = 'intervention-areas-secondary',
+  INTERVENTION_AREAS_SECONDARY_DECISION_REQUIRED = 'intervention-areas-secondary-decision-required',
+  INTERVENTION_CREATION_AREAS = 'intervention-creation-areas',
+  INTERVENTION_CREATION_HALO = 'intervention-creation-halo',
+  INTERVENTION_HALO = 'intervention-halo',
+  INTERVENTION_PINS = 'intervention-pins',
+  INTERVENTION_REFUSED_PINS = 'intervention-refused-pins',
+  INTERVENTION_ACCEPTED_PINS = 'intervention-accepted-pins',
+  INTERVENTION_CANCELED_PINS = 'intervention-canceled-pins',
+  PROJECT_CREATION_AREAS = 'project-creation-areas',
+  PRESENT_PLANNED_PROJECT_AREAS = 'present-planned-project-areas',
+  ROAD_SECTION_HIGHLIGHT = 'road-section-highlight',
+  ROAD_SECTION_HOVER = 'road-section-hover',
+  OBJECT_PINS = 'object-pins',
+  CIRCLE_COMPARISON = 'circle-comparison'
+}
+
+export enum ObjectPinType {
+  decisionRequiredIntervention = 'decision-required-intervention',
+  decisionRequiredNotWishedIntervention = 'decision-required-not-wished-intervention',
+  decisionRequiredWishedIntervention = 'decision-required-wished-intervention',
+  decisionNotRequiredWaitingIntervention = 'decision-not-required-waiting-intervention',
+  futureProject = 'future-project',
+  intervention = 'intervention',
+  interventionRefused = 'intervention-refused',
+  interventionAccepted = 'intervention-accepted',
+  interventionCanceled = 'intervention-canceled',
+  pastProject = 'past-project',
+  preliminaryOrderedProject = 'preliminary-ordered-project',
+  replannedProject = 'replanned-project',
+  canceledProject = 'canceled-project',
+  plannedProject = 'planned-project',
+  postponedProject = 'postponed-project',
+  finalOrderedProject = 'final-ordered-project',
+  programmedProject = 'programmed-project',
+  presentProject = 'present-project',
+  presentRtuProject = 'present-rtu-project',
+  pastRtuProject = 'past-rtu-project',
+  futureRtuProject = 'future-rtu-project'
+}
+
+export enum CriteriaIndex {
+  CriteriaNavyBlue = 'criteria-navy-blue',
+  CriteriaRoyalBlue = 'criteria-royal-blue',
+  CriteriaLightBlue = 'criteria-light-blue',
+  CriteriaGreen = 'criteria-green',
+  CriteriaYellow = 'criteria-yellow'
+}
+
+export const interventionLayerIds = [
+  'intervention-areas-secondary',
+  'intervention-areas-secondary-decision-required',
+  'intervention-pins',
+  'decision-required-pins',
+  'decision-not-required-waiting-pins',
+  'decision-required-wished-pins',
+  'decision-required-not-wished-pins',
+  'intervention-refused-pins',
+  'intervention-canceled-pins',
+  'intervention-accepted-pins'
+];
+export const projectLayerIds = [
+  'present-project',
+  'present-project-pins',
+  'past-project',
+  'past-project-pins',
+  'future-project',
+  'future-project-pins',
+  'multiple-years-project',
+  'planned-project-pins',
+  'postponed-project-pins',
+  'replanned-project-pins',
+  'programmed-project-pins',
+  'preliminary-ordered-project-pins',
+  'final-ordered-project-pins',
+  'canceled-project-pins'
+];
+export const plannedProjectLayerIds = ['present-planned-project', 'multiple-years-planned-project'];
+export const replannedProjectLayerIds = ['present-replanned-project', 'multiple-years-replanned-project'];
+export const postponedProjectLayerIds = ['present-postponed-project', 'multiple-years-postponed-project'];
+export const rtuProjectLayerIds = [
+  ObjectPinType.presentRtuProject,
+  RtuProjectPins.PRESENT_RTU_PROJECT_PINS,
+  ObjectPinType.pastRtuProject,
+  RtuProjectPins.PAST_RTU_PROJECT_PINS,
+  ObjectPinType.futureRtuProject,
+  RtuProjectPins.FUTURE_RTU_PROJECT_PINS
+];
+export const addressLayerIds = ['addresses-pins'];
+export const countByBoroughLayerIds = ['count-by-borough-point', 'count-by-borough-point-hover'];

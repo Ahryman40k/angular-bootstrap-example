@@ -1,0 +1,29 @@
+<app-details-layout>
+  <span title>Exigences</span>
+  <div class="d-flex" actions>
+    <button
+      type="button"
+      class="chip dropdown-toggle text-dark mr-1 sorting"
+      appSort
+      [sorting]="sortingActive"
+      [direction]="sortingDirection"
+      (sortChange)="sort($event.direction)"
+    >
+      Date de création
+    </button>
+    <app-details-add-button
+      [disabled]="disabledAddButton"
+      *ngIf="canWriteRequirement"
+      (onAdd)="openCreationModal()"
+    ></app-details-add-button>
+  </div>
+
+  <app-requirement-list
+    [restrictionItems]="interventionRestrictionItems"
+    *ngIf="intervention"
+    (openModalDelete)="openDeleteModal($event)"
+    (openModalEdit)="openEditModal($event)"
+    [object]="intervention"
+    [objectType]="'intervention'"
+  ></app-requirement-list>
+</app-details-layout>

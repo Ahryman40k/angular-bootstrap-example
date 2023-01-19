@@ -1,0 +1,43 @@
+@import '../../../styles/core/variables';
+$lighterGray: #d9d9d9;
+$search-bar-border-radius: 4px;
+
+input:focus {
+  outline: none !important;
+  border-color: none;
+  box-shadow: none;
+}
+
+.search-input {
+  width: 250px;
+}
+
+.search-bar {
+  border-radius: $search-bar-border-radius;
+  border: 1px solid $lighterGray;
+}
+
+.navbar-separator {
+  background-color: $lighterGray;
+  width: 1px;
+}
+
+.btn-selected {
+  background-color: #EEFAF8;
+}
+
+.active-filter {
+  position: relative;
+
+  &::before {
+    content: '·';
+    color: $color-turquoise-500;
+    position: absolute;
+    font-size: 55px;
+    left: -10px;
+    z-index: 1;
+    top: 3px;
+    line-height: 0;
+    pointer-events: none;
+  }
+}

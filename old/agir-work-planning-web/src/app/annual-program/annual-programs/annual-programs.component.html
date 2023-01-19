@@ -1,0 +1,23 @@
+<div class="p-3 d-flex border-bottom border-width-sm">
+  <div class="flex-fill">
+    <h2>Programmations annuelles</h2>
+  </div>
+  <div class="d-flex flex-row-reverse">
+    <app-details-add-button *ngIf="'ANNUAL_PROGRAM:WRITE' | appPermission" (onAdd)="create()"></app-details-add-button>
+  </div>
+</div>
+<div class="d-flex flex-1 h-1 content-container">
+  <div #listContainer class="pl-1 pb-3 left-menu border-right scrollable">
+    <h5 class="pl-1 pt-2 pb-2">Exécutants Ville de Montréal</h5>
+    <app-menu-active
+      *ngFor="let item of menuItems; let last = last"
+      [ngClass]="{ 'executors-last-child': last }"
+      [item]="item"
+      [routerLink]="item.link"
+      routerLinkActive="active"
+    ></app-menu-active>
+  </div>
+  <div class="p-4 flex-1 scrollable">
+    <router-outlet></router-outlet>
+  </div>
+</div>

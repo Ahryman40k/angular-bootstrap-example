@@ -1,0 +1,44 @@
+<app-layout-modal modalTitle="Refuser l'intervention">
+  <div body>
+    <div [formGroup]="form">
+      <div class="d-flex">
+        <div class="col-md-6 p-0">
+          <label class="font-weight-bold">Raison du refus</label>
+          <vdm-select
+            class="flex-fill"
+            bindLabel="label.fr"
+            bindValue="code"
+            formControlName="refuseType"
+            [items]="refuseTypes$ | async"
+            autofocus="true"
+          ></vdm-select>
+          <app-form-errors formControlName="refuseType">
+            <app-form-error *appFormError="let e; key: 'required'">La raison du refus est requise</app-form-error>
+          </app-form-errors>
+        </div>
+        <div class="flex-grow-1"></div>
+      </div>
+      <div class="mt-3">
+        <label class="font-weight-bold">Justificatifs</label>
+        <textarea type="text" rows="1" class="form-control" formControlName="justification"></textarea>
+        <app-form-errors formControlName="justification">
+          <app-form-error *appFormError="let e; key: 'required'">Le justificatif est requis</app-form-error>
+        </app-form-errors>
+      </div>
+    </div>
+  </div>
+  <div buttons>
+    <div class="d-flex justify-content-end mt-2">
+      <div>
+        <button class="btn btn-squared btn-tertiary bg-white" (click)="return()">
+          Annuler
+        </button>
+      </div>
+      <div class="ml-2">
+        <button class="btn btn-squared btn-danger" (click)="submit()">
+          Refuser
+        </button>
+      </div>
+    </div>
+  </div>
+</app-layout-modal>

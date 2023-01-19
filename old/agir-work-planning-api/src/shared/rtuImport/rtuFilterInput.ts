@@ -1,0 +1,29 @@
+export interface IRtuFilterInput {
+  name: string;
+  description: string;
+  dateFrom: string;
+  dateTo: string;
+  dateRelFrom: string;
+  dateRelTo: string;
+  dateExpired: boolean;
+  dateModification: string;
+  isSelected: string;
+  status: string[];
+  selfPartner: string;
+  extent: string;
+  zoomRegion: string;
+  initiator: string;
+  probability: string;
+  projectNumber: string;
+  projectName: string;
+  mapRotation: string;
+  isConflict: boolean;
+  partnerIds: string[];
+  officeIds: [];
+  areaIds: string[];
+  typeIds: [];
+  phaseIds: [];
+  conflict: false;
+  temporary: false;
+  defaultFilter: false;
+}

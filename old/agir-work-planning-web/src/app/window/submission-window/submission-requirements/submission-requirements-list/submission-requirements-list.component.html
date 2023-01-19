@@ -1,0 +1,116 @@
+<app-no-result *ngIf="!requirmentsLine?.length" [message]="noResultMessage"></app-no-result>
+<div class="row">
+  <div class="col-7">
+    <ng-container *ngIf="requirmentsLine?.length > 0">
+      <app-list-item
+        *ngFor="let reqLine of requirmentsLine; let i = index"
+        [mainClass]="reqLine.requirement.isDeprecated ? 'is-deprecated gray-card border-top' : 'border-top'"
+      >
+        <div class="d-flex " title>
+          <span
+            [ngClass]="{
+              'line-through through-title': reqLine.requirement.isDeprecated
+            }"
+            >{{ reqLine.requirement.typeId | appTaxonomy: TaxonomyGroup.submissionRequirementType }}</span
+          >
+          <span class="ml-1 mr-1 dot-separtor icon icon-dot-interpunct"></span>
+          <span
+            [ngClass]="{
+              'line-through through-title': reqLine.requirement.isDeprecated
+            }"
+            class="mr-1"
+            >{{ reqLine.requirement.subtypeId | appTaxonomy: TaxonomyGroup.submissionRequirementSubtype }}</span
+          >
+          <span
+            [ngClass]="{
+              'badge-success-light': reqLine.requirement.mentionId === submissionRequirementMention.BEFORE_TENDER,
+              'badge-success': reqLine.requirement.mentionId === submissionRequirementMention.AFTER_TENDER
+            }"
+            class="badge badge-align-middle mr-1"
+            >{{ reqLine.requirement.mentionId | appTaxonomy: TaxonomyGroup.submissionRequirementMention }}
+          </span>
+          <span *ngIf="reqLine.requirement.isDeprecated" class="badge badge-align-middle badge-gray ">Obsolète</span>
+        </div>
+
+        <span class="mt-1" description *ngIf="!isGeneric(reqLine.requirement)">
+          <span>
+            <label>
+              Spécifique à un projet
+            </label>
+          </span>
+          <span class="dot-separtor icon icon-dot-interpunct"></span>
+        </span>
+        <span class="mt-1" description>
+          <label>
+            Dernière modif. le {{ reqLine.requirement?.audit | appAuditDateTime | date: 'mediumDate' }} par
+            {{
+              reqLine.requirement?.audit.lastModifiedAt
+                ? reqLine.requirement?.audit.lastModifiedBy.displayName
+                : reqLine.requirement?.audit.createdBy.displayName
+            }}
+          </label>
+        </span>
+        <app-list-item-action
+          *ngIf="
+            canWriteRequirement &&
+            !reqLine.requirement.isDeprecated &&
+            isRequirementStatusValid(reqLine.requirement) &&
+            (restrictionItems | appRestrictions)
+          "
+          (action)="openEditModal(reqLine.requirement)"
+        >
+          Modifier
+        </app-list-item-action>
+        <app-list-item-action
+          *ngIf="
+            canWriteRequirement &&
+            !reqLine.requirement.isDeprecated &&
+            isRequirementStatusValid(reqLine.requirement) &&
+            (restrictionItems | appRestrictions)
+          "
+          (action)="openDeleteModal(reqLine.requirement)"
+        >
+          Supprimer
+        </app-list-item-action>
+        <app-list-item-action
+          *ngIf="canWriteRequirement && !reqLine.requirement.isDeprecated && (restrictionItems | appRestrictions)"
+          (action)="openRequirementObsoleteModal(reqLine.requirement)"
+        >
+          Rendre l'exigence obsolète
+        </app-list-item-action>
+        <app-list-item-action
+          *ngIf="canWriteRequirement && reqLine.requirement.isDeprecated"
+          (action)="openRequirementObsoleteModal(reqLine.requirement)"
+        >
+          Réactiver l'exigence
+        </app-list-item-action>
+        <app-list-item-details>
+          <app-list-item-details-field>
+            <span title>Date d’ajout</span>
+            <span description
+              >{{ reqLine.requirement?.audit.createdAt | date: 'mediumDate' }}, par
+              {{ reqLine.requirement?.audit.createdBy.displayName }}</span
+            >
+          </app-list-item-details-field>
+          <app-list-item-details-field *ngIf="!isGeneric(reqLine.requirement)">
+            <span style="width: 224px;display: block;" title>Projet(s) concerné(s)</span>
+            <div class="d-flex" description *ngFor="let project of reqLine.projects">
+              <span class="mr-1">
+                <label>
+                  <a class="text-primary font-weight-bold" href="#">
+                    {{ project.id }}
+                  </a>
+                </label>
+              </span>
+              <span description> {{ project.projectName }}</span>
+            </div>
+          </app-list-item-details-field>
+          <app-list-item-details-field>
+            <span title>Description</span>
+            <span description>{{ reqLine.requirement.text }}</span>
+          </app-list-item-details-field>
+        </app-list-item-details>
+      </app-list-item>
+    </ng-container>
+  </div>
+</div>

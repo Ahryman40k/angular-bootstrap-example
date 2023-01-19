@@ -1,0 +1,10 @@
+<span class="font-sm word-break">
+  <ng-content></ng-content>
+</span>
+<button
+  class="btn btn-icon btn-icon-only p-0"
+  (click)="toggleDetailsCollapse()"
+  *ngIf="hasDetails && isDetailCollapsible"
+>
+  <i class="icon" [class.icon-chevron-up]="isDetailsCollapsed" [class.icon-chevron-down]="!isDetailsCollapsed"></i>
+</button>

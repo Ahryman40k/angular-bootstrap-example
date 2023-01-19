@@ -1,0 +1,21 @@
+<div class="d-flex align-content-stretch align-items-center mb-1">
+  <h4 class="title flex-1">
+    <a appWindowLink href="window/rtuProjects/{{ rtuProject.id }}" appStopProp>{{ rtuProject.id }}</a>
+  </h4>
+</div>
+<div class="description mb-2 font-md">{{ rtuProject.name }}</div>
+<div class="d-flex align-content-center align-items-center mt-1 flex-wrap">
+  <span class="badge badge-dark mr-1 mt-1">{{ [rtuProjectStartYear, rtuProjectEndYear] | vdmJoin: ' - ' }}</span>
+  <span class="badge badge-info mr-1 mt-1">
+    {{ rtuProject.partnerId | appTaxonomy: TaxonomyGroup.infoRtuPartner }}
+  </span>
+  <span class="badge badge-info-light mr-1 mt-1">
+    {{ rtuProject.partnerId | appTaxonomy: TaxonomyGroup.infoRtuPartner: 'category' | appPartnerCategory}}
+  </span>
+  <span class="badge badge-success mr-1 mt-1">
+    {{ rtuProject.status | appTaxonomy: TaxonomyGroup.rtuProjectStatus }}
+  </span>
+  <span class="badge badge-success-light mr-1 mt-1">
+    {{ rtuProject.type }}
+  </span>
+</div>

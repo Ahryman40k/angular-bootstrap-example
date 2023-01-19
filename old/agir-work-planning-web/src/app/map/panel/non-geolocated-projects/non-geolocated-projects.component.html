@@ -1,0 +1,8 @@
+<app-elements-card class="card-project p-2" cardTitle="Projets non-géolocalisés" icon="icon-non-geolocated"
+  [elements]="projectsWithAnnualPrograms$ | async" [isLoading]="isLoading">
+  <ng-template let-projectWithAnnualPrograms>
+    <app-project-card class="element-card-item" [project]="projectWithAnnualPrograms.project"
+      [appMapHighlightHover]="projectWithAnnualPrograms.project" [navigationEnabled]="true"
+      [compatibleAnnualPrograms]="projectWithAnnualPrograms.annualPrograms"></app-project-card>
+  </ng-template>
+</app-elements-card>

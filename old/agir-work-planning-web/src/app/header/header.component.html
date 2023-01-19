@@ -1,0 +1,72 @@
+  <nav class="shadow-sm">
+    <div class="main-navbar navbar navbar-dark navbar-expand w-100">
+      <button
+        type="button"
+        id="menu-interne-toggler"
+        class="btn navbar-btn navbar-btn-icon btn-hide-label-sm ml-0"
+        aria-expanded="false"
+        aria-controls="slide-menu-left"
+        (click)="menuShown = !menuShown"
+      >
+        <span class="icon icon-menu" aria-hidden="true"></span>
+      </button>
+
+      <div class="navbar-brand">
+        <span class="sitename ml-3">
+          AGIR
+          <span *ngIf="!(Permission.NEXO_IMPORT_LOG_READ | appPermission)">Planification</span>
+        </span>
+        <div *ngIf="Permission.NEXO_IMPORT_LOG_READ | appPermission">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="btn navbar-btn dropdown-toggle"
+              id="navbarDropdownPlanifMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="font-weight-normal">{{selectedAgirItemLabel}}</span>
+            </button>
+            <div id="agir-dropdown-menu" class="dropdown-menu" aria-labelledby="navbarDropdownPlanifMenuLink">
+              <a class="dropdown-item" *ngFor="let item of agirItems" [routerLink]="[item.route]"
+              (click)="onItemSelected(item.label)">{{item.label}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-div ml-auto">
+        <div class="d-flex align-items-center">
+          <div class="navbar-separator"></div>
+          <div class="dropdown">
+            <button
+              type="button"
+              class="btn navbar-btn dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="icon icon-user-circle mr-2" role="icon"></span>
+              <span>{{ userService.currentUser?.userName }}</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <div class="dropdown-item">
+                <div class="dropdown-item-content">
+                  <div>{{ userService.currentUser?.name }}</div>
+                  <div class="dropdown-item-description">{{ userService.currentUser?.email }}</div>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="taxonomies" *ngIf="showTaxonomyLink">Gestion de la taxonomie</a>
+              <a class="dropdown-item" href="rtu-transmissions" *ngIf="showRtuTransmissionsLink">Transmission Info-RTU</a>
+              <div class="dropdown-divider" *ngIf="showTaxonomyLink || showRtuTransmissionsLink"></div>
+              <a class="dropdown-item" href="#" (click)="logout()">Me déconnecter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <app-menu *ngIf="menuShown" (close)="menuShown = false"></app-menu>

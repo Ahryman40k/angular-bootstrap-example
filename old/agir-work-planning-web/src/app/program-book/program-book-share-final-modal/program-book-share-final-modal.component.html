@@ -1,0 +1,16 @@
+<app-layout-modal modalTitle="Diffusion finale du carnet ">
+  <div body>
+    <app-alert type="warning">
+      <span title>Attention!</span>
+      <span description>La diffusion finale du carnet est irréversible. Êtes-vous certain de vouloir continuer?</span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="reject()">
+      Annuler
+    </button>
+    <button type="submit" class="btn btn-primary btn-squared add-button" (click)="submit()" [disabled]="submitting">
+      Confirmer
+    </button>
+  </div>
+</app-layout-modal>

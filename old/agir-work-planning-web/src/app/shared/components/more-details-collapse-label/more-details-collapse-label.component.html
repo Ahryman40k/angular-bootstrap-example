@@ -1,0 +1,26 @@
+<div class="d-flex flex-column flex-1">
+  <div *ngIf="!titleToBottomWhenClicked || !showDescription" id="title" class="d-flex align-items-center" (click)="toggleDescription()">
+    <span
+      class="icon mr-2"
+      [class.icon-chevron-up]="showDescription"
+      [class.icon-chevron-down]="!showDescription"
+      role="icon"
+    ></span>
+    <span class="font-weight-bold text-primary">
+      <ng-content *ngIf="!showDescription" select="[title]"></ng-content>
+      <ng-content *ngIf="showDescription" select="[not-collapsed-title-above]"></ng-content>
+    </span>
+  </div>
+  <div class="d-flex" *ngIf="showDescription">
+    <ng-content select="[details]"></ng-content>
+  </div>
+  <div *ngIf="titleToBottomWhenClicked && showDescription" id="title" class="d-flex align-items-center" (click)="toggleDescription()">
+    <span
+      class="icon mr-2"
+      [class.icon-chevron-up]="showDescription"
+      [class.icon-chevron-down]="!showDescription"
+      role="icon"
+    ></span>
+    <span class="font-weight-bold text-primary"><ng-content select="[not-collapsed-title-below]"></ng-content></span>
+  </div>
+</div>

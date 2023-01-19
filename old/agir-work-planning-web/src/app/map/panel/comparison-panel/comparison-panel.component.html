@@ -1,0 +1,41 @@
+
+<div class="p-2 h-100 w-100 d-flex flex-column" [formGroup]="criteriaForm">
+  <h3>Comparaison</h3>
+  <div class="my-2">
+    <span class="font-md text-dark">
+      Cet outil vous permet de comparer de 2 à 5 groupes d’éléments sur la carte en leur identifiant une couleur
+      temporaire pour des fins d’analyse.
+    </span>
+  </div>
+  <div class="d-flex flex-row justify-content-between">
+    <vdm-select
+      class="rounded-select w-60"
+      [items]="criteriaTypeItems"
+      formControlName="criteriaType"
+    ></vdm-select>
+
+    <button class="btn btn-secondary btn-squared btn-sm button-clear" (click)="resetCriteria()">
+      <span>Réinitialiser</span>
+    </button>
+  </div>
+
+  <div class="d-flex flex-column" formArrayName="criteriaValues">
+    <div class="d-flex flex-row justify-content-start align-items-center mt-2"
+      *ngFor="let ctrl of criteriaValuesCtrl.controls; let i = index" [formGroupName]="i">
+      <div class="ellipse mr-2" [style.background]="criteriaColor(i)">
+      </div>
+      <vdm-select
+        class="w-75"
+        bindLabel="label"
+        bindValue="value"
+        [items]="(criteriaValueItems$ | async)"
+        [formControl]="ctrl"
+      ></vdm-select>
+      <i class="icon icon-minus-circle-full ml-2" (click)="removeCriteriaValue(i)" *ngIf="canRemoveCriteriaValue"></i>
+    </div>
+  </div>
+  <div class="d-flex flex-row justify-content-start align-items-center mt-2" *ngIf="canPushCriteriaValue">
+    <i class="icon icon-plus-circle-full mr-2" (click)="pushCriteriaValue()"></i>
+    <div class="font-weight-bold">Ajouter un critère de comparaison</div>
+  </div>
+</div>

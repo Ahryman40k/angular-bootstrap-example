@@ -1,0 +1,5 @@
+<button *ngIf="item.permission | appPermission" onclick="this.blur();" [disabled]="item.disabled" class="btn btn-squared btn-link w-100 px-1">
+  <div class="d-flex align-items-center">
+    <span class="font-weight-bold text-secondary">{{ item.label || (item.label$ | async) }}</span>
+  </div>
+</button>

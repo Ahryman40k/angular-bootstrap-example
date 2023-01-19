@@ -1,0 +1,20 @@
+<div>
+  <h3 class="pl-4 my-3">
+    Correspondance des éléments NEXO
+  </h3>
+  <div class="px-4 mb-4">
+    <nav class="nav-tabs" >
+      <ul class="nav" role="tablist">
+        <li class="nav-item" *ngFor="let code of handledTaxonomyCodes">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="[code]">{{code | appTaxonomy: TaxonomyGroup.taxonomyGroup}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['nexoBook']">Carnets</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="px-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="scrollable-horizontal main">
+  <div>
+    <div *ngIf="!isInitializingProgramBookTable" class="responsive-table" [class.non-ordered-projects]="!isOrdered">
+      <div class="responsive-table-header font-sm">
+        <app-table-column-header
+          *ngFor="let column of columnConfig.columns"
+          class="d-flex"
+          [id]="column.columnName"
+          [columnLabel]="ProgramBookTableColumnLabels[column.columnName]"
+          [columnClass]="column.columnName"
+          [condition]="column.condition"
+        >
+          [permission]="columnOptions[column.columnName]?.permission">
+        </app-table-column-header>
+      </div>
+      <div id="responsive-table-body">
+        <div *ngFor="let project of projects; let i = index">
+          <div *ngIf="isOrdered">
+            <app-objective-table-item
+              *ngFor="let objective of projectsAchievedObjectives[i].objectives"
+              [targetObjective]="objective"
+              [performanceIndicators]="projectsAchievedObjectives[i].performanceIndicators"
+            >
+            </app-objective-table-item>
+          </div>
+          <app-program-book-table-item
+            #programBookTableItems
+            [columnConfig]="columnConfig"
+            [project]="project"
+            [previousOrderedProject]="isOrdered ? orderedProjects[i - 1] : undefined"
+            [orderedProject]="isOrdered ? orderedProjects[i] : undefined"
+            [annualProgram]="annualProgram"
+            [programBook]="programBook"
+            [index]="pagination.offset + i"
+            [menuItemConfig]="menuItemConfig"
+            [isOrdered]="isOrdered"
+          ></app-program-book-table-item>
+        </div>
+        <div *ngIf="isOrdered && isProgramBookLastPage">
+          <app-objective-table-item
+            *ngFor="let objective of notAchievedObjectives.objectives"
+            [targetObjective]="objective"
+            [performanceIndicators]="notAchievedObjectives.performanceIndicators"
+          >
+          </app-objective-table-item>
+        </div>
+      </div>
+    </div>
+    <app-no-result
+      *ngIf="!projects?.length && !isInitializingProgramBookTable"
+      message="Cette section est présentement vide"
+    ></app-no-result>
+  </div>
+  <app-spinner *ngIf="isInitializingProgramBookTable" class="d-flex mx-auto mt-1"></app-spinner>
+  <div *ngIf="!isInitializingProgramBookTable" class="d-flex justify-content-center m-2">
+    <ngb-pagination
+      *ngIf="pagination.totalCount > pagination.pageSize"
+      [collectionSize]="pagination.totalCount"
+      [(page)]="pagination.currentPage"
+      [maxSize]="3"
+      [pageSize]="pagination.pageSize"
+      [rotate]="true"
+      (pageChange)="onChangePage($event)"
+    >
+      <ng-template ngbPaginationPrevious><span class="icon icon-chevron-left"></span></ng-template>
+      <ng-template ngbPaginationNext><span class="icon icon-chevron-right"></span></ng-template>
+    </ngb-pagination>
+  </div>
+  <div class="box"></div>
+</div>

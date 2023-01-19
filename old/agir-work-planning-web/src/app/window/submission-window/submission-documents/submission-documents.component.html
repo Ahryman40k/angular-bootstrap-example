@@ -1,0 +1,57 @@
+<div class="pt-4">
+  <div class="d-flex justify-content-between mb-4">
+    <h4>Documents</h4>
+    <div>
+      <app-details-add-button
+        *ngIf="
+          submission.status === SubmissionStatus.VALID &&
+          (Permission.SUBMISSION_DOCUMENT_WRITE | appPermission) &&
+          (restrictionItems | appRestrictions)
+        "
+        (onAdd)="openCreateModal()"
+      ></app-details-add-button>
+    </div>
+  </div>
+
+  <app-no-result *ngIf="!documents?.length" [message]="noResultMessage"></app-no-result>
+  <div class="col-7 ">
+    <app-list-item *ngFor="let document of documents; let i = index">
+      <span title>
+        <div class="mb-1">
+          {{ document.documentName }}
+        </div>
+      </span>
+      <span description>
+        <label *ngIf="!document.audit?.lastModifiedBy" class="font-weight-bold">
+          {{ document.audit?.createdBy.displayName }}
+        </label>
+        <label *ngIf="document.audit?.lastModifiedBy" class="font-weight-bold">
+          {{ document.audit?.lastModifiedBy.displayName }}
+        </label>
+        <label *ngIf="!document.audit?.lastModifiedAt"
+          >Créé le {{ document.audit?.createdAt | date: 'longDate' }}</label
+        >
+        <label *ngIf="document.audit?.lastModifiedAt">
+          Modifié le {{ document.audit?.lastModifiedAt | date: 'longDate' }}
+        </label>
+        <label class="clickable text-primary font-weight-bold" description (click)="downloadDocumentFile(document)">
+          {{ document.fileName }}
+        </label>
+      </span>
+      <app-list-item-action
+        (action)="editDocumentModal(document)"
+        *ngIf="(Permission.SUBMISSION_DOCUMENT_WRITE | appPermission) && (restrictionItems | appRestrictions)"
+      >
+        <i class="icon icon-edit"></i>
+        Modifier le document
+      </app-list-item-action>
+      <app-list-item-action
+        (action)="deleteDocumentModal(document)"
+        *ngIf="(Permission.SUBMISSION_DOCUMENT_WRITE | appPermission) && (restrictionItems | appRestrictions)"
+      >
+        <i class="icon icon-trash"></i>
+        Supprimer le document
+      </app-list-item-action>
+    </app-list-item>
+  </div>
+</div>

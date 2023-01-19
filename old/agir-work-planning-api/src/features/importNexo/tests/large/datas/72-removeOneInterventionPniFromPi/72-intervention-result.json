@@ -1,0 +1,173 @@
+[
+  {
+    "id": "I00004",
+    "audit": "A_IGNORER",
+    "moreInformationAudit": "A_IGNORER",
+    "executorId": "deeu",
+    "interventionName": "This is the intervention name.",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "construction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "integrated",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "contact": "This is the contact.",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dre",
+        "length": {
+          "unit": "m",
+          "value": "A_IGNORER"
+        },
+        "geometry": "A_IGNORER",
+        "externalReferenceIds": []
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 42,
+      "burnedDown": 0,
+      "balance": 42
+    },
+    "annualDistribution": null,
+    "decisionRequired": false,
+    "streetName": "streetName",
+    "streetFrom": "streetFrom",
+    "streetTo": "streetTo",
+    "roadSections": "A_IGNORER",
+    "roadNetworkTypeId": "local",
+    "comments": [],
+    "project": null,
+    "documents": []
+  },
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "add-one-intervention-PNI"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'aqueduc / Rue random 1",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2040,
+    "planificationYear": 2040,
+    "endYear": 2040,
+    "programId": "par",
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 200
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.56006771326065, 45.49876714523858],
+            [-73.55963587760925, 45.49922586978999]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "add-one-intervention-PNI-10032867"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "10032867"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 40,
+      "burnedDown": 0,
+      "balance": 40
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 40,
+          "annualLength": 0.2,
+          "accountId": 123456,
+          "year": 2040,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 40,
+        "totalLength": 0.2,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue random 1",
+    "streetFrom": "Rue random 2",
+    "streetTo": "Rue random 3",
+    "decisions": [
+      {
+        "audit": "A_IGNORER",
+        "typeId": "revisionRequest",
+        "text": "Une nouvelle décision est requise. Le type de travaux de l'intervention a été modifié.",
+        "targetYear": 2040,
+        "previousPlanificationYear": 2040,
+        "id": "A_IGNORER"
+      },
+      {
+        "audit": "A_IGNORER",
+        "typeId": "accepted",
+        "text": "Accepté (Go)",
+        "targetYear": 2040,
+        "previousPlanificationYear": 2040,
+        "id": "A_IGNORER"
+      }
+    ],
+    "comments": [
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "requestor",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "isPublic": false,
+        "text": "Ceci est un commentaire."
+      },
+      {
+        "audit": "A_IGNORER",
+        "categoryId": "information",
+        "id": "A_IGNORER",
+        "isProjectVisible": false,
+        "isPublic": true,
+        "text": "This is the comment content."
+      }
+    ],
+    "project": null,
+    "documents": [
+      {
+        "audit": "A_IGNORER",
+        "documentName": "interventionDocument",
+        "fileName": "test-pdf.pdf",
+        "id": "A_IGNORER",
+        "isProjectVisible": true,
+        "notes": "notes",
+        "objectId": "A_IGNORER",
+        "type": "other",
+        "validationStatus": "validated"
+      }
+    ]
+  }
+]

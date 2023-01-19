@@ -1,0 +1,16 @@
+<div class="map-panel h-100 shadow" *ngIf="shown">
+  <app-non-geolocated-projects></app-non-geolocated-projects>
+</div>
+<button
+  class="btn btn-light btn-toggle"
+  (click)="togglePanel()"
+  [class.collapsed]="!shown"
+  [ngbTooltip]="getToolTip()"
+  container="body"
+>
+  <i
+    class="icon icon-color-neutral-secondary"
+    [class.icon-chevron-left]="!shown"
+    [class.icon-chevron-right]="shown"
+  ></i>
+</button>

@@ -1,0 +1,4 @@
+<app-popup-layout [colorClass]="intervention | appInterventionColor">
+  <app-intervention-card *ngIf="intervention" [intervention]="intervention"></app-intervention-card>
+  <app-spinner *ngIf="!intervention" class="d-flex mx-auto"></app-spinner>
+</app-popup-layout>

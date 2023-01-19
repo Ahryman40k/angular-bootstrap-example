@@ -1,0 +1,44 @@
+<div *ngIf="!isInitializingTable" class="mt-4 responsive-table">
+  <table class="table table-hover table-lg">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columnConfig.columns"
+            class="sorting"
+            appSort
+            [sorting]="columnOptions[column.columnName].sortable"
+            [direction]="columnOptions[column.columnName].sorted"
+            (sortChange)="sortColumn(column.columnName, $event.direction)">
+          {{ RtuTransmissionsTableColumnLabels[column.columnName] }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of transmissions">
+        <td class="align-middle date-column">
+          {{ item.startDateTime | appDateFormat : 'yyyy-MM-dd HH:mm' }}
+        </td>
+        <td class="align-middle date-column">
+          {{ item.endDateTime | appDateFormat : 'yyyy-MM-dd HH:mm' }}
+        </td>
+        <td class="align-middle status-column">
+          <app-transmission-status-badge [transmission]="item"></app-transmission-status-badge>
+        </td>
+        <td class="align-middle">
+          <a type="button" class="btn btn-link btn-squared" *ngIf="showDetails(item)" [routerLink]="[item.id]">Détails</a>
+        </td>
+        <td class="align-middle errorDetail-column">
+          {{ item.errorDescription }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-spinner *ngIf="isInitializingTable" class="d-flex mx-auto mt-1"></app-spinner>
+<div *ngIf="!isInitializingTable" class="d-flex justify-content-center m-2">
+  <ngb-pagination *ngIf="pagination.totalCount > pagination.pageSize" [collectionSize]="pagination.totalCount"
+    [(page)]="pagination.currentPage" [maxSize]="3" [pageSize]="pagination.pageSize" [rotate]="true"
+    (pageChange)="onChangePage($event)">
+    <ng-template ngbPaginationPrevious><span class="icon icon-chevron-left"></span></ng-template>
+    <ng-template ngbPaginationNext><span class="icon icon-chevron-right"></span></ng-template>
+  </ngb-pagination>
+</div>

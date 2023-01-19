@@ -1,0 +1,160 @@
+[
+  {
+    "id": "I00002",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "16-IBG-PTI-003 ÉG"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Réhabilitation / Regard d'égoût / Rue Saint-Maurice - 3",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "rehabilitation",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2021,
+    "planificationYear": 2021,
+    "endYear": 2021,
+    "programId": "par",
+    "contact": "Yoda",
+    "assets": [
+      {
+        "typeId": "sewerManhole",
+        "ownerId": "deeu",
+        "length": {
+          "unit": "m",
+          "value": 250
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-73.55948835611343, 45.5040366123957]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "1-add-several-unlinked-interventions-PNI-5094977"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5094977"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 361.34,
+      "burnedDown": 0,
+      "balance": 361.34
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 361.34,
+          "annualLength": 0.25,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 361.34,
+        "totalLength": 0.25,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue Saint-Maurice - 3",
+    "streetFrom": "Rue Dupré - 3",
+    "streetTo": "Rue Saint-Henri - 3",
+    "comments": [],
+    "documents": []
+  },
+  {
+    "id": "I00001",
+    "audit": "A_IGNORER",
+    "executorId": "deeu",
+    "externalReferenceIds": [
+      {
+        "type": "nexoReferenceNumber",
+        "value": "16-IBG-PTI-003 ÉG"
+      }
+    ],
+    "importRevisionDate": "A_IGNORER",
+    "interventionName": "Reconstruction / Segment d'aqueduc / Rue Saint-Maurice - 2",
+    "interventionTypeId": "initialNeed",
+    "workTypeId": "reconstruction",
+    "requestorId": "dre",
+    "boroughId": "VM",
+    "status": "waiting",
+    "interventionYear": 2021,
+    "planificationYear": 2021,
+    "endYear": 2021,
+    "programId": "par",
+    "contact": "Anakin",
+    "assets": [
+      {
+        "typeId": "aqueductSegment",
+        "ownerId": "dep",
+        "length": {
+          "unit": "m",
+          "value": 240
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.55997383594513, 45.503647482026025],
+            [-73.56007575988768, 45.50354784918001],
+            [-73.560129404068, 45.50348581354534]
+          ]
+        },
+        "diameter": "200",
+        "material": "Fonte grise",
+        "externalReferenceIds": [
+          {
+            "type": "nexoReferenceNumber",
+            "value": "1-add-several-unlinked-interventions-PNI-5312546"
+          },
+          {
+            "type": "nexoAssetId",
+            "value": "5312546"
+          }
+        ]
+      }
+    ],
+    "interventionArea": "A_IGNORER",
+    "estimate": {
+      "allowance": 361.34,
+      "burnedDown": 0,
+      "balance": 361.34
+    },
+    "annualDistribution": {
+      "annualPeriods": [
+        {
+          "annualAllowance": 361.34,
+          "annualLength": 0.24,
+          "accountId": 0,
+          "year": 2021,
+          "rank": 0
+        }
+      ],
+      "distributionSummary": {
+        "totalAllowance": 361.34,
+        "totalLength": 0.24,
+        "note": null
+      }
+    },
+    "decisionRequired": true,
+    "streetName": "Rue Saint-Maurice - 2",
+    "streetFrom": "Rue Dupré - 2",
+    "streetTo": "Rue Saint-Henri - 2",
+    "comments": [],
+    "documents": []
+  }
+]

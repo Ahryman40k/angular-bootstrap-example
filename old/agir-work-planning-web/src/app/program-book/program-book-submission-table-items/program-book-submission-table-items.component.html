@@ -1,0 +1,24 @@
+<ng-container *ngFor="let project of projects">
+  <div class="responsive-table-row align-items-stretch {{background}}">
+    <ng-container *ngFor="let column of columnConfig.columns; let first=first; let last=last">
+      <div class="d-flex flex-row justify-content-start align-items-center checkbox" *ngIf="first">
+        <app-checkbox [value]="checkboxValue(project)" [disabled]="isCheckboxDisabled(project)" (change)="setCheckbox($event, project)"></app-checkbox>
+      </div>
+      <app-table-column-item *ngIf="column.condition" class="{{column.className}} {{background}} px-0 d-flex"
+        [ngClass]="{'hidden-column': isSubmissionColumn(column) && isSortedBySubmission() && !isFirstProjectWithSubmission(project)}"
+        [annualProgramYear]="columnOptions(project)[column.columnName]?.annualProgramYear" [columnClass]="columnClass(column, project)"
+        [condition]="column.condition" [innerClass]="columnOptions(project)[column.columnName]?.innerClass"
+        [options]="columnOptions(project)[column.columnName]"
+        [isBadge]="columnOptions(project)[column.columnName]?.isBadge" [link]="columnOptions(project)[column.columnName]?.link"
+        [permission]="Permission.SUBMISSION_WRITE" [taxonomyGroup]="columnOptions(project)[column.columnName]?.taxonomyGroup"
+        [value]="columnOptions(project)[column.columnName]?.value">
+      </app-table-column-item>
+      <div class="d-flex flex-row justify-content-start align-items-center actions" *ngIf="last">
+        <app-more-options-button #moreOptions
+      *ngIf="menuItems(project).length"
+      [dropdownPlacement]="['left-top','left-bottom']" dropdownContainer="body"
+      [items]="menuItems(project)"></app-more-options-button>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

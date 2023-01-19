@@ -1,0 +1,55 @@
+<div class="pl-2 ml-7 border-left border-width-sm">
+  <div class="d-flex py-2">
+    <div class="flex-2 d-flex flex-column">
+      <h6 class="mb-0">Description</h6>
+    </div>
+    <div class="flex-6 pr-3">
+      <h6 class="mb-0 word-break font-weight-normal text-neutral-secondary">{{ project.projectName }}</h6>
+    </div>
+  </div>
+
+  <div *ngIf="objectiveNames?.length > 0" class="d-flex py-2 align-items-center">
+    <div class="flex-2 d-flex flex-column">
+      <h6 class="mb-0">Atteinte des objectifs du carnet</h6>
+    </div>
+    <div class="flex-6 pr-3 d-flex">
+      <div *ngFor="let objectiveName of objectiveNames" class="d-inline-block mr-1">
+        <span class="badge badge-light d-flex flex-row align-items-center py-0">
+          <i class="icon icon-xs icon-objective"></i>&nbsp;
+          <h6 class="mb-0">{{objectiveName}}</h6>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex py-2" *ngIf="project.interventionIds">
+    <div class="flex-2 d-flex flex-column">
+      <h6 class="mb-0">Interventions du projet</h6>
+    </div>
+    <div class="flex-6 pr-3">
+      <ng-container *ngIf="interventions">
+        <div *ngFor="let intervention of interventions" class="d-flex">
+          <h6 class="mb-0 word-break font-weight-normal mr-3 flex-4 text-neutral-secondary">
+            <a
+              class="clickable text-primary"
+              appWindowLink
+              href="{{interventionService.getInterventionLink(intervention)}}"
+            >
+              Intervention #{{ intervention.id }}
+            </a>
+            &nbsp;·&nbsp;
+            {{ intervention.interventionName }}
+          </h6>
+          <h6 class="mb-0 font-weight-normal mr-4 flex-1 text-neutral-secondary" *ngIf="Permission.INTERVENTION_BUDGET_READ | appPermission">
+            {{ getInterventionAnnualAllowance(intervention) | vdmCurrencyK | vdmNa }}
+          </h6>
+          <h6 class="mb-0 font-weight-normal flex-3 text-neutral-secondary">
+            {{ intervention.interventionTypeId | appTaxonomy: 'interventionType' | vdmNa }}
+          </h6>
+        </div>
+      </ng-container>
+      <h6 *ngIf="!interventions" class="mb-0 font-weight-normal text-neutral-secondary">
+        Chargement des interventions ...
+      </h6>
+    </div>
+  </div>
+</div>

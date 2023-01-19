@@ -1,0 +1,35 @@
+<div class="quote-card-danger p-2">
+  <div class="d-flex">
+    <div>
+      <div class="d-flex">
+        <div>
+          <h5 class="text-danger">
+            Décision requise
+          </h5>
+        </div>
+      </div>
+      <div>
+        <p class="text-danger">
+          Une décision est requise, vous devez soit accepter ou refuser l'intervention
+        </p>
+      </div>
+    </div>
+    <div class="d-flex flex-column flex-grow-1 pt-1">
+      <div class="justify-content-end d-flex">
+        <span class="icon icon-error icon-color-warning icon-lg" role="icon"></span>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div>
+      <button class="btn btn-squared btn-danger" (click)="accept()" *ngIf="restrictionItems | appRestrictions">
+        Accepter l'intervention
+      </button>
+    </div>
+    <div class="ml-2">
+      <button class="btn btn-squared btn-outline-danger" (click)="refuse()" *ngIf="restrictionItems | appRestrictions">
+        Refuser l'intervention
+      </button>
+    </div>
+  </div>
+</div>

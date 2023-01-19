@@ -1,0 +1,380 @@
+// tslint:disable
+export class MTMConverter {
+  deg2rad = Math.PI / 180;
+  rad2deg = 180.0 / Math.PI;
+  pi = Math.PI;
+
+  zone = '10';
+  hemisphere = 'north';
+
+  //-------------------------------------------------------------------
+  // Maths functions
+
+  mod(y: number, x: number) {
+    if (y >= 0) {
+      return y - x * this.floor(y / x);
+    } else {
+      return y + x * (this.floor(-y / x) + 1.0);
+    }
+  }
+
+  atan2(y: number, x: number) {
+    return Math.atan2(y, x);
+  }
+
+  sqrt(x: number) {
+    return Math.sqrt(x);
+  }
+
+  tan(x: number) {
+    return Math.tan(x);
+  }
+
+  sin(x: number) {
+    return Math.sin(x);
+  }
+
+  cos(x: number) {
+    return Math.cos(x);
+  }
+
+  acos(x: number) {
+    return Math.acos(x);
+  }
+
+  floor(x: number) {
+    return Math.floor(x);
+  }
+
+  ln(x: number) {
+    return Math.log(x);
+  }
+
+  abs(x: number) {
+    return Math.abs(x);
+  }
+
+  pow(x: number, y: number) {
+    return Math.pow(x, y);
+  }
+
+  atan(x: number) {
+    return Math.atan(x);
+  }
+
+  chr(x: number) {
+    return String.fromCharCode(x);
+  }
+
+  round(x: number) {
+    return Math.round(x);
+  }
+
+  // END MATH FUNCTIONS
+
+  geo_constants() {
+    // returns ellipsoid values
+    const ellipsoid_axis = new Array();
+    const ellipsoid_eccentricity = new Array();
+
+    ellipsoid_axis[0] = 6377563.396;
+    ellipsoid_eccentricity[0] = 0.00667054; //airy
+    ellipsoid_axis[1] = 6377340.189;
+    ellipsoid_eccentricity[1] = 0.00667054; // mod airy
+    ellipsoid_axis[2] = 6378160;
+    ellipsoid_eccentricity[2] = 0.006694542; //aust national
+    ellipsoid_axis[3] = 6377397.155;
+    ellipsoid_eccentricity[3] = 0.006674372; //bessel 1841
+    ellipsoid_axis[4] = 6378206.4;
+    ellipsoid_eccentricity[4] = 0.006768658; //clarke 1866 == NAD 27 (TBC)
+    ellipsoid_axis[5] = 6378249.145;
+    ellipsoid_eccentricity[5] = 0.006803511; //clarke 1880
+    ellipsoid_axis[6] = 6377276.345;
+    ellipsoid_eccentricity[6] = 0.00637847; //everest
+    ellipsoid_axis[7] = 6377304.063;
+    ellipsoid_eccentricity[7] = 0.006637847; // mod everest
+    ellipsoid_axis[8] = 6378166;
+    ellipsoid_eccentricity[8] = 0.006693422; //fischer 1960
+    ellipsoid_axis[9] = 6378150;
+    ellipsoid_eccentricity[9] = 0.006693422; //fischer 1968
+    ellipsoid_axis[10] = 6378155;
+    ellipsoid_eccentricity[10] = 0.006693422; // mod fischer
+    ellipsoid_axis[11] = 6378160;
+    ellipsoid_eccentricity[11] = 0.006694605; //grs 1967
+    ellipsoid_axis[12] = 6378137;
+    ellipsoid_eccentricity[12] = 0.00669438; //  grs 1980
+    ellipsoid_axis[13] = 6378200;
+    ellipsoid_eccentricity[13] = 0.006693422; // helmert 1906
+    ellipsoid_axis[14] = 6378270;
+    ellipsoid_eccentricity[14] = 0.006693422; // hough
+    ellipsoid_axis[15] = 6378388;
+    ellipsoid_eccentricity[15] = 0.00672267; // int24
+    ellipsoid_axis[16] = 6378245;
+    ellipsoid_eccentricity[16] = 0.006693422; // krassovsky
+    ellipsoid_axis[17] = 6378160;
+    ellipsoid_eccentricity[17] = 0.006694542; // s america
+    ellipsoid_axis[18] = 6378165;
+    ellipsoid_eccentricity[18] = 0.006693422; // wgs-60
+    ellipsoid_axis[19] = 6378145;
+    ellipsoid_eccentricity[19] = 0.006694542; // wgs-66
+    ellipsoid_axis[20] = 6378135;
+    ellipsoid_eccentricity[20] = 0.006694318; // wgs-72
+    ellipsoid_axis[21] = 6378137;
+    ellipsoid_eccentricity[21] = 0.00669438; //wgs-84
+
+    //TO-DO -- turn above into objects; use ellipsoidName to grab above values?
+    // for now use for current project
+
+    const ellipsoidNumber = 21; //default is wgs-84
+
+    const scaleTm = 0.9999; //UTM scaleTm = 0.9996;
+    const eastingOrg = 304800; //UTMeastingOrg = 500000.;
+
+    // return values as an object
+    let ellipsoid = {
+      axis: ellipsoid_axis[ellipsoidNumber],
+      eccentricity: ellipsoid_eccentricity[ellipsoidNumber],
+      eastingOrg: eastingOrg,
+      scaleTm: scaleTm
+    };
+    return ellipsoid;
+  }
+
+  // adapted from NSRUG  (caution: longitudes are +ve here)
+  gsrugZoner(mtmLat: number, mtmLong: number, mtmZone: number) {
+    // Adapted from FORTRAN: SUBROUTINE ZONER(SAT,SLG,mtmZone)
+    // Downloaded via below URL for Online Geodetic Tools:
+    //    http://www.geod.rncan.gc.ca/tools-outils/index_e.php
+    //    http://www.geod.rncan.gc.ca/tools-outils/tools_info_e.php?apps=gsrug
+    // Here: C:/Docume~1/pilewis/Desktop/Lew/GPS72/GSRUG/GSRUG.FOR
+
+    // Includes the official NSRUG Jan2008 fixes (see emails from Pat Legree)
+
+    const mtmDegs =
+      // bounds for MTM zones 14 to 32
+      [
+        85.5,
+        88.5,
+        91.5,
+        94.5,
+        97.5,
+        100.5,
+        103.5,
+        106.5,
+        109.5,
+        112.5,
+        115.5,
+        118.5,
+        121.5,
+        124.5,
+        127.5,
+        130.5,
+        133.5,
+        136.5,
+        139.5,
+        142.5
+      ];
+
+    const mtmSmers =
+      // MTM zone to reference meridian
+      [
+        0,
+        53,
+        56,
+        58.5,
+        61.5,
+        64.5,
+        67.5,
+        70.5,
+        73.5,
+        76.5,
+        79.5,
+        82.5,
+        81,
+        84,
+        87,
+        90,
+        93,
+        96,
+        99,
+        102,
+        105,
+        108,
+        111,
+        114,
+        117,
+        120,
+        123,
+        126,
+        129,
+        132,
+        135,
+        138,
+        141
+      ]; // last was 142 ?!! I think it should be 141.
+
+    // ? matches http://www.posc.org/Epicentre.2_2/DataModel/LogicalDictionary/StandardValues/coordinate_transformation.html
+
+    if (mtmZone == 0) {
+      // determine zone from lat/lon
+      if (mtmLong > 51.5 && mtmLong <= 54.5) {
+        mtmZone = 1;
+      }
+
+      if (mtmLong > 54.5 && mtmLong <= 57.5) {
+        mtmZone = 2;
+      }
+
+      if ((mtmLat <= 46.5 && mtmLong <= 59.5 && mtmLong > 57.5) || (mtmLat > 46.5 && mtmLong <= 60 && mtmLong > 57.5)) {
+        mtmZone = 3;
+      }
+
+      if ((mtmLat < 46.5 && mtmLong <= 63 && mtmLong > 59.5) || (mtmLat >= 46.5 && mtmLong <= 63 && mtmLong > 60)) {
+        mtmZone = 4;
+      }
+
+      if ((mtmLong > 63 && mtmLong <= 66.5 && mtmLat <= 44.75) || (mtmLong > 63 && mtmLat > 44.75 && mtmLong <= 66)) {
+        mtmZone = 5;
+      }
+
+      if ((mtmLong > 66 && mtmLat > 44.75 && mtmLong <= 69) || (mtmLong > 66.5 && mtmLat <= 44.75 && mtmLong <= 69)) {
+        mtmZone = 6;
+      }
+
+      if (mtmLong > 69 && mtmLong <= 72) {
+        mtmZone = 7;
+      }
+
+      if (mtmLong > 72 && mtmLong <= 75) {
+        mtmZone = 8;
+      }
+
+      if (mtmLong > 75 && mtmLong <= 78) {
+        mtmZone = 9;
+      }
+
+      if (
+        (mtmLat > 47 && mtmLong > 78 && mtmLong <= 79.5) ||
+        (mtmLat <= 47 && mtmLat > 46 && mtmLong > 78 && mtmLong <= 80.25) ||
+        (mtmLat <= 46 && mtmLong > 78 && mtmLong <= 81)
+      ) {
+        mtmZone = 10;
+      }
+
+      if (mtmLong > 81 && mtmLong <= 84 && mtmLat <= 46) {
+        mtmZone = 11;
+      }
+
+      if (
+        (mtmLong > 79.5 && mtmLong <= 82.5 && mtmLat > 47) ||
+        (mtmLong > 80.25 && mtmLong <= 82.5 && mtmLat <= 47 && mtmLat > 46)
+      ) {
+        mtmZone = 12;
+      }
+
+      // if (mtmLong > 82.5 && mtmLong <= 85.5 && mtmLat > 46. ||
+      //     mtmLong > 84. && mtmLong <= 85.5 && mtmLat <= 46.) mtmZone=13;
+
+      if (mtmLong > 82.5 && mtmLong <= 85.5 && mtmLat > 46) {
+        mtmZone = 13;
+      }
+
+      if (mtmZone == 0) {
+        // still not found, try regular Western Canada
+        for (let z = 0; z <= 18; ++z) {
+          if (mtmLong > mtmDegs[z] && mtmLong <= mtmDegs[z + 1]) {
+            mtmZone = z + 14;
+            break;
+          }
+        }
+      }
+    }
+
+    if (mtmZone < 1 || mtmZone > 32) {
+      throw new Error('Cannot figure out MTM zone -- outside Canada, lat=' + mtmLat + ', lon=' + mtmLong);
+    } else {
+      const mtmZoner = { zone: mtmZone, refMeridian: -mtmSmers[Number(mtmZone)] };
+      return mtmZoner;
+    }
+  }
+
+  convert(xCoord: number, yCoord: number, zone: number) {
+    const meridian = 0.0; // TODO: important for later on -- do not need for this project
+    const northing = yCoord;
+    const easting = xCoord;
+
+    const ellipsoid = this.geo_constants();
+
+    const axis = ellipsoid.axis;
+    const eccent = ellipsoid.eccentricity;
+    const scaleTm = ellipsoid.scaleTm;
+    const eastingOrg = ellipsoid.eastingOrg;
+
+    const e1 = (1 - this.sqrt(1 - eccent)) / (1 + this.sqrt(1 - eccent));
+    const eastingOffset = easting - eastingOrg; //remove 500,000 meter offset for longitude
+
+    let longorig = (zone - 1) * 6 - 180 + 3; //+3 puts origin in middle of zone
+    // @dc 180 - (7+76) * 3 - 1.5
+    if (scaleTm == 0.9999) {
+      // longorig = 180 - (zone*1 + 76) * 3 - 1.5;  // without hack, did string concat !!!
+      if (meridian == 0) {
+        const zonerResult = this.gsrugZoner(0, 0, zone);
+        longorig = zonerResult.refMeridian;
+      } else {
+        longorig = meridian;
+      }
+    }
+
+    const eccPrimeSquared = eccent / (1 - eccent);
+    const M = northing / scaleTm;
+    const mu = M / (axis * (1 - eccent / 4 - (3 * eccent * eccent) / 64 - (5 * eccent * eccent * eccent) / 256));
+    const phi1Rad =
+      mu +
+      ((3 * e1) / 2 - (27 * e1 * e1 * e1) / 32) * this.sin(2 * mu) +
+      ((21 * e1 * e1) / 16 - (55 * e1 * e1 * e1 * e1) / 32) * this.sin(4 * mu) +
+      ((151 * e1 * e1 * e1) / 96) * this.sin(6 * mu);
+    const N1 = axis / this.sqrt(1 - eccent * this.sin(phi1Rad) * this.sin(phi1Rad));
+
+    const T1 = this.tan(phi1Rad) * this.tan(phi1Rad);
+    const C1 = eccPrimeSquared * this.cos(phi1Rad) * this.cos(phi1Rad);
+    const R1 = (axis * (1 - eccent)) / this.pow(1 - eccent * this.sin(phi1Rad) * this.sin(phi1Rad), 1.5);
+    const D = eastingOffset / (N1 * scaleTm);
+
+    let lat =
+      phi1Rad -
+      ((N1 * this.tan(phi1Rad)) / R1) *
+        ((D * D) / 2 -
+          ((5 + 3 * T1 + 10 * C1 - 4 * C1 * C1 - 9 * eccPrimeSquared) * D * D * D * D) / 24 +
+          ((61 + 90 * T1 + 298 * C1 + 45 * T1 * T1 - 252 * eccPrimeSquared - 3 * C1 * C1) * D * D * D * D * D * D) /
+            720);
+    lat = lat * this.rad2deg;
+
+    let lon =
+      (D -
+        ((1 + 2 * T1 + C1) * D * D * D) / 6 +
+        ((5 - 2 * C1 + 28 * T1 - 3 * C1 * C1 + 8 * eccPrimeSquared + 24 * T1 * T1) * D * D * D * D * D) / 120) /
+      this.cos(phi1Rad);
+    lon = longorig + lon * this.rad2deg;
+
+    return { lat, lon };
+  }
+}
+
+const mtmC = new MTMConverter();
+export function toWsg84(coordinates: any) {
+  for (const e of coordinates) {
+    if (e instanceof Array) {
+      if (e.length === 2 && typeof e[0] === 'number' && typeof e[1] === 'number') {
+        convert(e);
+      } else {
+        toWsg84(e);
+      }
+    }
+  }
+}
+
+export function convert(e: number[]) {
+  const latLon = mtmC.convert(e[0], e[1], 8);
+  e[0] = latLon.lon;
+  e[1] = latLon.lat;
+}

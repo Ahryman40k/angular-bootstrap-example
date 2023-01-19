@@ -1,0 +1,22 @@
+@import '../../../../styles/core/variables';
+$ellipse-width: 1.4rem;
+$ellipse-height: 1.4rem;
+$button-clear-height: 2.2rem;
+$button-clear-height: 2.2rem;
+$border-raduis: 50%;
+
+.ellipse {
+  width: $ellipse-width;
+  height: $ellipse-height;
+  border-radius: $border-raduis;
+}
+
+.button-clear {
+  height: $button-clear-height;
+}
+
+.icon-minus-circle-full,.icon-plus-circle-full {
+  &::before {
+    background-color: $primary !important;
+  }
+}

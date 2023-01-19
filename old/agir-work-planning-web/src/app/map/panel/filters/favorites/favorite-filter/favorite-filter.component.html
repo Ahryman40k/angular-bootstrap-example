@@ -1,0 +1,32 @@
+<app-filter-layout [formGroup]="form">
+  <span title>Favoris</span>
+  <div *ngIf="isLoading" class="d-flex w-100 justify-content-center pr-2">
+    <app-spinner></app-spinner>
+  </div>
+  <div [class.d-none]="isLoading">
+    <div class="d-flex mb-2" *ngIf="favorites?.length">
+      <div class="d-flex flex-column justify-content-center">
+        <p class="text-primary font-sm font-weight-bold underline mb-0 clickable" (click)="orderByDate()">
+          Trier par date de création
+        </p>
+      </div>
+      <button class="btn btn-icon btn-icon-only p-0" (click)="orderByDate()">
+        <i class="icon" [class.icon-chevron-down]="!isOrderedAsc" [class.icon-chevron-up]="isOrderedAsc"></i>
+      </button>
+    </div>
+
+    <app-no-result-placeholder *ngIf="!favorites?.length" icon="icon-rectangle-folded">
+      Il n'existe aucun favoris pour l'instant. Il est possible d'en créér un à partir de votre affichage actuel.
+    </app-no-result-placeholder>
+  </div>
+
+  <div *ngFor="let favorite of favorites" class="d-flex ml-1 p-1 clickable filter-title" [routerLink]="favorite.id"
+    routerLinkActive="menu-link-active">
+    <label class="flex-1 mb-0 font-sm font-weight-normal clickable filter-label text-break" [ngbTooltip]="favorite.name"
+      [openDelay]="2000">
+      {{ favorite.name }}
+    </label>
+  </div>
+</app-filter-layout>
+
+<app-left-panel-sub-panel #mapLeftPanelSubPanel class="border-left"></app-left-panel-sub-panel>

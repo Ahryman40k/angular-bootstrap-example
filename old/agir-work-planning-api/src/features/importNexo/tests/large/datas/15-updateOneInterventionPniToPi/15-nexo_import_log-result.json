@@ -1,0 +1,34 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "success",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [
+        {
+          "id": "add-one-intervention-PNI",
+          "importStatus": "success",
+          "modificationType": "creation",
+          "elementErrors": [],
+          "description": "\"\""
+        }
+      ],
+      "interventions": [
+        {
+          "id": "add-one-intervention-PNI-10032867",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 1,
+          "description": "\"\""
+        }
+      ]
+    }
+  ]
+}

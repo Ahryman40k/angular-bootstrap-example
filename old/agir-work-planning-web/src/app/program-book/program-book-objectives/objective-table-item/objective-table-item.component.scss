@@ -1,0 +1,37 @@
+@import '../../../../styles/core/variables';
+
+$border-bottom-size: 1px;
+$details-line-height: 0.9;
+$margin-right: 6rem;
+$objective-item-min-height: 40px;
+$progress-bar-width: 168px;
+
+.blue-border-bottom {
+  border-bottom: $border-bottom-size solid $color-medium-blue;
+}
+
+.line-height {
+  line-height: $details-line-height;
+}
+
+.objective-item-min-height {
+  min-height: $objective-item-min-height;
+}
+
+.progress-bar-width {
+  width: $progress-bar-width;
+}
+
+::ng-deep .progress-bar {
+  background-color: $color-medium-blue;
+}
+
+.table-body-cell {
+  border: none !important;
+}
+
+@media (max-width: 1260px) {
+  .text-nowrap {
+    white-space: normal !important;
+  }
+}

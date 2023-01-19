@@ -1,0 +1,77 @@
+<div class="d-flex flex-column mb-4" *ngIf="currentAnnualProgram && !isLoading">
+  <h4 class="d-block mt-4 mb-3">Détails</h4>
+  <ng-container>
+    <table class="table-sm-responsive col-6">
+      <tbody class="table-label-value">
+        <tr *ngIf="currentAnnualProgram.budgetCap">
+          <td class="row-title">Seuil budgétaire</td>
+          <td>{{ currentAnnualProgram.budgetCap | vdmCurrencyK | vdmNa }}</td>
+        </tr>
+        <tr *ngIf="currentAnnualProgram.description">
+          <td class="row-title">Description</td>
+          <td>{{ currentAnnualProgram?.description }}</td>
+        </tr>
+        <tr *ngIf="currentAnnualProgram.sharedRoles?.length">
+          <td class="row-title">Partagé avec</td>
+          <td>{{ currentAnnualProgram?.sharedRoles | appTaxonomy: 'role' | vdmJoin: ', ' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <app-spinner *ngIf="false" class="d-flex mx-auto mt-1"></app-spinner>
+</div>
+
+<div class="d-flex flex-column" *ngIf="!isLoading">
+  <h4 class="d-block mt-4 mb-3">Composition</h4>
+  <div class="d-flex flex-rows col-6">
+    <ng-container>
+      <div class="col-6 pr-3 pl-0">
+        <table class="table-sm-responsive w-100">
+          <tbody class="table-label-value">
+            <tr class="border-bottom">
+              <td class="nromal-title">Nombre de carnets</td>
+              <td>{{ programBooksIds?.length }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td class="nromal-title">Nombre de soumissions</td>
+              <td>{{ submissionsCount }}</td>
+            </tr>
+            <tr *ngIf="hasPermission" class="border-bottom">
+              <td class="nromal-title">Budget total des projets</td>
+              <td>{{ totalBudget }} k$</td>
+            </tr>
+            <tr>
+              <td class="nromal-title">Projets en parachèvement</td>
+              <td>{{ projectsParachevementCount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-6">
+        <table class="table-sm-responsive w-100">
+          <tbody class="table-label-value">
+            <tr class="border-bottom">
+              <td class="row-title">Total des projets</td>
+              <td class="text-bold">{{ projects?.length }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td class="nromal-title">Projets intégrés</td>
+              <td>{{ integratedProjectCount }}</td>
+            </tr>
+            <tr class="border-bottom">
+              <td class="nromal-title">Projets non-intégrés</td>
+              <td>{{ nonIntegratedProjectCount }}</td>
+            </tr>
+            <tr>
+              <td class="nromal-title">Projets autres</td>
+              <td>{{ othersProjectCount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div *ngIf="isLoading" class="d-flex justify-content-center">
+  <app-spinner></app-spinner>
+</div>

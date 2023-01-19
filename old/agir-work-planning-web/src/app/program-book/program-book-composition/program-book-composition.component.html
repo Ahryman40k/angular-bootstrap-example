@@ -1,0 +1,28 @@
+<div class="d-flex flex-column" *ngIf="projects?.length > 0">
+  <h4 class="d-block mt-4 mb-3">Composition</h4>
+  <div class="flex-rows col-12 mb-4">
+    <ng-container>
+      <div class="row">
+        <div class="col-6 pr-6 pl-0">
+          <app-projects-composition
+            *ngIf="projects && programBook && removedProjects"
+            [programBookDataReady$]="programBookDataReady$"
+          ></app-projects-composition>
+          <app-requestors-composition
+            *ngIf="programBook && interventions"
+            [programBookDataReady$]="programBookDataReady$"
+          >
+          </app-requestors-composition>
+        </div>
+
+        <div class="col-6 pl-6">
+          <app-programs-composition
+            *ngIf="programBook && interventions"
+            [programBookDataReady$]="programBookDataReady$"
+          >
+          </app-programs-composition>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

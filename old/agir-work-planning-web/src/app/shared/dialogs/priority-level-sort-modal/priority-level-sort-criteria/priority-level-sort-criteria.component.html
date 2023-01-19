@@ -1,0 +1,22 @@
+<div class="border d-flex justify-content-between p-1 my-2" [class.bg-light]="isAddMode">
+  <div class="d-flex align-items-center">
+    <span id="badge-rounded" *ngIf="!isAddMode" class="badge badge-success-light mr-1">{{sortCriteria.rank}}</span>
+    <button *ngIf="isAddMode" class="btn btn-icon btn-icon-only py-0 pr-1">
+      <span class="icon icon-plus-circle-full icon-color-primary" (click)="emitAdd()"></span>
+    </button>
+    <h6 *ngIf="!sortCriteria.service">{{PriorityLevelSortCriteriaLabels[sortCriteria.name]}}</h6>
+    <h6 *ngIf="sortCriteria.service">Priorité de service - {{sortCriteria.service | appTaxonomy: TaxonomyGroup.service}}</h6>
+  </div>
+  <div *ngIf="!isAddMode">
+    <button class="btn btn-icon btn-icon-only py-0" [class.d-none]="isLast" (click)="emitDecreaseRank()">
+      <span class="icon icon-arrow-left rotate-270"></span>
+    </button>
+    <button class="btn btn-icon btn-icon-only py-0" [class.d-none]="isFirst" (click)="emitIncreaseRank()">
+      <span class="icon icon-arrow-right rotate-270"></span>
+    </button>
+    <button class="btn btn-icon btn-icon-only py-0 pr-0" (click)="emitRemove()">
+      <span class="icon icon-trash"></span>
+    </button>
+  </div>
+</div>
+

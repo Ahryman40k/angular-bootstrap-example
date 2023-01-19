@@ -1,0 +1,24 @@
+#==========================================
+# This is the LAB environment-specific
+# config file, used when NODE_ENV = "lab".
+#
+# The configurations specified here will override
+# the default ones provided by "default.yaml".
+#
+# More info about this file and the order config files
+# are loaded : https://github.com/lorenwest/node-config/wiki/Configuration-Files
+#==========================================
+
+logging:
+  level: debug
+  logToFile: false
+  addStackTraceToErrorMessagesInDev: true
+  logSource: true
+
+api:
+  host: api.lab.interne.montreal.ca
+
+security:
+  jwt:
+    host: https://api.lab.interne.montreal.ca
+  

@@ -1,0 +1,97 @@
+@startuml
+
+title Modèle Relationnel de données
+
+object annual_programs {
+  M | **_id** : ObjectId
+}
+
+object constraints {
+  M | **_id** : ObjectId
+}
+
+object conflictualItems {
+  M | **id** : String
+  M | **type** : String
+}
+
+object counters {
+  M | **_id** : ObjectId
+}
+
+object history {
+  M | **_id** : ObjectId
+  M | **objectTypeId** : String
+  M | **referenceId** : String
+}
+
+object import_relations {
+  M | **_id** : ObjectId
+  M | **projectId** : String
+}
+
+object imp_rel_interventions {
+  M | **interventionId** : String
+}
+
+object interventions {
+  M | **_id** : String
+  M | **projet_id** : String
+}
+
+object program_books {
+  M | **_id** : ObjectId
+  M | **annualProgramId** : ObjectId **FK**
+  O | **removedProjectsIds** : String[]
+}
+
+object priorityScenarios {
+  M | **id** : ObjectId
+}
+
+object orderedProjects {
+  M | **projectId** : String
+}
+
+object projects {
+  M | **_id** : String
+  O | **interventionIds** : String[]
+  O | **interventions** : ObjectId[] **FK**
+  O | **programBookId** : ObjectId **FK**
+}
+
+object taxonomies {
+  M | **_id** : ObjectId
+}
+
+object users_preferences {
+  M | **_id** : ObjectId
+}
+
+
+
+constraints o-- "2" conflictualItems
+
+conflictualItems "0..n" --> "0..1" projects
+conflictualItems "0..n" --> "0..1" interventions
+
+history "0..n" --> "0..1" projects
+history "0..n" --> "0..1" interventions
+
+import_relations o-- "1..n" imp_rel_interventions
+import_relations "0..n" --> "1" projects
+imp_rel_interventions "0..n" --> "1" interventions
+
+interventions "0..n" <---> "1" projects
+
+program_books o-- "0..n" priorityScenarios
+program_books "0..n" --> "1" annual_programs
+program_books "0..n" --> "0..n" projects
+
+priorityScenarios o-- "0..n" orderedProjects
+
+orderedProjects "0..n" --> "1" projects
+
+projects "0..n" --> "0..1" program_books
+
+@enduml

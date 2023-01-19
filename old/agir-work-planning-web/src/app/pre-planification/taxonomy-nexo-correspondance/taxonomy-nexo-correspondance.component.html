@@ -1,0 +1,109 @@
+<div class="responsive-table">
+  <div class="responsive-table-header text-dark font-16 pb-2">
+    <span class="flex-2 ml-2">Code Nexo</span>
+    <span class="flex-2">Descriptif</span>
+    <span class="flex-2">Code AGIR</span>
+    <span class="flex-2">Descriptif</span>
+    <div class="flex-1"></div>
+  </div>
+  <div class="font-16 scrollable taxonomy-list" *ngIf="!isLoading">
+      <div class="py-2 responsive-table-row border-bottom" *ngFor="let correspondance of nexoCorrespondances">
+        <ng-container *ngIf="editingCorrespondanceCode !== correspondance.match.code">
+          <span class="flex-2 ml-2 text-dark center-vertical">{{correspondance.match.code}}</span>
+          <span class="flex-2 center-vertical">{{correspondance.match.description}}</span>
+          <span class="flex-2 text-dark center-vertical">{{correspondance.agirCode}}</span>
+          <span class="flex-2 center-vertical">{{correspondance.agirLabel}}</span>
+          <div class="col-options d-flex flex-1 justify-content-end">
+            <app-more-options-button #moreOptions [dropdownPlacement]="['left-top','left-bottom']" dropdownContainer="body" [items]="getMenuItems(correspondance)"></app-more-options-button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="editingCorrespondanceCode === correspondance.match.code" [formGroup]="updateForm">
+          <div class="flex-2 ml-2 form-group-input">
+            <input type="text" class="form-control" formControlName="nexoCode" />
+            <app-form-errors formControlName="nexoCode">
+              <app-form-error *appFormError="let e; key: 'required'">Le code est requis</app-form-error>
+              <app-form-error *appFormError="let e; key: 'isNexoCodeDuplicate'">
+                Ce code est déjà présent.
+              </app-form-error>
+            </app-form-errors>
+          </div>
+          <div class="flex-2 ml-1 form-group-input">
+            <input type="text" class="form-control" formControlName="nexoDescription" />
+            <app-form-errors formControlName="nexoDescription">
+              <app-form-error *appFormError="let e; key: 'required'">Le descriptif est requis</app-form-error>
+            </app-form-errors>
+          </div>
+          <div class="flex-2 ml-1 form-group-input">
+            <vdm-select
+              bindLabel="code"
+              bindValue="code"
+              [items]="taxonomies"
+              formControlName="taxonomyCode"
+            ></vdm-select>
+            <app-form-errors formControlName="taxonomyCode">
+              <app-form-error *appFormError="let e; key: 'required'">Le code est requis</app-form-error>
+            </app-form-errors>
+          </div>
+          <span class="ml-1 flex-2 center-vertical">{{ updatingTaxonomyDescription }}</span>
+          <div class="flex-1 d-flex justify-content-end">
+            <button
+              class="btn btn-icon btn-icon-only p-0 mr-2 center-vertical"
+              (click)="closeModification()"
+            >
+              <i class="icon icon-x icon-color-neutral-secondary"></i>
+            </button>
+            <div class="mr-1 center-vertical">
+              <button class="btn btn-squared btn-primary pr-0" (click)="updateCorrespondance(correspondance)"><span class="icon icon-save"></span></button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    <div class="responsive-table-row form-group mt-2" [formGroup]="creationForm" *ngIf="creationForm && isCreating">
+      <div class="flex-2 ml-2 form-group-input">
+        <input type="text" class="form-control" formControlName="nexoCode" />
+        <app-form-errors formControlName="nexoCode">
+          <app-form-error *appFormError="let e; key: 'required'">Le code est requis</app-form-error>
+          <app-form-error *appFormError="let e; key: 'isNexoCodeDuplicate'">
+            Ce code est déjà présent.
+          </app-form-error>
+        </app-form-errors>
+      </div>
+      <div class="flex-2 ml-1 form-group-input">
+        <input type="text" class="form-control" formControlName="nexoDescription" />
+        <app-form-errors formControlName="nexoDescription">
+          <app-form-error *appFormError="let e; key: 'required'">Le descriptif est requis</app-form-error>
+        </app-form-errors>
+      </div>
+      <div class="flex-2 ml-1 form-group-input">
+        <vdm-select
+          bindLabel="code"
+          bindValue="code"
+          [items]="taxonomies"
+          formControlName="taxonomyCode"
+        ></vdm-select>
+        <app-form-errors formControlName="taxonomyCode">
+          <app-form-error *appFormError="let e; key: 'required'">Le code est requis</app-form-error>
+        </app-form-errors>
+      </div>
+      <span class="ml-1 flex-2 center-vertical">{{ taxonomyDescription }}</span>
+      <div class="flex-1 d-flex justify-content-end">
+        <button
+          class="btn btn-icon btn-icon-only p-0 mr-2 center-vertical"
+          (click)="closeModification()"
+        >
+          <i class="icon icon-x icon-color-neutral-secondary"></i>
+        </button>
+        <div class="mr-1 d-flex flex-column center-vertical">
+          <button class="btn btn-squared btn-primary pr-0" (click)="createCorrespondance()"><span class="icon icon-save"></span></button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-tertiary btn-squared mt-2" *ngIf="!isCreating" (click)="addCorrespondance()">
+      <span class="icon icon-plus"></span>
+      <span>Ajouter un élément</span>
+    </button>
+  </div>
+  <div class="d-flex justify-content-center mt-3" *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+</div>

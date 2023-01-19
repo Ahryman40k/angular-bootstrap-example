@@ -1,0 +1,31 @@
+[
+  {
+    "audit": "A_IGNORER",
+    "id": "A_IGNORER",
+    "typeId": "canceled",
+    "text": "Annulation de l'intervention"
+  },
+  {
+    "audit": "A_IGNORER",
+    "id": "A_IGNORER",
+    "typeId": "accepted",
+    "text": "Accepté (Go)",
+    "targetYear": 2040,
+    "previousPlanificationYear": 2040
+  },
+  {
+    "audit": "A_IGNORER",
+    "id": "A_IGNORER",
+    "typeId": "revisionRequest",
+    "text": "Ajout d'une demande de révision",
+    "targetYear": 2040,
+    "previousPlanificationYear": 2040
+  },
+  {
+    "audit": "A_IGNORER",
+    "id": "A_IGNORER",
+    "typeId": "refused",
+    "refusalReasonId": "mobility",
+    "text": "Refus de l'intervention"
+  }
+]

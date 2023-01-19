@@ -1,0 +1,26 @@
+{
+  "id": "A_IGNORER",
+  "audit": "A_IGNORER",
+  "status": "success",
+  "files": [
+    {
+      "id": "A_IGNORER",
+      "name": "fileName",
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "type": "interventionsSE",
+      "status": "success",
+      "numberOfItems": 1,
+      "errorDescription": "",
+      "projects": [],
+      "interventions": [
+        {
+          "id": "1-add-several-unlinked-interventions-PNI-5312546",
+          "importStatus": "success",
+          "modificationType": "modification",
+          "lineNumber": 1,
+          "description": "\"\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "./node_modules/@villemontreal/lint-config-villemontreal/rules/tsconfig-base.json",
+  "compilerOptions": {
+    "sourceMap": true,
+    "pretty": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "lib": ["es2020"],
+    "target": "es2020",
+    "moduleResolution": "node"
+  }
+}

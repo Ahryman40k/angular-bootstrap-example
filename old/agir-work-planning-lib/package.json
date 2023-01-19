@@ -1,0 +1,77 @@
+{
+  "name": "@villemontreal/agir-work-planning-lib",
+  "version": "0.16.0",
+  "description": "Librairie pour le partage des interfaces typesscript entre nodejs et angular",
+  "main": "dist/src/index.js",
+  "typings": "dist/src",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "start": "node_modules/.bin/gulp test",
+    "compile": "node_modules/.bin/gulp compile",
+    "test": "node_modules/.bin/gulp test",
+    "test-jenkins": "node_modules/.bin/gulp test-jenkins",
+    "release": "node_modules/.bin/gulp release",
+    "prepare": "node_modules/.bin/gulp compile",
+    "prepublishOnly": "node_modules/.bin/gulp prepublish",
+    "lint": "node_modules/.bin/gulp lint",
+    "lint-fix": "node_modules/.bin/gulp lint-fix",
+    "tslint": "node_modules/.bin/gulp tslint",
+    "tslint-fix": "node_modules/.bin/gulp tslint-fix",
+    "prettier": "node_modules/.bin/gulp prettier",
+    "prettier-fix": "node_modules/.bin/gulp prettier-fix",
+    "link-create": "node_modules/.bin/gulp link-create",
+    "link-update": "node_modules/.bin/gulp link-update",
+    "sonar": "sh ./sonar.sh",
+    "ci": "npm run test && npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/villemontreal/core-nodejs-lib-template.git"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.interne.montreal.ca/repository/npm-vdmtl/"
+  },
+  "homepage": "https://bitbucket.org/villemontreal/core-nodejs-lib-template",
+  "keywords": [
+    "montreal",
+    "template",
+    "gabarit",
+    "node.js",
+    "package npm"
+  ],
+  "author": "Ville de Montréal",
+  "license": "MIT",
+  "dependencies": {
+    "@turf/turf": "6.5.0",
+    "@types/geojson": "7946.0.8",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "@types/chai": "4.1.7",
+    "@types/fs-extra": "5.1.0",
+    "@types/gulp": "4.0.7",
+    "@types/node": "14.18.0",
+    "@types/lodash": "4.14.149",
+    "@types/mocha": "5.2.6",
+    "@types/run-sequence": "0.0.30",
+    "@types/semver": "6.0.0",
+    "@types/sinon": "7.0.11",
+    "@types/yargs": "13.0.0",
+    "@villemontreal/lint-config-villemontreal": "1.5.5",
+    "chai": "4.2.0",
+    "fs-extra": "8.0.0",
+    "gulp": "4.0.0",
+    "gulp4-run-sequence": "1.0.1",
+    "mocha": "6.1.4",
+    "mocha-jenkins-reporter": "0.4.1",
+    "run-sequence": "2.2.1",
+    "sinon": "7.3.2",
+    "sonarqube-scanner": "2.5.0",
+    "tslint": "5.20.0",
+    "typescript": "3.7.2",
+    "yargs": "13.2.2"
+  }
+}

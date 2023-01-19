@@ -1,0 +1,16 @@
+<h4 class="d-flex justify-content-between align-items-center">
+  Projets retirés
+</h4>
+<app-program-book-table
+  [columnConfig]="columnConfig"
+  [fetchProjects]="getProjects"
+  [annualProgram]="annualProgram"
+  [programBook]="programBook$ | async"
+  [menuItemConfig]="{
+    newWindow: true,
+    hiddenMenuItems: [MenuItemKey.REMOVE_PROGRAM_BOOK, MenuItemKey.ROAD_SECTION_ACTIVITY],
+    disableAddProjectToProgramBook: true
+  }"
+  [isOrdered]="false"
+>
+</app-program-book-table>

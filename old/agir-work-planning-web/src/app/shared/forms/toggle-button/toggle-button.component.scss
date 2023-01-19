@@ -1,0 +1,46 @@
+@import '../../../../styles/core/variables';
+$btn-toggle-icon-width: 14px;
+$btn-toggle-padding: 4px 6px;
+$btn-toggle-icon-margin: 0 4px 0 0;
+$btn-height: 28px;
+
+:host() {
+  display: flex;
+  &.readonly {
+    * {
+      cursor: default;
+    }
+  }
+}
+
+.icon-sm:before {
+  -webkit-mask-size: auto;
+  height: auto;
+  mask-size: auto;
+  width: $btn-toggle-icon-width;
+}
+
+.btn.button-toggle {
+  background-color: $color-gray-250;
+  color: $color-pale-sky;
+  font-size: $font-size-12;
+  font-weight: normal;
+  height: $btn-height;
+  line-height: $line-height-16;
+  padding: $btn-toggle-padding;
+
+  .icon-sm {
+    margin: $btn-toggle-icon-margin;
+    width: $btn-toggle-icon-width;
+    &:before {
+      background-color: $color-pale-sky;
+    }
+  }
+}
+
+.btn.button-toggle.toggle-active {
+  color: $color-white;
+  .icon-sm:before {
+    background-color: $color-white;
+  }
+}

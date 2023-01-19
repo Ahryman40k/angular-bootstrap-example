@@ -1,0 +1,24 @@
+@import '../../../styles/core/variables';
+@import '../shared/scss/column-mixins.scss';
+$table-cell-pt: 14px;
+$table-cell-pb: 13px;
+$custom-checkbox-ml: 1rem;
+$clear-bottom-bar-pb: 5.5rem;
+
+.clear-bottom-bar {
+  padding-bottom: $clear-bottom-bar-pb;
+}
+
+:host ::ng-deep {
+  .table-header-cell {
+    text-align: left;
+  }
+  .table-body-cell {
+    padding-top: $table-cell-pt;
+    padding-bottom: $table-cell-pb;
+  }
+  .custom-checkbox {
+    margin-left: $custom-checkbox-ml;
+  }
+  @include column-style();
+}

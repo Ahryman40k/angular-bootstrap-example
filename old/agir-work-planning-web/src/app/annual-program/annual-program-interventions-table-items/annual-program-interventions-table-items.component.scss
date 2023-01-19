@@ -1,0 +1,7 @@
+@import '../shared/scss/tables-columns.scss';
+:host ::ng-deep {
+  @include column-submitted-intervention-style();
+}
+
+
+

@@ -1,0 +1,67 @@
+#==========================================
+# This is the ACCEPT TRAINING environment-specific
+# config file, used when NODE_ENV = "accept"
+# and NODE_APP_INSTANCE = "training"
+#
+# The configurations specified here will override
+# the default ones provided by "acceptation.yaml".
+#
+# More info about this file and the order config files
+# are loaded : https://github.com/lorenwest/node-config/wiki/Configuration-Files
+#==========================================
+
+api:
+  # host: api.accept.interne.montreal.ca
+  domainPath: /public-works/planning-training
+
+# ==========================================
+# Mongo
+# ==========================================
+mongo:
+  connectionString: mongodb://acclmg01a.ile.montreal.qc.ca:27001,acclmg01b.ile.montreal.qc.ca:27001,acclmg01c.ile.montreal.qc.ca:27001/agirworkplanningtraining?replicaSet=rsacc01&connectTimeoutMS=10000
+  connectionOptions:
+    replicaSet: rsacc01
+    user: REMPLACE_DANS_JENKINS
+    pass: REMPLACE_DANS_JENKINS
+#==========================================
+# Security
+#==========================================
+# security:
+#   jwt:
+#     host: https://api.accept.montreal.ca
+#   cors:
+#     whitelist: https:\/\/([a-z0-9]+[.])*montreal([.qc])*[.]ca
+
+#==========================================
+# GLUU
+#==========================================
+# gluu:
+#   urlToken: "https://idp.accept.montreal.ca"
+#   serviceAccount:
+#     username: REMPLACE_DANS_JENKINS
+#     password: REMPLACE_DANS_JENKINS
+#   openIdClient:
+#     username: REMPLACE_DANS_JENKINS
+#     password: REMPLACE_DANS_JENKINS
+
+#==========================================
+# GDA Gestion Des Acces
+#==========================================
+# gda:
+#   urls:
+#     base: https://api.accept.interne.montreal.ca/api/it-platforms/security/access-management
+
+#==========================================
+# Spatial Analysis
+#==========================================
+# spatialAnalysis:
+#   spatial:
+#     url: https://api.accept.interne.montreal.ca/api/it-platforms/geomatic/spatialanalysis/v1
+#   wfs:
+#     url: https://api.accept.interne.montreal.ca/api/it-platforms/geomatic/wfs-maps/montreal/ows
+#     service: WFS
+#     version: 1.0.0
+#     typeNamePrefix: "montreal:"
+#     dWithinMeterTolerance: 20
+#     outputFormat: application/json
+#     baseCoordinatesSrs: EPSG:4326

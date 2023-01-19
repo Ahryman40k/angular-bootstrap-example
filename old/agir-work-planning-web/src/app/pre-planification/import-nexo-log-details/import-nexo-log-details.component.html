@@ -1,0 +1,56 @@
+<div class="px-4 pt-3" *ngIf="nexoImportLog">
+  <div class="border-bottom">
+    <div class="d-flex justify-content-between">
+      <h3>{{ nexoImportLog.audit.createdAt | date: 'yyyy/MM/dd HH:mm' }}</h3>
+      <button
+        class="btn btn-secondary btn-squared"
+        type="button"
+        [disabled]="
+          nexoImportLog.status !== NexoImportStatus.FAILURE && nexoImportLog.status !== NexoImportStatus.SUCCESS
+        "
+        (click)="downloadImportResults()"
+      >
+        Télécharger les résultats
+      </button>
+    </div>
+    <span class="badge mt-1" ngClass="{{ nexoImportLog.status | appNexoLogBadge }}">{{
+      nexoImportLog.status | appTaxonomy: TaxonomyGroup.nexoImportStatus
+    }}</span>
+    <div class="my-4 div-table">
+      <p class="font-sm font-weight-bold text-dark">Responsable</p>
+      <p class="flex-5 font-sm">{{ nexoImportLog.audit.createdBy.displayName }}</p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div *ngFor="let nexoImportFile of nexoImportLog.files" class="col-md-6">
+      <ng-container *ngIf="nexoImportFile.type === NexoFileType.INTERVENTIONS_SE">
+        <app-import-nexo-file-detail
+          [fileType]="nexoImportFile.type"
+          [nexoImportFile]="nexoImportFile"
+          [nexoImportLog]="nexoImportLog"
+        ></app-import-nexo-file-detail>
+      </ng-container>
+      <ng-container *ngIf="nexoImportFile.type === NexoFileType.INTERVENTIONS_BUDGET_SE">
+        <app-import-nexo-file-detail
+          [fileType]="nexoImportFile.type"
+          [nexoImportFile]="nexoImportFile"
+          [nexoImportLog]="nexoImportLog"
+        ></app-import-nexo-file-detail>
+      </ng-container>
+      <ng-container *ngIf="nexoImportFile.type === NexoFileType.REHAB_AQ_CONCEPTION">
+        <app-import-nexo-file-detail
+          [fileType]="nexoImportFile.type"
+          [nexoImportFile]="nexoImportFile"
+          [nexoImportLog]="nexoImportLog"
+        ></app-import-nexo-file-detail>
+      </ng-container>
+      <ng-container *ngIf="nexoImportFile.type === NexoFileType.REHAB_EG_CONCEPTION">
+        <app-import-nexo-file-detail
+          [fileType]="nexoImportFile.type"
+          [nexoImportFile]="nexoImportFile"
+          [nexoImportLog]="nexoImportLog"
+        ></app-import-nexo-file-detail>
+      </ng-container>
+    </div>
+  </div>
+</div>

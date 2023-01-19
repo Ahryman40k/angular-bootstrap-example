@@ -1,0 +1,13 @@
+{
+  "error": {
+    "code": "unprocessableEntity",
+    "message": "A_IGNORER",
+    "details": [
+      {
+        "code": "InvalidStatus",
+        "message": "Only intervention with status wished can be deleted",
+        "target": "status"
+      }
+    ]
+  }
+}

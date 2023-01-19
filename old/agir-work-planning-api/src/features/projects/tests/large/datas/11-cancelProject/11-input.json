@@ -1,0 +1,8 @@
+{
+  "decision": {
+    "typeId": "canceled",
+    "startYear": null,
+    "endYear": null,
+    "text": "This is a cancel decision."
+  }
+}

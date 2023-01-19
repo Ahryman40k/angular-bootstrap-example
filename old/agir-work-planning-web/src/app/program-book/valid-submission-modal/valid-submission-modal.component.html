@@ -1,0 +1,30 @@
+<app-layout-modal [modalTitle]="reactivateSubmissionVerb + ' la soumission'">
+  <div body>
+    <div class="mb-4">
+      <label>Justificatifs</label>
+      <textarea [formControl]="commentCtrl" class="form-control w-100"></textarea>
+      <app-form-errors [formControl]="commentCtrl">
+        <app-form-error *appFormError="let e; key: 'required'">Justificatifs est obligatoire</app-form-error>
+      </app-form-errors>
+    </div>
+    <app-alert type="danger" iconName="icon-info">
+      <span title>Attention!</span>
+      <span description>
+        {{reactivateSubmissionVerb}} la soumission permettra aux utilisateurs de travailler de nouveau sur cette soumission et de la modifier. Êtes-vous certain de vouloir
+        continuer?
+      </span>
+    </app-alert>
+  </div>
+  <div buttons>
+    <button type="button" class="btn btn-tertiary btn-squared bg-white mr-2" (click)="reject()">
+      Annuler
+    </button>
+    <button
+      type="submit"
+      class="btn btn-danger btn-squared add-button"
+      (click)="submit()"
+      [disabled]="submitting || commentCtrl.invalid">
+      {{reactivateSubmissionVerb}}
+    </button>
+  </div>
+</app-layout-modal>

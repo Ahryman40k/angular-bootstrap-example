@@ -1,0 +1,11 @@
+<div class="alert alert-with-icon mb-0" role="alert" [ngClass]="alertClass">
+  <div class="alert-icon-container" *ngIf="showIcon">
+    <span class="icon" [ngClass]="iconName" aria-hidden="true"></span>
+  </div>
+  <div class="alert-content">
+    <div #heading class="alert-heading" [class.d-none]="!hasTitle">
+      <ng-content select="[title]"></ng-content>
+    </div>
+    <ng-content select="[description]"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="navbar px-3 pt-2 pb-2 border-bottom d-flex form-inline">
+  <div class="d-flex inline">
+    <div class="btn-group pl-3 pr-3" role="group">
+      <div ngbButtonLabel class="btn-primary pr-0">
+        <a href=""><span class="icon icon-map"></span></a>
+      </div>
+      <div ngbButtonLabel class="btn-primary pr-0 btn-selected">
+        <span class="icon icon-list"></span>
+      </div>
+    </div>
+    <div class="navbar-separator pt-2 pb-2"></div>
+    <div class="btn-group pl-3 pr-2" role="group">
+      <div ngbButtonLabel class="btn-primary pr-2">
+        <a href="export/projects">Projets</a>
+      </div>
+      <div ngbButtonLabel class="btn-primary pr-2 btn-selected">
+        Interventions
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="navbar px-3 pt-2 pb-2">
+  <h3 class="mb-1">Liste des interventions</h3>
+  <div>
+    <button
+      type="button"
+      class="btn btn-squared btn-icon-left mr-2"
+      [ngClass]="filterActivated ? 'btn-primary' : 'btn-secondary'"
+      (click)="openCustomizeInterventionFilterViewModal()"
+    >
+      <span class="icon icon-filters" [ngClass]="filterActivated ? '' : 'icon-color-secondary'">
+        <span class="active-filter" *ngIf="filterActivated"></span>
+      </span>
+      <span class="btn-label">Filtres</span>
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btn-squared btn-icon-left"
+      (click)="openCustomizeInterventionTableViewModal()"
+    >
+      <span class="icon icon-color-primary icon-settings"></span>
+      <span class="btn-label">Personnaliser la vue</span>
+    </button>
+    <button
+      type="button"
+      class="btn btn-squared btn-icon-right ml-2 btn-secondary"
+      *ngIf="userHasExportPermission"
+      [disabled]="!isExportEnabled || isLoading"
+      (click)="openExportInterventionsModal()"
+    >
+      <span class="icon icon-upload"></span>
+      <span class="btn-label">Exporter</span>
+    </button>
+  </div>
+</div>
+
+<div class="navbar px-3 pt-0 pb-8 d-flex form-inline">
+  <div>{{ interventionCount }} interventions</div>
+  <div class="search-bar">
+    <button class="btn btn-icon btn-icon-only" (click)="searchInterventions(searchIntervention.value)">
+      <span class="icon icon-search icon-focus-within" aria-hidden="true"></span>
+    </button>
+    <input
+      type="text"
+      class="form-control border-0 search-input"
+      placeholder=" Rechercher une intervention"
+      [value]="searchValue || ''"
+      (keyup.enter)="searchInterventions(searchIntervention.value)"
+      #searchIntervention
+      maxlength="200"
+    />
+    <button
+      class="btn btn-icon btn-icon-only search-clear"
+      (click)="searchIntervention.value = ''; searchInterventions(searchIntervention.value)"
+    >
+      <span class="icon icon-x mr-0" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+
+<div class="px-3 tab-container">
+  <vdm-table [datasource]="dataSource" [isProjectsList]="false"></vdm-table>
+</div>
