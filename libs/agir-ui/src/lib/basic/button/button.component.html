@@ -1,0 +1,13 @@
+<vdm-icon
+  *ngIf="loading && !rightIcon"
+  class="loading-spinner"
+  svgIcon="icon-spinner"
+  [title]="loadingSpinnerAriaLabel"
+></vdm-icon>
+<ng-content></ng-content>
+<vdm-icon
+  *ngIf="loading && rightIcon"
+  class="loading-spinner loading-spinner-right"
+  svgIcon="icon-spinner"
+  [title]="loadingSpinnerAriaLabel"
+></vdm-icon>

@@ -1,0 +1,30 @@
+@import '../../../styles/core/typography';
+@import '../../../styles/core/colors';
+@import '../../../styles/core/shadows';
+@import '../../../styles/core/radius';
+@import '../../../styles/core/grid';
+@import '../../../styles/core/variables';
+
+$size-xx-small: 1rem;
+
+.vdm-list {
+  
+  padding: 0;
+  margin: 0;
+
+  
+  .vdm-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  
+    padding: 1rem;
+    background-color: $transparent;
+  
+    &:hover {
+      background-color: $neutral-underground;
+    }
+  
+  }
+}

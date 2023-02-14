@@ -1,0 +1,53 @@
+// The width/height of the icon element.
+$size-medium: 2.5rem !default;
+$size-small: 2rem !default;
+$size-x-small: 1.5rem !default;
+$size-xx-small: 1rem !default;
+
+vdm-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  line-height: normal;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  &.vdm-icon-medium {
+    height: $size-medium;
+    width: $size-medium;
+  }
+
+  &.vdm-icon-small {
+    height: $size-small;
+    width: $size-small;
+    line-height: 1.75rem;
+  }
+
+  &.vdm-icon-x-small {
+    height: $size-x-small;
+    width: $size-x-small;
+    line-height: 0.5rem;
+  }
+
+  &.vdm-icon-xx-small {
+    height: $size-xx-small;
+    width: $size-xx-small;
+    line-height: 0.85rem;
+  }
+
+  &.vdm-icon-spinner {
+    animation: spin 0.75s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+}

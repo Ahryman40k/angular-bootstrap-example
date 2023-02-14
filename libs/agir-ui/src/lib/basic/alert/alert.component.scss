@@ -1,0 +1,145 @@
+@import '../../../styles/core/colors';
+@import '../../../styles/core/radius';
+@import '../../../styles/core/shadows';
+@import '../../../styles/core/typography';
+@import '../../../styles/core/mixins';
+
+@mixin alert-border($color) {
+  border-left: 0.125rem solid $color; //2px
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+// Color variants
+$alert-colors: (
+  info: (
+    base: $informative-reversed,
+    dark: $informative,
+    light: $informative-light
+  ),
+  success: (
+    base: $positive-reversed,
+    dark: $positive,
+    light: $positive-light
+  ),
+  warning: (
+    base: $warning-reversed,
+    dark: $warning,
+    light: $warning-light
+  ),
+  danger: (
+    base: $negative-reversed,
+    dark: $negative,
+    light: $negative-light
+  ),
+  emergency: (
+    base: $negative-reversed,
+    dark: $negative,
+    light: $negative-light
+  )
+);
+// General rules
+.vdm-alert {
+  @include typo-interface-medium-normal;
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: $radius-none;
+  .vdm-alert-content-container {
+    margin: 0 0.5rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .vdm-alert-title {
+    font-weight: $font-weight-bold;
+    padding-bottom: 0.5rem;
+  }
+  a {
+    font-weight: $font-weight-bold;
+  }
+
+  // icon display right
+  &.vdm-alert-dismissible {
+    .vdm-button[data-dismiss='alert'] {
+      background-color: $transparent;
+      border-radius: $radius-none;
+      height: 2.5rem;
+      width: 2.5rem;
+      margin-left: auto;
+      margin-right: -0.5rem;
+      margin-top: -0.5rem;
+      @include hover-focus {
+        opacity: 0.75;
+      }
+    }
+  }
+  // buttons alert
+  .vdm-alert-actions {
+    .vdm-button {
+      margin: 1rem 1rem 0 0;
+    }
+  }
+}
+// Color variants of the alert
+@each $label, $map in $alert-colors {
+  $color-base: map-get($map, base);
+  $color-light: map-get($map, light);
+  $color-dark: map-get($map, dark);
+  $color-darker: darken($color-dark, 10%);
+  $color-shadow: rgba($color-dark, 0.3);
+
+  .vdm-alert-#{$label} {
+    background-color: $color-light;
+    @include alert-border($color-base);
+    color: $color-dark;
+    .vdm-alert-title {
+      color: $color-dark;
+    }
+    a {
+      color: $color-dark;
+      @include hover-focus {
+        background-color: lighten($color-light, 3%);
+      }
+    }
+    .vdm-icon {
+      svg {
+        fill: $color-dark;
+      }
+    }
+    .vdm-button {
+      &.vdm-button-primary {
+        background-color: $color-dark;
+        border-color: $color-dark;
+        @include hover-focus {
+          background-color: $color-darker;
+          border-color: $color-darker;
+        }
+        &:focus {
+          box-shadow: 0 0 0 0.1875rem $color-shadow;
+        }
+      }
+      &.vdm-button-secondary {
+        background-color: $color-light;
+        color: $color-dark;
+        @include hover-focus {
+          background-color: $color-light;
+          border-color: $color-dark;
+        }
+        &:focus {
+          box-shadow: 0 0 0 0.1875rem $color-shadow;
+        }
+      }
+      &.vdm-button-tertiary {
+        background-color: $color-light;
+        color: $color-dark;
+        @include hover-focus {
+          background-color: $color-light;
+        }
+        &:focus {
+          box-shadow: 0 0 0 0.1875rem $color-shadow;
+        }
+      }
+    }
+  }
+}

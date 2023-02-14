@@ -1,0 +1,71 @@
+@mixin vdm-framework() {
+    // include general styles
+}
+
+/// @param {Map} $input usefull values that helps to build the theme with variation
+/// @returns {Map} A theme definition
+@function create-vdm-light-theme( $primary, $accent: null, $warn: rgb(255, 0, 0) ) {
+    $theme: (
+        colors: (
+            primary: $primary,
+            accent: $accent,
+            warn: $warn,
+        )
+    );
+
+    @return $theme;
+};
+
+@import '../lib/basic/alert/alert.theme'; 
+@import '../lib/basic/avatar/avatar.theme'; 
+@import '../lib/basic/badge/badge.theme'; 
+@import '../lib/basic/button/button.theme'; 
+@import '../lib/basic/breadcrumb/breadcrumb.theme'; 
+@import '../lib/basic/card/card.theme'; 
+@import '../lib/basic/checkbox/checkbox.theme'; 
+@import '../lib/basic/icon/icon.theme'; 
+@import '../lib/basic/list/list.theme'; 
+@import '../lib/basic/menu/menu.theme'; 
+@import '../lib/basic/modal/modal.theme'; 
+@import '../lib/basic/radio/radio.theme'; 
+@import '../lib/basic/snackbar/snackbar.theme'; 
+@import '../lib/basic/tag/tag.theme'; 
+
+@import '../lib/app/page-header/page-header.theme';
+
+
+
+@mixin vdm-components-themes($theme) {
+    // Basic components
+    @include vdm-alert-theme($theme);
+    @include vdm-avatar-theme($theme);
+    @include vdm-badge-theme($theme);
+    @include vdm-breadcrumb-theme($theme);
+    @include vdm-button-theme($theme);
+    @include vdm-card-theme($theme);
+    @include vdm-checkbox-theme($theme);
+    @include vdm-icon-theme($theme);
+    @include vdm-list-theme($theme);
+    @include vdm-menu-theme($theme);
+    @include vdm-modal-theme($theme);
+    @include vdm-radio-theme($theme);
+    @include vdm-snackbar-theme($theme);
+    @include vdm-tag-theme($theme);
+
+    // Enhanced components
+    @include agir-page-header-theme($theme);
+}
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+	-webkit-clip-path: inset(50%) !important;
+		clip-path: inset(50%) !important;  /* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;            /* 3 */
+}

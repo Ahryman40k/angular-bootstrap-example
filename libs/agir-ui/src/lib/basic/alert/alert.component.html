@@ -1,0 +1,16 @@
+<vdm-icon [svgIcon]="iconType" [title]="iconTitle"></vdm-icon>
+<div class="vdm-alert-content-container">
+  <ng-content></ng-content>
+</div>
+<button
+  vdm-button
+  *ngIf="dismissible"
+  type="utility"
+  level="tertiary"
+  data-dismiss="alert"
+  role="button"
+  aria-label="Cacher le message"
+  (click)="onDismissClicked()"
+>
+  <vdm-icon svgIcon="icon-x"></vdm-icon>
+</button>

@@ -1,0 +1,147 @@
+@import '../../../styles/core/colors';
+
+@mixin button-border($color) {
+  border: solid 0.0625rem $color;
+}
+
+@mixin button-border-neutral-stroke {
+  @include button-border($neutral-stroke);
+}
+
+@mixin vdm-button-theme($theme) {
+  .vdm-button {
+    &.vdm-button-utility {
+      &:disabled.vdm-button-secondary,
+      &:disabled.vdm-button-tertiary {
+        color: $neutral-tertiary;
+      }
+    }
+    &.vdm-button-primary {
+      background-color: $action;
+      @include button-border($action);
+      color: $neutral-primary-reversed;
+      &.vdm-button-reversed {
+        background-color: $neutral-primary-reversed;
+        @include button-border($neutral-primary-reversed);
+        color: $neutral-primary;
+      }
+      &:hover {
+        background-color: $action-darker;
+        &.vdm-button-reversed {
+          background-color: $highlight-light;
+          color: $action;
+        }
+      }
+      &:focus {
+        &.vdm-button-reversed {
+          background-color: $highlight-light;
+          color: $action;
+        }
+      }
+      &:disabled,
+      &.vdm-button-loading {
+        color: $neutral-secondary;
+        background-color: $underground-2;
+        @include button-border($underground-2);
+        &.vdm-button-reversed {
+          background-color: rgba($neutral-primary-reversed, 0.3);
+          @include button-border(gba($neutral-primary-reversed, 0.3));
+          color: rgba($neutral-primary-reversed, 0.5);
+        }
+      }
+    }
+    &.vdm-button-secondary {
+      background-color: $transparent;
+      color: $action;
+      @include button-border-neutral-stroke;
+      &.vdm-button-reversed {
+        background-color: $transparent;
+        color: $neutral-primary-reversed;
+        @include button-border(rgba($neutral-stroke, 0.5));
+      }
+      &:hover {
+        @include button-border($action);
+        background-color: $highlight-light;
+        &.vdm-button-reversed {
+          background-color: $transparent;
+          color: $neutral-primary-reversed;
+          @include button-border-neutral-stroke;
+        }
+      }
+      &:focus {
+        @include button-border($action);
+        background-color: $highlight-light;
+        &.vdm-button-reversed {
+          background-color: rgba($neutral-primary-reversed, 0.3);
+          color: $neutral-primary-reversed;
+          @include button-border-neutral-stroke;
+        }
+      }
+      &:disabled,
+      &.vdm-button-loading {
+        color: $neutral-secondary;
+        &:hover {
+          border-color: $neutral-stroke;
+          background-color: $neutral-primary-reversed;
+          &.vdm-button-reversed {
+            @include button-border(rgba($neutral-stroke, 0.5));
+            background-color: $transparent;
+            color: $neutral-secondary;
+          }
+        }
+        &:focus {
+          border-color: $neutral-stroke;
+          background-color: $neutral-primary-reversed;
+          &.vdm-button-reversed {
+            background-color: $transparent;
+          }
+        }
+      }
+    }
+    &.vdm-button-tertiary {
+      @include button-border($transparent);
+      background-color: $transparent;
+      color: $action;
+      &.vdm-button-reversed {
+        color: $neutral-primary-reversed;
+      }
+      &:hover {
+        background-color: $highlight-light;
+        &.vdm-button-reversed {
+          background-color: rgba($neutral-primary-reversed, 0.3);
+          color: $neutral-primary-reversed;
+        }
+      }
+      &:focus {
+        background-color: $highlight-light;
+        &.vdm-button-reversed {
+          background-color: rgba($neutral-primary-reversed, 0.3);
+          color: $neutral-primary-reversed;
+        }
+      }
+      &:disabled,
+      &.vdm-button-loading {
+        color: $neutral-secondary;
+        &:hover {
+          background-color: $transparent;
+          &.vdm-button-reversed {
+            color: $neutral-secondary;
+          }
+        }
+        &:focus {
+          background-color: $transparent;
+          &.vdm-button-reversed {
+            color: $neutral-secondary;
+          }
+        }
+      }
+    }
+
+    &.vdm-button-editorial {
+      &:disabled.vdm-button-secondary,
+      &:disabled.vdm-button-tertiary {
+        color: $neutral-tertiary;
+      }
+    }
+  }
+}

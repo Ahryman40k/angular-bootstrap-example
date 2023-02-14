@@ -1,0 +1,42 @@
+
+@use "sass:map";
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800');
+@import '@angular/cdk/overlay-prebuilt.css';
+
+* {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+
+@import "../src/styles/theming";
+
+
+@include vdm-framework();
+
+// $primary: rgb(60, 121, 109);
+// $secondary: rgb(22, 206, 169);
+// $danger: rgb(116, 0, 194);
+// $warning: rgb(153, 0, 94);
+
+/*$accent-color: rgb(211, 214, 45);
+$warn-color: rgb(120, 43, 3);
+$default-theme: create-vdm-light-theme($primary-color, $accent-color, $warn-color);
+*/
+
+// $theme-colors: (
+//   "primary":    $primary,
+//   "secondary":  $secondary,
+//   "success":    rgb(0, 226, 49),
+//   "info":       rgb(45, 152, 214),
+//   "warning":    $warning,
+//   "danger":     $danger,
+//   "light":      rgb(248, 248, 238),
+//   "dark":       rgb(61, 61, 61),
+// );
+
+$theme-colors: ();
+
+@include vdm-components-themes($theme-colors);
+

@@ -1,0 +1,42 @@
+// Base
+$white: #ffffff;
+$black: #000000;
+
+// Action
+$action: #097d6c;
+$action-darker: #075b4f;
+$action-lighter: #0cb097;
+
+// Neutral
+$neutral-primary: $black;
+$neutral-primary-reversed: $white;
+$neutral-secondary: #637381;
+$neutral-tertiary: #adb2bd;
+$neutral-stroke: #ced4da;
+$neutral-ground: #ffffff;
+$neutral-underground: #f8f9fa;
+
+// Message
+$informative: #004b7b;
+$informative-reversed: #0079c4;
+$informative-light: #e6f5f9;
+$positive: #025d29;
+$positive-reversed: #0da566;
+$positive-light: #e7f6f0;
+$warning: #6c4600;
+$warning-reversed: #ffb833;
+$warning-light: #fefae6;
+$negative: #851a00;
+$negative-reversed: #d3310a;
+$negative-light: #ffebe6;
+
+// Highlight
+$highlight-light: #eefaf8;
+$highlight-dark: #d0f3ee;
+$highlight-focus: #98bcde;
+$highlight-focus-reversed: $white;
+
+// Other
+$transparent: rgba(#ffffff, 0.0001);
+$underground-2: #dee2e6;
+$ground-reversed: #212529;

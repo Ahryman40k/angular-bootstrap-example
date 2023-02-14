@@ -1,0 +1,17 @@
+<fieldset
+  class="vdm-checkbox-group"
+  [id]="id"
+  [attr.aria-describedby]="ariaDescribedby"
+>
+  <ng-content></ng-content>
+  <div
+    class="vdm-checkbox-group-description"
+    [attr.id]="ariaDescribedby"
+    #container
+    (cdkObserveContent)="onContentChange()"
+  >
+    <ng-content
+      select="vdm-error, [vdm-error], vdm-guiding-text, [vdm-guiding-text]"
+    ></ng-content>
+  </div>
+</fieldset>
