@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+
+  min-height: calc(100vh - 3.5rem); // remove toolbar height
+
+
+  .list-panel {
+    width: 25%;
+    max-width: 350px;
+    min-height: 100%;
+    padding: 1rem;
+ 
+    border-top:  1px solid #ced4da;  
+    border-bottom:  1px solid #ced4da;  
+    border-right:  1px solid #ced4da;  
+    
+    a[vdm-list-item] {
+      font-weight: 700;
+      color: #637381;
+    }
+  }
+
+  .content-panel {
+    padding: 1rem;
+    min-height: 100%;
+    border-top:  1px solid #ced4da;  
+    border-bottom:  1px solid #ced4da;  
+
+    min-width: calc(100vw - 350px);
+
+  }
+}
+
+.horizontal-layout {
+
+    
+ 
+  flex: 1 1 auto;
+
+  display:flex;
+  align-items: stretch;
+  justify-content: flex-start;
+}

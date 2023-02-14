@@ -1,0 +1,28 @@
+:host {
+    
+  .navbar {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    
+    padding: 0.25em;
+    
+    // Linked value for a well-know bar size useful in calc() function
+    min-height: 3.5rem;
+    max-height: 3.5rem;
+
+    .app-name {
+        color: white;
+    }
+
+}
+}
+
+.spacer {
+    flex: 1 1 auto;
+
+    border-right: 0.05rem solid #ced4da;  
+    min-height: 1.5rem;
+}

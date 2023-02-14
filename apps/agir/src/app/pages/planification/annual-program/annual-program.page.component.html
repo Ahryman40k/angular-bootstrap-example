@@ -1,0 +1,19 @@
+<agir-page-header title="Programmation annuelle">
+  <button vdm-button type="button" displayType="utility" level="primary" size="medium" style="margin-right: 1rem">
+    <vdm-icon svgIcon="icon-plus"></vdm-icon><span>Ajouter</span>
+  </button>
+</agir-page-header>
+<div class="horizontal-layout">
+  <div class="list-panel">
+    <h5>Executant Ville de Montreal</h5>
+    <vdm-nav-list>
+        <a *ngFor="let executor of executors$ | async" vdm-list-item>{{executor.name}}</a>
+    </vdm-nav-list>
+  </div>
+  <div class="content-panel">
+    <agir-programmation-listview>
+      
+    </agir-programmation-listview>
+  </div>
+</div>
+

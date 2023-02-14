@@ -1,0 +1,14 @@
+{
+  "/agir-work-planning-project-web": {
+    "target": "http://localhost:3333",
+    "secure": false
+  },
+  "/project-api": {
+    "target": "http://localhost:4040",
+    "secure": false
+  },
+  "/program-api": {
+    "target": "http://localhost:4041",
+    "secure": false
+  }
+}
