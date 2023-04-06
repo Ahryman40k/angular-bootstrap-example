@@ -2,28 +2,35 @@
 <span class="description">Description</span>
 
 <vdm-nav-list>
-  <a vdm-list-item>
-    <span vdm-list-item-title>2021</span>
-    <vdm-tag type="positive"><span>En cours de programmation</span></vdm-tag>
-    <div class="spacer"></div>
-    <button vdm-button type="editorial" level="tertiary" size="medium">
-      <vdm-icon svgIcon="icon-more-vertical"></vdm-icon>
-    </button>
-  </a>
-  <a vdm-list-item>
-    <span vdm-list-item-title>Title</span>
-    <vdm-tag type="positive"><span>Label</span></vdm-tag>
-    <div class="spacer"></div>
-    <button vdm-button type="editorial" level="tertiary" size="medium">
-      <vdm-icon svgIcon="icon-more-vertical"></vdm-icon>
-    </button>
-  </a>
-  <a vdm-list-item>
-    <span vdm-list-item-title>Title</span>
-    <vdm-tag type="positive"><span>Envoye (final)</span></vdm-tag>
-    <div class="spacer"></div>
-    <button vdm-button type="editorial" level="tertiary" size="medium">
-      <vdm-icon svgIcon="icon-more-vertical"></vdm-icon>
-    </button>
-  </a>
+  <ng-container *ngFor="let program of programs">
+    <a vdm-list-item>
+      <span vdm-list-item-title>{{ program.name }}</span>
+      <vdm-tag type="positive"
+        ><span>{{program.status}}</span></vdm-tag
+      >
+      <div class="spacer"></div>
+      <button vdm-button type="editorial" level="tertiary" size="medium" [MenuTriggerFor]="ListItemMenu">
+        <vdm-icon svgIcon="icon-more-vertical"></vdm-icon>
+      </button>
+    </a>
+  </ng-container>
 </vdm-nav-list>
+<vdm-menu #ListItemMenu>
+  <ul>
+    <li>
+      <a vdm-menu-item>
+        <vdm-menu-item-label>Editer la programmation</vdm-menu-item-label>
+      </a>
+    </li>
+    <li>
+      <a vdm-menu-item>
+        <vdm-menu-item-label>Diffuser la programmation</vdm-menu-item-label>
+      </a>
+    </li>
+    <li>
+      <a vdm-menu-item>
+        <vdm-menu-item-label>Supprimer la programmation</vdm-menu-item-label>
+      </a>
+    </li>
+  </ul>
+</vdm-menu>

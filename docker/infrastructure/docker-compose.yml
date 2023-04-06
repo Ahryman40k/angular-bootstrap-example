@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  arango-db:
+    build: 
+      context: ../arangodb
+      dockerfile: Dockerfile
+    environment:
+      ARANGO_ROOT_PASSWORD: 'dev' 
+    container_name: agir-arango-storage
+    ports:
+      - 8529:8529
+  
+  mongo-db:
+    build: 
+      context: ../mongo
+      dockerfile: Dockerfile
+    environment:
+      ARANGO_ROOT_PASSWORD: 'dev' 
+    container_name: agir-mongo-storage
+    ports:
+      - 27018:27017
+ 

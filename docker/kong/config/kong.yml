@@ -1,0 +1,12 @@
+_format_version: "3.0"
+_transform: true
+
+
+services:
+- name: annual-programs
+  url: http://host.docker.internal:3333/api
+  routes:
+  - name: my-route
+    paths:
+    - /annual_programs
+  

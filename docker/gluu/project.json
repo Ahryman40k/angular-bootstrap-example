@@ -1,0 +1,15 @@
+{
+  "name": "gluu",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "docker/gluu",
+  "projectType": "application",
+  "targets": {
+    "docker": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker build -t gluu-oauth -f ./docker/gluu/Dockerfile ."
+      }
+    }
+  },
+  "tags": ["infra"]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "arangodb",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "docker/arangodb",
+  "projectType": "application",
+  "targets": {
+    "docker": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker build -t arango-agir -f ./docker/arangodb/Dockerfile ."
+      }
+    }
+  },
+  "tags": ["infra"]
+}

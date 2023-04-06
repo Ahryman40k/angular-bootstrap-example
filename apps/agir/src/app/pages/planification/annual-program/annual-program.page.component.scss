@@ -3,19 +3,26 @@
   flex-direction: column;
 
 
-  min-height: calc(100vh - 3.5rem); // remove toolbar height
-
+  min-height: calc(100vh - 64px); // remove toolbar height
+  max-height: calc(100vh - 64px); // remove toolbar height
 
   .list-panel {
     width: 25%;
     max-width: 350px;
     min-height: 100%;
+    max-height: 100%;
     padding: 1rem;
  
     border-top:  1px solid #ced4da;  
     border-bottom:  1px solid #ced4da;  
     border-right:  1px solid #ced4da;  
+
+    overflow: auto;
+   // overflow-y: scroll;
+
     
+    max-height: calc(100vh - 202px); // remove toolbar height
+
     a[vdm-list-item] {
       font-weight: 700;
       color: #637381;
@@ -29,7 +36,10 @@
     border-bottom:  1px solid #ced4da;  
 
     min-width: calc(100vw - 350px);
+    max-height: calc(100vh - 202px); // remove toolbar height
 
+    overflow: auto;
+    // overflow-y: scroll;
   }
 }
 

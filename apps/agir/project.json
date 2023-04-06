@@ -35,7 +35,14 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/agir/src/environments/environment.ts",
+              "with": "apps/agir/src/environments/environment.prod.ts"
+            }
+          ]
+
         },
         "development": {
           "buildOptimizer": false,

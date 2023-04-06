@@ -1,0 +1,15 @@
+{
+  "name": "agir-infrastructure",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "docker/infrastructure",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker-compose -f ./docker/infrastructure/docker-compose.yml up "
+      }
+    }
+  },
+  "tags": ["infra"]
+}

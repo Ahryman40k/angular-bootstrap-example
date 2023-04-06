@@ -10,11 +10,15 @@
     padding: 0.25em;
     
     // Linked value for a well-know bar size useful in calc() function
-    min-height: 3.5rem;
-    max-height: 3.5rem;
+    min-height: 3.5em;
+    max-height: 3.5em;
 
     .app-name {
         color: white;
+    }
+
+    .profile-btn {
+        margin-left: -1.5rem;
     }
 
 }

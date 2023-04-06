@@ -5812,7 +5812,7 @@ components:
           type: number
           description: The maximum budget cap in thousands of dollars for a project to be in the program book.
           example: 2000
-        sharedRoles:
+      sharedRoles:
           type: array
           items:
             type: string

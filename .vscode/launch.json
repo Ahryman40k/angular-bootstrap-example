@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Angular App",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}"
+        }, 
+        {
+            "name": "Attach Program API",
+            "type": "node",
+            "request": "launch",
+            "sourceMaps": true,
+            "cwd": "${workspaceFolder}/apps/api/program-api",
+            "program": "${workspaceFolder}/apps/api/program-api/src/main.ts",
+        },
+    ]
+}

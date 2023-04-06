@@ -14,9 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strict": true,
     "paths": {
+      "@ahryman40k/agir-ui": ["libs/agir-ui/src/index.ts"],
       "@ahryman40k/bootstrap-components": ["libs/bootstrap-components/src/index.ts"],
-      "@ahryman40k/map-component": ["libs/map-component/src/index.ts"]
+      "@ahryman40k/map-component": ["libs/map-component/src/index.ts"],
+      "@ahryman40k/types/api-types": ["libs/types/api-types/src/index.ts"],
+      "@ahryman40k/types/intervention-api-types": ["libs/types/intervention-api-types/src/index.ts"],
+      "@ahryman40k/types/program-api-types": ["libs/types/program-api-types/src/index.ts"],
+      "@ahryman40k/types/project-api-types": ["libs/types/project-api-types/src/index.ts"],
+      "@villedemontreal/angular-ui": ["libs/angular-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

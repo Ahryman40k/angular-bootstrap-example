@@ -1,17 +1,82 @@
 <nav class="navbar">
+  <!-- Sandwitch -->
+  <button vdm-button type="button" displayType="utility" level="tertiary" [reversed]="true">
+    <vdm-icon svgIcon="icon-menu"></vdm-icon>
+  </button>
 
-    <button vdm-button type="button" displayType="utility" level="tertiary" [reversed]="true">
-        <vdm-icon svgIcon="icon-menu"></vdm-icon>
-    </button>
+  <span class="app-name">AGIR</span>
 
-    <span class="app-name">AGIR</span> 
+  <!-- Panif / pre panif selector -->
+  <button
+    vdm-button
+    type="editorial"
+    displayType="utility"
+    level="tertiary"
+    [reversed]="true"
+    [MenuTriggerFor]="ScopeMenu"
+  >
+    <span> Planification </span>
+    <vdm-icon svgIcon="icon-chevron-down"></vdm-icon>
+  </button>
+  <vdm-menu #ScopeMenu>
+    <ul>
+      <li>
+        <a vdm-menu-item>
+          <vdm-menu-item-label>Planification</vdm-menu-item-label>
+        </a>
+      </li>
+      <li>
+        <a vdm-menu-item>
+          <vdm-menu-item-label>Pre-Planification</vdm-menu-item-label>
+        </a>
+      </li>
+    </ul>
+  </vdm-menu>
 
-    <button vdm-button type="button" displayType="utility" level="tertiary" [reversed]="true">
-        planif
-    </button>
-    <div class="spacer"></div>
-    <button vdm-button type="button" displayType="utility" level="tertiary" [reversed]="true" >
-        Profil
-    </button>
+  <div class="spacer"></div>
 
+  <!-- Profil -->
+  <button
+    vdm-button
+    type="button"
+    displayType="utility"
+    level="tertiary"
+    [reversed]="true"
+    [MenuTriggerFor]="ProfileMenu"
+    class="profile-btn"
+  >
+    <vdm-icon svgIcon="icon-user-circle" color="tertiary"></vdm-icon>
+    <span> Compte </span>
+    <vdm-icon svgIcon="icon-chevron-down"></vdm-icon>
+  </button>
+  <vdm-menu #ProfileMenu>
+    <ul>
+      <li>
+        <a vdm-menu-item>
+            <vdm-icon svgIcon="icon-user-circle" color="tertiary"></vdm-icon>
+            <vdm-menu-item-label>Compte AGIR xagradm</vdm-menu-item-label>
+            <vdm-menu-item-description>
+                xagradm@ville.montreal.qc.ca
+            </vdm-menu-item-description>
+          </a>
+      </li>
+      <vdm-menu-divider></vdm-menu-divider>
+      <li>
+        <a vdm-menu-item>
+          <vdm-menu-item-label>Gestion de la taxonomie</vdm-menu-item-label>
+        </a>
+      </li>
+      <li>
+        <a vdm-menu-item>
+          <vdm-menu-item-label>Transmission Info-RTU</vdm-menu-item-label>
+        </a>
+      </li>
+      <vdm-menu-divider></vdm-menu-divider>
+      <li>
+        <a vdm-menu-item>
+          <vdm-menu-item-label>Me deconnecter</vdm-menu-item-label>
+        </a>
+      </li>
+    </ul>
+  </vdm-menu>
 </nav>

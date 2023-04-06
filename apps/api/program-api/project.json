@@ -1,0 +1,79 @@
+{
+  "name": "program-api",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/program-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/api/program-api",
+        "main": "apps/api/program-api/src/main.ts",
+        "tsConfig": "apps/api/program-api/tsconfig.app.json",
+        "assets": ["apps/api/program-api/src/assets"],
+        "webpackConfig": "apps/api/program-api/webpack.config.js",
+        "isolatedConfig": true,
+        "babelUpwardRootMode": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/api/program-api/configurations/server.config.dev.ts",
+              "with": "apps/api/program-api/configurations/server.config.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        },
+        "development": {
+          "inspect": true,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "program-api:build"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/api/program-api/configurations/server.config.dev.ts",
+              "with": "apps/api/program-api/configurations/server.config.prod.ts"
+            }
+          ],
+          "buildTarget": "program-api:build:production"
+        },
+        "development": {
+          "inspect": true,
+          "watch": true,
+          "buildTarget": "program-api:build:development"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/api/program-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/api/program-api/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["api"]
+}
