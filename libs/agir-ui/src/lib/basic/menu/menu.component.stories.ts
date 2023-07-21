@@ -92,7 +92,7 @@ export default {
     },
     focusFirstItem: {
       table: {
-        disable: true,
+        disable:    true,
       },
     },
     focusNextItem: {
@@ -406,7 +406,7 @@ export const navigationMenu: Story<MenuComponent> = () => ({
         <li>
           <a vdm-menu-item href=#>
             <vdm-menu-item-label>Se déconnecter</vdm-menu-item-label>
-          </a>
+          </a>o
         </li>
       </ul>
     </vdm-menu>

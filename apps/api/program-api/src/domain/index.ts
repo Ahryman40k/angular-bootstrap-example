@@ -1,5 +1,5 @@
-import { createAnnualProgramService } from './annual-program.service';
 import { ServerStorages } from '../infrastructure';
+import { createAnnualProgramService } from './annual-program.service';
 
 export type ServerServices = Record<string, (...args: any[]) => Promise<any>>;
 

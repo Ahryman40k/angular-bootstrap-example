@@ -14,14 +14,23 @@ export type CreateAnnualProgramRequest = z.infer<typeof CreateAnnualProgramReque
 
 
 
-export const GetAnnualProgramRequest = z.object({
+
+export const GetAnnualProgramByIdRequest = z.object({
   params: z.object({
     annualProgramId: z.string(),
   }),
 });
-export type GetAnnualProgramRequest = z.infer<typeof GetAnnualProgramRequest>;
+export type GetAnnualProgramByIdRequest = z.infer<typeof GetAnnualProgramByIdRequest>;
 
 
+
+
+export const GetAnnualProgramByExecutorIdRequest = z.object({
+  params: z.object({
+    executorId: z.string(),
+  }),
+});
+export type GetAnnualProgramByExecutorIdRequest = z.infer<typeof GetAnnualProgramByExecutorIdRequest>;
 
 
 

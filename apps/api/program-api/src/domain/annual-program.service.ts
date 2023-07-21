@@ -1,6 +1,6 @@
 import { StoredAnnualProgram } from '@ahryman40k/types/program-api-types';
 import { ServerStorages } from '../infrastructure';
-import { CreateAnnualProgramRequest, GetAnnualProgramRequest } from '../routes/types/create-annual-program.route';
+import { CreateAnnualProgramRequest, GetAnnualProgramByExecutorIdRequest, GetAnnualProgramByIdRequest,  } from '../routes/types/create-annual-program.route';
 import { DeclareServiceHandler } from '../framework';
 
 
@@ -9,7 +9,8 @@ import { DeclareServiceHandler } from '../framework';
 
 export type AnnualProgramService = 
   DeclareServiceHandler<CreateAnnualProgramRequest, StoredAnnualProgram[], 'annual-program.create'> 
-  & DeclareServiceHandler<GetAnnualProgramRequest, StoredAnnualProgram[], 'annual-program.getById'> 
+  & DeclareServiceHandler<GetAnnualProgramByIdRequest, StoredAnnualProgram[], 'annual-program.getById'> 
+  & DeclareServiceHandler<GetAnnualProgramByExecutorIdRequest, StoredAnnualProgram[], 'annual-program.getByExecutorId'> 
 
 export const createAnnualProgramService = (infra: ServerStorages): AnnualProgramService => {
   return {
@@ -32,6 +33,10 @@ export const createAnnualProgramService = (infra: ServerStorages): AnnualProgram
     },
     "annual-program.getById": ( {annualProgramId} ) => {
       const result = infra["annual-program.get_by_id"]([annualProgramId])
+      return result;
+    },
+    "annual-program.getByExecutorId": ( {executorId} ) => {
+      const result = infra["annual-program.get_by_executorId"]([executorId])
       return result;
     }
     

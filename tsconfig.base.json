@@ -23,6 +23,7 @@
       "@ahryman40k/types/intervention-api-types": ["libs/types/intervention-api-types/src/index.ts"],
       "@ahryman40k/types/program-api-types": ["libs/types/program-api-types/src/index.ts"],
       "@ahryman40k/types/project-api-types": ["libs/types/project-api-types/src/index.ts"],
+      "@ahryman40k/types/submission-api-types": ["libs/types/submission-api-types/src/index.ts"],
       "@villedemontreal/angular-ui": ["libs/angular-ui/src/index.ts"]
     }
   },

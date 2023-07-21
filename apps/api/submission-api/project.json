@@ -1,0 +1,79 @@
+{
+  "name": "submission-api",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/submission-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/api/submission-api",
+        "main": "apps/api/submission-api/src/main.ts",
+        "tsConfig": "apps/api/submission-api/tsconfig.app.json",
+        "assets": ["apps/api/submission-api/src/assets"],
+        "webpackConfig": "apps/api/submission-api/webpack.config.js",
+        "isolatedConfig": true,
+        "babelUpwardRootMode": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/api/submission-api/configurations/server.config.dev.ts",
+              "with": "apps/api/submission-api/configurations/server.config.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        },
+        "development": {
+          "inspect": true,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "submission-api:build"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/api/submission-api/configurations/server.config.dev.ts",
+              "with": "apps/api/submission-api/configurations/server.config.prod.ts"
+            }
+          ],
+          "buildTarget": "submission-api:build:production"
+        },
+        "development": {
+          "inspect": true,
+          "watch": true,
+          "buildTarget": "submission-api:build:development"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/api/submission-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/api/submission-api/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["api"]
+}

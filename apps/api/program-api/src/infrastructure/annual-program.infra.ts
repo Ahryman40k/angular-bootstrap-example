@@ -7,6 +7,7 @@ export type AnnualProgramStorage = {
   'annual-program.create': (program: AnnualProgram[]) => Promise<StoredAnnualProgram[]>;
   'annual-program.get_all': () => Promise<StoredAnnualProgram[]>;
   'annual-program.get_by_id': (ids: string[]) => Promise<StoredAnnualProgram[]>;
+  'annual-program.get_by_executorId': (ids: string[]) => Promise<StoredAnnualProgram[]>;
 };
 
 export type AnnualProgramStorageKeys = keyof AnnualProgramStorage;
@@ -42,10 +43,15 @@ export const createAnnualProgramStorage = async (
     return collection.find<StoredAnnualProgram>({ _id: { $in: { ids } } }).toArray();
   };
 
+  const getByExecutorId = async (ids: string[]) => {
+    return collection.find<StoredAnnualProgram>({ executorId: { $in: { ids } } }).toArray();
+  };
+
   // then return type
   return {
     'annual-program.create': create,
     'annual-program.get_all': getAll,
     'annual-program.get_by_id': getById,
+    'annual-program.get_by_executorId': getByExecutorId,
   };
 };

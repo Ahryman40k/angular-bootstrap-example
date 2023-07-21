@@ -1,0 +1,1 @@
+[{"kind":1,"language":"markdown","value":"# Create Annual submission\n","outputs":[]},{"kind":2,"language":"rest-book","value":"POST localhost:3333/api/v1/annualsubmission\nUser-Agent: rest-book\nContent-Type: application/json \n\n{\n    name: \"Foo\",\n    text: \"Foo is the most bar of the Foos\" \n}","outputs":[]}]
